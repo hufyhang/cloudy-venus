@@ -7,6 +7,7 @@ using System.Text;
 using System.Windows.Forms;
 using System.IO;
 using System.Collections;
+using System.Diagnostics;
 
 namespace LZ_Marina
 {
@@ -77,7 +78,9 @@ namespace LZ_Marina
                 System.Windows.Forms.ListViewItem listViewItem3 = new System.Windows.Forms.ListViewItem("Hotmail", 0);
                 System.Windows.Forms.ListViewItem listViewItem4 = new System.Windows.Forms.ListViewItem("Google Docs", 3);
                 System.Windows.Forms.ListViewItem listViewItem5 = new System.Windows.Forms.ListViewItem("Microsoft Office Live", 4);
-                System.Windows.Forms.ListViewItem listViewItem6 = new System.Windows.Forms.ListViewItem("eBuddy", 9);
+                System.Windows.Forms.ListViewItem listViewItem6 = new System.Windows.Forms.ListViewItem("Picture Viewer", 9);
+                System.Windows.Forms.ListViewItem listViewItem7 = new System.Windows.Forms.ListViewItem("Notepad", 11);
+                System.Windows.Forms.ListViewItem listViewItem8 = new System.Windows.Forms.ListViewItem("Process Pool", 10);
 
                 this.listView1.Items.AddRange(new System.Windows.Forms.ListViewItem[] {
                 listViewItem0,
@@ -86,7 +89,9 @@ namespace LZ_Marina
                 listViewItem3,
                 listViewItem4,
                 listViewItem5,
-                listViewItem6
+                listViewItem6,
+                listViewItem7,
+                listViewItem8
                 });
 
                 this.sysComponents = this.listView1.Items.Count;
@@ -103,7 +108,7 @@ namespace LZ_Marina
             foreach (DirectoryInfo dir in dirs)
             {
                 String name = dir.Name;
-                StreamReader reader = new StreamReader(dir.FullName + @"\start_up.txt");
+                StreamReader reader = new StreamReader(dir.FullName + @"\start_up.cvPlug");
                 String path = reader.ReadLine();
                 reader.Close();
                 String plug = dir.FullName + @"\" + path;
@@ -226,7 +231,15 @@ namespace LZ_Marina
                         this.tabControl1.SelectedIndex = this.tabControl1.TabPages.Count - 1;
                         break;
                     case 6:
-                        this.tabControl1.Controls.Add(new AppBrowser(@"http://calcutta.ebuddy.com/vo7.7.5/start.html", "eBuddy"));
+                        this.tabControl1.Controls.Add(new Picture_Viewer());
+                        this.tabControl1.SelectedIndex = this.tabControl1.TabPages.Count - 1;
+                        break;
+                    case 7:
+                        this.tabControl1.Controls.Add(new Editor());
+                        this.tabControl1.SelectedIndex = this.tabControl1.TabPages.Count - 1;
+                        break;
+                    case 8:
+                        this.tabControl1.Controls.Add(new ProcsPool(this.tabControl1));
                         this.tabControl1.SelectedIndex = this.tabControl1.TabPages.Count - 1;
                         break;
                     default:
@@ -264,18 +277,21 @@ namespace LZ_Marina
                 }
                 else
                 {
-                    int index = this.listView1.SelectedItems[0].Index - sysComponents - pluginsNumber;
-                    String temp = this.listView1.SelectedItems[0].Text + "`" + this.userAppUrl[index].ToString();
-                    StreamReader reader = new StreamReader(Application.StartupPath + @"\apps");
-                    String former = reader.ReadToEnd();
-                    reader.Close();
-                    former = former.Replace(temp, "");
-                    StreamWriter writer = new StreamWriter(Application.StartupPath + @"\apps");
-                    writer.Flush();
-                    writer.Write(former);
-                    writer.Close();
+                    if (MessageBox.Show("Are you sure you want to remove this favourite item?", "Remove a favourite item", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
+                    {
+                        int index = this.listView1.SelectedItems[0].Index - sysComponents - pluginsNumber;
+                        String temp = this.listView1.SelectedItems[0].Text + "`" + this.userAppUrl[index].ToString();
+                        StreamReader reader = new StreamReader(Application.StartupPath + @"\apps");
+                        String former = reader.ReadToEnd();
+                        reader.Close();
+                        former = former.Replace(temp, "");
+                        StreamWriter writer = new StreamWriter(Application.StartupPath + @"\apps");
+                        writer.Flush();
+                        writer.Write(former);
+                        writer.Close();
 
-                    this.listView1.SelectedItems[0].Remove();
+                        this.listView1.SelectedItems[0].Remove();
+                    }
                 }
             }
         }

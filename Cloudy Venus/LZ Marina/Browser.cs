@@ -59,14 +59,7 @@ namespace LZ_Marina
             this.addressBox.Text = this.currentBrowser.Url.ToString();
             this.reloadButton.Text = "R";
             String tabTitle = this.currentBrowser.Document.Title.ToString();
-            if (tabTitle.Length <= 12)
-            {
-                this.Text = tabTitle;
-            }
-            else
-            {
-                this.Text = tabTitle.Substring(0, 8) + @"...";
-            }
+            this.Text = tabTitle;
 
             if (this.webBrowser1.CanGoBack)
             {

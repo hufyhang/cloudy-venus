@@ -27,14 +27,7 @@ namespace LZ_Marina
             this.webBrowser1.Navigated += new WebBrowserNavigatedEventHandler(webBrowser1_Navigated);
             this.webBrowser1.Navigating += new WebBrowserNavigatingEventHandler(webBrowser1_Navigating);
             this.webBrowser1.Navigate(URL);
-            if (title.Length <= 12)
-            {
-                this.Text = title;
-            }
-            else
-            {
-                this.Text = title.Substring(0, 9) + @"...";
-            }
+            this.Text = title;
 
             this.button2.Enabled = this.button3.Enabled = false;
         }
