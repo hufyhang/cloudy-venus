@@ -57,13 +57,30 @@ namespace LZ_Marina
         {
             if (this.textBoxX1.Text.Length != 0)
             {
-                String title = this.textBoxX1.Text;
-                FileInfo file = new FileInfo(this.path + this.textBoxX1.Text);
-                StreamWriter writer = new StreamWriter(this.path + this.textBoxX1.Text);
-                writer.Write(this.richTextBox1.Text);
-                writer.Close();
-                this.loadFiles();
-                this.Text = title;
+                if (!new FileInfo(this.path + this.textBoxX1.Text).Exists)
+                {
+                    String title = this.textBoxX1.Text;
+                    FileInfo file = new FileInfo(this.path + this.textBoxX1.Text);
+                    StreamWriter writer = new StreamWriter(this.path + this.textBoxX1.Text);
+                    writer.Write(this.richTextBox1.Text);
+                    writer.Close();
+                    this.loadFiles();
+                    this.Text = title;
+                }
+                else
+                {
+                    if (MessageBox.Show(this.textBoxX1.Text + " exists already.\r\nAre you sure you want to overwrite it?",
+                        "Item exists...", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
+                    {
+                        String title = this.textBoxX1.Text;
+                        FileInfo file = new FileInfo(this.path + this.textBoxX1.Text);
+                        StreamWriter writer = new StreamWriter(this.path + this.textBoxX1.Text);
+                        writer.Write(this.richTextBox1.Text);
+                        writer.Close();
+                        this.loadFiles();
+                        this.Text = title;
+                    }
+                }
             }
             else
             {

@@ -65,24 +65,22 @@ namespace LZ_Marina
             */
         }
 
-        protected void tabControl1_SelectedIndexChanged(object sender, EventArgs e)
+        protected void initialPanel()
         {
-            if (this.tabControl1.SelectedIndex == 0)
-            {
-                this.userAppUrl = new ArrayList();
-                this.listView1.Items.Clear();
+            this.userAppUrl = new ArrayList();
+            this.listView1.Items.Clear();
 
-                System.Windows.Forms.ListViewItem listViewItem0 = new System.Windows.Forms.ListViewItem("Cloud Explorer", 8);
-                System.Windows.Forms.ListViewItem listViewItem1 = new System.Windows.Forms.ListViewItem("Web Browser", 2);
-                System.Windows.Forms.ListViewItem listViewItem2 = new System.Windows.Forms.ListViewItem("2Dooo Special", 1);
-                System.Windows.Forms.ListViewItem listViewItem3 = new System.Windows.Forms.ListViewItem("Hotmail", 0);
-                System.Windows.Forms.ListViewItem listViewItem4 = new System.Windows.Forms.ListViewItem("Google Docs", 3);
-                System.Windows.Forms.ListViewItem listViewItem5 = new System.Windows.Forms.ListViewItem("Microsoft Office Live", 4);
-                System.Windows.Forms.ListViewItem listViewItem6 = new System.Windows.Forms.ListViewItem("Picture Viewer", 9);
-                System.Windows.Forms.ListViewItem listViewItem7 = new System.Windows.Forms.ListViewItem("Notepad", 11);
-                System.Windows.Forms.ListViewItem listViewItem8 = new System.Windows.Forms.ListViewItem("Process Pool", 10);
+            System.Windows.Forms.ListViewItem listViewItem0 = new System.Windows.Forms.ListViewItem("Cloud Explorer", 8);
+            System.Windows.Forms.ListViewItem listViewItem1 = new System.Windows.Forms.ListViewItem("Web Browser", 2);
+            System.Windows.Forms.ListViewItem listViewItem2 = new System.Windows.Forms.ListViewItem("2Dooo Special", 1);
+            System.Windows.Forms.ListViewItem listViewItem3 = new System.Windows.Forms.ListViewItem("Hotmail", 0);
+            System.Windows.Forms.ListViewItem listViewItem4 = new System.Windows.Forms.ListViewItem("Google Docs", 3);
+            System.Windows.Forms.ListViewItem listViewItem5 = new System.Windows.Forms.ListViewItem("Microsoft Office Live", 4);
+            System.Windows.Forms.ListViewItem listViewItem6 = new System.Windows.Forms.ListViewItem("Picture Viewer", 9);
+            System.Windows.Forms.ListViewItem listViewItem7 = new System.Windows.Forms.ListViewItem("Notepad", 11);
+            System.Windows.Forms.ListViewItem listViewItem8 = new System.Windows.Forms.ListViewItem("Process Pool", 10);
 
-                this.listView1.Items.AddRange(new System.Windows.Forms.ListViewItem[] {
+            this.listView1.Items.AddRange(new System.Windows.Forms.ListViewItem[] {
                 listViewItem0,
                 listViewItem1,
                 listViewItem2,
@@ -94,10 +92,17 @@ namespace LZ_Marina
                 listViewItem8
                 });
 
-                this.sysComponents = this.listView1.Items.Count;
+            this.sysComponents = this.listView1.Items.Count;
 
-                pluginsInitial();
-                userApps();
+            pluginsInitial();
+            userApps();
+        }
+
+        protected void tabControl1_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (this.tabControl1.SelectedIndex == 0)
+            {
+                initialPanel();
             }
         }
 
@@ -122,6 +127,7 @@ namespace LZ_Marina
 
         protected void userApps()
         {
+            this.userAppUrl.Clear();
             FileInfo file = new FileInfo(Application.StartupPath + @"\apps");
             if (file.Exists)
             {
@@ -291,6 +297,7 @@ namespace LZ_Marina
                         writer.Close();
 
                         this.listView1.SelectedItems[0].Remove();
+                        initialPanel();
                     }
                 }
             }

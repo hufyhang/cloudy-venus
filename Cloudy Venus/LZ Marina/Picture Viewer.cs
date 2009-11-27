@@ -12,6 +12,7 @@ namespace LZ_Marina
     public partial class Picture_Viewer : TabPage
     {
         private String path = "";
+        private int currentItemIndex;
 
         public Picture_Viewer()
         {
@@ -43,18 +44,17 @@ namespace LZ_Marina
 
         protected void listView1_SelectedIndexChanged(object sender, EventArgs e)
         {
-            try
+            if (this.listView1.SelectedItems.Count > 0)
             {
-                if (this.listView1.SelectedItems.Count > 0)
+                String pic = this.listView1.SelectedItems[0].SubItems[0].Text;
+                try
                 {
-                    String pic = this.listView1.SelectedItems[0].SubItems[0].Text;
                     this.pictureBox1.Image = new Bitmap(this.path + @"\" + pic);
                     this.label1.Text = pic;
                 }
-            }
-            catch (Exception)
-            {
-                MessageBox.Show("Please make sure that you have selected a valid picture.", "Invalid Item", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                catch (Exception)
+                {
+                }
             }
         }
 
@@ -102,5 +102,41 @@ namespace LZ_Marina
                 }
             }
         }
+
+        private void button5_Click(object sender, EventArgs e)
+        {
+            if (this.listView1.SelectedItems.Count > 0)
+            {
+                if (this.timer1.Enabled)
+                {
+                    this.timer1.Enabled = false;
+                    this.progressBarX1.Visible = false;
+                }
+                else
+                {
+                    currentItemIndex = this.listView1.SelectedItems[0].Index;
+                    this.timer1.Enabled = true;
+                    this.progressBarX1.Visible = true;
+                }
+            }
+        }
+
+        private void timer1_Tick(object sender, EventArgs e)
+        {
+            if (this.currentItemIndex < this.listView1.Items.Count)
+            {
+                String pic = this.listView1.Items[currentItemIndex++].SubItems[0].Text;
+                try
+                {
+                    this.pictureBox1.Image = new Bitmap(this.path + @"\" + pic);
+                    this.label1.Text = pic;
+                    this.listView1.Items[currentItemIndex].Selected = true;
+                }
+                catch (Exception)
+                {
+                }
+            }
+        }
+
     }
 }

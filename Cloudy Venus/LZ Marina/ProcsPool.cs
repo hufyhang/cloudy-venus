@@ -128,5 +128,10 @@ namespace LZ_Marina
                 }
             }
         }
+
+        private void timer1_Tick(object sender, EventArgs e)
+        {
+            this.refresh();
+        }
     }
 }
