@@ -26,7 +26,6 @@ namespace LZ_Marina
         public Form1()
         {
             new Splash().ShowDialog();
-            new PDFReader().Show();
 
             InitializeComponent();
             screenMode();

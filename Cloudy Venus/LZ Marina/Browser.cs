@@ -6,13 +6,13 @@ using System.Drawing;
 using System.Text;
 using System.Windows.Forms;
 using System.IO;
+using ExtendedWebBrowser;
 
 namespace LZ_Marina
 {
     public partial class Browser : TabPage
     {
-        private WebBrowser currentBrowser;
-        private Boolean viewIE = false;
+        private ExtendedWebBrowser.ExtendedWebBrowser currentBrowser;
 
         public Browser()
         {
@@ -21,15 +21,7 @@ namespace LZ_Marina
             this.backButton.Enabled = false;
             this.forwardButton.Enabled = false;
 
-            this.currentBrowser = this.webBrowser1;
-
-            this.addressBox.KeyDown += new KeyEventHandler(addressBox_KeyDown);
-            this.currentBrowser.Navigating += new WebBrowserNavigatingEventHandler(currentBrowser_Navigating);
-            this.currentBrowser.Navigated += new WebBrowserNavigatedEventHandler(currentBrowser_Navigated);
-            this.currentBrowser.NewWindow += new CancelEventHandler(currentBrowser_NewWindow);
-            this.backButton.Click += new EventHandler(backButton_Click);
-            this.forwardButton.Click += new EventHandler(forwardButton_Click);
-            this.reloadButton.Click += new EventHandler(reloadButton_Click);
+            initialEvents();
 
             this.webBrowser1.Navigate(@"http://www.google.com");
         }
@@ -41,18 +33,45 @@ namespace LZ_Marina
             this.backButton.Enabled = false;
             this.forwardButton.Enabled = false;
 
+            initialEvents();
+
+            this.webBrowser1.Navigate(URL);
+            //this.webBrowser1.AllowWebBrowserDrop = true;
+        }
+
+        protected void initialEvents()
+        {
+            currentBrowser = new ExtendedWebBrowser.ExtendedWebBrowser();
             this.currentBrowser = this.webBrowser1;
+            currentBrowser.BeforeNewWindow += new EventHandler<WebBrowserExtendedNavigatingEventArgs>(currentBrowser_BeforeNewWindow); 
 
             this.addressBox.KeyDown += new KeyEventHandler(addressBox_KeyDown);
             this.currentBrowser.Navigating += new WebBrowserNavigatingEventHandler(currentBrowser_Navigating);
             this.currentBrowser.Navigated += new WebBrowserNavigatedEventHandler(currentBrowser_Navigated);
-            this.currentBrowser.NewWindow += new CancelEventHandler(currentBrowser_NewWindow);
+            this.currentBrowser.DocumentCompleted += new WebBrowserDocumentCompletedEventHandler(currentBrowser_DocumentCompleted);
             this.backButton.Click += new EventHandler(backButton_Click);
             this.forwardButton.Click += new EventHandler(forwardButton_Click);
             this.reloadButton.Click += new EventHandler(reloadButton_Click);
+        }
 
-            this.webBrowser1.Navigate(URL);
-            this.webBrowser1.AllowWebBrowserDrop = true;
+        protected void currentBrowser_BeforeNewWindow(object sender, WebBrowserExtendedNavigatingEventArgs e)
+        {
+            e.Cancel = true;
+            ((ExtendedWebBrowser.ExtendedWebBrowser)sender).Navigate(e.Url);
+        }
+
+        protected void currentBrowser_DocumentCompleted(object sender, WebBrowserDocumentCompletedEventArgs e)
+        {
+            foreach (HtmlElement archor in this.currentBrowser.Document.Links)
+            {
+                archor.SetAttribute("target", "_self");
+            }
+
+            foreach (HtmlElement form in this.currentBrowser.Document.Forms)
+            {
+                form.SetAttribute("target", "_self");
+            }
+
         }
 
         protected void currentBrowser_Navigated(object sender, WebBrowserNavigatedEventArgs e)
@@ -130,17 +149,14 @@ namespace LZ_Marina
 
         protected void currentBrowser_NewWindow(object sender, CancelEventArgs e)
         {
-            if (!this.viewIE)
+            e.Cancel = true;
+            try
             {
-                e.Cancel = true;
-                try
-                {
-                    String url = this.currentBrowser.Document.ActiveElement.GetAttribute("href");
-                    this.webBrowser1.Url = new Uri(url);
-                }
-                catch
-                {
-                }
+                String url = this.currentBrowser.Document.ActiveElement.GetAttribute("href");
+                this.currentBrowser.Url = new Uri(url);
+            }
+            catch
+            {
             }
         }
 
@@ -163,18 +179,6 @@ namespace LZ_Marina
             writer.Write(info);
             writer.Close();
             MessageBox.Show("Website favourited.", "Favourite", MessageBoxButtons.OK, MessageBoxIcon.Information);
-        }
-
-        private void checkBox1_CheckedChanged(object sender, EventArgs e)
-        {
-            if (this.checkBox1.Checked)
-            {
-                this.viewIE = true;
-            }
-            else
-            {
-                this.viewIE = false;
-            }
         }
 
     }

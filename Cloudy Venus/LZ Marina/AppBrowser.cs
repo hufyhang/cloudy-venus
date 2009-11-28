@@ -10,7 +10,6 @@ namespace LZ_Marina
 {
     public partial class AppBrowser : TabPage
     {
-        private Boolean popup = false;
         private String URL = "";
 
         public AppBrowser()
@@ -23,7 +22,8 @@ namespace LZ_Marina
             InitializeComponent();
             this.URL = URL;
             this.labelX1.Text = title;
-            this.webBrowser1.NewWindow += new CancelEventHandler(webBrowser1_NewWindow);
+            //this.webBrowser1.NewWindow += new CancelEventHandler(webBrowser1_NewWindow);
+            this.webBrowser1.BeforeNewWindow += new EventHandler<ExtendedWebBrowser.WebBrowserExtendedNavigatingEventArgs>(webBrowser1_BeforeNewWindow);
             this.webBrowser1.Navigated += new WebBrowserNavigatedEventHandler(webBrowser1_Navigated);
             this.webBrowser1.Navigating += new WebBrowserNavigatingEventHandler(webBrowser1_Navigating);
             this.webBrowser1.Navigate(URL);
@@ -60,31 +60,16 @@ namespace LZ_Marina
             this.progressBarX1.Visible = false;
         }
 
-        protected void webBrowser1_NewWindow(object sender, CancelEventArgs e)
+        protected void webBrowser1_BeforeNewWindow(object sender, ExtendedWebBrowser.WebBrowserExtendedNavigatingEventArgs e)
         {
-            if (!this.popup)
+            e.Cancel = true;
+            try
             {
-                e.Cancel = true;
-                try
-                {
-                    String url = this.webBrowser1.Document.ActiveElement.GetAttribute("href");
-                    this.webBrowser1.Url = new Uri(url);
-                }
-                catch
-                {
-                }
+                String url = this.webBrowser1.Document.ActiveElement.GetAttribute("href");
+                this.webBrowser1.Url = new Uri(url);
             }
-        }
-
-        private void checkBox1_CheckedChanged(object sender, EventArgs e)
-        {
-            if (this.popup)
+            catch
             {
-                this.popup = false;
-            }
-            else
-            {
-                this.popup = true;
             }
         }
 

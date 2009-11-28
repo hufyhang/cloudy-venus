@@ -34,8 +34,7 @@
             this.addressBox = new System.Windows.Forms.ComboBox();
             this.closeButton = new System.Windows.Forms.Button();
             this.button1 = new System.Windows.Forms.Button();
-            this.webBrowser1 = new System.Windows.Forms.WebBrowser();
-            this.checkBox1 = new System.Windows.Forms.CheckBox();
+            this.webBrowser1 = new ExtendedWebBrowser.ExtendedWebBrowser();
             this.SuspendLayout();
             // 
             // backButton
@@ -79,7 +78,7 @@
             this.addressBox.ImeMode = System.Windows.Forms.ImeMode.Off;
             this.addressBox.Location = new System.Drawing.Point(113, 13);
             this.addressBox.Name = "addressBox";
-            this.addressBox.Size = new System.Drawing.Size(370, 24);
+            this.addressBox.Size = new System.Drawing.Size(430, 24);
             this.addressBox.TabIndex = 3;
             // 
             // closeButton
@@ -87,7 +86,7 @@
             this.closeButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.closeButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.closeButton.Font = new System.Drawing.Font("Arial Unicode MS", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.closeButton.Location = new System.Drawing.Point(647, 12);
+            this.closeButton.Location = new System.Drawing.Point(634, 12);
             this.closeButton.Name = "closeButton";
             this.closeButton.Size = new System.Drawing.Size(23, 24);
             this.closeButton.TabIndex = 5;
@@ -100,7 +99,7 @@
             this.button1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.button1.Font = new System.Drawing.Font("Arial Unicode MS", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.button1.Location = new System.Drawing.Point(562, 12);
+            this.button1.Location = new System.Drawing.Point(549, 12);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(79, 24);
             this.button1.TabIndex = 6;
@@ -113,29 +112,18 @@
             this.webBrowser1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
                         | System.Windows.Forms.AnchorStyles.Left)
                         | System.Windows.Forms.AnchorStyles.Right)));
+            this.webBrowser1.IsWebBrowserContextMenuEnabled = false;
             this.webBrowser1.Location = new System.Drawing.Point(8, 42);
             this.webBrowser1.MinimumSize = new System.Drawing.Size(20, 20);
             this.webBrowser1.Name = "webBrowser1";
-            this.webBrowser1.Size = new System.Drawing.Size(662, 326);
+            this.webBrowser1.Size = new System.Drawing.Size(649, 287);
             this.webBrowser1.TabIndex = 7;
-            // 
-            // checkBox1
-            // 
-            this.checkBox1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.checkBox1.AutoSize = true;
-            this.checkBox1.Location = new System.Drawing.Point(489, 15);
-            this.checkBox1.Name = "checkBox1";
-            this.checkBox1.Size = new System.Drawing.Size(67, 20);
-            this.checkBox1.TabIndex = 8;
-            this.checkBox1.Text = "Pop-up";
-            this.checkBox1.UseVisualStyleBackColor = true;
-            this.checkBox1.CheckedChanged += new System.EventHandler(this.checkBox1_CheckedChanged);
+            this.webBrowser1.WebBrowserShortcutsEnabled = false;
             // 
             // Browser
             // 
             this.BackColor = System.Drawing.Color.White;
-            this.ClientSize = new System.Drawing.Size(682, 368);
-            this.Controls.Add(this.checkBox1);
+            this.ClientSize = new System.Drawing.Size(666, 330);
             this.Controls.Add(this.webBrowser1);
             this.Controls.Add(this.button1);
             this.Controls.Add(this.closeButton);
@@ -146,7 +134,6 @@
             this.Font = new System.Drawing.Font("Arial Unicode MS", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.Name = "Browser";
             this.ResumeLayout(false);
-            this.PerformLayout();
 
         }
 
@@ -156,8 +143,7 @@
         private System.Windows.Forms.ComboBox addressBox;
         private System.Windows.Forms.Button closeButton;
         private System.Windows.Forms.Button button1;
-        private System.Windows.Forms.WebBrowser webBrowser1;
-        private System.Windows.Forms.CheckBox checkBox1;
+        private ExtendedWebBrowser.ExtendedWebBrowser webBrowser1;
     }
         #endregion
 

@@ -26,10 +26,15 @@ namespace LZ_Marina
         {
             if (this.listView1.SelectedItems.Count > 0)
             {
-//                MessageBox.Show(this.list[this.listView1.SelectedItems[0].Index].ToString());
                 String src = this.list[this.listView1.SelectedItems[0].Index].ToString();
-                this.axAcroPDF1.src = src;
-                this.Text = new FileInfo(this.list[this.listView1.SelectedItems[0].Index].ToString()).Name + @" - PDF Reader";
+                try
+                {
+                    this.axAcroPDF1.src = src;
+                    this.Text = new FileInfo(this.list[this.listView1.SelectedItems[0].Index].ToString()).Name + @" - PDF Reader";
+                }
+                catch(Exception)
+                {
+                }
             }
         }
 

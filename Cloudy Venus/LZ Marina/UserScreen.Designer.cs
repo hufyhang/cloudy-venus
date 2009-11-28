@@ -107,7 +107,7 @@
             // 
             this.button2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.button2.BackColor = System.Drawing.Color.Transparent;
-            this.button2.Location = new System.Drawing.Point(291, 94);
+            this.button2.Location = new System.Drawing.Point(267, 94);
             this.button2.Name = "button2";
             this.button2.Size = new System.Drawing.Size(27, 23);
             this.button2.TabIndex = 14;
@@ -119,7 +119,7 @@
             // 
             this.button1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.button1.BackColor = System.Drawing.Color.Transparent;
-            this.button1.Location = new System.Drawing.Point(291, 66);
+            this.button1.Location = new System.Drawing.Point(267, 66);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(27, 23);
             this.button1.TabIndex = 13;
@@ -138,7 +138,7 @@
             this.textBoxX4.ImeMode = System.Windows.Forms.ImeMode.Off;
             this.textBoxX4.Location = new System.Drawing.Point(105, 93);
             this.textBoxX4.Name = "textBoxX4";
-            this.textBoxX4.Size = new System.Drawing.Size(180, 24);
+            this.textBoxX4.Size = new System.Drawing.Size(156, 24);
             this.textBoxX4.TabIndex = 12;
             // 
             // labelX4
@@ -163,7 +163,7 @@
             this.textBoxX3.ImeMode = System.Windows.Forms.ImeMode.Off;
             this.textBoxX3.Location = new System.Drawing.Point(105, 63);
             this.textBoxX3.Name = "textBoxX3";
-            this.textBoxX3.Size = new System.Drawing.Size(180, 24);
+            this.textBoxX3.Size = new System.Drawing.Size(156, 24);
             this.textBoxX3.TabIndex = 10;
             // 
             // labelX3
@@ -198,7 +198,7 @@
             this.textBoxX2.ImeMode = System.Windows.Forms.ImeMode.Off;
             this.textBoxX2.Location = new System.Drawing.Point(105, 33);
             this.textBoxX2.Name = "textBoxX2";
-            this.textBoxX2.Size = new System.Drawing.Size(213, 24);
+            this.textBoxX2.Size = new System.Drawing.Size(189, 24);
             this.textBoxX2.TabIndex = 7;
             // 
             // labelX2
@@ -242,7 +242,7 @@
             this.pictureBox1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.pictureBox1.BackColor = System.Drawing.Color.Transparent;
             this.pictureBox1.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.pictureBox1.Location = new System.Drawing.Point(324, 3);
+            this.pictureBox1.Location = new System.Drawing.Point(300, 3);
             this.pictureBox1.Name = "pictureBox1";
             this.pictureBox1.Size = new System.Drawing.Size(165, 140);
             this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
@@ -261,7 +261,7 @@
             this.textBoxX1.ImeMode = System.Windows.Forms.ImeMode.Off;
             this.textBoxX1.Location = new System.Drawing.Point(105, 3);
             this.textBoxX1.Name = "textBoxX1";
-            this.textBoxX1.Size = new System.Drawing.Size(213, 24);
+            this.textBoxX1.Size = new System.Drawing.Size(189, 24);
             this.textBoxX1.TabIndex = 1;
             // 
             // UserScreen
