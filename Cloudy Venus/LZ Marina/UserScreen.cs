@@ -33,6 +33,16 @@ namespace LZ_Marina
             textRoot = reader.ReadLine();
             reader.Close();
 
+            if (picRoot.Equals(@"[default]"))
+            {
+                picRoot = Application.StartupPath + @"\File System\Pictures\";
+            }
+
+            if (textRoot.Equals(@"[default]"))
+            {
+                textRoot = Application.StartupPath + @"\File System\Common Files\";
+            }
+
             this.textBoxX1.Text = this.name;
             this.textBoxX2.Text = this.home;
             this.textBoxX3.Text = this.picRoot;

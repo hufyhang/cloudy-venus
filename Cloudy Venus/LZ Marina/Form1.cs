@@ -26,6 +26,7 @@ namespace LZ_Marina
         public Form1()
         {
             new Splash().ShowDialog();
+            new PDFReader().Show();
 
             InitializeComponent();
             screenMode();
@@ -34,7 +35,6 @@ namespace LZ_Marina
             this.tabControl1.DoubleClick += new EventHandler(tabControl1_DoubleClick);
             this.tabControl1.KeyDown += new KeyEventHandler(tabControl1_KeyDown);
             this.tabControl1.SelectedIndexChanged += new EventHandler(tabControl1_SelectedIndexChanged);
-
             this.DoubleClick += new EventHandler(Form1_DoubleClick);
 
             loginUser();
@@ -79,6 +79,8 @@ namespace LZ_Marina
             System.Windows.Forms.ListViewItem listViewItem3 = new System.Windows.Forms.ListViewItem("Hotmail", 0);
             System.Windows.Forms.ListViewItem listViewItem6 = new System.Windows.Forms.ListViewItem("Picture Viewer", 9);
             System.Windows.Forms.ListViewItem listViewItem7 = new System.Windows.Forms.ListViewItem("Notepad", 11);
+            System.Windows.Forms.ListViewItem listViewItem4 = new System.Windows.Forms.ListViewItem("Media Player", 12);
+            System.Windows.Forms.ListViewItem listViewItem5 = new System.Windows.Forms.ListViewItem("PDF Reader", 13);
             System.Windows.Forms.ListViewItem listViewItem8 = new System.Windows.Forms.ListViewItem("Process Pool", 10);
 
             this.listView1.Items.AddRange(new System.Windows.Forms.ListViewItem[] {
@@ -88,6 +90,8 @@ namespace LZ_Marina
                 listViewItem3,
                 listViewItem6,
                 listViewItem7,
+                listViewItem4,
+                listViewItem5,
                 listViewItem8
                 });
 
@@ -168,6 +172,16 @@ namespace LZ_Marina
                 this.textRoot = reader.ReadLine() + @"\";
                 reader.Close();
 
+                if (picRoot.Equals(@"[default]\"))
+                {
+                    this.picRoot = Application.StartupPath + @"\File System\Pictures";
+                }
+
+                if (textRoot.Equals(@"[default]\"))
+                {
+                    this.textRoot = Application.StartupPath + @"\File System\Common Files";
+                }
+
                 if (!fullscreen.Equals(@"fullScreen=1"))
                 {
                     this.screenMode();
@@ -245,6 +259,14 @@ namespace LZ_Marina
                         this.tabControl1.SelectedIndex = this.tabControl1.TabPages.Count - 1;
                         break;
                     case 6:
+                        this.tabControl1.Controls.Add(new Media_Player());
+                        this.tabControl1.SelectedIndex = this.tabControl1.TabPages.Count - 1;
+                        break;
+                    case 7:
+                        this.tabControl1.Controls.Add(new PDFReader());
+                        this.tabControl1.SelectedIndex = this.tabControl1.TabPages.Count - 1;
+                        break;
+                    case 8:
                         this.tabControl1.Controls.Add(new ProcsPool(this.tabControl1));
                         this.tabControl1.SelectedIndex = this.tabControl1.TabPages.Count - 1;
                         break;

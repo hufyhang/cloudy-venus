@@ -52,6 +52,7 @@ namespace LZ_Marina
             this.reloadButton.Click += new EventHandler(reloadButton_Click);
 
             this.webBrowser1.Navigate(URL);
+            this.webBrowser1.AllowWebBrowserDrop = true;
         }
 
         protected void currentBrowser_Navigated(object sender, WebBrowserNavigatedEventArgs e)
