@@ -45,7 +45,7 @@
             this.webBrowser1.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.webBrowser1.MinimumSize = new System.Drawing.Size(23, 27);
             this.webBrowser1.Name = "webBrowser1";
-            this.webBrowser1.Size = new System.Drawing.Size(770, 390);
+            this.webBrowser1.Size = new System.Drawing.Size(770, 398);
             this.webBrowser1.TabIndex = 0;
             // 
             // button1
@@ -53,7 +53,7 @@
             this.button1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.button1.Font = new System.Drawing.Font("Arial Unicode MS", 6.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.button1.Location = new System.Drawing.Point(12, 397);
+            this.button1.Location = new System.Drawing.Point(7, 402);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(22, 20);
             this.button1.TabIndex = 2;
@@ -67,7 +67,7 @@
             this.button2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.button2.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.button2.Font = new System.Drawing.Font("Arial Unicode MS", 6.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.button2.Location = new System.Drawing.Point(40, 397);
+            this.button2.Location = new System.Drawing.Point(35, 402);
             this.button2.Name = "button2";
             this.button2.Size = new System.Drawing.Size(22, 20);
             this.button2.TabIndex = 3;
@@ -81,7 +81,7 @@
             this.button3.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.button3.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.button3.Font = new System.Drawing.Font("Arial Unicode MS", 6.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.button3.Location = new System.Drawing.Point(68, 397);
+            this.button3.Location = new System.Drawing.Point(63, 402);
             this.button3.Name = "button3";
             this.button3.Size = new System.Drawing.Size(22, 20);
             this.button3.TabIndex = 4;
@@ -99,7 +99,7 @@
             this.progressBarX1.BackgroundStyle.TextAlignment = DevComponents.DotNetBar.eStyleTextAlignment.Center;
             this.progressBarX1.BackgroundStyle.TextColor = System.Drawing.Color.White;
             this.progressBarX1.ForeColor = System.Drawing.Color.White;
-            this.progressBarX1.Location = new System.Drawing.Point(686, 399);
+            this.progressBarX1.Location = new System.Drawing.Point(681, 405);
             this.progressBarX1.Name = "progressBarX1";
             this.progressBarX1.ProgressType = DevComponents.DotNetBar.eProgressItemType.Marquee;
             this.progressBarX1.Size = new System.Drawing.Size(84, 19);
@@ -114,7 +114,7 @@
             this.labelX1.AutoSize = true;
             this.labelX1.Cursor = System.Windows.Forms.Cursors.Hand;
             this.labelX1.Font = new System.Drawing.Font("Arial Unicode MS", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.labelX1.Location = new System.Drawing.Point(96, 396);
+            this.labelX1.Location = new System.Drawing.Point(91, 402);
             this.labelX1.Name = "labelX1";
             this.labelX1.Size = new System.Drawing.Size(68, 22);
             this.labelX1.TabIndex = 6;
