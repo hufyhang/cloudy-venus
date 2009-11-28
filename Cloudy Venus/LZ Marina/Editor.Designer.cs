@@ -30,6 +30,7 @@
         {
             this.components = new System.ComponentModel.Container();
             this.splitContainer1 = new System.Windows.Forms.SplitContainer();
+            this.button5 = new System.Windows.Forms.Button();
             this.button3 = new System.Windows.Forms.Button();
             this.button2 = new System.Windows.Forms.Button();
             this.button1 = new System.Windows.Forms.Button();
@@ -46,6 +47,7 @@
             this.selectAllToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.textBoxX1 = new DevComponents.DotNetBar.Controls.TextBoxX();
             this.button4 = new System.Windows.Forms.Button();
+            this.button6 = new System.Windows.Forms.Button();
             this.splitContainer1.Panel1.SuspendLayout();
             this.splitContainer1.Panel2.SuspendLayout();
             this.splitContainer1.SuspendLayout();
@@ -61,6 +63,7 @@
             // 
             // splitContainer1.Panel1
             // 
+            this.splitContainer1.Panel1.Controls.Add(this.button5);
             this.splitContainer1.Panel1.Controls.Add(this.button3);
             this.splitContainer1.Panel1.Controls.Add(this.button2);
             this.splitContainer1.Panel1.Controls.Add(this.button1);
@@ -68,21 +71,35 @@
             // 
             // splitContainer1.Panel2
             // 
+            this.splitContainer1.Panel2.Controls.Add(this.button6);
             this.splitContainer1.Panel2.Controls.Add(this.checkBox1);
             this.splitContainer1.Panel2.Controls.Add(this.richTextBox1);
             this.splitContainer1.Panel2.Controls.Add(this.textBoxX1);
             this.splitContainer1.Panel2.Controls.Add(this.button4);
-            this.splitContainer1.Size = new System.Drawing.Size(712, 459);
-            this.splitContainer1.SplitterDistance = 207;
+            this.splitContainer1.Size = new System.Drawing.Size(696, 421);
+            this.splitContainer1.SplitterDistance = 202;
             this.splitContainer1.SplitterWidth = 5;
             this.splitContainer1.TabIndex = 0;
+            // 
+            // button5
+            // 
+            this.button5.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.button5.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button5.Font = new System.Drawing.Font("Arial Unicode MS", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.button5.Location = new System.Drawing.Point(50, 381);
+            this.button5.Name = "button5";
+            this.button5.Size = new System.Drawing.Size(43, 37);
+            this.button5.TabIndex = 5;
+            this.button5.Text = "■";
+            this.button5.UseVisualStyleBackColor = true;
+            this.button5.Click += new System.EventHandler(this.button5_Click);
             // 
             // button3
             // 
             this.button3.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.button3.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.button3.Font = new System.Drawing.Font("Arial Unicode MS", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.button3.Location = new System.Drawing.Point(97, 419);
+            this.button3.Location = new System.Drawing.Point(146, 381);
             this.button3.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.button3.Name = "button3";
             this.button3.Size = new System.Drawing.Size(41, 36);
@@ -96,7 +113,7 @@
             this.button2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.button2.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.button2.Font = new System.Drawing.Font("Arial Unicode MS", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.button2.Location = new System.Drawing.Point(50, 419);
+            this.button2.Location = new System.Drawing.Point(99, 381);
             this.button2.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.button2.Name = "button2";
             this.button2.Size = new System.Drawing.Size(41, 36);
@@ -110,7 +127,7 @@
             this.button1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.button1.Font = new System.Drawing.Font("Arial Unicode MS", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.button1.Location = new System.Drawing.Point(3, 419);
+            this.button1.Location = new System.Drawing.Point(3, 381);
             this.button1.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(41, 36);
@@ -133,7 +150,7 @@
             this.listView1.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.listView1.MultiSelect = false;
             this.listView1.Name = "listView1";
-            this.listView1.Size = new System.Drawing.Size(200, 407);
+            this.listView1.Size = new System.Drawing.Size(195, 369);
             this.listView1.TabIndex = 0;
             this.listView1.UseCompatibleStateImageBehavior = false;
             this.listView1.View = System.Windows.Forms.View.Details;
@@ -154,7 +171,7 @@
             this.checkBox1.AutoSize = true;
             this.checkBox1.Checked = true;
             this.checkBox1.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.checkBox1.Location = new System.Drawing.Point(238, 11);
+            this.checkBox1.Location = new System.Drawing.Point(307, 11);
             this.checkBox1.Name = "checkBox1";
             this.checkBox1.Size = new System.Drawing.Size(88, 20);
             this.checkBox1.TabIndex = 7;
@@ -164,17 +181,22 @@
             // 
             // richTextBox1
             // 
+            this.richTextBox1.AcceptsTab = true;
             this.richTextBox1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
                         | System.Windows.Forms.AnchorStyles.Left)
                         | System.Windows.Forms.AnchorStyles.Right)));
+            this.richTextBox1.BackColor = System.Drawing.Color.LightSteelBlue;
             this.richTextBox1.ContextMenuStrip = this.contextMenuStrip1;
             this.richTextBox1.Font = new System.Drawing.Font("Arial Unicode MS", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.richTextBox1.ForeColor = System.Drawing.Color.Black;
             this.richTextBox1.ImeMode = System.Windows.Forms.ImeMode.Off;
             this.richTextBox1.Location = new System.Drawing.Point(3, 38);
             this.richTextBox1.Name = "richTextBox1";
-            this.richTextBox1.Size = new System.Drawing.Size(494, 417);
+            this.richTextBox1.ScrollBars = System.Windows.Forms.RichTextBoxScrollBars.ForcedBoth;
+            this.richTextBox1.ShowSelectionMargin = true;
+            this.richTextBox1.Size = new System.Drawing.Size(483, 379);
             this.richTextBox1.TabIndex = 6;
-            this.richTextBox1.Text = "";
+            this.richTextBox1.Text = "ABC";
             // 
             // contextMenuStrip1
             // 
@@ -227,7 +249,7 @@
             // 
             this.textBoxX1.Border.Class = "TextBoxBorder";
             this.textBoxX1.ImeMode = System.Windows.Forms.ImeMode.Off;
-            this.textBoxX1.Location = new System.Drawing.Point(63, 8);
+            this.textBoxX1.Location = new System.Drawing.Point(132, 8);
             this.textBoxX1.Name = "textBoxX1";
             this.textBoxX1.Size = new System.Drawing.Size(169, 24);
             this.textBoxX1.TabIndex = 5;
@@ -246,10 +268,23 @@
             this.button4.UseVisualStyleBackColor = true;
             this.button4.Click += new System.EventHandler(this.button4_Click);
             // 
+            // button6
+            // 
+            this.button6.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button6.Font = new System.Drawing.Font("Arial Unicode MS", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.button6.Location = new System.Drawing.Point(63, 8);
+            this.button6.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.button6.Name = "button6";
+            this.button6.Size = new System.Drawing.Size(63, 24);
+            this.button6.TabIndex = 8;
+            this.button6.Text = "Export";
+            this.button6.UseVisualStyleBackColor = true;
+            this.button6.Click += new System.EventHandler(this.button6_Click);
+            // 
             // Editor
             // 
             this.BackColor = System.Drawing.Color.White;
-            this.ClientSize = new System.Drawing.Size(712, 459);
+            this.ClientSize = new System.Drawing.Size(696, 421);
             this.Controls.Add(this.splitContainer1);
             this.Font = new System.Drawing.Font("Arial Unicode MS", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
@@ -283,5 +318,7 @@
         private System.Windows.Forms.ToolStripMenuItem pasteToolStripMenuItem;
         private System.Windows.Forms.ToolStripSeparator toolStripMenuItem1;
         private System.Windows.Forms.ToolStripMenuItem selectAllToolStripMenuItem;
+        private System.Windows.Forms.Button button5;
+        private System.Windows.Forms.Button button6;
     }
 }

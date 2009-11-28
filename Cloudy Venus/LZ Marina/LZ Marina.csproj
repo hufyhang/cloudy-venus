@@ -12,7 +12,7 @@
     <AssemblyName>Cloudy Venus</AssemblyName>
     <TargetFrameworkVersion>v2.0</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
-    <ApplicationIcon>Applications AFP Client.ico</ApplicationIcon>
+    <ApplicationIcon>Home.ico</ApplicationIcon>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -198,6 +198,7 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Applications AFP Client.ico" />
+    <Content Include="Home.ico" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\..\..\..\..\..\Program Files\Microsoft Visual Studio 9.0\Plugins\WindowsAPICodePack\Shell\Shell.csproj">

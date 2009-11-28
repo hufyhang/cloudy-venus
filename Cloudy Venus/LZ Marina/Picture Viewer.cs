@@ -31,6 +31,15 @@ namespace LZ_Marina
             }
         }
 
+        public Picture_Viewer(String path)
+        {
+            InitializeComponent();
+            this.Text = "Picture Viewer";
+            this.listView1.SelectedIndexChanged += new EventHandler(listView1_SelectedIndexChanged);
+            this.path = path;
+            initialPath();
+        }
+
         protected void initialPath()
         {
             DirectoryInfo dir = new DirectoryInfo(this.path);
@@ -38,6 +47,7 @@ namespace LZ_Marina
             {
                 ListViewItem item = new ListViewItem(file.Name);
                 item.SubItems.Add((file.Length / 1024).ToString());
+                item.SubItems.Add(file.LastWriteTime.ToString());
                 this.listView1.Items.Add(item);
             }
         }
@@ -126,6 +136,20 @@ namespace LZ_Marina
             if (this.currentItemIndex < this.listView1.Items.Count)
             {
                 String pic = this.listView1.Items[currentItemIndex++].SubItems[0].Text;
+                try
+                {
+                    this.pictureBox1.Image = new Bitmap(this.path + @"\" + pic);
+                    this.label1.Text = pic;
+                    this.listView1.Items[currentItemIndex].Selected = true;
+                }
+                catch (Exception)
+                {
+                }
+            }
+            else
+            {
+                this.currentItemIndex = this.listView1.Items[0].Index;
+                String pic = this.listView1.Items[currentItemIndex].SubItems[0].Text;
                 try
                 {
                     this.pictureBox1.Image = new Bitmap(this.path + @"\" + pic);

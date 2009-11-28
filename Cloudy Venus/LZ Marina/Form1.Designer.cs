@@ -30,15 +30,13 @@
         {
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form1));
-            System.Windows.Forms.ListViewItem listViewItem10 = new System.Windows.Forms.ListViewItem("Cloud Explorer", 8);
-            System.Windows.Forms.ListViewItem listViewItem11 = new System.Windows.Forms.ListViewItem("Web Browser", 2);
-            System.Windows.Forms.ListViewItem listViewItem12 = new System.Windows.Forms.ListViewItem("2Dooo Special", 1);
-            System.Windows.Forms.ListViewItem listViewItem13 = new System.Windows.Forms.ListViewItem("Hotmail", 0);
-            System.Windows.Forms.ListViewItem listViewItem14 = new System.Windows.Forms.ListViewItem("Google Docs", 3);
-            System.Windows.Forms.ListViewItem listViewItem15 = new System.Windows.Forms.ListViewItem("Microsoft Office Live", 4);
-            System.Windows.Forms.ListViewItem listViewItem16 = new System.Windows.Forms.ListViewItem("Picture Viewer", 9);
-            System.Windows.Forms.ListViewItem listViewItem17 = new System.Windows.Forms.ListViewItem("Notepad", 11);
-            System.Windows.Forms.ListViewItem listViewItem18 = new System.Windows.Forms.ListViewItem("Process Pool", 10);
+            System.Windows.Forms.ListViewItem listViewItem8 = new System.Windows.Forms.ListViewItem("Cloud Explorer", 8);
+            System.Windows.Forms.ListViewItem listViewItem9 = new System.Windows.Forms.ListViewItem("Web Browser", 2);
+            System.Windows.Forms.ListViewItem listViewItem10 = new System.Windows.Forms.ListViewItem("2Dooo Special", 1);
+            System.Windows.Forms.ListViewItem listViewItem11 = new System.Windows.Forms.ListViewItem("Hotmail", 0);
+            System.Windows.Forms.ListViewItem listViewItem12 = new System.Windows.Forms.ListViewItem("Picture Viewer", 9);
+            System.Windows.Forms.ListViewItem listViewItem13 = new System.Windows.Forms.ListViewItem("Notepad", 11);
+            System.Windows.Forms.ListViewItem listViewItem14 = new System.Windows.Forms.ListViewItem("Process Pool", 10);
             this.ApplicationsImg = new System.Windows.Forms.ImageList(this.components);
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tabPage1 = new System.Windows.Forms.TabPage();
@@ -53,6 +51,7 @@
             this.clostTabToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.timer1 = new System.Windows.Forms.Timer(this.components);
             this.panel1 = new System.Windows.Forms.Panel();
+            this.linkLabel3 = new System.Windows.Forms.LinkLabel();
             this.linkLabel2 = new System.Windows.Forms.LinkLabel();
             this.linkLabel1 = new System.Windows.Forms.LinkLabel();
             this.label2 = new System.Windows.Forms.Label();
@@ -71,15 +70,15 @@
             this.ApplicationsImg.TransparentColor = System.Drawing.Color.Transparent;
             this.ApplicationsImg.Images.SetKeyName(0, "live mail.png");
             this.ApplicationsImg.Images.SetKeyName(1, "todo.jpg");
-            this.ApplicationsImg.Images.SetKeyName(2, "ie.png");
+            this.ApplicationsImg.Images.SetKeyName(2, "browser.png");
             this.ApplicationsImg.Images.SetKeyName(3, "google_docs_logo.png");
             this.ApplicationsImg.Images.SetKeyName(4, "OfficeLiveWorkspace.jpg");
             this.ApplicationsImg.Images.SetKeyName(5, "super-mario-cloud-computing.png");
-            this.ApplicationsImg.Images.SetKeyName(6, "Globe.ico");
-            this.ApplicationsImg.Images.SetKeyName(7, "cloud app.png");
-            this.ApplicationsImg.Images.SetKeyName(8, "cloud_explorer.png");
+            this.ApplicationsImg.Images.SetKeyName(6, "Home.ico");
+            this.ApplicationsImg.Images.SetKeyName(7, "plug_ico.png");
+            this.ApplicationsImg.Images.SetKeyName(8, "explorer_ico.png");
             this.ApplicationsImg.Images.SetKeyName(9, "picture_viewer.png");
-            this.ApplicationsImg.Images.SetKeyName(10, "process_ico.jpg");
+            this.ApplicationsImg.Images.SetKeyName(10, "procPool_ico.png");
             this.ApplicationsImg.Images.SetKeyName(11, "editer_ico.png");
             // 
             // tabControl1
@@ -132,15 +131,13 @@
             this.listView1.Font = new System.Drawing.Font("Arial Unicode MS", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.listView1.ForeColor = System.Drawing.Color.Navy;
             this.listView1.Items.AddRange(new System.Windows.Forms.ListViewItem[] {
+            listViewItem8,
+            listViewItem9,
             listViewItem10,
             listViewItem11,
             listViewItem12,
             listViewItem13,
-            listViewItem14,
-            listViewItem15,
-            listViewItem16,
-            listViewItem17,
-            listViewItem18});
+            listViewItem14});
             this.listView1.LargeImageList = this.ApplicationsImg;
             this.listView1.Location = new System.Drawing.Point(8, 63);
             this.listView1.MultiSelect = false;
@@ -186,7 +183,7 @@
             // 
             this.imageList1.ImageStream = ((System.Windows.Forms.ImageListStreamer)(resources.GetObject("imageList1.ImageStream")));
             this.imageList1.TransparentColor = System.Drawing.Color.Transparent;
-            this.imageList1.Images.SetKeyName(0, "Globe.ico");
+            this.imageList1.Images.SetKeyName(0, "Home.ico");
             // 
             // tabControlContext
             // 
@@ -211,6 +208,7 @@
             // panel1
             // 
             this.panel1.BackColor = System.Drawing.Color.CornflowerBlue;
+            this.panel1.Controls.Add(this.linkLabel3);
             this.panel1.Controls.Add(this.linkLabel2);
             this.panel1.Controls.Add(this.linkLabel1);
             this.panel1.Controls.Add(this.label2);
@@ -220,6 +218,23 @@
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(656, 32);
             this.panel1.TabIndex = 3;
+            // 
+            // linkLabel3
+            // 
+            this.linkLabel3.AutoSize = true;
+            this.linkLabel3.Image = ((System.Drawing.Image)(resources.GetObject("linkLabel3.Image")));
+            this.linkLabel3.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.linkLabel3.LinkArea = new System.Windows.Forms.LinkArea(0, 16);
+            this.linkLabel3.LinkColor = System.Drawing.Color.Red;
+            this.linkLabel3.Location = new System.Drawing.Point(24, 11);
+            this.linkLabel3.Name = "linkLabel3";
+            this.linkLabel3.Size = new System.Drawing.Size(22, 21);
+            this.linkLabel3.TabIndex = 6;
+            this.linkLabel3.TabStop = true;
+            this.linkLabel3.Text = "     ";
+            this.linkLabel3.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.linkLabel3.UseCompatibleTextRendering = true;
+            this.linkLabel3.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.linkLabel3_LinkClicked);
             // 
             // linkLabel2
             // 
@@ -241,7 +256,7 @@
             this.linkLabel1.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.linkLabel1.LinkArea = new System.Windows.Forms.LinkArea(0, 16);
             this.linkLabel1.LinkColor = System.Drawing.Color.Red;
-            this.linkLabel1.Location = new System.Drawing.Point(7, 11);
+            this.linkLabel1.Location = new System.Drawing.Point(4, 11);
             this.linkLabel1.Name = "linkLabel1";
             this.linkLabel1.Size = new System.Drawing.Size(22, 21);
             this.linkLabel1.TabIndex = 4;
@@ -269,7 +284,7 @@
             this.labelX1.BackColor = System.Drawing.Color.Transparent;
             this.labelX1.Font = new System.Drawing.Font("Arial Unicode MS", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.labelX1.ForeColor = System.Drawing.Color.White;
-            this.labelX1.Location = new System.Drawing.Point(35, 11);
+            this.labelX1.Location = new System.Drawing.Point(52, 11);
             this.labelX1.Name = "labelX1";
             this.labelX1.Size = new System.Drawing.Size(61, 20);
             this.labelX1.TabIndex = 2;
@@ -325,6 +340,7 @@
         private System.Windows.Forms.LinkLabel linkLabel2;
         private System.Windows.Forms.ContextMenuStrip tabControlContext;
         private System.Windows.Forms.ToolStripMenuItem clostTabToolStripMenuItem;
+        private System.Windows.Forms.LinkLabel linkLabel3;
     }
 }
 

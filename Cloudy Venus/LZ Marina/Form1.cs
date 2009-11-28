@@ -8,6 +8,7 @@ using System.Windows.Forms;
 using System.IO;
 using System.Collections;
 using System.Diagnostics;
+using System.Threading;
 
 namespace LZ_Marina
 {
@@ -19,6 +20,8 @@ namespace LZ_Marina
         private int pluginsNumber = 0;
 
         private String homePage = "";
+        private String picRoot = "";
+        private String textRoot = "";
 
         public Form1()
         {
@@ -74,8 +77,6 @@ namespace LZ_Marina
             System.Windows.Forms.ListViewItem listViewItem1 = new System.Windows.Forms.ListViewItem("Web Browser", 2);
             System.Windows.Forms.ListViewItem listViewItem2 = new System.Windows.Forms.ListViewItem("2Dooo Special", 1);
             System.Windows.Forms.ListViewItem listViewItem3 = new System.Windows.Forms.ListViewItem("Hotmail", 0);
-            System.Windows.Forms.ListViewItem listViewItem4 = new System.Windows.Forms.ListViewItem("Google Docs", 3);
-            System.Windows.Forms.ListViewItem listViewItem5 = new System.Windows.Forms.ListViewItem("Microsoft Office Live", 4);
             System.Windows.Forms.ListViewItem listViewItem6 = new System.Windows.Forms.ListViewItem("Picture Viewer", 9);
             System.Windows.Forms.ListViewItem listViewItem7 = new System.Windows.Forms.ListViewItem("Notepad", 11);
             System.Windows.Forms.ListViewItem listViewItem8 = new System.Windows.Forms.ListViewItem("Process Pool", 10);
@@ -85,8 +86,6 @@ namespace LZ_Marina
                 listViewItem1,
                 listViewItem2,
                 listViewItem3,
-                listViewItem4,
-                listViewItem5,
                 listViewItem6,
                 listViewItem7,
                 listViewItem8
@@ -165,6 +164,8 @@ namespace LZ_Marina
                 this.homePage = reader.ReadLine();
                 this.pictureBox1.Image = new Bitmap(reader.ReadLine());
                 fullscreen = reader.ReadLine();
+                this.picRoot = reader.ReadLine() + @"\";
+                this.textRoot = reader.ReadLine() + @"\";
                 reader.Close();
 
                 if (!fullscreen.Equals(@"fullScreen=1"))
@@ -203,7 +204,14 @@ namespace LZ_Marina
 
         protected void listView1_DoubleClick(object sender, EventArgs e)
         {
-            activateApp();
+            Thread thread = new Thread(activateAppThread);
+            thread.Start();
+        }
+
+        protected void activateAppThread()
+        {
+            MethodInvoker mi = new MethodInvoker(activateApp);
+            this.BeginInvoke(mi);
         }
 
         protected void activateApp()
@@ -229,22 +237,14 @@ namespace LZ_Marina
                         this.tabControl1.SelectedIndex = this.tabControl1.TabPages.Count - 1;
                         break;
                     case 4:
-                        this.tabControl1.Controls.Add(new AppBrowser(@"http://doc.google.com", "Google Docs"));
+                        this.tabControl1.Controls.Add(new Picture_Viewer(this.picRoot));
                         this.tabControl1.SelectedIndex = this.tabControl1.TabPages.Count - 1;
                         break;
                     case 5:
-                        this.tabControl1.Controls.Add(new AppBrowser(@"http://workspace.office.live.com", "Microsoft Office Live"));
+                        this.tabControl1.Controls.Add(new Editor(this.textRoot));
                         this.tabControl1.SelectedIndex = this.tabControl1.TabPages.Count - 1;
                         break;
                     case 6:
-                        this.tabControl1.Controls.Add(new Picture_Viewer());
-                        this.tabControl1.SelectedIndex = this.tabControl1.TabPages.Count - 1;
-                        break;
-                    case 7:
-                        this.tabControl1.Controls.Add(new Editor());
-                        this.tabControl1.SelectedIndex = this.tabControl1.TabPages.Count - 1;
-                        break;
-                    case 8:
                         this.tabControl1.Controls.Add(new ProcsPool(this.tabControl1));
                         this.tabControl1.SelectedIndex = this.tabControl1.TabPages.Count - 1;
                         break;
@@ -333,6 +333,16 @@ namespace LZ_Marina
         {
             this.tabControl1.Controls.Add(new UserScreen());
             this.tabControl1.SelectedIndex = this.tabControl1.TabPages.Count - 1;
+        }
+
+        private void linkLabel3_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
+        {
+            if (MessageBox.Show("Are you sure you want to reload Cloudy Venus now?\r\nAll your unsaved works will lose.", "Cloudy Venus reloading...", 
+                MessageBoxButtons.YesNo, MessageBoxIcon.Warning) == DialogResult.Yes)
+            {
+                System.Diagnostics.Process.Start(Application.ExecutablePath);
+                Application.Exit();
+            }
         }
     }
 }

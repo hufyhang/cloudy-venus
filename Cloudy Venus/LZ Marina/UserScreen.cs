@@ -15,7 +15,10 @@ namespace LZ_Marina
         private string home = "";
         private string pic = "";
         private string screen = "";
-        
+
+        private String picRoot = "";
+        private String textRoot = "";
+
         public UserScreen()
         {
             InitializeComponent();
@@ -26,10 +29,14 @@ namespace LZ_Marina
             home = reader.ReadLine();
             pic = reader.ReadLine();
             screen = reader.ReadLine();
+            picRoot = reader.ReadLine();
+            textRoot = reader.ReadLine();
             reader.Close();
 
             this.textBoxX1.Text = this.name;
             this.textBoxX2.Text = this.home;
+            this.textBoxX3.Text = this.picRoot;
+            this.textBoxX4.Text = this.textRoot;
             this.pictureBox1.Image = new Bitmap(pic);
 
             if (this.screen.Equals(@"fullScreen=1"))
@@ -66,6 +73,8 @@ namespace LZ_Marina
         {
             this.name = this.textBoxX1.Text;
             this.home = this.textBoxX2.Text;
+            this.picRoot = this.textBoxX3.Text;
+            this.textRoot = this.textBoxX4.Text;
             String screen = "";
 
             if (this.checkBoxX1.Checked)
@@ -79,13 +88,37 @@ namespace LZ_Marina
 
             StreamWriter writer = new StreamWriter(Application.StartupPath + @"\user");
             writer.Flush();
-            String str = name + "\r\n" + home + "\r\n" + pic + "\r\n" + screen;
+            String str = name + "\r\n" + home + "\r\n" + pic + "\r\n" + screen + "\r\n" + picRoot + "\r\n" + textRoot;
             writer.Write(str);
             writer.Close();
 
             MessageBox.Show("Your user account changes will be updated after your next-time login.", "User Account", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
             this.Dispose();
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            using (FolderBrowserDialog folder = new FolderBrowserDialog())
+            {
+                folder.Description = @"Please choose your default Picture Folder";
+                if (folder.ShowDialog() == DialogResult.OK)
+                {
+                    this.textBoxX3.Text = folder.SelectedPath;
+                }
+            }
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            using (FolderBrowserDialog folder = new FolderBrowserDialog())
+            {
+                folder.Description = @"Please choose your default Common Files folder";
+                if (folder.ShowDialog() == DialogResult.OK)
+                {
+                    this.textBoxX4.Text = folder.SelectedPath;
+                }
+            }
         }
 
     }

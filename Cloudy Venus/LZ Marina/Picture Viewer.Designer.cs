@@ -38,10 +38,11 @@
             this.listView1 = new System.Windows.Forms.ListView();
             this.columnHeader1 = new System.Windows.Forms.ColumnHeader();
             this.columnHeader2 = new System.Windows.Forms.ColumnHeader();
+            this.progressBarX1 = new DevComponents.DotNetBar.Controls.ProgressBarX();
             this.label1 = new System.Windows.Forms.Label();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.timer1 = new System.Windows.Forms.Timer(this.components);
-            this.progressBarX1 = new DevComponents.DotNetBar.Controls.ProgressBarX();
+            this.columnHeader3 = new System.Windows.Forms.ColumnHeader();
             this.splitContainer1.Panel1.SuspendLayout();
             this.splitContainer1.Panel2.SuspendLayout();
             this.splitContainer1.SuspendLayout();
@@ -144,7 +145,8 @@
                         | System.Windows.Forms.AnchorStyles.Right)));
             this.listView1.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
             this.columnHeader1,
-            this.columnHeader2});
+            this.columnHeader2,
+            this.columnHeader3});
             this.listView1.FullRowSelect = true;
             this.listView1.GridLines = true;
             this.listView1.Location = new System.Drawing.Point(3, 9);
@@ -163,6 +165,24 @@
             // columnHeader2
             // 
             this.columnHeader2.Text = "Size";
+            // 
+            // progressBarX1
+            // 
+            this.progressBarX1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            // 
+            // 
+            // 
+            this.progressBarX1.BackgroundStyle.TextAlignment = DevComponents.DotNetBar.eStyleTextAlignment.Center;
+            this.progressBarX1.BackgroundStyle.TextColor = System.Drawing.Color.White;
+            this.progressBarX1.Font = new System.Drawing.Font("Arial Unicode MS", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.progressBarX1.Location = new System.Drawing.Point(373, 9);
+            this.progressBarX1.Name = "progressBarX1";
+            this.progressBarX1.ProgressType = DevComponents.DotNetBar.eProgressItemType.Marquee;
+            this.progressBarX1.Size = new System.Drawing.Size(108, 23);
+            this.progressBarX1.TabIndex = 2;
+            this.progressBarX1.Text = "Slide showing...";
+            this.progressBarX1.TextVisible = true;
+            this.progressBarX1.Visible = false;
             // 
             // label1
             // 
@@ -194,32 +214,18 @@
             this.timer1.Interval = 5000;
             this.timer1.Tick += new System.EventHandler(this.timer1_Tick);
             // 
-            // progressBarX1
+            // columnHeader3
             // 
-            this.progressBarX1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.progressBarX1.Visible = false;
-            // 
-            // 
-            // 
-            this.progressBarX1.BackgroundStyle.TextAlignment = DevComponents.DotNetBar.eStyleTextAlignment.Center;
-            this.progressBarX1.BackgroundStyle.TextColor = System.Drawing.Color.White;
-            this.progressBarX1.Font = new System.Drawing.Font("Arial Unicode MS", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.progressBarX1.Location = new System.Drawing.Point(373, 9);
-            this.progressBarX1.Name = "progressBarX1";
-            this.progressBarX1.ProgressType = DevComponents.DotNetBar.eProgressItemType.Marquee;
-            this.progressBarX1.Size = new System.Drawing.Size(108, 23);
-            this.progressBarX1.TabIndex = 2;
-            this.progressBarX1.Text = "Slide showing...";
-            this.progressBarX1.TextVisible = true;
+            this.columnHeader3.Text = "Last modified date";
+            this.columnHeader3.Width = 200;
             // 
             // Picture_Viewer
             // 
             this.BackColor = System.Drawing.Color.White;
-            this.ClientSize = new System.Drawing.Size(790, 396);
             this.Controls.Add(this.splitContainer1);
             this.Font = new System.Drawing.Font("Arial Unicode MS", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.Name = "Picture_Viewer";
+            this.Size = new System.Drawing.Size(790, 396);
             this.Text = "Picture_Viewer";
             this.splitContainer1.Panel1.ResumeLayout(false);
             this.splitContainer1.Panel2.ResumeLayout(false);
@@ -245,5 +251,6 @@
         private System.Windows.Forms.Button button5;
         private System.Windows.Forms.Timer timer1;
         private DevComponents.DotNetBar.Controls.ProgressBarX progressBarX1;
+        private System.Windows.Forms.ColumnHeader columnHeader3;
     }
 }

@@ -24,11 +24,32 @@ namespace LZ_Marina
             loadFiles();
         }
 
+        public Editor(String path)
+        {
+            InitializeComponent();
+
+            this.richTextBox1.KeyDown += new KeyEventHandler(richTextBox1_KeyDown);
+            this.textBoxX1.KeyDown += new KeyEventHandler(richTextBox1_KeyDown);
+
+            this.Text = "Notepad";
+            this.path = path;
+            loadFiles();
+        }
+
+        protected void richTextBox1_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.Control && e.KeyCode == Keys.S)
+            {
+                saveItem();
+            }
+        }
+
         protected void loadFiles()
         {
             this.Text = "Notepad";
             this.listView1.Items.Clear();
             this.storage.Clear();
+            this.textBoxX1.Text = this.richTextBox1.Text = "";
 
             DirectoryInfo dir = new DirectoryInfo(path);
             foreach (FileInfo file in dir.GetFiles())
@@ -53,19 +74,21 @@ namespace LZ_Marina
             this.richTextBox1.Text = "";
         }
 
-        private void button4_Click(object sender, EventArgs e)
+        protected void saveItem()
         {
             if (this.textBoxX1.Text.Length != 0)
             {
                 if (!new FileInfo(this.path + this.textBoxX1.Text).Exists)
                 {
                     String title = this.textBoxX1.Text;
+                    String content = this.richTextBox1.Text;
                     FileInfo file = new FileInfo(this.path + this.textBoxX1.Text);
                     StreamWriter writer = new StreamWriter(this.path + this.textBoxX1.Text);
                     writer.Write(this.richTextBox1.Text);
                     writer.Close();
                     this.loadFiles();
-                    this.Text = title;
+                    this.Text = this.textBoxX1.Text = title;
+                    this.richTextBox1.Text = content;
                 }
                 else
                 {
@@ -73,20 +96,27 @@ namespace LZ_Marina
                         "Item exists...", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
                     {
                         String title = this.textBoxX1.Text;
+                        String content = this.richTextBox1.Text;
                         FileInfo file = new FileInfo(this.path + this.textBoxX1.Text);
                         StreamWriter writer = new StreamWriter(this.path + this.textBoxX1.Text);
                         writer.Write(this.richTextBox1.Text);
                         writer.Close();
                         this.loadFiles();
-                        this.Text = title;
+                        this.Text = this.textBoxX1.Text = title;
+                        this.richTextBox1.Text = content;
                     }
                 }
+                loadFiles();
             }
             else
             {
                 MessageBox.Show("Please enter a file name before saving.", "Untitled file", MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
+        }
 
+        private void button4_Click(object sender, EventArgs e)
+        {
+            saveItem();
         }
 
         private void listView1_SelectedIndexChanged(object sender, EventArgs e)
@@ -153,6 +183,54 @@ namespace LZ_Marina
         private void pasteToolStripMenuItem_Click(object sender, EventArgs e)
         {
             this.richTextBox1.Paste();
+        }
+
+        private void button5_Click(object sender, EventArgs e)
+        {
+            using (FolderBrowserDialog folder = new FolderBrowserDialog())
+            {
+                folder.Description = @"Please choose your item folder.";
+                folder.ShowNewFolderButton = false;
+                if (folder.ShowDialog() == DialogResult.OK)
+                {
+                    this.path = folder.SelectedPath + @"\";
+                    this.loadFiles();
+                }
+            }
+        }
+
+        private void button6_Click(object sender, EventArgs e)
+        {
+            if (this.listView1.SelectedItems.Count > 0)
+            {
+                using (FolderBrowserDialog folder = new FolderBrowserDialog())
+                {
+                    folder.Description = "Please choose a destination for " + this.listView1.SelectedItems[0].SubItems[0].Text;
+                    if (folder.ShowDialog() == DialogResult.OK)
+                    {
+                        String to = folder.SelectedPath + @"\" + this.listView1.SelectedItems[0].SubItems[0].Text;
+                        FileInfo file = new FileInfo(to);
+                        FileInfo target = new FileInfo(this.path + @"\" + this.listView1.SelectedItems[0].SubItems[0].Text);
+                        if (file.Exists)
+                        {
+                            if (MessageBox.Show("Are you sure you want to overwrite " + this.listView1.SelectedItems[0].SubItems[0].Text + @"?",
+                                "Item existing...", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
+                            {
+                                file.Delete();
+                                target.CopyTo(file.FullName);
+                            }
+                        }
+                        else
+                        {
+                            target.CopyTo(file.FullName);
+                        }
+                    }
+                }
+            }
+            else
+            {
+                MessageBox.Show("Please choose an existing item before exporting.", "Unknown item selection...", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            }
         }
 
     }
