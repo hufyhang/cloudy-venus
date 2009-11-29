@@ -84,6 +84,7 @@ namespace LZ_Marina
         protected void currentBrowser_Navigated(object sender, WebBrowserNavigatedEventArgs e)
         {
             this.addressBox.Text = this.currentBrowser.Url.ToString();
+            this.webBrowser1.Focus();
 //            this.addressBox.Font = new System.Drawing.Font("Arial Unicode MS", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.reloadButton.Text = "R";
             String tabTitle = this.currentBrowser.Document.Title.ToString();

@@ -41,7 +41,7 @@
             // 
             this.backButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.backButton.Font = new System.Drawing.Font("Arial Unicode MS", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.backButton.Location = new System.Drawing.Point(8, 12);
+            this.backButton.Location = new System.Drawing.Point(2, 12);
             this.backButton.Name = "backButton";
             this.backButton.Size = new System.Drawing.Size(29, 24);
             this.backButton.TabIndex = 0;
@@ -52,7 +52,7 @@
             // 
             this.forwardButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.forwardButton.Font = new System.Drawing.Font("Arial Unicode MS", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.forwardButton.Location = new System.Drawing.Point(43, 12);
+            this.forwardButton.Location = new System.Drawing.Point(37, 12);
             this.forwardButton.Name = "forwardButton";
             this.forwardButton.Size = new System.Drawing.Size(29, 24);
             this.forwardButton.TabIndex = 1;
@@ -63,7 +63,7 @@
             // 
             this.reloadButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.reloadButton.Font = new System.Drawing.Font("Arial Unicode MS", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.reloadButton.Location = new System.Drawing.Point(78, 12);
+            this.reloadButton.Location = new System.Drawing.Point(72, 12);
             this.reloadButton.Name = "reloadButton";
             this.reloadButton.Size = new System.Drawing.Size(29, 24);
             this.reloadButton.TabIndex = 2;
@@ -102,10 +102,10 @@
                         | System.Windows.Forms.AnchorStyles.Left)
                         | System.Windows.Forms.AnchorStyles.Right)));
             this.webBrowser1.IsWebBrowserContextMenuEnabled = false;
-            this.webBrowser1.Location = new System.Drawing.Point(8, 42);
+            this.webBrowser1.Location = new System.Drawing.Point(0, 42);
             this.webBrowser1.MinimumSize = new System.Drawing.Size(20, 20);
             this.webBrowser1.Name = "webBrowser1";
-            this.webBrowser1.Size = new System.Drawing.Size(612, 193);
+            this.webBrowser1.Size = new System.Drawing.Size(620, 193);
             this.webBrowser1.TabIndex = 7;
             this.webBrowser1.WebBrowserShortcutsEnabled = false;
             // 
@@ -113,10 +113,10 @@
             // 
             this.addressBox.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left)
                         | System.Windows.Forms.AnchorStyles.Right)));
-            this.addressBox.Location = new System.Drawing.Point(113, 12);
+            this.addressBox.Location = new System.Drawing.Point(107, 12);
             this.addressBox.Multiline = true;
             this.addressBox.Name = "addressBox";
-            this.addressBox.Size = new System.Drawing.Size(393, 24);
+            this.addressBox.Size = new System.Drawing.Size(399, 24);
             this.addressBox.TabIndex = 8;
             this.addressBox.WordWrap = false;
             // 
