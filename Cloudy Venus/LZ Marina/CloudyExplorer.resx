@@ -117,22 +117,49 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <assembly alias="System.Drawing" name="System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
-  <data name="button1.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
-    <value>
-        iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8
-        YQUAAAAJcEhZcwAADrwAAA68AZW8ckkAAAKPSURBVDhPrZJdSFNhGMffBUk3sywszIvoi0qCwG6SjLwo
-        WHciBkERCKNuMkQZiiXFFK3QVmhJSQXR10rDQmg3ClEEK3A4z9l2ztmmO2fOHZP8WnPNbf+esw01qCDo
-        gR+8vDz/3/vJ2P8uQRAKeZ6/NuxwOJ2jowvEvMPh+OJycU0cx23863qC4DrLj3yOBF/UYLFzP+KtOYi3
-        rUO0qxiBV43gnI6vHg9/4rcSryhWSXZbKnpjB5J3GPCEeJ7lMUPiNkPk5gEIwx/jksdj+EXi9/u3+QXu
-        e7RtO1I9FLISb3XA4BbgHY37M6JUN8N8x0F4JSHs8/nWL0tkWbZMWeuQ7KDGZ8QAhYPdQEwGhncCQzT3
-        htB20sYwMdCOwNhY7YpAUbwLzbuAe9T0ksIyhbVamgTEIsBO89pOnhKdDDOWoxgfHx9KC0RRzA0F5USk
-        loL3CeluJqxVcgGIk0QjRkSJ12WYbchHQAkG0wK3260PTShLs9UU7iJcPSuCVAJIxUm0it7jmDZtRkAO
-        KmkBdeskSRIV0x4kmrUtksSdlfwIAx/2AX00/4iwMMSaGJTWY7Db7ZkjUK01m82dal8LpqvppumS0hKe
-        JHMC0LsV0F7mFkOyhSF0nkEdfAij0dioZTVBTkFBQXHAJ0W8NXvxrZYazSS6rh1pE9CekS5dpSAt4L10
-        BNzoSFiv1+/WsppgDbGhoqLiwpSXS3ouFkE2MszVMyxeZogSMyYGfxWD0HAYIb8nVlJScooyedls+hia
-        RF9eXn5uzCfMhfotcNUdgvN0Lpxn8uCuL8Ok7QF4nlNLS0tPUm/u6vDyf6CBrrKystBms12hz/UprKrq
-        pKqG6c3fW61Wk8FgyP9TcLXkn8Y/Aaw29bU2Y8YwAAAAAElFTkSuQmCC
-</value>
-  </data>
+  <metadata name="panel1.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>17, 56</value>
+  </metadata>
+  <metadata name="splitContainer1.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>1011, 17</value>
+  </metadata>
+  <metadata name="splitContainer1.Panel1.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>1233, 17</value>
+  </metadata>
+  <metadata name="splitContainer2.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>701, 17</value>
+  </metadata>
+  <metadata name="splitContainer2.Panel1.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>923, 17</value>
+  </metadata>
+  <metadata name="listView1.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>601, 17</value>
+  </metadata>
+  <metadata name="splitContainer2.Panel2.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>835, 17</value>
+  </metadata>
+  <metadata name="listView2.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>501, 17</value>
+  </metadata>
+  <metadata name="splitContainer1.Panel2.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>1145, 17</value>
+  </metadata>
+  <metadata name="listView3.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>401, 17</value>
+  </metadata>
+  <metadata name="textBox1.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>302, 17</value>
+  </metadata>
+  <metadata name="button2.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>207, 17</value>
+  </metadata>
+  <metadata name="button1.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>112, 17</value>
+  </metadata>
+  <metadata name="button4.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>17, 17</value>
+  </metadata>
+  <metadata name="$this.TrayLargeIcon" type="System.Boolean, mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>False</value>
+  </metadata>
 </root>

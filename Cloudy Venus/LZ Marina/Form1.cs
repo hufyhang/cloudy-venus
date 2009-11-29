@@ -75,7 +75,7 @@ namespace LZ_Marina
             System.Windows.Forms.ListViewItem listViewItem0 = new System.Windows.Forms.ListViewItem("Cloud Explorer", 8);
             System.Windows.Forms.ListViewItem listViewItem1 = new System.Windows.Forms.ListViewItem("Web Browser", 2);
             System.Windows.Forms.ListViewItem listViewItem2 = new System.Windows.Forms.ListViewItem("2Dooo Special", 1);
-            System.Windows.Forms.ListViewItem listViewItem3 = new System.Windows.Forms.ListViewItem("Hotmail", 0);
+//            System.Windows.Forms.ListViewItem listViewItem3 = new System.Windows.Forms.ListViewItem("Hotmail", 0);
             System.Windows.Forms.ListViewItem listViewItem6 = new System.Windows.Forms.ListViewItem("Picture Viewer", 9);
             System.Windows.Forms.ListViewItem listViewItem7 = new System.Windows.Forms.ListViewItem("Notepad", 11);
             System.Windows.Forms.ListViewItem listViewItem4 = new System.Windows.Forms.ListViewItem("Media Player", 12);
@@ -86,7 +86,7 @@ namespace LZ_Marina
                 listViewItem0,
                 listViewItem1,
                 listViewItem2,
-                listViewItem3,
+//                listViewItem3,
                 listViewItem6,
                 listViewItem7,
                 listViewItem4,
@@ -117,8 +117,17 @@ namespace LZ_Marina
                 String name = dir.Name;
                 StreamReader reader = new StreamReader(dir.FullName + @"\start_up.cvPlug");
                 String path = reader.ReadLine();
-                reader.Close();
-                String plug = dir.FullName + @"\" + path;
+                String plug = "";
+                if (!path.Equals(@"[URL]"))
+                {
+                    reader.Close();
+                    plug = dir.FullName + @"\" + path;
+                }
+                else
+                {
+                    plug = reader.ReadLine();
+                    reader.Close();
+                }
                 this.plugins.Add(plug);
                 ListViewItem item = new ListViewItem(name, 7);
                 this.listView1.Items.Add(item);
@@ -234,7 +243,7 @@ namespace LZ_Marina
                 switch (this.listView1.SelectedIndices[0])
                 {
                     case 0:
-                        this.tabControl1.Controls.Add(new Explorer());
+                        this.tabControl1.Controls.Add(new CloudyExplorer(Application.StartupPath + @"\File System\"));
                         this.tabControl1.SelectedIndex = this.tabControl1.TabPages.Count - 1;
                         break;
                     case 1:
@@ -246,26 +255,22 @@ namespace LZ_Marina
                         this.tabControl1.SelectedIndex = this.tabControl1.TabPages.Count - 1;
                         break;
                     case 3:
-                        this.tabControl1.Controls.Add(new AppBrowser(@"http://www.hotmail.com", "Hotmail"));
-                        this.tabControl1.SelectedIndex = this.tabControl1.TabPages.Count - 1;
-                        break;
-                    case 4:
                         this.tabControl1.Controls.Add(new Picture_Viewer(this.picRoot));
                         this.tabControl1.SelectedIndex = this.tabControl1.TabPages.Count - 1;
                         break;
-                    case 5:
+                    case 4:
                         this.tabControl1.Controls.Add(new Editor(this.textRoot));
                         this.tabControl1.SelectedIndex = this.tabControl1.TabPages.Count - 1;
                         break;
-                    case 6:
+                    case 5:
                         this.tabControl1.Controls.Add(new Media_Player());
                         this.tabControl1.SelectedIndex = this.tabControl1.TabPages.Count - 1;
                         break;
-                    case 7:
+                    case 6:
                         this.tabControl1.Controls.Add(new PDFReader());
                         this.tabControl1.SelectedIndex = this.tabControl1.TabPages.Count - 1;
                         break;
-                    case 8:
+                    case 7:
                         this.tabControl1.Controls.Add(new ProcsPool(this.tabControl1));
                         this.tabControl1.SelectedIndex = this.tabControl1.TabPages.Count - 1;
                         break;
@@ -364,6 +369,11 @@ namespace LZ_Marina
                 System.Diagnostics.Process.Start(Application.ExecutablePath);
                 Application.Exit();
             }
+        }
+
+        private void linkLabel4_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
+        {
+            this.tabControl1.SelectedIndex = 0;
         }
     }
 }

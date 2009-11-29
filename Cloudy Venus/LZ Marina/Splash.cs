@@ -20,11 +20,11 @@ namespace LZ_Marina
         private void timer1_Tick(object sender, EventArgs e)
         {
             ++counter;
-            if (this.counter > 2)
+            if (this.counter > 3)
             {
                 this.label1.Visible = true;
                 this.progressBarX1.Visible = false;
-                if (this.counter > 3)
+                if (this.counter > 5)
                 {
                     this.Dispose();
                 }

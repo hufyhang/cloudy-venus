@@ -33,7 +33,7 @@
             System.Windows.Forms.ListViewItem listViewItem1 = new System.Windows.Forms.ListViewItem("Cloud Explorer", 8);
             System.Windows.Forms.ListViewItem listViewItem2 = new System.Windows.Forms.ListViewItem("Web Browser", 2);
             System.Windows.Forms.ListViewItem listViewItem3 = new System.Windows.Forms.ListViewItem("2Dooo Special", 1);
-            System.Windows.Forms.ListViewItem listViewItem4 = new System.Windows.Forms.ListViewItem("Hotmail", 0);
+//            System.Windows.Forms.ListViewItem listViewItem4 = new System.Windows.Forms.ListViewItem("Hotmail", 0);
             System.Windows.Forms.ListViewItem listViewItem5 = new System.Windows.Forms.ListViewItem("Picture Viewer", 9);
             System.Windows.Forms.ListViewItem listViewItem6 = new System.Windows.Forms.ListViewItem("Notepad", 11);
             System.Windows.Forms.ListViewItem listViewItem7 = new System.Windows.Forms.ListViewItem("Media Player", 12);
@@ -58,6 +58,7 @@
             this.linkLabel1 = new System.Windows.Forms.LinkLabel();
             this.label2 = new System.Windows.Forms.Label();
             this.labelX1 = new DevComponents.DotNetBar.LabelX();
+            this.linkLabel4 = new System.Windows.Forms.LinkLabel();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
@@ -71,7 +72,7 @@
             this.ApplicationsImg.ImageStream = ((System.Windows.Forms.ImageListStreamer)(resources.GetObject("ApplicationsImg.ImageStream")));
             this.ApplicationsImg.TransparentColor = System.Drawing.Color.Transparent;
             this.ApplicationsImg.Images.SetKeyName(0, "live mail.png");
-            this.ApplicationsImg.Images.SetKeyName(1, "todo.jpg");
+            this.ApplicationsImg.Images.SetKeyName(1, "todo_ico.png");
             this.ApplicationsImg.Images.SetKeyName(2, "browser.png");
             this.ApplicationsImg.Images.SetKeyName(3, "google_docs_logo.png");
             this.ApplicationsImg.Images.SetKeyName(4, "OfficeLiveWorkspace.jpg");
@@ -138,7 +139,7 @@
             listViewItem1,
             listViewItem2,
             listViewItem3,
-            listViewItem4,
+//            listViewItem4,
             listViewItem5,
             listViewItem6,
             listViewItem7,
@@ -214,6 +215,7 @@
             // panel1
             // 
             this.panel1.BackColor = System.Drawing.Color.CornflowerBlue;
+            this.panel1.Controls.Add(this.linkLabel4);
             this.panel1.Controls.Add(this.linkLabel3);
             this.panel1.Controls.Add(this.linkLabel2);
             this.panel1.Controls.Add(this.linkLabel1);
@@ -246,13 +248,16 @@
             // 
             this.linkLabel2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.linkLabel2.AutoSize = true;
+            this.linkLabel2.Image = ((System.Drawing.Image)(resources.GetObject("linkLabel2.Image")));
+            this.linkLabel2.LinkArea = new System.Windows.Forms.LinkArea(0, 16);
             this.linkLabel2.LinkColor = System.Drawing.Color.Red;
-            this.linkLabel2.Location = new System.Drawing.Point(571, 13);
+            this.linkLabel2.Location = new System.Drawing.Point(607, 13);
             this.linkLabel2.Name = "linkLabel2";
-            this.linkLabel2.Size = new System.Drawing.Size(81, 16);
+            this.linkLabel2.Size = new System.Drawing.Size(22, 21);
             this.linkLabel2.TabIndex = 5;
             this.linkLabel2.TabStop = true;
-            this.linkLabel2.Text = "Screen Mode";
+            this.linkLabel2.Text = "     ";
+            this.linkLabel2.UseCompatibleTextRendering = true;
             this.linkLabel2.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.linkLabel2_LinkClicked);
             // 
             // linkLabel1
@@ -277,7 +282,7 @@
             this.label2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.label2.AutoSize = true;
             this.label2.ForeColor = System.Drawing.Color.White;
-            this.label2.Location = new System.Drawing.Point(351, 13);
+            this.label2.Location = new System.Drawing.Point(387, 13);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(214, 16);
             this.label2.TabIndex = 3;
@@ -295,6 +300,24 @@
             this.labelX1.Size = new System.Drawing.Size(61, 20);
             this.labelX1.TabIndex = 2;
             this.labelX1.Text = "Loading...";
+            // 
+            // linkLabel4
+            // 
+            this.linkLabel4.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.linkLabel4.AutoSize = true;
+            this.linkLabel4.Image = ((System.Drawing.Image)(resources.GetObject("linkLabel4.Image")));
+            this.linkLabel4.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.linkLabel4.LinkArea = new System.Windows.Forms.LinkArea(0, 16);
+            this.linkLabel4.LinkColor = System.Drawing.Color.Red;
+            this.linkLabel4.Location = new System.Drawing.Point(631, 11);
+            this.linkLabel4.Name = "linkLabel4";
+            this.linkLabel4.Size = new System.Drawing.Size(22, 21);
+            this.linkLabel4.TabIndex = 7;
+            this.linkLabel4.TabStop = true;
+            this.linkLabel4.Text = "     ";
+            this.linkLabel4.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.linkLabel4.UseCompatibleTextRendering = true;
+            this.linkLabel4.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.linkLabel4_LinkClicked);
             // 
             // Form1
             // 
@@ -347,6 +370,7 @@
         private System.Windows.Forms.ContextMenuStrip tabControlContext;
         private System.Windows.Forms.ToolStripMenuItem clostTabToolStripMenuItem;
         private System.Windows.Forms.LinkLabel linkLabel3;
+        private System.Windows.Forms.LinkLabel linkLabel4;
     }
 }
 
