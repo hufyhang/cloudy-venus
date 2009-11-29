@@ -98,6 +98,7 @@
             // 
             this.progressBarX1.BackgroundStyle.TextAlignment = DevComponents.DotNetBar.eStyleTextAlignment.Center;
             this.progressBarX1.BackgroundStyle.TextColor = System.Drawing.Color.White;
+            this.progressBarX1.Cursor = System.Windows.Forms.Cursors.Hand;
             this.progressBarX1.ForeColor = System.Drawing.Color.White;
             this.progressBarX1.Location = new System.Drawing.Point(681, 405);
             this.progressBarX1.Name = "progressBarX1";
@@ -107,6 +108,7 @@
             this.progressBarX1.Text = "Loading...";
             this.progressBarX1.TextVisible = true;
             this.progressBarX1.Visible = false;
+            this.progressBarX1.Click += new System.EventHandler(this.progressBarX1_Click);
             // 
             // labelX1
             // 
@@ -116,7 +118,7 @@
             this.labelX1.Font = new System.Drawing.Font("Arial Unicode MS", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.labelX1.Location = new System.Drawing.Point(91, 402);
             this.labelX1.Name = "labelX1";
-            this.labelX1.Size = new System.Drawing.Size(68, 22);
+            this.labelX1.Size = new System.Drawing.Size(0, 0);
             this.labelX1.TabIndex = 6;
             this.labelX1.Text = "Loading...";
             this.labelX1.Click += new System.EventHandler(this.labelX1_Click);
@@ -124,7 +126,6 @@
             // AppBrowser
             // 
             this.BackColor = System.Drawing.Color.White;
-            this.ClientSize = new System.Drawing.Size(769, 426);
             this.Controls.Add(this.labelX1);
             this.Controls.Add(this.progressBarX1);
             this.Controls.Add(this.button3);
@@ -133,7 +134,7 @@
             this.Controls.Add(this.webBrowser1);
             this.Font = new System.Drawing.Font("Arial Unicode MS", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.Name = "AppBrowser";
+            this.Size = new System.Drawing.Size(769, 426);
             this.Text = "AppBrowser";
             this.ResumeLayout(false);
             this.PerformLayout();

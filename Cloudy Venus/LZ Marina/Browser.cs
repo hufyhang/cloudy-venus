@@ -43,8 +43,10 @@ namespace LZ_Marina
         {
             currentBrowser = new ExtendedWebBrowser.ExtendedWebBrowser();
             this.currentBrowser = this.webBrowser1;
-            currentBrowser.BeforeNewWindow += new EventHandler<WebBrowserExtendedNavigatingEventArgs>(currentBrowser_BeforeNewWindow); 
-
+            this.currentBrowser.IsWebBrowserContextMenuEnabled = true;
+            this.currentBrowser.BeforeNewWindow += new EventHandler<WebBrowserExtendedNavigatingEventArgs>(currentBrowser_BeforeNewWindow); 
+            
+            this.addressBox.GotFocus += new EventHandler(addressBox_GotFocus);
             this.addressBox.KeyDown += new KeyEventHandler(addressBox_KeyDown);
             this.currentBrowser.Navigating += new WebBrowserNavigatingEventHandler(currentBrowser_Navigating);
             this.currentBrowser.Navigated += new WebBrowserNavigatedEventHandler(currentBrowser_Navigated);
@@ -52,6 +54,11 @@ namespace LZ_Marina
             this.backButton.Click += new EventHandler(backButton_Click);
             this.forwardButton.Click += new EventHandler(forwardButton_Click);
             this.reloadButton.Click += new EventHandler(reloadButton_Click);
+        }
+
+        protected void addressBox_GotFocus(object sender, EventArgs e)
+        {
+            this.addressBox.SelectAll();
         }
 
         protected void currentBrowser_BeforeNewWindow(object sender, WebBrowserExtendedNavigatingEventArgs e)
@@ -77,6 +84,7 @@ namespace LZ_Marina
         protected void currentBrowser_Navigated(object sender, WebBrowserNavigatedEventArgs e)
         {
             this.addressBox.Text = this.currentBrowser.Url.ToString();
+//            this.addressBox.Font = new System.Drawing.Font("Arial Unicode MS", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.reloadButton.Text = "R";
             String tabTitle = this.currentBrowser.Document.Title.ToString();
             this.Text = tabTitle;
@@ -102,25 +110,28 @@ namespace LZ_Marina
 
         protected void addressBox_KeyDown(object sender, KeyEventArgs e)
         {
+            
             if (e.KeyCode == Keys.Enter)
             {
+                this.addressBox.Text.Remove(this.addressBox.Text.Length - 1);
                 this.currentBrowser.Navigate(this.addressBox.Text);
-                if (!this.addressBox.Items.Contains(this.addressBox.Text))
-                {
-                    this.addressBox.Items.Add(this.addressBox.Text);
-                }
             }
 
             if (e.Control && e.KeyCode == Keys.Enter)
             {
+                this.addressBox.Text.Remove(this.addressBox.Text.Length - 1);
                 String url = @"http://" + this.addressBox.Text + @".com";
                 this.currentBrowser.Navigate(url);
-                if (!this.addressBox.Items.Contains(url))
-                {
-                    this.addressBox.Items.Add(url);
-                }
             }
-            e.Handled = true;
+
+            if (e.Control && e.KeyCode == Keys.A)
+            {
+                e.Handled = true;
+                this.addressBox.SelectAll();
+            }
+
+            //e.Handled = true;
+//            this.addressBox.Font = new System.Drawing.Font("Arial Unicode MS", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
         }
 
         protected void forwardButton_Click(object sender, EventArgs e)

@@ -66,7 +66,7 @@ namespace LZ_Marina
             try
             {
                 String url = this.webBrowser1.Document.ActiveElement.GetAttribute("href");
-                this.webBrowser1.Url = new Uri(url);
+                ((ExtendedWebBrowser.ExtendedWebBrowser)sender).Navigate(e.Url);
             }
             catch
             {
@@ -91,6 +91,11 @@ namespace LZ_Marina
         private void labelX1_Click(object sender, EventArgs e)
         {
             this.webBrowser1.Navigate(URL);
+        }
+
+        private void progressBarX1_Click(object sender, EventArgs e)
+        {
+            this.webBrowser1.Stop();
         }
     }
 }

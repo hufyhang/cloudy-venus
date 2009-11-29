@@ -31,10 +31,10 @@
             this.backButton = new System.Windows.Forms.Button();
             this.forwardButton = new System.Windows.Forms.Button();
             this.reloadButton = new System.Windows.Forms.Button();
-            this.addressBox = new System.Windows.Forms.ComboBox();
             this.closeButton = new System.Windows.Forms.Button();
             this.button1 = new System.Windows.Forms.Button();
             this.webBrowser1 = new ExtendedWebBrowser.ExtendedWebBrowser();
+            this.addressBox = new System.Windows.Forms.TextBox();
             this.SuspendLayout();
             // 
             // backButton
@@ -70,23 +70,12 @@
             this.reloadButton.Text = "R";
             this.reloadButton.UseVisualStyleBackColor = true;
             // 
-            // addressBox
-            // 
-            this.addressBox.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left)
-                        | System.Windows.Forms.AnchorStyles.Right)));
-            this.addressBox.FormattingEnabled = true;
-            this.addressBox.ImeMode = System.Windows.Forms.ImeMode.Off;
-            this.addressBox.Location = new System.Drawing.Point(113, 13);
-            this.addressBox.Name = "addressBox";
-            this.addressBox.Size = new System.Drawing.Size(430, 24);
-            this.addressBox.TabIndex = 3;
-            // 
             // closeButton
             // 
             this.closeButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.closeButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.closeButton.Font = new System.Drawing.Font("Arial Unicode MS", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.closeButton.Location = new System.Drawing.Point(634, 12);
+            this.closeButton.Location = new System.Drawing.Point(597, 12);
             this.closeButton.Name = "closeButton";
             this.closeButton.Size = new System.Drawing.Size(23, 24);
             this.closeButton.TabIndex = 5;
@@ -99,7 +88,7 @@
             this.button1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.button1.Font = new System.Drawing.Font("Arial Unicode MS", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.button1.Location = new System.Drawing.Point(549, 12);
+            this.button1.Location = new System.Drawing.Point(512, 12);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(79, 24);
             this.button1.TabIndex = 6;
@@ -116,34 +105,46 @@
             this.webBrowser1.Location = new System.Drawing.Point(8, 42);
             this.webBrowser1.MinimumSize = new System.Drawing.Size(20, 20);
             this.webBrowser1.Name = "webBrowser1";
-            this.webBrowser1.Size = new System.Drawing.Size(649, 287);
+            this.webBrowser1.Size = new System.Drawing.Size(612, 193);
             this.webBrowser1.TabIndex = 7;
             this.webBrowser1.WebBrowserShortcutsEnabled = false;
+            // 
+            // addressBox
+            // 
+            this.addressBox.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left)
+                        | System.Windows.Forms.AnchorStyles.Right)));
+            this.addressBox.Location = new System.Drawing.Point(113, 12);
+            this.addressBox.Multiline = true;
+            this.addressBox.Name = "addressBox";
+            this.addressBox.Size = new System.Drawing.Size(393, 24);
+            this.addressBox.TabIndex = 8;
+            this.addressBox.WordWrap = false;
             // 
             // Browser
             // 
             this.BackColor = System.Drawing.Color.White;
-            this.ClientSize = new System.Drawing.Size(666, 330);
+            this.ClientSize = new System.Drawing.Size(621, 235);
+            this.Controls.Add(this.addressBox);
             this.Controls.Add(this.webBrowser1);
             this.Controls.Add(this.button1);
             this.Controls.Add(this.closeButton);
-            this.Controls.Add(this.addressBox);
             this.Controls.Add(this.reloadButton);
             this.Controls.Add(this.forwardButton);
             this.Controls.Add(this.backButton);
             this.Font = new System.Drawing.Font("Arial Unicode MS", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.Name = "Browser";
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
         private System.Windows.Forms.Button backButton;
         private System.Windows.Forms.Button forwardButton;
         private System.Windows.Forms.Button reloadButton;
-        private System.Windows.Forms.ComboBox addressBox;
         private System.Windows.Forms.Button closeButton;
         private System.Windows.Forms.Button button1;
         private ExtendedWebBrowser.ExtendedWebBrowser webBrowser1;
+        private System.Windows.Forms.TextBox addressBox;
     }
         #endregion
 
