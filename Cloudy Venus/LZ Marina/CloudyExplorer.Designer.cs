@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             this.panel1 = new System.Windows.Forms.Panel();
             this.splitContainer1 = new System.Windows.Forms.SplitContainer();
             this.splitContainer2 = new System.Windows.Forms.SplitContainer();
@@ -44,6 +45,8 @@
             this.button2 = new System.Windows.Forms.Button();
             this.button1 = new System.Windows.Forms.Button();
             this.button4 = new System.Windows.Forms.Button();
+            this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
+            this.runWithDefaultApplicationToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.panel1.SuspendLayout();
             this.splitContainer1.Panel1.SuspendLayout();
             this.splitContainer1.Panel2.SuspendLayout();
@@ -51,6 +54,7 @@
             this.splitContainer2.Panel1.SuspendLayout();
             this.splitContainer2.Panel2.SuspendLayout();
             this.splitContainer2.SuspendLayout();
+            this.contextMenuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
             // panel1
@@ -64,7 +68,7 @@
             this.panel1.Location = new System.Drawing.Point(0, 0);
             this.panel1.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(820, 403);
+            this.panel1.Size = new System.Drawing.Size(804, 365);
             this.panel1.TabIndex = 0;
             // 
             // splitContainer1
@@ -83,8 +87,8 @@
             // splitContainer1.Panel2
             // 
             this.splitContainer1.Panel2.Controls.Add(this.listView3);
-            this.splitContainer1.Size = new System.Drawing.Size(813, 359);
-            this.splitContainer1.SplitterDistance = 408;
+            this.splitContainer1.Size = new System.Drawing.Size(797, 321);
+            this.splitContainer1.SplitterDistance = 399;
             this.splitContainer1.SplitterWidth = 5;
             this.splitContainer1.TabIndex = 10;
             // 
@@ -102,8 +106,8 @@
             // splitContainer2.Panel2
             // 
             this.splitContainer2.Panel2.Controls.Add(this.listView2);
-            this.splitContainer2.Size = new System.Drawing.Size(408, 359);
-            this.splitContainer2.SplitterDistance = 196;
+            this.splitContainer2.Size = new System.Drawing.Size(399, 321);
+            this.splitContainer2.SplitterDistance = 191;
             this.splitContainer2.SplitterWidth = 5;
             this.splitContainer2.TabIndex = 0;
             // 
@@ -118,7 +122,7 @@
             this.listView1.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.listView1.MultiSelect = false;
             this.listView1.Name = "listView1";
-            this.listView1.Size = new System.Drawing.Size(196, 359);
+            this.listView1.Size = new System.Drawing.Size(191, 321);
             this.listView1.TabIndex = 0;
             this.listView1.UseCompatibleStateImageBehavior = false;
             this.listView1.View = System.Windows.Forms.View.Details;
@@ -139,7 +143,7 @@
             this.listView2.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.listView2.MultiSelect = false;
             this.listView2.Name = "listView2";
-            this.listView2.Size = new System.Drawing.Size(207, 359);
+            this.listView2.Size = new System.Drawing.Size(203, 321);
             this.listView2.TabIndex = 1;
             this.listView2.UseCompatibleStateImageBehavior = false;
             this.listView2.View = System.Windows.Forms.View.Details;
@@ -156,6 +160,7 @@
             this.columnHeader4,
             this.columnHeader5,
             this.columnHeader6});
+            this.listView3.ContextMenuStrip = this.contextMenuStrip1;
             this.listView3.Dock = System.Windows.Forms.DockStyle.Fill;
             this.listView3.FullRowSelect = true;
             this.listView3.GridLines = true;
@@ -163,7 +168,7 @@
             this.listView3.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.listView3.MultiSelect = false;
             this.listView3.Name = "listView3";
-            this.listView3.Size = new System.Drawing.Size(400, 359);
+            this.listView3.Size = new System.Drawing.Size(393, 321);
             this.listView3.TabIndex = 1;
             this.listView3.UseCompatibleStateImageBehavior = false;
             this.listView3.View = System.Windows.Forms.View.Details;
@@ -196,7 +201,7 @@
             this.textBox1.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.textBox1.Multiline = true;
             this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(696, 21);
+            this.textBox1.Size = new System.Drawing.Size(680, 21);
             this.textBox1.TabIndex = 9;
             this.textBox1.WordWrap = false;
             // 
@@ -239,13 +244,28 @@
             this.button4.UseVisualStyleBackColor = true;
             this.button4.Click += new System.EventHandler(this.button4_Click);
             // 
+            // contextMenuStrip1
+            // 
+            this.contextMenuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.runWithDefaultApplicationToolStripMenuItem});
+            this.contextMenuStrip1.Name = "contextMenuStrip1";
+            this.contextMenuStrip1.Size = new System.Drawing.Size(153, 48);
+            // 
+            // runWithDefaultApplicationToolStripMenuItem
+            // 
+            this.runWithDefaultApplicationToolStripMenuItem.Name = "runWithDefaultApplicationToolStripMenuItem";
+            this.runWithDefaultApplicationToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.runWithDefaultApplicationToolStripMenuItem.Text = "Run as default";
+            this.runWithDefaultApplicationToolStripMenuItem.Click += new System.EventHandler(this.runWithDefaultApplicationToolStripMenuItem_Click);
+            // 
             // CloudyExplorer
             // 
             this.BackColor = System.Drawing.Color.White;
+            this.ClientSize = new System.Drawing.Size(804, 365);
             this.Controls.Add(this.panel1);
             this.Font = new System.Drawing.Font("Arial Unicode MS", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.Size = new System.Drawing.Size(820, 403);
+            this.Name = "CloudyExplorer";
             this.Text = "CloudyExplorer";
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
@@ -255,6 +275,7 @@
             this.splitContainer2.Panel1.ResumeLayout(false);
             this.splitContainer2.Panel2.ResumeLayout(false);
             this.splitContainer2.ResumeLayout(false);
+            this.contextMenuStrip1.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -277,5 +298,7 @@
         private System.Windows.Forms.ColumnHeader columnHeader4;
         private System.Windows.Forms.ColumnHeader columnHeader5;
         private System.Windows.Forms.ColumnHeader columnHeader6;
+        private System.Windows.Forms.ContextMenuStrip contextMenuStrip1;
+        private System.Windows.Forms.ToolStripMenuItem runWithDefaultApplicationToolStripMenuItem;
     }
 }

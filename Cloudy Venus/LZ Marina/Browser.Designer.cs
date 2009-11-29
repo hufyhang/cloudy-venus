@@ -107,7 +107,6 @@
             this.webBrowser1.Name = "webBrowser1";
             this.webBrowser1.Size = new System.Drawing.Size(620, 193);
             this.webBrowser1.TabIndex = 7;
-            this.webBrowser1.WebBrowserShortcutsEnabled = false;
             // 
             // addressBox
             // 
@@ -123,7 +122,6 @@
             // Browser
             // 
             this.BackColor = System.Drawing.Color.White;
-            this.ClientSize = new System.Drawing.Size(621, 235);
             this.Controls.Add(this.addressBox);
             this.Controls.Add(this.webBrowser1);
             this.Controls.Add(this.button1);
@@ -132,7 +130,7 @@
             this.Controls.Add(this.forwardButton);
             this.Controls.Add(this.backButton);
             this.Font = new System.Drawing.Font("Arial Unicode MS", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.Name = "Browser";
+            this.Size = new System.Drawing.Size(621, 235);
             this.ResumeLayout(false);
             this.PerformLayout();
 

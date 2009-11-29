@@ -36,12 +36,39 @@ namespace LZ_Marina
             loadFiles();
         }
 
+        public Editor(String path, Boolean flag)
+        {
+            InitializeComponent();
+
+            this.richTextBox1.KeyDown += new KeyEventHandler(richTextBox1_KeyDown);
+            this.textBoxX1.KeyDown += new KeyEventHandler(richTextBox1_KeyDown);
+
+            this.Text = "Notepad";
+            this.path = path;
+            loadFile();
+        }
+
         protected void richTextBox1_KeyDown(object sender, KeyEventArgs e)
         {
             if (e.Control && e.KeyCode == Keys.S)
             {
                 saveItem();
             }
+        }
+
+        protected void loadFile()
+        {
+            this.Text = "Notepad";
+            this.listView1.Items.Clear();
+            this.storage.Clear();
+            this.textBoxX1.Text = this.richTextBox1.Text = "";
+
+            FileInfo file = new FileInfo(path);
+            ListViewItem item = new ListViewItem(file.Name);
+            item.SubItems.Add(file.LastWriteTime.ToString());
+            this.listView1.Items.Add(item);
+            this.storage.Add(file);
+            this.listView1.Items[0].Selected = true;
         }
 
         protected void loadFiles()

@@ -40,6 +40,27 @@ namespace LZ_Marina
             initialPath();
         }
 
+        public Picture_Viewer(String path, Boolean flag)
+        {
+            InitializeComponent();
+            this.Text = "Picture Viewer";
+            this.listView1.SelectedIndexChanged += new EventHandler(listView1_SelectedIndexChanged);
+            this.path = path;
+            initialFile();
+        }
+
+        protected void initialFile()
+        {
+            FileInfo file = new FileInfo(this.path);
+            ListViewItem item = new ListViewItem(file.Name);
+            item.SubItems.Add((file.Length / 1024).ToString());
+            item.SubItems.Add(file.LastWriteTime.ToString());
+            this.listView1.Items.Add(item);
+            this.pictureBox1.Image = new Bitmap(this.path);
+            this.label1.Text = file.Name;
+            this.listView1.Items[0].Selected = true;
+        }
+
         protected void initialPath()
         {
             DirectoryInfo dir = new DirectoryInfo(this.path);

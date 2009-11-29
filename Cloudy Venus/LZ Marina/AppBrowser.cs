@@ -11,6 +11,7 @@ namespace LZ_Marina
     public partial class AppBrowser : TabPage
     {
         private String URL = "";
+        private String chrome = @"cf:";
 
         public AppBrowser()
         {

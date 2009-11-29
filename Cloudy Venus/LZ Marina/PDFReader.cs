@@ -22,6 +22,22 @@ namespace LZ_Marina
             this.axAcroPDF1.src = "";
         }
 
+        public PDFReader(String filename)
+        {
+            InitializeComponent();
+            this.Text = "PDF Reader";
+            this.listView1.SelectedIndexChanged += new EventHandler(listView1_SelectedIndexChanged);
+            this.axAcroPDF1.src = "";
+
+            FileInfo info = new FileInfo(filename);
+            this.list.Add(info.FullName);
+            ListViewItem item = new ListViewItem(info.Name);
+            item.SubItems.Add(info.LastWriteTime.ToString());
+            this.listView1.Items.Add(item);
+
+            this.listView1.Items[0].Selected = true;
+        }
+
         private void listView1_SelectedIndexChanged(object sender, EventArgs e)
         {
             if (this.listView1.SelectedItems.Count > 0)

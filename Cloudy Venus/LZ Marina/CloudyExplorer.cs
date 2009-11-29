@@ -12,6 +12,7 @@ namespace LZ_Marina
 {
     public partial class CloudyExplorer : TabPage
     {
+        private TabControl tabControl;
         private String root = "";
         private String sub = "";
         private String thd = "";
@@ -23,9 +24,10 @@ namespace LZ_Marina
             initialEvents();
         }
 
-        public CloudyExplorer(String root)
+        public CloudyExplorer(String root, TabControl tabControl)
         {
             this.root = root;
+            this.tabControl = tabControl;
             InitializeComponent();
             initialEvents();
             loadRoot();
@@ -33,6 +35,7 @@ namespace LZ_Marina
 
         protected void initialEvents()
         {
+            this.Text = @"Cloudy Explorer";
             this.textBox1.KeyDown += new KeyEventHandler(textBox1_KeyDown);
             this.listView1.SelectedIndexChanged += new EventHandler(listView1_SelectedIndexChanged);
             this.listView2.SelectedIndexChanged += new EventHandler(listView2_SelectedIndexChanged);
@@ -59,10 +62,61 @@ namespace LZ_Marina
                 }
                 else
                 {
-                    System.Diagnostics.Process.Start(this.root + this.sub + this.thd + this.tail + @"\" + this.listView3.SelectedItems[0].SubItems[0].Text);
+                    runItem(this.root + this.sub + this.thd + this.tail + @"\" + this.listView3.SelectedItems[0].SubItems[0].Text);
+                    //System.Diagnostics.Process.Start(this.root + this.sub + this.thd + this.tail + @"\" + this.listView3.SelectedItems[0].SubItems[0].Text);
                 }
                 this.textBox1.Text = this.root + this.sub + this.thd + this.tail;
             }
+        }
+
+        protected void runItem(String filename)
+        {
+            FileInfo file = new FileInfo(filename);
+            ArrayList img = new ArrayList();
+            img.Add(@".jpg");
+            img.Add(@".png");
+            img.Add(@".bmp");
+            img.Add(@".gif");
+            img.Add(@".ico");
+            img.Add(@".tif");
+
+            ArrayList media = new ArrayList();
+            media.Add(@".wma");
+            media.Add(@".wmv");
+            media.Add(@".wav");
+            media.Add(@".rm");
+            media.Add(@".rmvb");
+            media.Add(@".avi");
+            media.Add(@".wmv");
+            media.Add(@".mp3");
+            media.Add(@".3gp");
+            media.Add(@".mpeg");
+            media.Add(@".mpg");
+            media.Add(@".mov");
+
+            String extension = file.Extension.ToLower();
+
+            if (img.Contains(extension))
+            {
+                this.tabControl.Controls.Add(new Picture_Viewer(filename, true));
+            }
+            else if (media.Contains(extension))
+            {
+                this.tabControl.Controls.Add(new Media_Player(filename));
+            }
+            else if (extension.Equals(@".pdf"))
+            {
+                this.tabControl.Controls.Add(new PDFReader(filename));
+            }
+            else if (extension.Equals(@".exe"))
+            {
+                System.Diagnostics.Process.Start(filename);
+            }
+            else
+            {
+                this.tabControl.Controls.Add(new Editor(filename, true));
+            }
+            this.tabControl.SelectedIndex = this.tabControl.TabCount - 1;
         }
 
         protected void listView2_SelectedIndexChanged(object sender, EventArgs e)
@@ -150,28 +204,37 @@ namespace LZ_Marina
             this.listView1.Items.Clear();
             this.listView2.Items.Clear();
             this.listView3.Items.Clear();
-            DirectoryInfo rootDir = new DirectoryInfo(this.root);
             this.listView1.Items.Add(new ListViewItem(@"<ROOT>"));
-            foreach (DirectoryInfo dir in rootDir.GetDirectories())
+            try
             {
-                this.listView1.Items.Add(new ListViewItem(dir.Name));
+                DirectoryInfo rootDir = new DirectoryInfo(this.root);
+                foreach (DirectoryInfo dir in rootDir.GetDirectories())
+                {
+                    this.listView1.Items.Add(new ListViewItem(dir.Name));
+                }
+
+                foreach (FileInfo file in rootDir.GetFiles())
+                {
+                    ListViewItem item = new ListViewItem(file.Name);
+                    item.SubItems.Add(file.Extension);
+                    item.SubItems.Add((file.Length / 1024).ToString());
+                    item.SubItems.Add(file.LastWriteTime.ToString());
+                    this.listView3.Items.Add(item);
+                }
+                this.textBox1.Text = this.root;
             }
-            foreach (FileInfo file in rootDir.GetFiles())
+            catch (Exception)
             {
-                ListViewItem item = new ListViewItem(file.Name);
-                item.SubItems.Add(file.Extension);
-                item.SubItems.Add((file.Length / 1024).ToString());
-                item.SubItems.Add(file.LastWriteTime.ToString());
-                this.listView3.Items.Add(item);
+                this.root = "";
+                MessageBox.Show("Please make sure you typed a valid address.", "Unknown path...", MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
-            this.textBox1.Text = this.root;
         }
 
         protected void textBox1_KeyDown(object sender, KeyEventArgs e)
         {
             if (e.KeyCode == Keys.Enter)
             {
-                if (!this.textBox1.Text[this.textBox1.Text.Length - 2].Equals('\\'))
+                if (!this.textBox1.Text[this.textBox1.Text.Length - 1].Equals('\\'))
                 {
                     this.root = this.textBox1.Text + @"\";
                     this.textBox1.Text = this.root;
@@ -204,6 +267,24 @@ namespace LZ_Marina
                     this.root = folder.SelectedPath + @"\";
                     this.loadRoot();
                 }
+            }
+        }
+
+        private void runWithDefaultApplicationToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            if (this.listView3.SelectedItems.Count > 0)
+            {
+                if (this.listView3.SelectedItems[0].SubItems[1].Text.Equals(@"<DIR>"))
+                {
+                }
+                else if (this.listView3.SelectedItems[0].SubItems[0].Text.Equals(@"<ROOT>"))
+                {
+                }
+                else
+                {
+                    System.Diagnostics.Process.Start(this.root + this.sub + this.thd + this.tail + @"\" + this.listView3.SelectedItems[0].SubItems[0].Text);
+                }
+                this.textBox1.Text = this.root + this.sub + this.thd + this.tail;
             }
         }
     }

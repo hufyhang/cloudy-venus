@@ -9,6 +9,7 @@ using System.IO;
 using System.Collections;
 using System.Diagnostics;
 using System.Threading;
+using System.Runtime.InteropServices;
 
 namespace LZ_Marina
 {
@@ -22,6 +23,23 @@ namespace LZ_Marina
         private String homePage = "";
         private String picRoot = "";
         private String textRoot = "";
+
+        [DllImport("kernel32.dll")]
+        private static extern int SetProcessWorkingSetSize(IntPtr hProcess, int dwMinimumWorkingSetSize, int dwMaximumWorkingSetSize);
+
+        public static int SetProcessMemoryToMin()
+        {
+            return SetProcessMemoryToMin(Process.GetCurrentProcess().Handle);
+        }
+
+        public static int SetProcessMemoryToMin(IntPtr SetProcess)
+        {
+            if (Environment.OSVersion.Platform == PlatformID.Win32NT)
+            {
+                return SetProcessWorkingSetSize(SetProcess, -1, -1);
+            }
+            return -1;
+        }
 
         public Form1()
         {
@@ -221,6 +239,7 @@ namespace LZ_Marina
             if (this.tabControl1.SelectedIndex != 0)
             {
                 this.tabControl1.SelectedTab.Dispose();
+                GC.Collect();
             }
         }
 
@@ -243,7 +262,7 @@ namespace LZ_Marina
                 switch (this.listView1.SelectedIndices[0])
                 {
                     case 0:
-                        this.tabControl1.Controls.Add(new CloudyExplorer(Application.StartupPath + @"\File System\"));
+                        this.tabControl1.Controls.Add(new CloudyExplorer(Application.StartupPath + @"\File System\", this.tabControl1));
                         this.tabControl1.SelectedIndex = this.tabControl1.TabPages.Count - 1;
                         break;
                     case 1:

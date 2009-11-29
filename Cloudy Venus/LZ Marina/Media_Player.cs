@@ -36,10 +36,20 @@ namespace LZ_Marina
             }
         }
 
-        protected void media_play(String URL)
+        public Media_Player(String URL)
         {
-            this.axWindowsMediaPlayer1.URL = URL;
-            this.axWindowsMediaPlayer1.Ctlcontrols.play();
+            InitializeComponent();
+            this.Text = "Media Player";
+            this.axWindowsMediaPlayer1.settings.setMode("loop", true);
+            this.axWindowsMediaPlayer1.currentPlaylist = this.axWindowsMediaPlayer1.newPlaylist("Default playlist", "");
+            InitialEvents();
+
+            this.axWindowsMediaPlayer1.currentPlaylist.appendItem(this.axWindowsMediaPlayer1.newMedia(URL));
+            FileInfo info = new FileInfo(URL);
+            this.listView1.Items.Add(new ListViewItem(info.Name));
+
+            this.axWindowsMediaPlayer1.Ctlcontrols.playItem(this.axWindowsMediaPlayer1.currentPlaylist.get_Item(0));
+            this.Text = this.axWindowsMediaPlayer1.currentMedia.name + @" - Media Player";
         }
 
         private void button1_Click(object sender, EventArgs e)
