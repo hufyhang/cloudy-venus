@@ -17,6 +17,7 @@ namespace LZ_Marina
         private String sub = "";
         private String thd = "";
         private String tail = "";
+        private String tempSub = "";
 
         public CloudyExplorer()
         {
@@ -93,6 +94,7 @@ namespace LZ_Marina
             media.Add(@".mpeg");
             media.Add(@".mpg");
             media.Add(@".mov");
+            media.Add(@".flv");
 
             String extension = file.Extension.ToLower();
 
@@ -130,9 +132,11 @@ namespace LZ_Marina
                 }
                 else
                 {
+                    this.sub = this.tempSub;
+                    this.thd = "";
                     this.loadSub(this.root + this.sub);
                 }
-                this.tail = "";
+                this.tail =  "";
                 this.textBox1.Text = this.root + this.sub + this.thd;
             }
         }
@@ -145,7 +149,9 @@ namespace LZ_Marina
                 {
                     this.sub = this.listView1.SelectedItems[0].SubItems[0].Text + @"\";
                     loadSub(this.root + this.sub);
+                    this.thd = this.tail = "";
                     this.textBox1.Text = this.root + this.sub;
+                    this.tempSub = this.sub;
                 }
                 else
                 {
@@ -157,44 +163,56 @@ namespace LZ_Marina
 
         protected void loadThird(String path)
         {
-            this.listView3.Items.Clear();
-            DirectoryInfo thirdDir = new DirectoryInfo(path);
-            ListViewItem itm = new ListViewItem(@"<ROOT>");
-            itm.SubItems.Add(@"<ROOT>");
-            this.listView3.Items.Add(itm);
-            foreach (DirectoryInfo dir in thirdDir.GetDirectories())
+            try
             {
-                ListViewItem item = new ListViewItem(dir.Name);
-                item.SubItems.Add(@"<DIR>");
-                this.listView3.Items.Add(item);
+                this.listView3.Items.Clear();
+                DirectoryInfo thirdDir = new DirectoryInfo(path);
+                ListViewItem itm = new ListViewItem(@"<ROOT>");
+                itm.SubItems.Add(@"<ROOT>");
+                this.listView3.Items.Add(itm);
+                foreach (DirectoryInfo dir in thirdDir.GetDirectories())
+                {
+                    ListViewItem item = new ListViewItem(dir.Name);
+                    item.SubItems.Add(@"<DIR>");
+                    this.listView3.Items.Add(item);
+                }
+                foreach (FileInfo file in thirdDir.GetFiles())
+                {
+                    ListViewItem item = new ListViewItem(file.Name);
+                    item.SubItems.Add(file.Extension);
+                    item.SubItems.Add((file.Length / 1024).ToString());
+                    item.SubItems.Add(file.LastWriteTime.ToString());
+                    this.listView3.Items.Add(item);
+                }
             }
-            foreach (FileInfo file in thirdDir.GetFiles())
+            catch (UnauthorizedAccessException)
             {
-                ListViewItem item = new ListViewItem(file.Name);
-                item.SubItems.Add(file.Extension);
-                item.SubItems.Add((file.Length / 1024).ToString());
-                item.SubItems.Add(file.LastWriteTime.ToString());
-                this.listView3.Items.Add(item);
             }
         }
 
         protected void loadSub(String path)
         {
-            this.listView2.Items.Clear();
-            this.listView3.Items.Clear();
-            DirectoryInfo subDir = new DirectoryInfo(path );
-            this.listView2.Items.Add(new ListViewItem(@"<ROOT>"));
-            foreach (DirectoryInfo dir in subDir.GetDirectories())
+            try
             {
-                this.listView2.Items.Add(new ListViewItem(dir.Name));
+                this.listView2.Items.Clear();
+                this.listView3.Items.Clear();
+                DirectoryInfo subDir = new DirectoryInfo(path);
+                this.listView2.Items.Add(new ListViewItem(@"<ROOT>"));
+                foreach (DirectoryInfo dir in subDir.GetDirectories())
+                {
+                    this.listView2.Items.Add(new ListViewItem(dir.Name));
+                }
+                foreach (FileInfo file in subDir.GetFiles())
+                {
+                    ListViewItem item = new ListViewItem(file.Name);
+                    item.SubItems.Add(file.Extension);
+                    item.SubItems.Add((file.Length / 1024).ToString());
+                    item.SubItems.Add(file.LastWriteTime.ToString());
+                    this.listView3.Items.Add(item);
+                }
             }
-            foreach (FileInfo file in subDir.GetFiles())
+            catch (UnauthorizedAccessException)
             {
-                ListViewItem item = new ListViewItem(file.Name);
-                item.SubItems.Add(file.Extension);
-                item.SubItems.Add((file.Length / 1024).ToString());
-                item.SubItems.Add(file.LastWriteTime.ToString());
-                this.listView3.Items.Add(item);
             }
         }
 
@@ -282,6 +300,7 @@ namespace LZ_Marina
                 }
                 else
                 {
+                    //MessageBox.Show(this.root + this.sub + this.thd + this.tail + @"\" + this.listView3.SelectedItems[0].SubItems[0].Text);
                     System.Diagnostics.Process.Start(this.root + this.sub + this.thd + this.tail + @"\" + this.listView3.SelectedItems[0].SubItems[0].Text);
                 }
                 this.textBox1.Text = this.root + this.sub + this.thd + this.tail;

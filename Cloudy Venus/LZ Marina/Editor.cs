@@ -153,7 +153,7 @@ namespace LZ_Marina
                 this.richTextBox1.Text = this.textBoxX1.Text = "";
                 FileInfo file = (FileInfo)this.storage[this.listView1.SelectedItems[0].Index];
                 this.textBoxX1.Text = file.Name;
-                StreamReader reader = new StreamReader(file.FullName);
+                StreamReader reader = new StreamReader(file.FullName, System.Text.Encoding.GetEncoding("gb2312"), true);
                 this.richTextBox1.Text = reader.ReadToEnd();
                 reader.Close();
                 this.Text = this.textBoxX1.Text;

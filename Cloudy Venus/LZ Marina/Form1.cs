@@ -238,7 +238,9 @@ namespace LZ_Marina
         {
             if (this.tabControl1.SelectedIndex != 0)
             {
+                int index = this.tabControl1.SelectedIndex;
                 this.tabControl1.SelectedTab.Dispose();
+                this.tabControl1.SelectedIndex = index - 1;
                 GC.Collect();
             }
         }
