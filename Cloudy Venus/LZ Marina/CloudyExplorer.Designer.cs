@@ -34,19 +34,31 @@
             this.splitContainer2 = new System.Windows.Forms.SplitContainer();
             this.listView1 = new System.Windows.Forms.ListView();
             this.columnHeader1 = new System.Windows.Forms.ColumnHeader();
+            this.contextMenuStrip3 = new System.Windows.Forms.ContextMenuStrip(this.components);
+            this.toolStripMenuItem2 = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripMenuItem4 = new System.Windows.Forms.ToolStripMenuItem();
             this.listView2 = new System.Windows.Forms.ListView();
             this.columnHeader2 = new System.Windows.Forms.ColumnHeader();
+            this.contextMenuStrip2 = new System.Windows.Forms.ContextMenuStrip(this.components);
+            this.addListIntoNotepadToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
+            this.addListIntoPDFReaderToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.listView3 = new System.Windows.Forms.ListView();
             this.columnHeader3 = new System.Windows.Forms.ColumnHeader();
             this.columnHeader4 = new System.Windows.Forms.ColumnHeader();
             this.columnHeader5 = new System.Windows.Forms.ColumnHeader();
             this.columnHeader6 = new System.Windows.Forms.ColumnHeader();
+            this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
+            this.runWithDefaultApplicationToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripMenuItem1 = new System.Windows.Forms.ToolStripSeparator();
+            this.addListIntoNotepadToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.addListIntoPDFReaderToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.textBox1 = new System.Windows.Forms.TextBox();
             this.button2 = new System.Windows.Forms.Button();
             this.button1 = new System.Windows.Forms.Button();
             this.button4 = new System.Windows.Forms.Button();
-            this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
-            this.runWithDefaultApplicationToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.openDirectoryWithPictureViewerToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.openDirectoryWithPictureViewerToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
+            this.openDirectoryWithPictureViewerToolStripMenuItem2 = new System.Windows.Forms.ToolStripMenuItem();
             this.panel1.SuspendLayout();
             this.splitContainer1.Panel1.SuspendLayout();
             this.splitContainer1.Panel2.SuspendLayout();
@@ -54,6 +66,8 @@
             this.splitContainer2.Panel1.SuspendLayout();
             this.splitContainer2.Panel2.SuspendLayout();
             this.splitContainer2.SuspendLayout();
+            this.contextMenuStrip3.SuspendLayout();
+            this.contextMenuStrip2.SuspendLayout();
             this.contextMenuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -68,7 +82,7 @@
             this.panel1.Location = new System.Drawing.Point(0, 0);
             this.panel1.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(804, 365);
+            this.panel1.Size = new System.Drawing.Size(788, 327);
             this.panel1.TabIndex = 0;
             // 
             // splitContainer1
@@ -87,8 +101,8 @@
             // splitContainer1.Panel2
             // 
             this.splitContainer1.Panel2.Controls.Add(this.listView3);
-            this.splitContainer1.Size = new System.Drawing.Size(797, 321);
-            this.splitContainer1.SplitterDistance = 399;
+            this.splitContainer1.Size = new System.Drawing.Size(781, 283);
+            this.splitContainer1.SplitterDistance = 390;
             this.splitContainer1.SplitterWidth = 5;
             this.splitContainer1.TabIndex = 10;
             // 
@@ -106,8 +120,8 @@
             // splitContainer2.Panel2
             // 
             this.splitContainer2.Panel2.Controls.Add(this.listView2);
-            this.splitContainer2.Size = new System.Drawing.Size(399, 321);
-            this.splitContainer2.SplitterDistance = 191;
+            this.splitContainer2.Size = new System.Drawing.Size(390, 283);
+            this.splitContainer2.SplitterDistance = 186;
             this.splitContainer2.SplitterWidth = 5;
             this.splitContainer2.TabIndex = 0;
             // 
@@ -115,6 +129,7 @@
             // 
             this.listView1.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
             this.columnHeader1});
+            this.listView1.ContextMenuStrip = this.contextMenuStrip3;
             this.listView1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.listView1.FullRowSelect = true;
             this.listView1.GridLines = true;
@@ -122,7 +137,7 @@
             this.listView1.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.listView1.MultiSelect = false;
             this.listView1.Name = "listView1";
-            this.listView1.Size = new System.Drawing.Size(191, 321);
+            this.listView1.Size = new System.Drawing.Size(186, 283);
             this.listView1.TabIndex = 0;
             this.listView1.UseCompatibleStateImageBehavior = false;
             this.listView1.View = System.Windows.Forms.View.Details;
@@ -132,10 +147,34 @@
             this.columnHeader1.Text = "Root Path";
             this.columnHeader1.Width = 200;
             // 
+            // contextMenuStrip3
+            // 
+            this.contextMenuStrip3.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.toolStripMenuItem2,
+            this.toolStripMenuItem4,
+            this.openDirectoryWithPictureViewerToolStripMenuItem2});
+            this.contextMenuStrip3.Name = "contextMenuStrip2";
+            this.contextMenuStrip3.Size = new System.Drawing.Size(258, 70);
+            // 
+            // toolStripMenuItem2
+            // 
+            this.toolStripMenuItem2.Name = "toolStripMenuItem2";
+            this.toolStripMenuItem2.Size = new System.Drawing.Size(257, 22);
+            this.toolStripMenuItem2.Text = "Open directory with Notepad";
+            this.toolStripMenuItem2.Click += new System.EventHandler(this.toolStripMenuItem2_Click);
+            // 
+            // toolStripMenuItem4
+            // 
+            this.toolStripMenuItem4.Name = "toolStripMenuItem4";
+            this.toolStripMenuItem4.Size = new System.Drawing.Size(257, 22);
+            this.toolStripMenuItem4.Text = "Open directory with PDF Reader";
+            this.toolStripMenuItem4.Click += new System.EventHandler(this.toolStripMenuItem4_Click);
+            // 
             // listView2
             // 
             this.listView2.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
             this.columnHeader2});
+            this.listView2.ContextMenuStrip = this.contextMenuStrip2;
             this.listView2.Dock = System.Windows.Forms.DockStyle.Fill;
             this.listView2.FullRowSelect = true;
             this.listView2.GridLines = true;
@@ -143,7 +182,7 @@
             this.listView2.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.listView2.MultiSelect = false;
             this.listView2.Name = "listView2";
-            this.listView2.Size = new System.Drawing.Size(203, 321);
+            this.listView2.Size = new System.Drawing.Size(199, 283);
             this.listView2.TabIndex = 1;
             this.listView2.UseCompatibleStateImageBehavior = false;
             this.listView2.View = System.Windows.Forms.View.Details;
@@ -152,6 +191,29 @@
             // 
             this.columnHeader2.Text = "Sub Level";
             this.columnHeader2.Width = 200;
+            // 
+            // contextMenuStrip2
+            // 
+            this.contextMenuStrip2.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.addListIntoNotepadToolStripMenuItem1,
+            this.addListIntoPDFReaderToolStripMenuItem1,
+            this.openDirectoryWithPictureViewerToolStripMenuItem1});
+            this.contextMenuStrip2.Name = "contextMenuStrip2";
+            this.contextMenuStrip2.Size = new System.Drawing.Size(258, 70);
+            // 
+            // addListIntoNotepadToolStripMenuItem1
+            // 
+            this.addListIntoNotepadToolStripMenuItem1.Name = "addListIntoNotepadToolStripMenuItem1";
+            this.addListIntoNotepadToolStripMenuItem1.Size = new System.Drawing.Size(257, 22);
+            this.addListIntoNotepadToolStripMenuItem1.Text = "Open directory with Notepad";
+            this.addListIntoNotepadToolStripMenuItem1.Click += new System.EventHandler(this.addListIntoNotepadToolStripMenuItem1_Click);
+            // 
+            // addListIntoPDFReaderToolStripMenuItem1
+            // 
+            this.addListIntoPDFReaderToolStripMenuItem1.Name = "addListIntoPDFReaderToolStripMenuItem1";
+            this.addListIntoPDFReaderToolStripMenuItem1.Size = new System.Drawing.Size(257, 22);
+            this.addListIntoPDFReaderToolStripMenuItem1.Text = "Open directory with Reader";
+            this.addListIntoPDFReaderToolStripMenuItem1.Click += new System.EventHandler(this.addListIntoPDFReaderToolStripMenuItem1_Click);
             // 
             // listView3
             // 
@@ -168,7 +230,7 @@
             this.listView3.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.listView3.MultiSelect = false;
             this.listView3.Name = "listView3";
-            this.listView3.Size = new System.Drawing.Size(393, 321);
+            this.listView3.Size = new System.Drawing.Size(386, 283);
             this.listView3.TabIndex = 1;
             this.listView3.UseCompatibleStateImageBehavior = false;
             this.listView3.View = System.Windows.Forms.View.Details;
@@ -193,6 +255,43 @@
             this.columnHeader6.Text = "Last modified date";
             this.columnHeader6.Width = 200;
             // 
+            // contextMenuStrip1
+            // 
+            this.contextMenuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.runWithDefaultApplicationToolStripMenuItem,
+            this.toolStripMenuItem1,
+            this.addListIntoNotepadToolStripMenuItem,
+            this.addListIntoPDFReaderToolStripMenuItem,
+            this.openDirectoryWithPictureViewerToolStripMenuItem});
+            this.contextMenuStrip1.Name = "contextMenuStrip1";
+            this.contextMenuStrip1.Size = new System.Drawing.Size(258, 120);
+            // 
+            // runWithDefaultApplicationToolStripMenuItem
+            // 
+            this.runWithDefaultApplicationToolStripMenuItem.Name = "runWithDefaultApplicationToolStripMenuItem";
+            this.runWithDefaultApplicationToolStripMenuItem.Size = new System.Drawing.Size(257, 22);
+            this.runWithDefaultApplicationToolStripMenuItem.Text = "Run as default";
+            this.runWithDefaultApplicationToolStripMenuItem.Click += new System.EventHandler(this.runWithDefaultApplicationToolStripMenuItem_Click);
+            // 
+            // toolStripMenuItem1
+            // 
+            this.toolStripMenuItem1.Name = "toolStripMenuItem1";
+            this.toolStripMenuItem1.Size = new System.Drawing.Size(254, 6);
+            // 
+            // addListIntoNotepadToolStripMenuItem
+            // 
+            this.addListIntoNotepadToolStripMenuItem.Name = "addListIntoNotepadToolStripMenuItem";
+            this.addListIntoNotepadToolStripMenuItem.Size = new System.Drawing.Size(257, 22);
+            this.addListIntoNotepadToolStripMenuItem.Text = "Open directory with Notepad";
+            this.addListIntoNotepadToolStripMenuItem.Click += new System.EventHandler(this.addListIntoNotepadToolStripMenuItem_Click);
+            // 
+            // addListIntoPDFReaderToolStripMenuItem
+            // 
+            this.addListIntoPDFReaderToolStripMenuItem.Name = "addListIntoPDFReaderToolStripMenuItem";
+            this.addListIntoPDFReaderToolStripMenuItem.Size = new System.Drawing.Size(257, 22);
+            this.addListIntoPDFReaderToolStripMenuItem.Text = "Open directory with PDF Reader";
+            this.addListIntoPDFReaderToolStripMenuItem.Click += new System.EventHandler(this.addListIntoPDFReaderToolStripMenuItem_Click);
+            // 
             // textBox1
             // 
             this.textBox1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left)
@@ -201,7 +300,7 @@
             this.textBox1.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.textBox1.Multiline = true;
             this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(680, 21);
+            this.textBox1.Size = new System.Drawing.Size(664, 21);
             this.textBox1.TabIndex = 9;
             this.textBox1.WordWrap = false;
             // 
@@ -244,24 +343,31 @@
             this.button4.UseVisualStyleBackColor = true;
             this.button4.Click += new System.EventHandler(this.button4_Click);
             // 
-            // contextMenuStrip1
+            // openDirectoryWithPictureViewerToolStripMenuItem
             // 
-            this.contextMenuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.runWithDefaultApplicationToolStripMenuItem});
-            this.contextMenuStrip1.Name = "contextMenuStrip1";
-            this.contextMenuStrip1.Size = new System.Drawing.Size(153, 48);
+            this.openDirectoryWithPictureViewerToolStripMenuItem.Name = "openDirectoryWithPictureViewerToolStripMenuItem";
+            this.openDirectoryWithPictureViewerToolStripMenuItem.Size = new System.Drawing.Size(257, 22);
+            this.openDirectoryWithPictureViewerToolStripMenuItem.Text = "Open directory with Picture Viewer";
+            this.openDirectoryWithPictureViewerToolStripMenuItem.Click += new System.EventHandler(this.openDirectoryWithPictureViewerToolStripMenuItem_Click);
             // 
-            // runWithDefaultApplicationToolStripMenuItem
+            // openDirectoryWithPictureViewerToolStripMenuItem1
             // 
-            this.runWithDefaultApplicationToolStripMenuItem.Name = "runWithDefaultApplicationToolStripMenuItem";
-            this.runWithDefaultApplicationToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
-            this.runWithDefaultApplicationToolStripMenuItem.Text = "Run as default";
-            this.runWithDefaultApplicationToolStripMenuItem.Click += new System.EventHandler(this.runWithDefaultApplicationToolStripMenuItem_Click);
+            this.openDirectoryWithPictureViewerToolStripMenuItem1.Name = "openDirectoryWithPictureViewerToolStripMenuItem1";
+            this.openDirectoryWithPictureViewerToolStripMenuItem1.Size = new System.Drawing.Size(257, 22);
+            this.openDirectoryWithPictureViewerToolStripMenuItem1.Text = "Open directory with Picture Viewer";
+            this.openDirectoryWithPictureViewerToolStripMenuItem1.Click += new System.EventHandler(this.openDirectoryWithPictureViewerToolStripMenuItem1_Click);
+            // 
+            // openDirectoryWithPictureViewerToolStripMenuItem2
+            // 
+            this.openDirectoryWithPictureViewerToolStripMenuItem2.Name = "openDirectoryWithPictureViewerToolStripMenuItem2";
+            this.openDirectoryWithPictureViewerToolStripMenuItem2.Size = new System.Drawing.Size(257, 22);
+            this.openDirectoryWithPictureViewerToolStripMenuItem2.Text = "Open directory with Picture Viewer";
+            this.openDirectoryWithPictureViewerToolStripMenuItem2.Click += new System.EventHandler(this.openDirectoryWithPictureViewerToolStripMenuItem2_Click);
             // 
             // CloudyExplorer
             // 
             this.BackColor = System.Drawing.Color.White;
-            this.ClientSize = new System.Drawing.Size(804, 365);
+            this.ClientSize = new System.Drawing.Size(788, 327);
             this.Controls.Add(this.panel1);
             this.Font = new System.Drawing.Font("Arial Unicode MS", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
@@ -275,6 +381,8 @@
             this.splitContainer2.Panel1.ResumeLayout(false);
             this.splitContainer2.Panel2.ResumeLayout(false);
             this.splitContainer2.ResumeLayout(false);
+            this.contextMenuStrip3.ResumeLayout(false);
+            this.contextMenuStrip2.ResumeLayout(false);
             this.contextMenuStrip1.ResumeLayout(false);
             this.ResumeLayout(false);
 
@@ -300,5 +408,17 @@
         private System.Windows.Forms.ColumnHeader columnHeader6;
         private System.Windows.Forms.ContextMenuStrip contextMenuStrip1;
         private System.Windows.Forms.ToolStripMenuItem runWithDefaultApplicationToolStripMenuItem;
+        private System.Windows.Forms.ToolStripSeparator toolStripMenuItem1;
+        private System.Windows.Forms.ToolStripMenuItem addListIntoNotepadToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem addListIntoPDFReaderToolStripMenuItem;
+        private System.Windows.Forms.ContextMenuStrip contextMenuStrip3;
+        private System.Windows.Forms.ToolStripMenuItem toolStripMenuItem2;
+        private System.Windows.Forms.ToolStripMenuItem toolStripMenuItem4;
+        private System.Windows.Forms.ContextMenuStrip contextMenuStrip2;
+        private System.Windows.Forms.ToolStripMenuItem addListIntoNotepadToolStripMenuItem1;
+        private System.Windows.Forms.ToolStripMenuItem addListIntoPDFReaderToolStripMenuItem1;
+        private System.Windows.Forms.ToolStripMenuItem openDirectoryWithPictureViewerToolStripMenuItem2;
+        private System.Windows.Forms.ToolStripMenuItem openDirectoryWithPictureViewerToolStripMenuItem1;
+        private System.Windows.Forms.ToolStripMenuItem openDirectoryWithPictureViewerToolStripMenuItem;
     }
 }

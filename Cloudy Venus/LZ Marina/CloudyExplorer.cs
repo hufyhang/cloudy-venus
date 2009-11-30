@@ -306,5 +306,95 @@ namespace LZ_Marina
                 this.textBox1.Text = this.root + this.sub + this.thd + this.tail;
             }
         }
+
+        private void toolStripMenuItem2_Click(object sender, EventArgs e)
+        {
+            if (this.listView1.SelectedItems.Count > 0)
+            {
+                this.tabControl.Controls.Add(new Editor(this.root + @"\" + this.listView1.SelectedItems[0].SubItems[0].Text));
+                this.tabControl.SelectedIndex = this.tabControl.TabCount - 1;
+            }
+        }
+
+        private void toolStripMenuItem4_Click(object sender, EventArgs e)
+        {
+            if (this.listView1.SelectedItems.Count > 0)
+            {
+                this.tabControl.Controls.Add(new PDFReader(this.root + @"\" + this.listView1.SelectedItems[0].SubItems[0].Text, true));
+                this.tabControl.SelectedIndex = this.tabControl.TabCount - 1;
+            }
+        }
+
+        private void addListIntoNotepadToolStripMenuItem1_Click(object sender, EventArgs e)
+        {
+            if (this.listView2.SelectedItems.Count > 0)
+            {
+                this.tabControl.Controls.Add(new Editor(this.root + this.sub + this.thd));
+                this.tabControl.SelectedIndex = this.tabControl.TabCount - 1;
+            }
+        }
+
+        private void addListIntoPDFReaderToolStripMenuItem1_Click(object sender, EventArgs e)
+        {
+            if (this.listView2.SelectedItems.Count > 0)
+            {
+                this.tabControl.Controls.Add(new PDFReader(this.root + this.sub + this.thd, true));
+                this.tabControl.SelectedIndex = this.tabControl.TabCount - 1;
+            }
+        }
+
+        private void addListIntoNotepadToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            if (this.listView3.SelectedItems.Count > 0)
+            {
+                if (this.listView3.SelectedItems[0].SubItems[1].Text.Equals(@"<DIR>"))
+                {
+                    this.tabControl.Controls.Add(new Editor(this.root + this.sub + this.thd + this.tail + @"\" + this.listView3.SelectedItems[0].SubItems[0].Text));
+                    this.tabControl.SelectedIndex = this.tabControl.TabCount - 1;
+                }
+            }
+        }
+
+        private void addListIntoPDFReaderToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            if (this.listView3.SelectedItems.Count > 0)
+            {
+                if (this.listView3.SelectedItems[0].SubItems[1].Text.Equals(@"<DIR>"))
+                {
+                    this.tabControl.Controls.Add(new PDFReader(this.root + this.sub + this.thd + this.tail + @"\" + this.listView3.SelectedItems[0].SubItems[0].Text, true));
+                    this.tabControl.SelectedIndex = this.tabControl.TabCount - 1;
+                }
+            }
+        }
+
+        private void openDirectoryWithPictureViewerToolStripMenuItem2_Click(object sender, EventArgs e)
+        {
+            if (this.listView1.SelectedItems.Count > 0)
+            {
+                this.tabControl.Controls.Add(new Picture_Viewer(this.root + @"\" + this.listView1.SelectedItems[0].SubItems[0].Text));
+                this.tabControl.SelectedIndex = this.tabControl.TabCount - 1;
+            }
+        }
+
+        private void openDirectoryWithPictureViewerToolStripMenuItem1_Click(object sender, EventArgs e)
+        {
+            if (this.listView2.SelectedItems.Count > 0)
+            {
+                this.tabControl.Controls.Add(new Picture_Viewer(this.root + this.sub + this.thd));
+                this.tabControl.SelectedIndex = this.tabControl.TabCount - 1;
+            }
+        }
+
+        private void openDirectoryWithPictureViewerToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            if (this.listView3.SelectedItems.Count > 0)
+            {
+                if (this.listView3.SelectedItems[0].SubItems[1].Text.Equals(@"<DIR>"))
+                {
+                    this.tabControl.Controls.Add(new Picture_Viewer(this.root + this.sub + this.thd + this.tail + @"\" + this.listView3.SelectedItems[0].SubItems[0].Text));
+                    this.tabControl.SelectedIndex = this.tabControl.TabCount - 1;
+                }
+            }
+        }
     }
 }

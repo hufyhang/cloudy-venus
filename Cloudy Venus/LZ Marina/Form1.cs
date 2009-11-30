@@ -352,7 +352,7 @@ namespace LZ_Marina
 
         private void timer1_Tick(object sender, EventArgs e)
         {
-            this.labelX1.Text = DateTime.Now.ToString();
+            this.labelX1.Text = DateTime.Now.ToString() + @" | " + (SystemInformation.PowerStatus.BatteryLifePercent * 100).ToString() + @"% bettery remaining.";
         }
 
         private void linkLabel1_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)

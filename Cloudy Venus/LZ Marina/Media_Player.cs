@@ -25,6 +25,12 @@ namespace LZ_Marina
         protected void InitialEvents()
         {
             this.listView1.DoubleClick += new EventHandler(listView1_DoubleClick);
+            this.axWindowsMediaPlayer1.CurrentItemChange += new _WMPOCXEvents_CurrentItemChangeEventHandler(axWindowsMediaPlayer1_CurrentItemChange);
+        }
+
+        protected void axWindowsMediaPlayer1_CurrentItemChange(object sender, _WMPOCXEvents_CurrentItemChangeEvent e)
+        {
+            this.Text = this.axWindowsMediaPlayer1.currentMedia.name + @" - Media Player";
         }
 
         protected void listView1_DoubleClick(object sender, EventArgs e)

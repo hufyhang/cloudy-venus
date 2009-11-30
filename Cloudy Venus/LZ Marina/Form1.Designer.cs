@@ -33,12 +33,11 @@
             System.Windows.Forms.ListViewItem listViewItem1 = new System.Windows.Forms.ListViewItem("Cloud Explorer", 8);
             System.Windows.Forms.ListViewItem listViewItem2 = new System.Windows.Forms.ListViewItem("Web Browser", 2);
             System.Windows.Forms.ListViewItem listViewItem3 = new System.Windows.Forms.ListViewItem("2Dooo Special", 1);
-//            System.Windows.Forms.ListViewItem listViewItem4 = new System.Windows.Forms.ListViewItem("Hotmail", 0);
-            System.Windows.Forms.ListViewItem listViewItem5 = new System.Windows.Forms.ListViewItem("Picture Viewer", 9);
-            System.Windows.Forms.ListViewItem listViewItem6 = new System.Windows.Forms.ListViewItem("Notepad", 11);
-            System.Windows.Forms.ListViewItem listViewItem7 = new System.Windows.Forms.ListViewItem("Media Player", 12);
-            System.Windows.Forms.ListViewItem listViewItem8 = new System.Windows.Forms.ListViewItem("PDF Reader", 13);
-            System.Windows.Forms.ListViewItem listViewItem9 = new System.Windows.Forms.ListViewItem("Process Pool", 10);
+            System.Windows.Forms.ListViewItem listViewItem4 = new System.Windows.Forms.ListViewItem("Picture Viewer", 9);
+            System.Windows.Forms.ListViewItem listViewItem5 = new System.Windows.Forms.ListViewItem("Notepad", 11);
+            System.Windows.Forms.ListViewItem listViewItem6 = new System.Windows.Forms.ListViewItem("Media Player", 12);
+            System.Windows.Forms.ListViewItem listViewItem7 = new System.Windows.Forms.ListViewItem("PDF Reader", 13);
+            System.Windows.Forms.ListViewItem listViewItem8 = new System.Windows.Forms.ListViewItem("Process Pool", 10);
             this.ApplicationsImg = new System.Windows.Forms.ImageList(this.components);
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tabPage1 = new System.Windows.Forms.TabPage();
@@ -53,12 +52,12 @@
             this.clostTabToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.timer1 = new System.Windows.Forms.Timer(this.components);
             this.panel1 = new System.Windows.Forms.Panel();
+            this.linkLabel4 = new System.Windows.Forms.LinkLabel();
             this.linkLabel3 = new System.Windows.Forms.LinkLabel();
             this.linkLabel2 = new System.Windows.Forms.LinkLabel();
             this.linkLabel1 = new System.Windows.Forms.LinkLabel();
             this.label2 = new System.Windows.Forms.Label();
             this.labelX1 = new DevComponents.DotNetBar.LabelX();
-            this.linkLabel4 = new System.Windows.Forms.LinkLabel();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
@@ -139,12 +138,11 @@
             listViewItem1,
             listViewItem2,
             listViewItem3,
-//            listViewItem4,
+            listViewItem4,
             listViewItem5,
             listViewItem6,
             listViewItem7,
-            listViewItem8,
-            listViewItem9});
+            listViewItem8});
             this.listView1.LargeImageList = this.ApplicationsImg;
             this.listView1.Location = new System.Drawing.Point(8, 63);
             this.listView1.MultiSelect = false;
@@ -227,6 +225,24 @@
             this.panel1.Size = new System.Drawing.Size(656, 32);
             this.panel1.TabIndex = 3;
             // 
+            // linkLabel4
+            // 
+            this.linkLabel4.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.linkLabel4.AutoSize = true;
+            this.linkLabel4.Image = ((System.Drawing.Image)(resources.GetObject("linkLabel4.Image")));
+            this.linkLabel4.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.linkLabel4.LinkArea = new System.Windows.Forms.LinkArea(0, 16);
+            this.linkLabel4.LinkColor = System.Drawing.Color.Red;
+            this.linkLabel4.Location = new System.Drawing.Point(631, 11);
+            this.linkLabel4.Name = "linkLabel4";
+            this.linkLabel4.Size = new System.Drawing.Size(22, 21);
+            this.linkLabel4.TabIndex = 7;
+            this.linkLabel4.TabStop = true;
+            this.linkLabel4.Text = "     ";
+            this.linkLabel4.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.linkLabel4.UseCompatibleTextRendering = true;
+            this.linkLabel4.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.linkLabel4_LinkClicked);
+            // 
             // linkLabel3
             // 
             this.linkLabel3.AutoSize = true;
@@ -300,24 +316,6 @@
             this.labelX1.Size = new System.Drawing.Size(61, 20);
             this.labelX1.TabIndex = 2;
             this.labelX1.Text = "Loading...";
-            // 
-            // linkLabel4
-            // 
-            this.linkLabel4.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.linkLabel4.AutoSize = true;
-            this.linkLabel4.Image = ((System.Drawing.Image)(resources.GetObject("linkLabel4.Image")));
-            this.linkLabel4.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.linkLabel4.LinkArea = new System.Windows.Forms.LinkArea(0, 16);
-            this.linkLabel4.LinkColor = System.Drawing.Color.Red;
-            this.linkLabel4.Location = new System.Drawing.Point(631, 11);
-            this.linkLabel4.Name = "linkLabel4";
-            this.linkLabel4.Size = new System.Drawing.Size(22, 21);
-            this.linkLabel4.TabIndex = 7;
-            this.linkLabel4.TabStop = true;
-            this.linkLabel4.Text = "     ";
-            this.linkLabel4.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.linkLabel4.UseCompatibleTextRendering = true;
-            this.linkLabel4.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.linkLabel4_LinkClicked);
             // 
             // Form1
             // 
