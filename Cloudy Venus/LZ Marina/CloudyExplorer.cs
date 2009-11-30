@@ -178,11 +178,14 @@ namespace LZ_Marina
                 }
                 foreach (FileInfo file in thirdDir.GetFiles())
                 {
-                    ListViewItem item = new ListViewItem(file.Name);
-                    item.SubItems.Add(file.Extension);
-                    item.SubItems.Add((file.Length / 1024).ToString());
-                    item.SubItems.Add(file.LastWriteTime.ToString());
-                    this.listView3.Items.Add(item);
+                    if (!file.Extension.ToLower().Equals(@".lnk"))
+                    {
+                        ListViewItem item = new ListViewItem(file.Name);
+                        item.SubItems.Add(file.Extension);
+                        item.SubItems.Add((file.Length / 1024).ToString());
+                        item.SubItems.Add(file.LastWriteTime.ToString());
+                        this.listView3.Items.Add(item);
+                    }
                 }
             }
             catch (UnauthorizedAccessException)
@@ -233,11 +236,14 @@ namespace LZ_Marina
 
                 foreach (FileInfo file in rootDir.GetFiles())
                 {
-                    ListViewItem item = new ListViewItem(file.Name);
-                    item.SubItems.Add(file.Extension);
-                    item.SubItems.Add((file.Length / 1024).ToString());
-                    item.SubItems.Add(file.LastWriteTime.ToString());
-                    this.listView3.Items.Add(item);
+                    if (!file.Extension.ToLower().Equals(@".lnk"))
+                    {
+                        ListViewItem item = new ListViewItem(file.Name);
+                        item.SubItems.Add(file.Extension);
+                        item.SubItems.Add((file.Length / 1024).ToString());
+                        item.SubItems.Add(file.LastWriteTime.ToString());
+                        this.listView3.Items.Add(item);
+                    }
                 }
                 this.textBox1.Text = this.root;
             }
@@ -300,7 +306,6 @@ namespace LZ_Marina
                 }
                 else
                 {
-                    //MessageBox.Show(this.root + this.sub + this.thd + this.tail + @"\" + this.listView3.SelectedItems[0].SubItems[0].Text);
                     System.Diagnostics.Process.Start(this.root + this.sub + this.thd + this.tail + @"\" + this.listView3.SelectedItems[0].SubItems[0].Text);
                 }
                 this.textBox1.Text = this.root + this.sub + this.thd + this.tail;
