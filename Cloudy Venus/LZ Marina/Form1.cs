@@ -92,7 +92,7 @@ namespace LZ_Marina
 
             System.Windows.Forms.ListViewItem listViewItem0 = new System.Windows.Forms.ListViewItem("Cloud Explorer", 8);
             System.Windows.Forms.ListViewItem listViewItem1 = new System.Windows.Forms.ListViewItem("Web Browser", 2);
-            System.Windows.Forms.ListViewItem listViewItem2 = new System.Windows.Forms.ListViewItem("2Dooo Special", 1);
+//            System.Windows.Forms.ListViewItem listViewItem2 = new System.Windows.Forms.ListViewItem("2Dooo Special", 1);
 //            System.Windows.Forms.ListViewItem listViewItem3 = new System.Windows.Forms.ListViewItem("Hotmail", 0);
             System.Windows.Forms.ListViewItem listViewItem6 = new System.Windows.Forms.ListViewItem("Picture Viewer", 9);
             System.Windows.Forms.ListViewItem listViewItem7 = new System.Windows.Forms.ListViewItem("Notepad", 11);
@@ -103,7 +103,7 @@ namespace LZ_Marina
             this.listView1.Items.AddRange(new System.Windows.Forms.ListViewItem[] {
                 listViewItem0,
                 listViewItem1,
-                listViewItem2,
+//                listViewItem2,
 //                listViewItem3,
                 listViewItem6,
                 listViewItem7,
@@ -272,26 +272,22 @@ namespace LZ_Marina
                         this.tabControl1.SelectedIndex = this.tabControl1.TabPages.Count - 1;
                         break;
                     case 2:
-                        this.tabControl1.Controls.Add(new _2Dooo());
-                        this.tabControl1.SelectedIndex = this.tabControl1.TabPages.Count - 1;
-                        break;
-                    case 3:
                         this.tabControl1.Controls.Add(new Picture_Viewer(this.picRoot));
                         this.tabControl1.SelectedIndex = this.tabControl1.TabPages.Count - 1;
                         break;
-                    case 4:
+                    case 3:
                         this.tabControl1.Controls.Add(new Editor(this.textRoot));
                         this.tabControl1.SelectedIndex = this.tabControl1.TabPages.Count - 1;
                         break;
-                    case 5:
+                    case 4:
                         this.tabControl1.Controls.Add(new Media_Player());
                         this.tabControl1.SelectedIndex = this.tabControl1.TabPages.Count - 1;
                         break;
-                    case 6:
+                    case 5:
                         this.tabControl1.Controls.Add(new PDFReader());
                         this.tabControl1.SelectedIndex = this.tabControl1.TabPages.Count - 1;
                         break;
-                    case 7:
+                    case 6:
                         this.tabControl1.Controls.Add(new ProcsPool(this.tabControl1));
                         this.tabControl1.SelectedIndex = this.tabControl1.TabPages.Count - 1;
                         break;
@@ -310,6 +306,7 @@ namespace LZ_Marina
                         break;
                 }
             }
+            Application.DoEvents();
         }
 
         private void activateToolStripMenuItem_Click(object sender, EventArgs e)

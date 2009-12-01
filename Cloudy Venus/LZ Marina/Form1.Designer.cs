@@ -32,12 +32,11 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form1));
             System.Windows.Forms.ListViewItem listViewItem1 = new System.Windows.Forms.ListViewItem("Cloud Explorer", 8);
             System.Windows.Forms.ListViewItem listViewItem2 = new System.Windows.Forms.ListViewItem("Web Browser", 2);
-            System.Windows.Forms.ListViewItem listViewItem3 = new System.Windows.Forms.ListViewItem("2Dooo Special", 1);
-            System.Windows.Forms.ListViewItem listViewItem4 = new System.Windows.Forms.ListViewItem("Picture Viewer", 9);
-            System.Windows.Forms.ListViewItem listViewItem5 = new System.Windows.Forms.ListViewItem("Notepad", 11);
-            System.Windows.Forms.ListViewItem listViewItem6 = new System.Windows.Forms.ListViewItem("Media Player", 12);
-            System.Windows.Forms.ListViewItem listViewItem7 = new System.Windows.Forms.ListViewItem("PDF Reader", 13);
-            System.Windows.Forms.ListViewItem listViewItem8 = new System.Windows.Forms.ListViewItem("Process Pool", 10);
+            System.Windows.Forms.ListViewItem listViewItem3 = new System.Windows.Forms.ListViewItem("Picture Viewer", 9);
+            System.Windows.Forms.ListViewItem listViewItem4 = new System.Windows.Forms.ListViewItem("Notepad", 11);
+            System.Windows.Forms.ListViewItem listViewItem5 = new System.Windows.Forms.ListViewItem("Media Player", 12);
+            System.Windows.Forms.ListViewItem listViewItem6 = new System.Windows.Forms.ListViewItem("PDF Reader", 13);
+            System.Windows.Forms.ListViewItem listViewItem7 = new System.Windows.Forms.ListViewItem("Process Pool", 10);
             this.ApplicationsImg = new System.Windows.Forms.ImageList(this.components);
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tabPage1 = new System.Windows.Forms.TabPage();
@@ -72,7 +71,7 @@
             this.ApplicationsImg.TransparentColor = System.Drawing.Color.Transparent;
             this.ApplicationsImg.Images.SetKeyName(0, "live mail.png");
             this.ApplicationsImg.Images.SetKeyName(1, "todo_ico.png");
-            this.ApplicationsImg.Images.SetKeyName(2, "browser.png");
+            this.ApplicationsImg.Images.SetKeyName(2, "browser_ico.png");
             this.ApplicationsImg.Images.SetKeyName(3, "google_docs_logo.png");
             this.ApplicationsImg.Images.SetKeyName(4, "OfficeLiveWorkspace.jpg");
             this.ApplicationsImg.Images.SetKeyName(5, "super-mario-cloud-computing.png");
@@ -141,8 +140,7 @@
             listViewItem4,
             listViewItem5,
             listViewItem6,
-            listViewItem7,
-            listViewItem8});
+            listViewItem7});
             this.listView1.LargeImageList = this.ApplicationsImg;
             this.listView1.Location = new System.Drawing.Point(8, 63);
             this.listView1.MultiSelect = false;
@@ -157,19 +155,19 @@
             this.activateToolStripMenuItem,
             this.removeFromCloudToolStripMenuItem});
             this.listViewContext.Name = "listViewContext";
-            this.listViewContext.Size = new System.Drawing.Size(180, 48);
+            this.listViewContext.Size = new System.Drawing.Size(192, 48);
             // 
             // activateToolStripMenuItem
             // 
             this.activateToolStripMenuItem.Name = "activateToolStripMenuItem";
-            this.activateToolStripMenuItem.Size = new System.Drawing.Size(179, 22);
+            this.activateToolStripMenuItem.Size = new System.Drawing.Size(191, 22);
             this.activateToolStripMenuItem.Text = "Activate";
             this.activateToolStripMenuItem.Click += new System.EventHandler(this.activateToolStripMenuItem_Click);
             // 
             // removeFromCloudToolStripMenuItem
             // 
             this.removeFromCloudToolStripMenuItem.Name = "removeFromCloudToolStripMenuItem";
-            this.removeFromCloudToolStripMenuItem.Size = new System.Drawing.Size(179, 22);
+            this.removeFromCloudToolStripMenuItem.Size = new System.Drawing.Size(191, 22);
             this.removeFromCloudToolStripMenuItem.Text = "Remove from cloud";
             this.removeFromCloudToolStripMenuItem.Click += new System.EventHandler(this.removeFromCloudToolStripMenuItem_Click);
             // 
@@ -195,12 +193,12 @@
             this.tabControlContext.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.clostTabToolStripMenuItem});
             this.tabControlContext.Name = "tabControlContext";
-            this.tabControlContext.Size = new System.Drawing.Size(124, 26);
+            this.tabControlContext.Size = new System.Drawing.Size(132, 26);
             // 
             // clostTabToolStripMenuItem
             // 
             this.clostTabToolStripMenuItem.Name = "clostTabToolStripMenuItem";
-            this.clostTabToolStripMenuItem.Size = new System.Drawing.Size(123, 22);
+            this.clostTabToolStripMenuItem.Size = new System.Drawing.Size(131, 22);
             this.clostTabToolStripMenuItem.Text = "Close tab";
             this.clostTabToolStripMenuItem.Click += new System.EventHandler(this.clostTabToolStripMenuItem_Click);
             // 

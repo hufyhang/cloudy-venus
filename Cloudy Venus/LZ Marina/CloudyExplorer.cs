@@ -119,6 +119,7 @@ namespace LZ_Marina
                 this.tabControl.Controls.Add(new Editor(filename, true));
             }
             this.tabControl.SelectedIndex = this.tabControl.TabCount - 1;
+            Application.DoEvents();
         }
 
         protected void listView2_SelectedIndexChanged(object sender, EventArgs e)

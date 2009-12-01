@@ -64,7 +64,13 @@ namespace LZ_Marina
         protected void currentBrowser_BeforeNewWindow(object sender, WebBrowserExtendedNavigatingEventArgs e)
         {
             e.Cancel = true;
-            ((ExtendedWebBrowser.ExtendedWebBrowser)sender).Navigate(e.Url);
+            try
+            {
+                ((ExtendedWebBrowser.ExtendedWebBrowser)sender).Navigate(e.Url);
+            }
+            catch (Exception)
+            {
+            }
         }
 
         protected void currentBrowser_DocumentCompleted(object sender, WebBrowserDocumentCompletedEventArgs e)

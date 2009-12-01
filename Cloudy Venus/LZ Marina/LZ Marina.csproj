@@ -69,12 +69,6 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="2Dooo.cs">
-      <SubType>Component</SubType>
-    </Compile>
-    <Compile Include="2Dooo.Designer.cs">
-      <DependentUpon>2Dooo.cs</DependentUpon>
-    </Compile>
     <Compile Include="AppBrowser.cs">
       <SubType>Component</SubType>
     </Compile>
@@ -131,10 +125,6 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <EmbeddedResource Include="2Dooo.resx">
-      <DependentUpon>2Dooo.cs</DependentUpon>
-      <SubType>Designer</SubType>
-    </EmbeddedResource>
     <EmbeddedResource Include="AppBrowser.resx">
       <DependentUpon>AppBrowser.cs</DependentUpon>
       <SubType>Designer</SubType>
@@ -271,12 +261,6 @@
   <ItemGroup>
     <Content Include="Applications AFP Client.ico" />
     <Content Include="Home.ico" />
-  </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\..\..\..\..\..\Program Files\Microsoft Visual Studio 9.0\Plugins\WindowsAPICodePack\Shell\Shell.csproj">
-      <Project>{AA0C00CB-8699-4F37-BFAE-40CA87ACC06D}</Project>
-      <Name>Shell</Name>
-    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

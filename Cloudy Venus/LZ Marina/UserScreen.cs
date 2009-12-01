@@ -131,5 +131,38 @@ namespace LZ_Marina
             }
         }
 
+        private void button3_Click(object sender, EventArgs e)
+        {
+            this.name = this.textBoxX1.Text;
+            this.home = this.textBoxX2.Text;
+            this.picRoot = this.textBoxX3.Text;
+            this.textRoot = this.textBoxX4.Text;
+            String screen = "";
+
+            if (this.checkBoxX1.Checked)
+            {
+                screen = @"fullScreen=1";
+            }
+            else
+            {
+                screen = @"fullScreen=0";
+            }
+
+            StreamWriter writer = new StreamWriter(Application.StartupPath + @"\user");
+            writer.Flush();
+            String str = name + "\r\n" + home + "\r\n" + pic + "\r\n" + screen + "\r\n" + picRoot + "\r\n" + textRoot;
+            writer.Write(str);
+            writer.Close();
+
+            MessageBox.Show("Your user account changes will be updated after your next-time login.", "User Account", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
+            this.Dispose();
+        }
+
+        private void button4_Click(object sender, EventArgs e)
+        {
+            this.Dispose();
+        }
+
     }
 }
