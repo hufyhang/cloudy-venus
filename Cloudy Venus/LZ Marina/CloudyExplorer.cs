@@ -259,7 +259,7 @@ namespace LZ_Marina
         {
             if (e.KeyCode == Keys.Enter)
             {
-                if (!this.textBox1.Text[this.textBox1.Text.Length - 1].Equals('\\'))
+                if (!this.textBox1.Text[this.textBox1.Text.Length - 2].Equals('\\'))
                 {
                     this.root = this.textBox1.Text + @"\";
                     this.textBox1.Text = this.root;
@@ -402,5 +402,55 @@ namespace LZ_Marina
                 }
             }
         }
+
+        private void sendToToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            String destination = "";
+            using (FolderBrowserDialog folder = new FolderBrowserDialog())
+            {
+                folder.Description = @"Please choose a destination.";
+                if (folder.ShowDialog() == DialogResult.OK)
+                {
+                    destination = folder.SelectedPath;
+
+                    String[] file = new String[this.listView3.SelectedItems.Count];
+
+                    foreach (ListViewItem item in this.listView3.SelectedItems)
+                    {
+                        String filename = item.SubItems[0].Text;
+                        FileInfo info = new FileInfo(destination + @"\" + filename);
+                        if (info.Exists)
+                        {
+                            if (MessageBox.Show(filename + " is existing in the destination already.\r\nAre you sure you want to overwrite it now?", "File exists...", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
+                            {
+                                info.Delete();
+                                new FileInfo(this.root + this.sub + this.thd + this.tail + @"\" + filename).CopyTo(destination + @"\" + filename);
+                            }
+                        }
+                        else
+                        {
+                            new FileInfo(this.root + this.sub + this.thd + this.tail + @"\" + filename).CopyTo(destination + @"\" + filename);
+                        }
+                    }
+                }
+            }
+        }
+
+        private void removeToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            foreach (ListViewItem item in this.listView3.SelectedItems)
+            {
+                String filename = item.SubItems[0].Text;
+                FileInfo info = new FileInfo(this.root + this.sub + this.thd + this.tail + @"\" + filename);
+                if (info.Exists)
+                {
+                    if (MessageBox.Show("Are you sure you want to remove " + filename + " from your file system?", "Remove file...", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
+                    {
+                        info.Delete();
+                    }
+                }
+            }
+        }
+
     }
 }

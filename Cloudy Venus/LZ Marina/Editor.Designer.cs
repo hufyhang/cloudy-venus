@@ -201,7 +201,7 @@
             this.richTextBox1.BackColor = System.Drawing.Color.LightSteelBlue;
             this.richTextBox1.ContextMenuStrip = this.contextMenuStrip1;
             this.richTextBox1.DetectUrls = false;
-            this.richTextBox1.Font = new System.Drawing.Font("Arial Unicode MS", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.richTextBox1.Font = new System.Drawing.Font("Microsoft YaHei", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.richTextBox1.ForeColor = System.Drawing.Color.Black;
             this.richTextBox1.ImeMode = System.Windows.Forms.ImeMode.Off;
             this.richTextBox1.Location = new System.Drawing.Point(3, 38);
@@ -221,38 +221,38 @@
             this.toolStripMenuItem1,
             this.selectAllToolStripMenuItem});
             this.contextMenuStrip1.Name = "contextMenuStrip1";
-            this.contextMenuStrip1.Size = new System.Drawing.Size(121, 98);
+            this.contextMenuStrip1.Size = new System.Drawing.Size(128, 98);
             // 
             // cutToolStripMenuItem
             // 
             this.cutToolStripMenuItem.Name = "cutToolStripMenuItem";
-            this.cutToolStripMenuItem.Size = new System.Drawing.Size(120, 22);
+            this.cutToolStripMenuItem.Size = new System.Drawing.Size(127, 22);
             this.cutToolStripMenuItem.Text = "Cut";
             this.cutToolStripMenuItem.Click += new System.EventHandler(this.cutToolStripMenuItem_Click);
             // 
             // copyToolStripMenuItem
             // 
             this.copyToolStripMenuItem.Name = "copyToolStripMenuItem";
-            this.copyToolStripMenuItem.Size = new System.Drawing.Size(120, 22);
+            this.copyToolStripMenuItem.Size = new System.Drawing.Size(127, 22);
             this.copyToolStripMenuItem.Text = "Copy";
             this.copyToolStripMenuItem.Click += new System.EventHandler(this.copyToolStripMenuItem_Click);
             // 
             // pasteToolStripMenuItem
             // 
             this.pasteToolStripMenuItem.Name = "pasteToolStripMenuItem";
-            this.pasteToolStripMenuItem.Size = new System.Drawing.Size(120, 22);
+            this.pasteToolStripMenuItem.Size = new System.Drawing.Size(127, 22);
             this.pasteToolStripMenuItem.Text = "Paste";
             this.pasteToolStripMenuItem.Click += new System.EventHandler(this.pasteToolStripMenuItem_Click);
             // 
             // toolStripMenuItem1
             // 
             this.toolStripMenuItem1.Name = "toolStripMenuItem1";
-            this.toolStripMenuItem1.Size = new System.Drawing.Size(117, 6);
+            this.toolStripMenuItem1.Size = new System.Drawing.Size(124, 6);
             // 
             // selectAllToolStripMenuItem
             // 
             this.selectAllToolStripMenuItem.Name = "selectAllToolStripMenuItem";
-            this.selectAllToolStripMenuItem.Size = new System.Drawing.Size(120, 22);
+            this.selectAllToolStripMenuItem.Size = new System.Drawing.Size(127, 22);
             this.selectAllToolStripMenuItem.Text = "Select all";
             this.selectAllToolStripMenuItem.Click += new System.EventHandler(this.selectAllToolStripMenuItem_Click);
             // 

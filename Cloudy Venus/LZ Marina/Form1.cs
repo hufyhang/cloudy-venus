@@ -268,7 +268,7 @@ namespace LZ_Marina
                         this.tabControl1.SelectedIndex = this.tabControl1.TabPages.Count - 1;
                         break;
                     case 1:
-                        this.tabControl1.Controls.Add(new Browser(this.homePage));
+                        this.tabControl1.Controls.Add(new Browser(this.homePage, this.tabControl1));
                         this.tabControl1.SelectedIndex = this.tabControl1.TabPages.Count - 1;
                         break;
                     case 2:

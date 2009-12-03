@@ -34,6 +34,7 @@
             this.button3 = new System.Windows.Forms.Button();
             this.progressBarX1 = new DevComponents.DotNetBar.Controls.ProgressBarX();
             this.labelX1 = new DevComponents.DotNetBar.LabelX();
+            this.button4 = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // webBrowser1
@@ -45,7 +46,7 @@
             this.webBrowser1.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.webBrowser1.MinimumSize = new System.Drawing.Size(23, 27);
             this.webBrowser1.Name = "webBrowser1";
-            this.webBrowser1.Size = new System.Drawing.Size(770, 398);
+            this.webBrowser1.Size = new System.Drawing.Size(754, 361);
             this.webBrowser1.TabIndex = 0;
             // 
             // button1
@@ -53,7 +54,7 @@
             this.button1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.button1.Font = new System.Drawing.Font("Arial Unicode MS", 6.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.button1.Location = new System.Drawing.Point(7, 402);
+            this.button1.Location = new System.Drawing.Point(2, 367);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(22, 20);
             this.button1.TabIndex = 2;
@@ -67,7 +68,7 @@
             this.button2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.button2.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.button2.Font = new System.Drawing.Font("Arial Unicode MS", 6.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.button2.Location = new System.Drawing.Point(35, 402);
+            this.button2.Location = new System.Drawing.Point(30, 368);
             this.button2.Name = "button2";
             this.button2.Size = new System.Drawing.Size(22, 20);
             this.button2.TabIndex = 3;
@@ -81,7 +82,7 @@
             this.button3.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.button3.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.button3.Font = new System.Drawing.Font("Arial Unicode MS", 6.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.button3.Location = new System.Drawing.Point(63, 402);
+            this.button3.Location = new System.Drawing.Point(58, 368);
             this.button3.Name = "button3";
             this.button3.Size = new System.Drawing.Size(22, 20);
             this.button3.TabIndex = 4;
@@ -100,7 +101,7 @@
             this.progressBarX1.BackgroundStyle.TextColor = System.Drawing.Color.White;
             this.progressBarX1.Cursor = System.Windows.Forms.Cursors.Hand;
             this.progressBarX1.ForeColor = System.Drawing.Color.White;
-            this.progressBarX1.Location = new System.Drawing.Point(681, 405);
+            this.progressBarX1.Location = new System.Drawing.Point(666, 367);
             this.progressBarX1.Name = "progressBarX1";
             this.progressBarX1.ProgressType = DevComponents.DotNetBar.eProgressItemType.Marquee;
             this.progressBarX1.Size = new System.Drawing.Size(84, 19);
@@ -116,16 +117,32 @@
             this.labelX1.AutoSize = true;
             this.labelX1.Cursor = System.Windows.Forms.Cursors.Hand;
             this.labelX1.Font = new System.Drawing.Font("Arial Unicode MS", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.labelX1.Location = new System.Drawing.Point(91, 402);
+            this.labelX1.Location = new System.Drawing.Point(114, 368);
             this.labelX1.Name = "labelX1";
-            this.labelX1.Size = new System.Drawing.Size(0, 0);
+            this.labelX1.Size = new System.Drawing.Size(68, 22);
             this.labelX1.TabIndex = 6;
             this.labelX1.Text = "Loading...";
             this.labelX1.Click += new System.EventHandler(this.labelX1_Click);
             // 
+            // button4
+            // 
+            this.button4.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.button4.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button4.Font = new System.Drawing.Font("Arial Unicode MS", 6.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.button4.Location = new System.Drawing.Point(86, 368);
+            this.button4.Name = "button4";
+            this.button4.Size = new System.Drawing.Size(22, 20);
+            this.button4.TabIndex = 7;
+            this.button4.Text = "□";
+            this.button4.TextAlign = System.Drawing.ContentAlignment.TopCenter;
+            this.button4.UseVisualStyleBackColor = true;
+            this.button4.Click += new System.EventHandler(this.button4_Click);
+            // 
             // AppBrowser
             // 
             this.BackColor = System.Drawing.Color.White;
+            this.ClientSize = new System.Drawing.Size(753, 390);
+            this.Controls.Add(this.button4);
             this.Controls.Add(this.labelX1);
             this.Controls.Add(this.progressBarX1);
             this.Controls.Add(this.button3);
@@ -134,7 +151,7 @@
             this.Controls.Add(this.webBrowser1);
             this.Font = new System.Drawing.Font("Arial Unicode MS", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.Size = new System.Drawing.Size(769, 426);
+            this.Name = "AppBrowser";
             this.Text = "AppBrowser";
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -149,5 +166,6 @@
         private System.Windows.Forms.Button button3;
         private DevComponents.DotNetBar.Controls.ProgressBarX progressBarX1;
         private DevComponents.DotNetBar.LabelX labelX1;
+        private System.Windows.Forms.Button button4;
     }
 }

@@ -37,11 +37,13 @@
             this.contextMenuStrip3 = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.toolStripMenuItem2 = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripMenuItem4 = new System.Windows.Forms.ToolStripMenuItem();
+            this.openDirectoryWithPictureViewerToolStripMenuItem2 = new System.Windows.Forms.ToolStripMenuItem();
             this.listView2 = new System.Windows.Forms.ListView();
             this.columnHeader2 = new System.Windows.Forms.ColumnHeader();
             this.contextMenuStrip2 = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.addListIntoNotepadToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.addListIntoPDFReaderToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
+            this.openDirectoryWithPictureViewerToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.listView3 = new System.Windows.Forms.ListView();
             this.columnHeader3 = new System.Windows.Forms.ColumnHeader();
             this.columnHeader4 = new System.Windows.Forms.ColumnHeader();
@@ -52,13 +54,14 @@
             this.toolStripMenuItem1 = new System.Windows.Forms.ToolStripSeparator();
             this.addListIntoNotepadToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.addListIntoPDFReaderToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.openDirectoryWithPictureViewerToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.textBox1 = new System.Windows.Forms.TextBox();
             this.button2 = new System.Windows.Forms.Button();
             this.button1 = new System.Windows.Forms.Button();
             this.button4 = new System.Windows.Forms.Button();
-            this.openDirectoryWithPictureViewerToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.openDirectoryWithPictureViewerToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
-            this.openDirectoryWithPictureViewerToolStripMenuItem2 = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripMenuItem3 = new System.Windows.Forms.ToolStripSeparator();
+            this.sendToToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.removeToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.panel1.SuspendLayout();
             this.splitContainer1.Panel1.SuspendLayout();
             this.splitContainer1.Panel2.SuspendLayout();
@@ -154,21 +157,28 @@
             this.toolStripMenuItem4,
             this.openDirectoryWithPictureViewerToolStripMenuItem2});
             this.contextMenuStrip3.Name = "contextMenuStrip2";
-            this.contextMenuStrip3.Size = new System.Drawing.Size(258, 70);
+            this.contextMenuStrip3.Size = new System.Drawing.Size(278, 70);
             // 
             // toolStripMenuItem2
             // 
             this.toolStripMenuItem2.Name = "toolStripMenuItem2";
-            this.toolStripMenuItem2.Size = new System.Drawing.Size(257, 22);
+            this.toolStripMenuItem2.Size = new System.Drawing.Size(277, 22);
             this.toolStripMenuItem2.Text = "Open directory with Notepad";
             this.toolStripMenuItem2.Click += new System.EventHandler(this.toolStripMenuItem2_Click);
             // 
             // toolStripMenuItem4
             // 
             this.toolStripMenuItem4.Name = "toolStripMenuItem4";
-            this.toolStripMenuItem4.Size = new System.Drawing.Size(257, 22);
+            this.toolStripMenuItem4.Size = new System.Drawing.Size(277, 22);
             this.toolStripMenuItem4.Text = "Open directory with PDF Reader";
             this.toolStripMenuItem4.Click += new System.EventHandler(this.toolStripMenuItem4_Click);
+            // 
+            // openDirectoryWithPictureViewerToolStripMenuItem2
+            // 
+            this.openDirectoryWithPictureViewerToolStripMenuItem2.Name = "openDirectoryWithPictureViewerToolStripMenuItem2";
+            this.openDirectoryWithPictureViewerToolStripMenuItem2.Size = new System.Drawing.Size(277, 22);
+            this.openDirectoryWithPictureViewerToolStripMenuItem2.Text = "Open directory with Picture Viewer";
+            this.openDirectoryWithPictureViewerToolStripMenuItem2.Click += new System.EventHandler(this.openDirectoryWithPictureViewerToolStripMenuItem2_Click);
             // 
             // listView2
             // 
@@ -199,21 +209,28 @@
             this.addListIntoPDFReaderToolStripMenuItem1,
             this.openDirectoryWithPictureViewerToolStripMenuItem1});
             this.contextMenuStrip2.Name = "contextMenuStrip2";
-            this.contextMenuStrip2.Size = new System.Drawing.Size(258, 70);
+            this.contextMenuStrip2.Size = new System.Drawing.Size(278, 70);
             // 
             // addListIntoNotepadToolStripMenuItem1
             // 
             this.addListIntoNotepadToolStripMenuItem1.Name = "addListIntoNotepadToolStripMenuItem1";
-            this.addListIntoNotepadToolStripMenuItem1.Size = new System.Drawing.Size(257, 22);
+            this.addListIntoNotepadToolStripMenuItem1.Size = new System.Drawing.Size(277, 22);
             this.addListIntoNotepadToolStripMenuItem1.Text = "Open directory with Notepad";
             this.addListIntoNotepadToolStripMenuItem1.Click += new System.EventHandler(this.addListIntoNotepadToolStripMenuItem1_Click);
             // 
             // addListIntoPDFReaderToolStripMenuItem1
             // 
             this.addListIntoPDFReaderToolStripMenuItem1.Name = "addListIntoPDFReaderToolStripMenuItem1";
-            this.addListIntoPDFReaderToolStripMenuItem1.Size = new System.Drawing.Size(257, 22);
+            this.addListIntoPDFReaderToolStripMenuItem1.Size = new System.Drawing.Size(277, 22);
             this.addListIntoPDFReaderToolStripMenuItem1.Text = "Open directory with Reader";
             this.addListIntoPDFReaderToolStripMenuItem1.Click += new System.EventHandler(this.addListIntoPDFReaderToolStripMenuItem1_Click);
+            // 
+            // openDirectoryWithPictureViewerToolStripMenuItem1
+            // 
+            this.openDirectoryWithPictureViewerToolStripMenuItem1.Name = "openDirectoryWithPictureViewerToolStripMenuItem1";
+            this.openDirectoryWithPictureViewerToolStripMenuItem1.Size = new System.Drawing.Size(277, 22);
+            this.openDirectoryWithPictureViewerToolStripMenuItem1.Text = "Open directory with Picture Viewer";
+            this.openDirectoryWithPictureViewerToolStripMenuItem1.Click += new System.EventHandler(this.openDirectoryWithPictureViewerToolStripMenuItem1_Click);
             // 
             // listView3
             // 
@@ -228,7 +245,6 @@
             this.listView3.GridLines = true;
             this.listView3.Location = new System.Drawing.Point(0, 0);
             this.listView3.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.listView3.MultiSelect = false;
             this.listView3.Name = "listView3";
             this.listView3.Size = new System.Drawing.Size(386, 283);
             this.listView3.TabIndex = 1;
@@ -260,37 +276,47 @@
             this.contextMenuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.runWithDefaultApplicationToolStripMenuItem,
             this.toolStripMenuItem1,
+            this.sendToToolStripMenuItem,
+            this.removeToolStripMenuItem,
+            this.toolStripMenuItem3,
             this.addListIntoNotepadToolStripMenuItem,
             this.addListIntoPDFReaderToolStripMenuItem,
             this.openDirectoryWithPictureViewerToolStripMenuItem});
             this.contextMenuStrip1.Name = "contextMenuStrip1";
-            this.contextMenuStrip1.Size = new System.Drawing.Size(258, 120);
+            this.contextMenuStrip1.Size = new System.Drawing.Size(278, 170);
             // 
             // runWithDefaultApplicationToolStripMenuItem
             // 
             this.runWithDefaultApplicationToolStripMenuItem.Name = "runWithDefaultApplicationToolStripMenuItem";
-            this.runWithDefaultApplicationToolStripMenuItem.Size = new System.Drawing.Size(257, 22);
+            this.runWithDefaultApplicationToolStripMenuItem.Size = new System.Drawing.Size(277, 22);
             this.runWithDefaultApplicationToolStripMenuItem.Text = "Run as default";
             this.runWithDefaultApplicationToolStripMenuItem.Click += new System.EventHandler(this.runWithDefaultApplicationToolStripMenuItem_Click);
             // 
             // toolStripMenuItem1
             // 
             this.toolStripMenuItem1.Name = "toolStripMenuItem1";
-            this.toolStripMenuItem1.Size = new System.Drawing.Size(254, 6);
+            this.toolStripMenuItem1.Size = new System.Drawing.Size(274, 6);
             // 
             // addListIntoNotepadToolStripMenuItem
             // 
             this.addListIntoNotepadToolStripMenuItem.Name = "addListIntoNotepadToolStripMenuItem";
-            this.addListIntoNotepadToolStripMenuItem.Size = new System.Drawing.Size(257, 22);
+            this.addListIntoNotepadToolStripMenuItem.Size = new System.Drawing.Size(277, 22);
             this.addListIntoNotepadToolStripMenuItem.Text = "Open directory with Notepad";
             this.addListIntoNotepadToolStripMenuItem.Click += new System.EventHandler(this.addListIntoNotepadToolStripMenuItem_Click);
             // 
             // addListIntoPDFReaderToolStripMenuItem
             // 
             this.addListIntoPDFReaderToolStripMenuItem.Name = "addListIntoPDFReaderToolStripMenuItem";
-            this.addListIntoPDFReaderToolStripMenuItem.Size = new System.Drawing.Size(257, 22);
+            this.addListIntoPDFReaderToolStripMenuItem.Size = new System.Drawing.Size(277, 22);
             this.addListIntoPDFReaderToolStripMenuItem.Text = "Open directory with PDF Reader";
             this.addListIntoPDFReaderToolStripMenuItem.Click += new System.EventHandler(this.addListIntoPDFReaderToolStripMenuItem_Click);
+            // 
+            // openDirectoryWithPictureViewerToolStripMenuItem
+            // 
+            this.openDirectoryWithPictureViewerToolStripMenuItem.Name = "openDirectoryWithPictureViewerToolStripMenuItem";
+            this.openDirectoryWithPictureViewerToolStripMenuItem.Size = new System.Drawing.Size(277, 22);
+            this.openDirectoryWithPictureViewerToolStripMenuItem.Text = "Open directory with Picture Viewer";
+            this.openDirectoryWithPictureViewerToolStripMenuItem.Click += new System.EventHandler(this.openDirectoryWithPictureViewerToolStripMenuItem_Click);
             // 
             // textBox1
             // 
@@ -343,26 +369,24 @@
             this.button4.UseVisualStyleBackColor = true;
             this.button4.Click += new System.EventHandler(this.button4_Click);
             // 
-            // openDirectoryWithPictureViewerToolStripMenuItem
+            // toolStripMenuItem3
             // 
-            this.openDirectoryWithPictureViewerToolStripMenuItem.Name = "openDirectoryWithPictureViewerToolStripMenuItem";
-            this.openDirectoryWithPictureViewerToolStripMenuItem.Size = new System.Drawing.Size(257, 22);
-            this.openDirectoryWithPictureViewerToolStripMenuItem.Text = "Open directory with Picture Viewer";
-            this.openDirectoryWithPictureViewerToolStripMenuItem.Click += new System.EventHandler(this.openDirectoryWithPictureViewerToolStripMenuItem_Click);
+            this.toolStripMenuItem3.Name = "toolStripMenuItem3";
+            this.toolStripMenuItem3.Size = new System.Drawing.Size(274, 6);
             // 
-            // openDirectoryWithPictureViewerToolStripMenuItem1
+            // sendToToolStripMenuItem
             // 
-            this.openDirectoryWithPictureViewerToolStripMenuItem1.Name = "openDirectoryWithPictureViewerToolStripMenuItem1";
-            this.openDirectoryWithPictureViewerToolStripMenuItem1.Size = new System.Drawing.Size(257, 22);
-            this.openDirectoryWithPictureViewerToolStripMenuItem1.Text = "Open directory with Picture Viewer";
-            this.openDirectoryWithPictureViewerToolStripMenuItem1.Click += new System.EventHandler(this.openDirectoryWithPictureViewerToolStripMenuItem1_Click);
+            this.sendToToolStripMenuItem.Name = "sendToToolStripMenuItem";
+            this.sendToToolStripMenuItem.Size = new System.Drawing.Size(277, 22);
+            this.sendToToolStripMenuItem.Text = "Send to...";
+            this.sendToToolStripMenuItem.Click += new System.EventHandler(this.sendToToolStripMenuItem_Click);
             // 
-            // openDirectoryWithPictureViewerToolStripMenuItem2
+            // removeToolStripMenuItem
             // 
-            this.openDirectoryWithPictureViewerToolStripMenuItem2.Name = "openDirectoryWithPictureViewerToolStripMenuItem2";
-            this.openDirectoryWithPictureViewerToolStripMenuItem2.Size = new System.Drawing.Size(257, 22);
-            this.openDirectoryWithPictureViewerToolStripMenuItem2.Text = "Open directory with Picture Viewer";
-            this.openDirectoryWithPictureViewerToolStripMenuItem2.Click += new System.EventHandler(this.openDirectoryWithPictureViewerToolStripMenuItem2_Click);
+            this.removeToolStripMenuItem.Name = "removeToolStripMenuItem";
+            this.removeToolStripMenuItem.Size = new System.Drawing.Size(277, 22);
+            this.removeToolStripMenuItem.Text = "Remove";
+            this.removeToolStripMenuItem.Click += new System.EventHandler(this.removeToolStripMenuItem_Click);
             // 
             // CloudyExplorer
             // 
@@ -420,5 +444,8 @@
         private System.Windows.Forms.ToolStripMenuItem openDirectoryWithPictureViewerToolStripMenuItem2;
         private System.Windows.Forms.ToolStripMenuItem openDirectoryWithPictureViewerToolStripMenuItem1;
         private System.Windows.Forms.ToolStripMenuItem openDirectoryWithPictureViewerToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem sendToToolStripMenuItem;
+        private System.Windows.Forms.ToolStripSeparator toolStripMenuItem3;
+        private System.Windows.Forms.ToolStripMenuItem removeToolStripMenuItem;
     }
 }

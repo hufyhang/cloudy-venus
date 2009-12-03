@@ -11,7 +11,6 @@ namespace LZ_Marina
     public partial class AppBrowser : TabPage
     {
         private String URL = "";
-        private String chrome = @"cf:";
 
         public AppBrowser()
         {
@@ -97,6 +96,12 @@ namespace LZ_Marina
         private void progressBarX1_Click(object sender, EventArgs e)
         {
             this.webBrowser1.Stop();
+        }
+
+        private void button4_Click(object sender, EventArgs e)
+        {
+            //MessageBox.Show(this.webBrowser1.Url.AbsoluteUri);
+            new fullscreenBrowser(this.webBrowser1).Show();
         }
     }
 }

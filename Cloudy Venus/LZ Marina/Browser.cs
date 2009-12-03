@@ -13,11 +13,14 @@ namespace LZ_Marina
     public partial class Browser : TabPage
     {
         private ExtendedWebBrowser.ExtendedWebBrowser currentBrowser;
+        private TabControl tabControl;
+        private String firstUrl = "";
 
-        public Browser()
+        public Browser(TabControl tab)
         {
             InitializeComponent();
 
+            this.tabControl = tab;
             this.backButton.Enabled = false;
             this.forwardButton.Enabled = false;
 
@@ -26,10 +29,11 @@ namespace LZ_Marina
             this.webBrowser1.Navigate(@"http://www.google.com");
         }
 
-        public Browser(String URL)
+        public Browser(String URL, TabControl tab)
         {
             InitializeComponent();
 
+            this.tabControl = tab;
             this.backButton.Enabled = false;
             this.forwardButton.Enabled = false;
 
@@ -66,7 +70,9 @@ namespace LZ_Marina
             e.Cancel = true;
             try
             {
-                ((ExtendedWebBrowser.ExtendedWebBrowser)sender).Navigate(e.Url);
+                this.tabControl.Controls.Add(new Browser(e.Url, this.tabControl));
+                this.tabControl.SelectedIndex = this.tabControl.TabCount - 1;
+                //((ExtendedWebBrowser.ExtendedWebBrowser)sender).Navigate(e.Url);
             }
             catch (Exception)
             {
@@ -121,12 +127,20 @@ namespace LZ_Marina
             if (e.KeyCode == Keys.Enter)
             {
                 this.addressBox.Text.Remove(this.addressBox.Text.Length - 1);
+                if (this.firstUrl.Equals(""))
+                {
+                    this.firstUrl = this.addressBox.Text;
+                }
                 this.currentBrowser.Navigate(this.addressBox.Text);
             }
 
             if (e.Control && e.KeyCode == Keys.Enter)
             {
                 this.addressBox.Text.Remove(this.addressBox.Text.Length - 1);
+                if (this.firstUrl.Equals(""))
+                {
+                    this.firstUrl = @"http://" + this.addressBox.Text + @".com";
+                }
                 String url = @"http://" + this.addressBox.Text + @".com";
                 this.currentBrowser.Navigate(url);
             }
@@ -197,6 +211,19 @@ namespace LZ_Marina
             writer.Write(info);
             writer.Close();
             MessageBox.Show("Website favourited.", "Favourite", MessageBoxButtons.OK, MessageBoxIcon.Information);
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            if (this.firstUrl.Length != 0)
+            {
+                this.webBrowser1.Navigate(this.firstUrl);
+            }
+        }
+
+        private void button3_Click(object sender, EventArgs e)
+        {
+            new fullscreenBrowser(this.webBrowser1).Show();
         }
 
     }
