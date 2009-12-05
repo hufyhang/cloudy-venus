@@ -52,6 +52,9 @@
             this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.runWithDefaultApplicationToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripMenuItem1 = new System.Windows.Forms.ToolStripSeparator();
+            this.sendToToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.removeToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripMenuItem3 = new System.Windows.Forms.ToolStripSeparator();
             this.addListIntoNotepadToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.addListIntoPDFReaderToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.openDirectoryWithPictureViewerToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -59,9 +62,10 @@
             this.button2 = new System.Windows.Forms.Button();
             this.button1 = new System.Windows.Forms.Button();
             this.button4 = new System.Windows.Forms.Button();
-            this.toolStripMenuItem3 = new System.Windows.Forms.ToolStripSeparator();
-            this.sendToToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.removeToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.sendToToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripMenuItem5 = new System.Windows.Forms.ToolStripSeparator();
+            this.sendToToolStripMenuItem2 = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripMenuItem6 = new System.Windows.Forms.ToolStripSeparator();
             this.panel1.SuspendLayout();
             this.splitContainer1.Panel1.SuspendLayout();
             this.splitContainer1.Panel2.SuspendLayout();
@@ -153,11 +157,13 @@
             // contextMenuStrip3
             // 
             this.contextMenuStrip3.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.sendToToolStripMenuItem2,
+            this.toolStripMenuItem6,
             this.toolStripMenuItem2,
             this.toolStripMenuItem4,
             this.openDirectoryWithPictureViewerToolStripMenuItem2});
             this.contextMenuStrip3.Name = "contextMenuStrip2";
-            this.contextMenuStrip3.Size = new System.Drawing.Size(278, 70);
+            this.contextMenuStrip3.Size = new System.Drawing.Size(278, 120);
             // 
             // toolStripMenuItem2
             // 
@@ -205,11 +211,13 @@
             // contextMenuStrip2
             // 
             this.contextMenuStrip2.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.sendToToolStripMenuItem1,
+            this.toolStripMenuItem5,
             this.addListIntoNotepadToolStripMenuItem1,
             this.addListIntoPDFReaderToolStripMenuItem1,
             this.openDirectoryWithPictureViewerToolStripMenuItem1});
             this.contextMenuStrip2.Name = "contextMenuStrip2";
-            this.contextMenuStrip2.Size = new System.Drawing.Size(278, 70);
+            this.contextMenuStrip2.Size = new System.Drawing.Size(278, 98);
             // 
             // addListIntoNotepadToolStripMenuItem1
             // 
@@ -283,7 +291,7 @@
             this.addListIntoPDFReaderToolStripMenuItem,
             this.openDirectoryWithPictureViewerToolStripMenuItem});
             this.contextMenuStrip1.Name = "contextMenuStrip1";
-            this.contextMenuStrip1.Size = new System.Drawing.Size(278, 170);
+            this.contextMenuStrip1.Size = new System.Drawing.Size(278, 148);
             // 
             // runWithDefaultApplicationToolStripMenuItem
             // 
@@ -296,6 +304,25 @@
             // 
             this.toolStripMenuItem1.Name = "toolStripMenuItem1";
             this.toolStripMenuItem1.Size = new System.Drawing.Size(274, 6);
+            // 
+            // sendToToolStripMenuItem
+            // 
+            this.sendToToolStripMenuItem.Name = "sendToToolStripMenuItem";
+            this.sendToToolStripMenuItem.Size = new System.Drawing.Size(277, 22);
+            this.sendToToolStripMenuItem.Text = "Send to...";
+            this.sendToToolStripMenuItem.Click += new System.EventHandler(this.sendToToolStripMenuItem_Click);
+            // 
+            // removeToolStripMenuItem
+            // 
+            this.removeToolStripMenuItem.Name = "removeToolStripMenuItem";
+            this.removeToolStripMenuItem.Size = new System.Drawing.Size(277, 22);
+            this.removeToolStripMenuItem.Text = "Remove";
+            this.removeToolStripMenuItem.Click += new System.EventHandler(this.removeToolStripMenuItem_Click);
+            // 
+            // toolStripMenuItem3
+            // 
+            this.toolStripMenuItem3.Name = "toolStripMenuItem3";
+            this.toolStripMenuItem3.Size = new System.Drawing.Size(274, 6);
             // 
             // addListIntoNotepadToolStripMenuItem
             // 
@@ -369,24 +396,29 @@
             this.button4.UseVisualStyleBackColor = true;
             this.button4.Click += new System.EventHandler(this.button4_Click);
             // 
-            // toolStripMenuItem3
+            // sendToToolStripMenuItem1
             // 
-            this.toolStripMenuItem3.Name = "toolStripMenuItem3";
-            this.toolStripMenuItem3.Size = new System.Drawing.Size(274, 6);
+            this.sendToToolStripMenuItem1.Name = "sendToToolStripMenuItem1";
+            this.sendToToolStripMenuItem1.Size = new System.Drawing.Size(277, 22);
+            this.sendToToolStripMenuItem1.Text = "Send to...";
+            this.sendToToolStripMenuItem1.Click += new System.EventHandler(this.sendToToolStripMenuItem1_Click);
             // 
-            // sendToToolStripMenuItem
+            // toolStripMenuItem5
             // 
-            this.sendToToolStripMenuItem.Name = "sendToToolStripMenuItem";
-            this.sendToToolStripMenuItem.Size = new System.Drawing.Size(277, 22);
-            this.sendToToolStripMenuItem.Text = "Send to...";
-            this.sendToToolStripMenuItem.Click += new System.EventHandler(this.sendToToolStripMenuItem_Click);
+            this.toolStripMenuItem5.Name = "toolStripMenuItem5";
+            this.toolStripMenuItem5.Size = new System.Drawing.Size(274, 6);
             // 
-            // removeToolStripMenuItem
+            // sendToToolStripMenuItem2
             // 
-            this.removeToolStripMenuItem.Name = "removeToolStripMenuItem";
-            this.removeToolStripMenuItem.Size = new System.Drawing.Size(277, 22);
-            this.removeToolStripMenuItem.Text = "Remove";
-            this.removeToolStripMenuItem.Click += new System.EventHandler(this.removeToolStripMenuItem_Click);
+            this.sendToToolStripMenuItem2.Name = "sendToToolStripMenuItem2";
+            this.sendToToolStripMenuItem2.Size = new System.Drawing.Size(277, 22);
+            this.sendToToolStripMenuItem2.Text = "Send to...";
+            this.sendToToolStripMenuItem2.Click += new System.EventHandler(this.sendToToolStripMenuItem2_Click);
+            // 
+            // toolStripMenuItem6
+            // 
+            this.toolStripMenuItem6.Name = "toolStripMenuItem6";
+            this.toolStripMenuItem6.Size = new System.Drawing.Size(274, 6);
             // 
             // CloudyExplorer
             // 
@@ -447,5 +479,9 @@
         private System.Windows.Forms.ToolStripMenuItem sendToToolStripMenuItem;
         private System.Windows.Forms.ToolStripSeparator toolStripMenuItem3;
         private System.Windows.Forms.ToolStripMenuItem removeToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem sendToToolStripMenuItem1;
+        private System.Windows.Forms.ToolStripSeparator toolStripMenuItem5;
+        private System.Windows.Forms.ToolStripMenuItem sendToToolStripMenuItem2;
+        private System.Windows.Forms.ToolStripSeparator toolStripMenuItem6;
     }
 }

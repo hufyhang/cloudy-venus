@@ -137,10 +137,6 @@ namespace LZ_Marina
             if (e.Control && e.KeyCode == Keys.Enter)
             {
                 this.addressBox.Text.Remove(this.addressBox.Text.Length - 1);
-                if (this.firstUrl.Equals(""))
-                {
-                    this.firstUrl = @"http://" + this.addressBox.Text + @".com";
-                }
                 String url = @"http://" + this.addressBox.Text + @".com";
                 this.currentBrowser.Navigate(url);
             }

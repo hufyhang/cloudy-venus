@@ -417,20 +417,42 @@ namespace LZ_Marina
 
                     foreach (ListViewItem item in this.listView3.SelectedItems)
                     {
-                        String filename = item.SubItems[0].Text;
-                        FileInfo info = new FileInfo(destination + @"\" + filename);
-                        if (info.Exists)
+                        if (!item.SubItems[1].Text.Equals(@"<DIR>") && !item.SubItems[1].Text.Equals(@"<ROOT>"))
                         {
-                            if (MessageBox.Show(filename + " is existing in the destination already.\r\nAre you sure you want to overwrite it now?", "File exists...", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
+                            String filename = item.SubItems[0].Text;
+                            FileInfo info = new FileInfo(destination + @"\" + filename);
+                            if (info.Exists)
                             {
-                                info.Delete();
+                                if (MessageBox.Show(filename + " is existing in the destination already.\r\nAre you sure you want to overwrite it now?", "File exists...", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
+                                {
+                                    info.Delete();
+                                    new FileInfo(this.root + this.sub + this.thd + this.tail + @"\" + filename).CopyTo(destination + @"\" + filename);
+                                }
+                            }
+                            else
+                            {
                                 new FileInfo(this.root + this.sub + this.thd + this.tail + @"\" + filename).CopyTo(destination + @"\" + filename);
                             }
                         }
-                        else
+
+                        else if(item.SubItems[1].Text.Equals(@"<DIR>"))
                         {
-                            new FileInfo(this.root + this.sub + this.thd + this.tail + @"\" + filename).CopyTo(destination + @"\" + filename);
+                            String dirName = item.SubItems[0].Text;
+                            DirectoryInfo dir = new DirectoryInfo(destination + @"\" + dirName);
+                            if (dir.Exists)
+                            {
+                                if (MessageBox.Show(dirName + " is existing in the destination already.\r\nAre you sure you want to overwrite it now?", "Directory exists...", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
+                                {
+                                    dir.Delete(true);
+                                    new DirectoryInfo(this.root + this.sub + this.thd + this.tail + @"\" + dirName).MoveTo(destination + @"\" + dirName);
+                                }
+                            }
+                            else
+                            {
+                                new DirectoryInfo(this.root + this.sub + this.thd + this.tail + @"\" + dirName).MoveTo(destination + @"\" + dirName);
+                            }
                         }
+
                     }
                 }
             }
@@ -451,6 +473,70 @@ namespace LZ_Marina
                 }
             }
         }
+
+        private void sendToToolStripMenuItem1_Click(object sender, EventArgs e)
+        {
+            if (this.listView2.SelectedItems.Count > 0)
+            {
+                String destination = "";
+                using (FolderBrowserDialog folder = new FolderBrowserDialog())
+                {
+                    folder.Description = @"Please choose a destination.";
+                    if (folder.ShowDialog() == DialogResult.OK)
+                    {
+                        destination = folder.SelectedPath;
+                        String dirName = this.listView2.SelectedItems[0].SubItems[0].Text;
+                        DirectoryInfo dir = new DirectoryInfo(destination + @"\" + dirName);
+                        if (dir.Exists)
+                        {
+                            if (MessageBox.Show(dirName + " is existing in the destination already.\r\nAre you sure you want to overwrite it now?", "Directory exists...", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
+                            {
+                                dir.Delete(true);
+                                new DirectoryInfo(this.root + this.sub + this.thd).MoveTo(destination + @"\" + dirName);
+                            }
+                        }
+                        else
+                        {
+                            new DirectoryInfo(this.root + this.sub + this.thd).MoveTo(destination + @"\" + dirName);
+                        }
+                    }
+                }
+            }
+        }
+
+
+        private void sendToToolStripMenuItem2_Click(object sender, EventArgs e)
+        {
+            if (this.listView1.SelectedItems.Count > 0)
+            {
+                String destination = "";
+                using (FolderBrowserDialog folder = new FolderBrowserDialog())
+                {
+                    folder.Description = @"Please choose a destination.";
+                    if (folder.ShowDialog() == DialogResult.OK)
+                    {
+                        destination = folder.SelectedPath;
+
+                        String dirName = this.listView1.SelectedItems[0].SubItems[0].Text;
+                        DirectoryInfo dir = new DirectoryInfo(destination + @"\" + dirName);
+                        if (dir.Exists)
+                        {
+                            if (MessageBox.Show(dirName + " is existing in the destination already.\r\nAre you sure you want to overwrite it now?", "Directory exists...", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
+                            {
+                                dir.Delete(true);
+                                new DirectoryInfo(this.root + @"\" + this.listView1.SelectedItems[0].SubItems[0].Text).MoveTo(destination + @"\" + dirName);
+                            }
+                        }
+                        else
+                        {
+                            new DirectoryInfo(this.root + @"\" + this.listView1.SelectedItems[0].SubItems[0].Text).MoveTo(destination + @"\" + dirName);
+                        }
+                    }
+                }
+            }
+        }
+
+
 
     }
 }

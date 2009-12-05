@@ -77,7 +77,7 @@
             this.closeButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.closeButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.closeButton.Font = new System.Drawing.Font("Arial Unicode MS", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.closeButton.Location = new System.Drawing.Point(678, 11);
+            this.closeButton.Location = new System.Drawing.Point(701, 12);
             this.closeButton.Name = "closeButton";
             this.closeButton.Size = new System.Drawing.Size(23, 24);
             this.closeButton.TabIndex = 5;
@@ -90,7 +90,7 @@
             this.button1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.button1.Font = new System.Drawing.Font("Arial Unicode MS", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.button1.Location = new System.Drawing.Point(593, 12);
+            this.button1.Location = new System.Drawing.Point(616, 12);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(79, 24);
             this.button1.TabIndex = 6;
@@ -107,7 +107,7 @@
             this.webBrowser1.Location = new System.Drawing.Point(0, 42);
             this.webBrowser1.MinimumSize = new System.Drawing.Size(20, 20);
             this.webBrowser1.Name = "webBrowser1";
-            this.webBrowser1.Size = new System.Drawing.Size(704, 279);
+            this.webBrowser1.Size = new System.Drawing.Size(729, 265);
             this.webBrowser1.TabIndex = 7;
             // 
             // addressBox
@@ -117,7 +117,7 @@
             this.addressBox.Location = new System.Drawing.Point(143, 12);
             this.addressBox.Multiline = true;
             this.addressBox.Name = "addressBox";
-            this.addressBox.Size = new System.Drawing.Size(409, 24);
+            this.addressBox.Size = new System.Drawing.Size(432, 24);
             this.addressBox.TabIndex = 8;
             this.addressBox.WordWrap = false;
             // 
@@ -138,7 +138,7 @@
             this.button3.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.button3.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.button3.Font = new System.Drawing.Font("Arial Unicode MS", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.button3.Location = new System.Drawing.Point(558, 11);
+            this.button3.Location = new System.Drawing.Point(581, 12);
             this.button3.Name = "button3";
             this.button3.Size = new System.Drawing.Size(29, 24);
             this.button3.TabIndex = 11;
@@ -149,6 +149,7 @@
             // Browser
             // 
             this.BackColor = System.Drawing.Color.White;
+            this.ClientSize = new System.Drawing.Size(729, 306);
             this.Controls.Add(this.button3);
             this.Controls.Add(this.button2);
             this.Controls.Add(this.addressBox);
@@ -159,7 +160,7 @@
             this.Controls.Add(this.forwardButton);
             this.Controls.Add(this.backButton);
             this.Font = new System.Drawing.Font("Arial Unicode MS", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.Size = new System.Drawing.Size(703, 321);
+            this.Name = "Browser";
             this.ResumeLayout(false);
             this.PerformLayout();
 
