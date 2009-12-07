@@ -86,8 +86,11 @@ namespace LZ_Marina
         {
             if (this.listView1.SelectedItems.Count > 0)
             {
-                this.axWindowsMediaPlayer1.currentPlaylist.removeItem(this.axWindowsMediaPlayer1.currentPlaylist.get_Item(this.listView1.SelectedItems[0].Index));
-                this.listView1.Items.RemoveAt(this.listView1.SelectedItems[0].Index);
+                foreach (ListViewItem item in this.listView1.SelectedItems)
+                {
+                    this.axWindowsMediaPlayer1.currentPlaylist.removeItem(this.axWindowsMediaPlayer1.currentPlaylist.get_Item(item.Index));
+                    this.listView1.Items.RemoveAt(item.Index);
+                }
             }
             else
             {

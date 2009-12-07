@@ -38,11 +38,11 @@
             this.listView1 = new System.Windows.Forms.ListView();
             this.columnHeader1 = new System.Windows.Forms.ColumnHeader();
             this.columnHeader2 = new System.Windows.Forms.ColumnHeader();
+            this.columnHeader3 = new System.Windows.Forms.ColumnHeader();
             this.progressBarX1 = new DevComponents.DotNetBar.Controls.ProgressBarX();
             this.label1 = new System.Windows.Forms.Label();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.timer1 = new System.Windows.Forms.Timer(this.components);
-            this.columnHeader3 = new System.Windows.Forms.ColumnHeader();
             this.splitContainer1.Panel1.SuspendLayout();
             this.splitContainer1.Panel2.SuspendLayout();
             this.splitContainer1.SuspendLayout();
@@ -166,6 +166,11 @@
             // 
             this.columnHeader2.Text = "Size";
             // 
+            // columnHeader3
+            // 
+            this.columnHeader3.Text = "Last modified date";
+            this.columnHeader3.Width = 200;
+            // 
             // progressBarX1
             // 
             this.progressBarX1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
@@ -213,11 +218,6 @@
             // 
             this.timer1.Interval = 5000;
             this.timer1.Tick += new System.EventHandler(this.timer1_Tick);
-            // 
-            // columnHeader3
-            // 
-            this.columnHeader3.Text = "Last modified date";
-            this.columnHeader3.Width = 200;
             // 
             // Picture_Viewer
             // 

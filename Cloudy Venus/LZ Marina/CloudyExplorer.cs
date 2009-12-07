@@ -437,19 +437,26 @@ namespace LZ_Marina
 
                         else if(item.SubItems[1].Text.Equals(@"<DIR>"))
                         {
-                            String dirName = item.SubItems[0].Text;
-                            DirectoryInfo dir = new DirectoryInfo(destination + @"\" + dirName);
-                            if (dir.Exists)
+                            try
                             {
-                                if (MessageBox.Show(dirName + " is existing in the destination already.\r\nAre you sure you want to overwrite it now?", "Directory exists...", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
+                                String dirName = item.SubItems[0].Text;
+                                DirectoryInfo dir = new DirectoryInfo(destination + @"\" + dirName);
+                                if (dir.Exists)
                                 {
-                                    dir.Delete(true);
+                                    if (MessageBox.Show(dirName + " is existing in the destination already.\r\nAre you sure you want to overwrite it now?", "Directory exists...", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
+                                    {
+                                        dir.Delete(true);
+                                        new DirectoryInfo(this.root + this.sub + this.thd + this.tail + @"\" + dirName).MoveTo(destination + @"\" + dirName);
+                                    }
+                                }
+                                else
+                                {
                                     new DirectoryInfo(this.root + this.sub + this.thd + this.tail + @"\" + dirName).MoveTo(destination + @"\" + dirName);
                                 }
                             }
-                            else
+                            catch (IOException)
                             {
-                                new DirectoryInfo(this.root + this.sub + this.thd + this.tail + @"\" + dirName).MoveTo(destination + @"\" + dirName);
+                                MessageBox.Show("Please make sure your source and destination are under the same disk volume.", "Insecurity Access", MessageBoxButtons.OK, MessageBoxIcon.Error);
                             }
                         }
 
@@ -478,28 +485,35 @@ namespace LZ_Marina
         {
             if (this.listView2.SelectedItems.Count > 0)
             {
-                String destination = "";
-                using (FolderBrowserDialog folder = new FolderBrowserDialog())
+                try
                 {
-                    folder.Description = @"Please choose a destination.";
-                    if (folder.ShowDialog() == DialogResult.OK)
+                    String destination = "";
+                    using (FolderBrowserDialog folder = new FolderBrowserDialog())
                     {
-                        destination = folder.SelectedPath;
-                        String dirName = this.listView2.SelectedItems[0].SubItems[0].Text;
-                        DirectoryInfo dir = new DirectoryInfo(destination + @"\" + dirName);
-                        if (dir.Exists)
+                        folder.Description = @"Please choose a destination.";
+                        if (folder.ShowDialog() == DialogResult.OK)
                         {
-                            if (MessageBox.Show(dirName + " is existing in the destination already.\r\nAre you sure you want to overwrite it now?", "Directory exists...", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
+                            destination = folder.SelectedPath;
+                            String dirName = this.listView2.SelectedItems[0].SubItems[0].Text;
+                            DirectoryInfo dir = new DirectoryInfo(destination + @"\" + dirName);
+                            if (dir.Exists)
                             {
-                                dir.Delete(true);
+                                if (MessageBox.Show(dirName + " is existing in the destination already.\r\nAre you sure you want to overwrite it now?", "Directory exists...", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
+                                {
+                                    dir.Delete(true);
+                                    new DirectoryInfo(this.root + this.sub + this.thd).MoveTo(destination + @"\" + dirName);
+                                }
+                            }
+                            else
+                            {
                                 new DirectoryInfo(this.root + this.sub + this.thd).MoveTo(destination + @"\" + dirName);
                             }
                         }
-                        else
-                        {
-                            new DirectoryInfo(this.root + this.sub + this.thd).MoveTo(destination + @"\" + dirName);
-                        }
                     }
+                }
+                catch (IOException)
+                {
+                    MessageBox.Show("Please make sure your source and destination are under the same disk volume.", "Insecurity Access", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
             }
         }
@@ -509,29 +523,36 @@ namespace LZ_Marina
         {
             if (this.listView1.SelectedItems.Count > 0)
             {
-                String destination = "";
-                using (FolderBrowserDialog folder = new FolderBrowserDialog())
+                try
                 {
-                    folder.Description = @"Please choose a destination.";
-                    if (folder.ShowDialog() == DialogResult.OK)
+                    String destination = "";
+                    using (FolderBrowserDialog folder = new FolderBrowserDialog())
                     {
-                        destination = folder.SelectedPath;
-
-                        String dirName = this.listView1.SelectedItems[0].SubItems[0].Text;
-                        DirectoryInfo dir = new DirectoryInfo(destination + @"\" + dirName);
-                        if (dir.Exists)
+                        folder.Description = @"Please choose a destination.";
+                        if (folder.ShowDialog() == DialogResult.OK)
                         {
-                            if (MessageBox.Show(dirName + " is existing in the destination already.\r\nAre you sure you want to overwrite it now?", "Directory exists...", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
+                            destination = folder.SelectedPath;
+
+                            String dirName = this.listView1.SelectedItems[0].SubItems[0].Text;
+                            DirectoryInfo dir = new DirectoryInfo(destination + @"\" + dirName);
+                            if (dir.Exists)
                             {
-                                dir.Delete(true);
+                                if (MessageBox.Show(dirName + " is existing in the destination already.\r\nAre you sure you want to overwrite it now?", "Directory exists...", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
+                                {
+                                    dir.Delete(true);
+                                    new DirectoryInfo(this.root + @"\" + this.listView1.SelectedItems[0].SubItems[0].Text).MoveTo(destination + @"\" + dirName);
+                                }
+                            }
+                            else
+                            {
                                 new DirectoryInfo(this.root + @"\" + this.listView1.SelectedItems[0].SubItems[0].Text).MoveTo(destination + @"\" + dirName);
                             }
                         }
-                        else
-                        {
-                            new DirectoryInfo(this.root + @"\" + this.listView1.SelectedItems[0].SubItems[0].Text).MoveTo(destination + @"\" + dirName);
-                        }
                     }
+                }
+                catch (IOException)
+                {
+                    MessageBox.Show("Please make sure your source and destination are under the same disk volume.", "Insecurity Access", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
             }
         }
