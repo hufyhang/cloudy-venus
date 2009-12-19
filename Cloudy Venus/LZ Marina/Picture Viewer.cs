@@ -12,13 +12,15 @@ namespace LZ_Marina
     public partial class Picture_Viewer : TabPage
     {
         private String path = "";
+        private ListView searchListView = new ListView();
+        private ListView.ListViewItemCollection searchList;
         private int currentItemIndex;
 
         public Picture_Viewer()
         {
             InitializeComponent();
             this.Text = "Picture Viewer";
-            this.listView1.SelectedIndexChanged += new EventHandler(listView1_SelectedIndexChanged);
+            initialEvents();
             using (FolderBrowserDialog folder = new FolderBrowserDialog())
             {
                 folder.Description = @"Please choose your picture folder.";
@@ -35,7 +37,7 @@ namespace LZ_Marina
         {
             InitializeComponent();
             this.Text = "Picture Viewer";
-            this.listView1.SelectedIndexChanged += new EventHandler(listView1_SelectedIndexChanged);
+            initialEvents();
             this.path = path;
             initialPath();
         }
@@ -44,9 +46,46 @@ namespace LZ_Marina
         {
             InitializeComponent();
             this.Text = "Picture Viewer";
-            this.listView1.SelectedIndexChanged += new EventHandler(listView1_SelectedIndexChanged);
+            initialEvents();
             this.path = path;
             initialFile();
+        }
+
+        protected void initialEvents()
+        {
+            this.listView1.SelectedIndexChanged += new EventHandler(listView1_SelectedIndexChanged);
+            this.textBoxX1.TextChanged += new EventHandler(textBoxX1_TextChanged);
+
+            searchList = new ListView.ListViewItemCollection(this.searchListView);
+        }
+
+        protected void textBoxX1_TextChanged(object sender, EventArgs e)
+        {
+            try
+            {
+                this.listView1.Items.Clear();
+                if (this.textBoxX1.Text.Length != 0)
+                {
+
+                    foreach (ListViewItem item in this.searchList)
+                    {
+                        if (item.SubItems[0].Text.Contains(this.textBoxX1.Text))
+                        {
+                            this.listView1.Items.Add((ListViewItem)item.Clone());
+                        }
+                    }
+                }
+                else
+                {
+                    foreach (ListViewItem item in this.searchList)
+                    {
+                        this.listView1.Items.Add((ListViewItem)item.Clone());
+                    }
+                }
+            }
+            catch (Exception)
+            {
+            }
         }
 
         protected void initialFile()
@@ -59,6 +98,11 @@ namespace LZ_Marina
             this.pictureBox1.Image = new Bitmap(this.path);
             this.label1.Text = file.Name;
             this.listView1.Items[0].Selected = true;
+
+            foreach (ListViewItem tempItem in this.listView1.Items)
+            {
+                this.searchList.Add((ListViewItem)tempItem.Clone());
+            }
         }
 
         protected void initialPath()
@@ -70,6 +114,11 @@ namespace LZ_Marina
                 item.SubItems.Add((file.Length / 1024).ToString());
                 item.SubItems.Add(file.LastWriteTime.ToString());
                 this.listView1.Items.Add(item);
+            }
+
+            foreach (ListViewItem item in this.listView1.Items)
+            {
+                this.searchList.Add((ListViewItem)item.Clone());
             }
         }
 
@@ -181,6 +230,11 @@ namespace LZ_Marina
                 {
                 }
             }
+        }
+
+        private void button6_Click(object sender, EventArgs e)
+        {
+            this.textBoxX1.Text = "";
         }
 
     }

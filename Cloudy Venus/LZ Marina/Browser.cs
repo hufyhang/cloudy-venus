@@ -71,7 +71,7 @@ namespace LZ_Marina
             try
             {
                 this.tabControl.Controls.Add(new Browser(e.Url, this.tabControl));
-                this.tabControl.SelectedIndex = this.tabControl.TabCount - 1;
+                //this.tabControl.SelectedIndex = this.tabControl.TabCount - 1;
                 //((ExtendedWebBrowser.ExtendedWebBrowser)sender).Navigate(e.Url);
             }
             catch (Exception)

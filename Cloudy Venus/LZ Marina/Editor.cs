@@ -16,6 +16,9 @@ namespace LZ_Marina
         private ArrayList storage = new ArrayList();
         private Boolean wordWrap = true;
 
+        private ListView searchListView = new ListView();
+        private ListView.ListViewItemCollection searchList;
+
         public Editor()
         {
             InitializeComponent();
@@ -30,6 +33,10 @@ namespace LZ_Marina
 
             this.richTextBox1.KeyDown += new KeyEventHandler(richTextBox1_KeyDown);
             this.textBoxX1.KeyDown += new KeyEventHandler(richTextBox1_KeyDown);
+            this.listView1.SelectedIndexChanged += new EventHandler(listView1_SelectedIndexChanged);
+            this.textBoxX2.TextChanged += new EventHandler(textBoxX2_TextChanged);
+
+            searchList = new ListView.ListViewItemCollection(this.searchListView);
 
             this.Text = "Notepad";
             this.path = path;
@@ -42,10 +49,33 @@ namespace LZ_Marina
 
             this.richTextBox1.KeyDown += new KeyEventHandler(richTextBox1_KeyDown);
             this.textBoxX1.KeyDown += new KeyEventHandler(richTextBox1_KeyDown);
+            this.listView1.SelectedIndexChanged += new EventHandler(listView1_SelectedIndexChanged);
+            this.textBoxX2.TextChanged += new EventHandler(textBoxX2_TextChanged);
+
+            searchList = new ListView.ListViewItemCollection(this.searchListView);
 
             this.Text = "Notepad";
             this.path = path;
             loadFile();
+        }
+
+        protected void textBoxX2_TextChanged(object sender, EventArgs e)
+        {
+            //this.listView1.Items.Clear();
+            try
+            {
+                if (this.textBoxX2.Text.Length != 0)
+                {
+                    loadFiles(true);
+                }
+                else
+                {
+                    loadFiles();
+                }
+            }
+            catch (Exception)
+            {
+            }
         }
 
         protected void richTextBox1_KeyDown(object sender, KeyEventArgs e)
@@ -69,6 +99,27 @@ namespace LZ_Marina
             this.listView1.Items.Add(item);
             this.storage.Add(file);
             this.listView1.Items[0].Selected = true;
+        }
+
+        protected void loadFiles(Boolean flag)
+        {
+            this.Text = "Notepad";
+            this.listView1.Items.Clear();
+            this.storage.Clear();
+            this.textBoxX1.Text = this.richTextBox1.Text = "";
+
+            DirectoryInfo dir = new DirectoryInfo(path);
+            foreach (FileInfo file in dir.GetFiles())
+            {
+                if (file.Name.Contains(this.textBoxX2.Text))
+                {
+                    ListViewItem item = new ListViewItem(file.Name);
+                    item.SubItems.Add(file.LastWriteTime.ToString());
+                    this.listView1.Items.Add(item);
+
+                    this.storage.Add(file);
+                }
+            }
         }
 
         protected void loadFiles()
@@ -153,7 +204,7 @@ namespace LZ_Marina
                 this.richTextBox1.Text = this.textBoxX1.Text = "";
                 FileInfo file = (FileInfo)this.storage[this.listView1.SelectedItems[0].Index];
                 this.textBoxX1.Text = file.Name;
-                StreamReader reader = new StreamReader(file.FullName, System.Text.Encoding.UTF8);//.GetEncoding("gb2312"), true);
+                StreamReader reader = new StreamReader(file.FullName, System.Text.Encoding.UTF8);
                 this.richTextBox1.Text = reader.ReadToEnd();
                 reader.Close();
                 this.Text = this.textBoxX1.Text;
@@ -258,6 +309,11 @@ namespace LZ_Marina
             {
                 MessageBox.Show("Please choose an existing item before exporting.", "Unknown item selection...", MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
+        }
+
+        private void button7_Click(object sender, EventArgs e)
+        {
+            this.textBoxX2.Text = "";
         }
 
     }

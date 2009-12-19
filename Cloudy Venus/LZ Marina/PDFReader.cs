@@ -40,7 +40,6 @@ namespace LZ_Marina
                     this.listView1.Items.Add(item);
                 }
             }
-            //this.listView1.Items[0].Selected = true;
         }
 
         public PDFReader(String filename)
