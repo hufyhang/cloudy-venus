@@ -35,12 +35,16 @@
             this.listView1 = new System.Windows.Forms.ListView();
             this.columnHeader1 = new System.Windows.Forms.ColumnHeader();
             this.contextMenuStrip3 = new System.Windows.Forms.ContextMenuStrip(this.components);
+            this.sendToToolStripMenuItem2 = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripMenuItem6 = new System.Windows.Forms.ToolStripSeparator();
             this.toolStripMenuItem2 = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripMenuItem4 = new System.Windows.Forms.ToolStripMenuItem();
             this.openDirectoryWithPictureViewerToolStripMenuItem2 = new System.Windows.Forms.ToolStripMenuItem();
             this.listView2 = new System.Windows.Forms.ListView();
             this.columnHeader2 = new System.Windows.Forms.ColumnHeader();
             this.contextMenuStrip2 = new System.Windows.Forms.ContextMenuStrip(this.components);
+            this.sendToToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripMenuItem5 = new System.Windows.Forms.ToolStripSeparator();
             this.addListIntoNotepadToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.addListIntoPDFReaderToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.openDirectoryWithPictureViewerToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
@@ -62,10 +66,6 @@
             this.button2 = new System.Windows.Forms.Button();
             this.button1 = new System.Windows.Forms.Button();
             this.button4 = new System.Windows.Forms.Button();
-            this.sendToToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
-            this.toolStripMenuItem5 = new System.Windows.Forms.ToolStripSeparator();
-            this.sendToToolStripMenuItem2 = new System.Windows.Forms.ToolStripMenuItem();
-            this.toolStripMenuItem6 = new System.Windows.Forms.ToolStripSeparator();
             this.panel1.SuspendLayout();
             this.splitContainer1.Panel1.SuspendLayout();
             this.splitContainer1.Panel2.SuspendLayout();
@@ -163,7 +163,19 @@
             this.toolStripMenuItem4,
             this.openDirectoryWithPictureViewerToolStripMenuItem2});
             this.contextMenuStrip3.Name = "contextMenuStrip2";
-            this.contextMenuStrip3.Size = new System.Drawing.Size(278, 120);
+            this.contextMenuStrip3.Size = new System.Drawing.Size(278, 98);
+            // 
+            // sendToToolStripMenuItem2
+            // 
+            this.sendToToolStripMenuItem2.Name = "sendToToolStripMenuItem2";
+            this.sendToToolStripMenuItem2.Size = new System.Drawing.Size(277, 22);
+            this.sendToToolStripMenuItem2.Text = "Send to...";
+            this.sendToToolStripMenuItem2.Click += new System.EventHandler(this.sendToToolStripMenuItem2_Click);
+            // 
+            // toolStripMenuItem6
+            // 
+            this.toolStripMenuItem6.Name = "toolStripMenuItem6";
+            this.toolStripMenuItem6.Size = new System.Drawing.Size(274, 6);
             // 
             // toolStripMenuItem2
             // 
@@ -218,6 +230,18 @@
             this.openDirectoryWithPictureViewerToolStripMenuItem1});
             this.contextMenuStrip2.Name = "contextMenuStrip2";
             this.contextMenuStrip2.Size = new System.Drawing.Size(278, 98);
+            // 
+            // sendToToolStripMenuItem1
+            // 
+            this.sendToToolStripMenuItem1.Name = "sendToToolStripMenuItem1";
+            this.sendToToolStripMenuItem1.Size = new System.Drawing.Size(277, 22);
+            this.sendToToolStripMenuItem1.Text = "Send to...";
+            this.sendToToolStripMenuItem1.Click += new System.EventHandler(this.sendToToolStripMenuItem1_Click);
+            // 
+            // toolStripMenuItem5
+            // 
+            this.toolStripMenuItem5.Name = "toolStripMenuItem5";
+            this.toolStripMenuItem5.Size = new System.Drawing.Size(274, 6);
             // 
             // addListIntoNotepadToolStripMenuItem1
             // 
@@ -351,9 +375,8 @@
                         | System.Windows.Forms.AnchorStyles.Right)));
             this.textBox1.Location = new System.Drawing.Point(117, 8);
             this.textBox1.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.textBox1.Multiline = true;
             this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(664, 21);
+            this.textBox1.Size = new System.Drawing.Size(664, 24);
             this.textBox1.TabIndex = 9;
             this.textBox1.WordWrap = false;
             // 
@@ -396,38 +419,13 @@
             this.button4.UseVisualStyleBackColor = true;
             this.button4.Click += new System.EventHandler(this.button4_Click);
             // 
-            // sendToToolStripMenuItem1
-            // 
-            this.sendToToolStripMenuItem1.Name = "sendToToolStripMenuItem1";
-            this.sendToToolStripMenuItem1.Size = new System.Drawing.Size(277, 22);
-            this.sendToToolStripMenuItem1.Text = "Send to...";
-            this.sendToToolStripMenuItem1.Click += new System.EventHandler(this.sendToToolStripMenuItem1_Click);
-            // 
-            // toolStripMenuItem5
-            // 
-            this.toolStripMenuItem5.Name = "toolStripMenuItem5";
-            this.toolStripMenuItem5.Size = new System.Drawing.Size(274, 6);
-            // 
-            // sendToToolStripMenuItem2
-            // 
-            this.sendToToolStripMenuItem2.Name = "sendToToolStripMenuItem2";
-            this.sendToToolStripMenuItem2.Size = new System.Drawing.Size(277, 22);
-            this.sendToToolStripMenuItem2.Text = "Send to...";
-            this.sendToToolStripMenuItem2.Click += new System.EventHandler(this.sendToToolStripMenuItem2_Click);
-            // 
-            // toolStripMenuItem6
-            // 
-            this.toolStripMenuItem6.Name = "toolStripMenuItem6";
-            this.toolStripMenuItem6.Size = new System.Drawing.Size(274, 6);
-            // 
             // CloudyExplorer
             // 
             this.BackColor = System.Drawing.Color.White;
-            this.ClientSize = new System.Drawing.Size(788, 327);
             this.Controls.Add(this.panel1);
             this.Font = new System.Drawing.Font("Arial Unicode MS", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.Name = "CloudyExplorer";
+            this.Size = new System.Drawing.Size(788, 327);
             this.Text = "CloudyExplorer";
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();

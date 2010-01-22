@@ -52,6 +52,44 @@ namespace LZ_Marina
                     this.tail += this.listView3.SelectedItems[0].SubItems[0].Text + @"\";
                     this.loadThird(this.root + this.sub + this.thd + this.tail);
                 }
+                else if (this.listView3.SelectedItems[0].SubItems[1].Text.Equals(@"<PARENT>"))
+                {
+                    while (this.tail.Length != 0 && this.tail[0].Equals('\\'))
+                    {
+                        if (this.tail.Length == 1)
+                        {
+                            this.tail = "";
+                            break;
+                        }
+                        else
+                        {
+                            this.tail = this.tail.Substring(1);
+                        }
+                    }
+                    
+                    if (this.tail.Length != 0)
+                    {
+                        String tempTail = @"\";
+                        tempTail += this.tail;
+                        this.tail = tempTail;
+                        if (!this.tail[this.tail.Length - 1].Equals('\\'))
+                        {
+                            this.tail = this.tail.Substring(0, this.tail.LastIndexOf('\\') + 1);
+                            this.loadThird(this.root + this.sub + this.thd + this.tail);
+                            this.textBox1.Text = this.root + this.sub + this.thd + this.tail;
+                        }
+                        else
+                        {
+                            do
+                            {
+                                this.tail = this.tail.Substring(0, this.tail.Length - 1);
+                            } while (this.tail[this.tail.Length - 1].Equals('\\'));
+                            this.tail = this.tail.Substring(0, this.tail.LastIndexOf('\\') + 1);
+                            this.loadThird(this.root + this.sub + this.thd + this.tail);
+                            this.textBox1.Text = this.root + this.sub + this.thd + this.tail;
+                        }
+                    }
+                }
                 else if (this.listView3.SelectedItems[0].SubItems[0].Text.Equals(@"<ROOT>"))
                 {
                     if (this.tail.Length != 0)
@@ -171,6 +209,11 @@ namespace LZ_Marina
                 ListViewItem itm = new ListViewItem(@"<ROOT>");
                 itm.SubItems.Add(@"<ROOT>");
                 this.listView3.Items.Add(itm);
+
+                ListViewItem itmParent = new ListViewItem(@"..");
+                itmParent.SubItems.Add(@"<PARENT>");
+                this.listView3.Items.Add(itmParent);
+
                 foreach (DirectoryInfo dir in thirdDir.GetDirectories())
                 {
                     ListViewItem item = new ListViewItem(dir.Name);
@@ -446,17 +489,14 @@ namespace LZ_Marina
                                     if (MessageBox.Show(dirName + " is existing in the destination already.\r\nAre you sure you want to overwrite it now?", "Directory exists...", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
                                     {
                                         dir.Delete(true);
-                                        new DirectoryInfo(this.root + this.sub + this.thd + this.tail + @"\" + dirName).MoveTo(destination + @"\" + dirName);
                                     }
                                 }
-                                else
-                                {
-                                    new DirectoryInfo(this.root + this.sub + this.thd + this.tail + @"\" + dirName).MoveTo(destination + @"\" + dirName);
-                                }
+                                new DirectoryInfo(destination + @"\" + dirName).Create();
+                                this.sendDir(this.root + this.sub + this.thd + this.tail + dirName, destination + @"\" + dirName);
                             }
-                            catch (IOException)
+                            catch (IOException exp)
                             {
-                                MessageBox.Show("Please make sure your source and destination are under the same disk volume.", "Insecurity Access", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                                MessageBox.Show(exp.ToString(), "Unknown Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                             }
                         }
 
@@ -501,23 +541,35 @@ namespace LZ_Marina
                                 if (MessageBox.Show(dirName + " is existing in the destination already.\r\nAre you sure you want to overwrite it now?", "Directory exists...", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
                                 {
                                     dir.Delete(true);
-                                    new DirectoryInfo(this.root + this.sub + this.thd).MoveTo(destination + @"\" + dirName);
                                 }
                             }
-                            else
-                            {
-                                new DirectoryInfo(this.root + this.sub + this.thd).MoveTo(destination + @"\" + dirName);
-                            }
+                            new DirectoryInfo(destination + @"\" + dirName).Create();
+//                            this.sendDir(this.root + this.sub + this.thd + this.listView2.SelectedItems[0].SubItems[0].Text, destination + dirName);
+                            this.sendDir(this.root + this.sub + this.thd, destination + @"\" + dirName);
                         }
                     }
                 }
-                catch (IOException)
+                catch (IOException exp)
                 {
-                    MessageBox.Show("Please make sure your source and destination are under the same disk volume.", "Insecurity Access", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    MessageBox.Show(exp.ToString(), "Unknown Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
             }
         }
 
+        protected void sendDir(String source, String destination)
+        {
+            DirectoryInfo dirInfo = new DirectoryInfo(source);
+            foreach (FileInfo file in dirInfo.GetFiles())
+            {
+                file.CopyTo(destination + @"\" + file.Name);
+            }
+
+            foreach (DirectoryInfo dir in dirInfo.GetDirectories())
+            {
+                new DirectoryInfo(destination + @"\" + dir.Name).Create();
+                sendDir(dir.FullName, destination + @"\" + dir.Name);
+            }
+        }
 
         private void sendToToolStripMenuItem2_Click(object sender, EventArgs e)
         {
@@ -534,30 +586,27 @@ namespace LZ_Marina
                             destination = folder.SelectedPath;
 
                             String dirName = this.listView1.SelectedItems[0].SubItems[0].Text;
-                            DirectoryInfo dir = new DirectoryInfo(destination + @"\" + dirName);
+                            DirectoryInfo dir = new DirectoryInfo(destination + dirName);
                             if (dir.Exists)
                             {
                                 if (MessageBox.Show(dirName + " is existing in the destination already.\r\nAre you sure you want to overwrite it now?", "Directory exists...", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
                                 {
                                     dir.Delete(true);
-                                    new DirectoryInfo(this.root + @"\" + this.listView1.SelectedItems[0].SubItems[0].Text).MoveTo(destination + @"\" + dirName);
                                 }
                             }
-                            else
-                            {
-                                new DirectoryInfo(this.root + @"\" + this.listView1.SelectedItems[0].SubItems[0].Text).MoveTo(destination + @"\" + dirName);
-                            }
+                            
+                            new DirectoryInfo(destination + @"\" + dirName).Create();
+                            this.sendDir(this.root + this.listView1.SelectedItems[0].SubItems[0].Text, destination + @"\" + dirName);
                         }
                     }
                 }
-                catch (IOException)
+
+                catch (IOException exp)
                 {
-                    MessageBox.Show("Please make sure your source and destination are under the same disk volume.", "Insecurity Access", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    MessageBox.Show(exp.ToString(), "Unknown Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
+
             }
         }
-
-
-
     }
 }

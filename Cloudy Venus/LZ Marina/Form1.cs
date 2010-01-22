@@ -43,8 +43,6 @@ namespace LZ_Marina
 
         public Form1()
         {
-            new Splash().ShowDialog();
-
             InitializeComponent();
             screenMode();
 
@@ -53,14 +51,44 @@ namespace LZ_Marina
             this.tabControl1.KeyDown += new KeyEventHandler(tabControl1_KeyDown);
             this.tabControl1.SelectedIndexChanged += new EventHandler(tabControl1_SelectedIndexChanged);
             this.DoubleClick += new EventHandler(Form1_DoubleClick);
+            this.textBoxX1.KeyDown += new KeyEventHandler(textBoxX1_KeyDown);
+            this.expandablePanel1.ExpandedChanged += new DevComponents.DotNetBar.ExpandChangeEventHandler(expandablePanel1_ExpandedChanged);
 
             loginUser();
             sysComponents = this.listView1.Items.Count;
             pluginsInitial();
             userApps();
+
+            this.performanceCounter3.InstanceName = Application.StartupPath.Substring(0, 2);
+
+            new Splash().ShowDialog();
         }
 
-        protected void screenMode()
+        protected void expandablePanel1_ExpandedChanged(object sender, DevComponents.DotNetBar.ExpandedChangeEventArgs e)
+        {
+            StreamWriter writer = new StreamWriter(Application.StartupPath + @"\todo");
+            writer.Flush();
+            writer.Write(this.textBoxX2.Text);
+            writer.Close();
+        }
+
+        protected void textBoxX1_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter)
+            {
+                String[] search = this.textBoxX1.Text.Split(' ');
+                String searchURL = @"http://www.google.com/search?q=";
+                foreach (String str in search)
+                {
+                    searchURL += str + @"+";
+                }
+                this.tabControl1.TabPages.Add(new AppBrowser(searchURL, this.textBoxX1.Text + @" - Google"));
+                this.tabControl1.SelectedIndex = this.tabControl1.TabPages.Count - 1;
+                e.Handled = true;
+            }
+        }
+
+        public void screenMode()
         {
             if (this.FormBorderStyle == FormBorderStyle.None)
             {
@@ -78,7 +106,7 @@ namespace LZ_Marina
 
         protected void Form1_DoubleClick(object sender, EventArgs e)
         {
-            screenMode();
+            //screenMode();
             /*
             this.tabControl1.Controls.Add(new Browser());
             this.tabControl1.SelectedIndex = this.tabControl1.TabPages.Count - 1;
@@ -224,6 +252,10 @@ namespace LZ_Marina
                 writer.Close();
                 loginUser();
             }
+
+            StreamReader rdr = new StreamReader(Application.StartupPath + @"\todo");
+            this.textBoxX2.Text = rdr.ReadToEnd();
+            rdr.Close();
         }
 
         protected void tabControl1_KeyDown(object sender, KeyEventArgs e)
@@ -350,19 +382,17 @@ namespace LZ_Marina
         private void timer1_Tick(object sender, EventArgs e)
         {
             this.labelX1.Text = DateTime.Now.ToString() + @" | " + (SystemInformation.PowerStatus.BatteryLifePercent * 100).ToString() + @"% bettery remaining.";
-        }
 
-        private void linkLabel1_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
-        {
-            if (MessageBox.Show("Are you sure you want to log off from Cloudy Venus?", "Log off...", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
-            {
-                Application.Exit();
-            }
-        }
+            this.progressBarX2.Value = (int)(this.performanceCounter1.NextValue());
+            this.progressBarX2.Text = this.progressBarX2.Value.ToString() + @"%";
 
-        private void linkLabel2_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
-        {
-            screenMode();
+            this.progressBarX3.Value = (int)(this.performanceCounter2.NextValue());
+            this.progressBarX3.Text = this.progressBarX3.Value.ToString() + @"%";
+
+            String value = this.performanceCounter3.NextValue().ToString();
+            value = value.Substring(0, value.IndexOf('.'));
+            this.progressBarX1.Value = 100 - int.Parse(value);
+            this.progressBarX1.Text = this.progressBarX1.Value.ToString() + @"%";
         }
 
         private void clostTabToolStripMenuItem_Click(object sender, EventArgs e)
@@ -379,17 +409,24 @@ namespace LZ_Marina
             this.tabControl1.SelectedIndex = this.tabControl1.TabPages.Count - 1;
         }
 
-        private void linkLabel3_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
+        private void button1_Click(object sender, EventArgs e)
         {
-            if (MessageBox.Show("Are you sure you want to reload Cloudy Venus now?\r\nAll your unsaved works will lose.", "Cloudy Venus reloading...", 
-                MessageBoxButtons.YesNo, MessageBoxIcon.Warning) == DialogResult.Yes)
-            {
-                System.Diagnostics.Process.Start(Application.ExecutablePath);
-                Application.Exit();
-            }
+            new ShutDown(this, this.tabControl1).ShowDialog();
         }
 
-        private void linkLabel4_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
+        private void buttonX1_Click(object sender, EventArgs e)
+        {
+            String[] search = this.textBoxX1.Text.Split(' ');
+            String searchURL = @"http://www.google.com/search?q=";
+            foreach (String str in search)
+            {
+                searchURL += str + @"+";
+            }
+            this.tabControl1.TabPages.Add(new AppBrowser(searchURL, this.textBoxX1.Text + @" - Google"));
+            this.tabControl1.SelectedIndex = this.tabControl1.TabPages.Count - 1;
+        }
+
+        private void button2_Click(object sender, EventArgs e)
         {
             this.tabControl1.SelectedIndex = 0;
         }

@@ -10,7 +10,6 @@ namespace LZ_Marina
 {
     public partial class Splash : Form
     {
-        private int counter = 0;
 
         public Splash()
         {
@@ -19,16 +18,7 @@ namespace LZ_Marina
 
         private void timer1_Tick(object sender, EventArgs e)
         {
-            ++counter;
-            if (this.counter > 3)
-            {
-                this.label1.Visible = true;
-                this.progressBarX1.Visible = false;
-                if (this.counter > 5)
-                {
-                    this.Dispose();
-                }
-            }
+            this.Dispose();
         }
 
         private void Splash_Load(object sender, EventArgs e)
