@@ -13,6 +13,14 @@ namespace LZ_Marina
     public partial class CloudyExplorer : TabPage
     {
         private TabControl tabControl;
+
+        private ListView sortRootList = new ListView();
+        private ListView sortSubList = new ListView();
+        private ListView sortItemList = new ListView();
+        private ListView.ListViewItemCollection backupRoot;
+        private ListView.ListViewItemCollection backupSub;
+        private ListView.ListViewItemCollection backupItem;
+
         private String root = "";
         private String sub = "";
         private String thd = "";
@@ -27,6 +35,9 @@ namespace LZ_Marina
 
         public CloudyExplorer(String root, TabControl tabControl)
         {
+            this.backupRoot = new ListView.ListViewItemCollection(this.sortRootList);
+            this.backupSub = new ListView.ListViewItemCollection(this.sortSubList);
+            this.backupItem = new ListView.ListViewItemCollection(this.sortItemList);
             this.root = root;
             this.tabControl = tabControl;
             InitializeComponent();
@@ -37,7 +48,7 @@ namespace LZ_Marina
         protected void initialEvents()
         {
             this.Text = @"Cloudy Explorer";
-            this.textBox1.KeyDown += new KeyEventHandler(textBox1_KeyDown);
+            this.textBoxX1.KeyDown += new KeyEventHandler(textBoxX1_KeyDown);
             this.listView1.SelectedIndexChanged += new EventHandler(listView1_SelectedIndexChanged);
             this.listView2.SelectedIndexChanged += new EventHandler(listView2_SelectedIndexChanged);
             this.listView3.DoubleClick += new EventHandler(listView3_DoubleClick);
@@ -76,7 +87,7 @@ namespace LZ_Marina
                         {
                             this.tail = this.tail.Substring(0, this.tail.LastIndexOf('\\') + 1);
                             this.loadThird(this.root + this.sub + this.thd + this.tail);
-                            this.textBox1.Text = this.root + this.sub + this.thd + this.tail;
+                            this.textBoxX1.Text = this.root + this.sub + this.thd + this.tail;
                         }
                         else
                         {
@@ -86,7 +97,7 @@ namespace LZ_Marina
                             } while (this.tail[this.tail.Length - 1].Equals('\\'));
                             this.tail = this.tail.Substring(0, this.tail.LastIndexOf('\\') + 1);
                             this.loadThird(this.root + this.sub + this.thd + this.tail);
-                            this.textBox1.Text = this.root + this.sub + this.thd + this.tail;
+                            this.textBoxX1.Text = this.root + this.sub + this.thd + this.tail;
                         }
                     }
                 }
@@ -104,7 +115,7 @@ namespace LZ_Marina
                     runItem(this.root + this.sub + this.thd + this.tail + @"\" + this.listView3.SelectedItems[0].SubItems[0].Text);
                     //System.Diagnostics.Process.Start(this.root + this.sub + this.thd + this.tail + @"\" + this.listView3.SelectedItems[0].SubItems[0].Text);
                 }
-                this.textBox1.Text = this.root + this.sub + this.thd + this.tail;
+                this.textBoxX1.Text = this.root + this.sub + this.thd + this.tail;
             }
         }
 
@@ -176,7 +187,7 @@ namespace LZ_Marina
                     this.loadSub(this.root + this.sub);
                 }
                 this.tail =  "";
-                this.textBox1.Text = this.root + this.sub + this.thd;
+                this.textBoxX1.Text = this.root + this.sub + this.thd;
             }
         }
 
@@ -189,14 +200,35 @@ namespace LZ_Marina
                     this.sub = this.listView1.SelectedItems[0].SubItems[0].Text + @"\";
                     loadSub(this.root + this.sub);
                     this.thd = this.tail = "";
-                    this.textBox1.Text = this.root + this.sub;
+                    this.textBoxX1.Text = this.root + this.sub;
                     this.tempSub = this.sub;
                 }
                 else
                 {
-                    this.textBox1.Text = this.root;
+                    this.textBoxX1.Text = this.root;
                     this.loadRoot();
                 }
+            }
+        }
+
+        protected void sortUpdate()
+        {
+            this.backupItem.Clear();
+            foreach (ListViewItem item in this.listView3.Items)
+            {
+                this.backupItem.Add((ListViewItem)item.Clone());
+            }
+
+            this.backupSub.Clear();
+            foreach (ListViewItem item in this.listView2.Items)
+            {
+                this.backupSub.Add((ListViewItem)item.Clone());
+            }
+
+            this.backupRoot.Clear();
+            foreach (ListViewItem item in this.listView1.Items)
+            {
+                this.backupRoot.Add((ListViewItem)item.Clone());
             }
         }
 
@@ -235,6 +267,8 @@ namespace LZ_Marina
             catch (UnauthorizedAccessException)
             {
             }
+
+            this.sortUpdate();
         }
 
         protected void loadSub(String path)
@@ -261,6 +295,8 @@ namespace LZ_Marina
             catch (UnauthorizedAccessException)
             {
             }
+
+            this.sortUpdate();
         }
 
         protected void loadRoot()
@@ -289,27 +325,29 @@ namespace LZ_Marina
                         this.listView3.Items.Add(item);
                     }
                 }
-                this.textBox1.Text = this.root;
+                this.textBoxX1.Text = this.root;
             }
             catch (Exception)
             {
                 this.root = "";
                 MessageBox.Show("Please make sure you typed a valid address.", "Unknown path...", MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
+
+            this.sortUpdate();
         }
 
-        protected void textBox1_KeyDown(object sender, KeyEventArgs e)
+        protected void textBoxX1_KeyDown(object sender, KeyEventArgs e)
         {
-            if (e.KeyCode == Keys.Enter)
+            if (e.KeyCode == Keys.Enter && this.textBoxX1.Text.Length != 0)
             {
-                if (!this.textBox1.Text[this.textBox1.Text.Length - 2].Equals('\\'))
+                if (!this.textBoxX1.Text[this.textBoxX1.Text.Length - 2].Equals('\\'))
                 {
-                    this.root = this.textBox1.Text + @"\";
-                    this.textBox1.Text = this.root;
+                    this.root = this.textBoxX1.Text + @"\";
+                    this.textBoxX1.Text = this.root;
                 }
                 else
                 {
-                    this.root = this.textBox1.Text;
+                    this.root = this.textBoxX1.Text;
                 }
                 this.loadRoot();
             }
@@ -352,7 +390,7 @@ namespace LZ_Marina
                 {
                     System.Diagnostics.Process.Start(this.root + this.sub + this.thd + this.tail + @"\" + this.listView3.SelectedItems[0].SubItems[0].Text);
                 }
-                this.textBox1.Text = this.root + this.sub + this.thd + this.tail;
+                this.textBoxX1.Text = this.root + this.sub + this.thd + this.tail;
             }
         }
 
@@ -606,6 +644,82 @@ namespace LZ_Marina
                     MessageBox.Show(exp.ToString(), "Unknown Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
 
+            }
+        }
+
+        private void textBoxX2_TextChanged(object sender, EventArgs e)
+        {
+            if (this.textBoxX2.Text.Length == 0)
+            {
+                this.listView1.Items.Clear();
+                foreach (ListViewItem item in this.backupRoot)
+                {
+                    this.listView1.Items.Add((ListViewItem)item.Clone());
+                }
+
+                this.listView2.Items.Clear();
+                foreach (ListViewItem item in this.backupSub)
+                {
+                    this.listView2.Items.Add((ListViewItem)item.Clone());
+                }
+
+                this.listView3.Items.Clear();
+                foreach (ListViewItem item in this.backupItem)
+                {
+                    this.listView3.Items.Add((ListViewItem)item.Clone());
+                }
+            }
+            else
+            {
+                this.listView1.Items.Clear();
+                foreach (ListViewItem rootItem in this.backupRoot)
+                {
+                    if (rootItem.SubItems[0].Text.ToUpper().Contains(this.textBoxX2.Text.ToUpper()))
+                    {
+                        this.listView1.Items.Add((ListViewItem)rootItem.Clone());
+                    }
+                }
+
+                this.listView2.Items.Clear();
+                foreach (ListViewItem subItem in this.backupSub)
+                {
+                    if (subItem.SubItems[0].Text.ToUpper().Contains(this.textBoxX2.Text.ToUpper()))
+                    {
+                        this.listView2.Items.Add((ListViewItem)subItem.Clone());
+                    }
+                }
+
+                this.listView3.Items.Clear();
+                foreach (ListViewItem thdItem in this.backupItem)
+                {
+                    if (thdItem.SubItems[0].Text.ToUpper().Contains(this.textBoxX2.Text.ToUpper()))
+                    {
+                        this.listView3.Items.Add((ListViewItem)thdItem.Clone());
+                    }
+                }
+            }
+        }
+
+        private void button3_Click(object sender, EventArgs e)
+        {
+            this.textBoxX2.Text = "";
+
+            this.listView1.Items.Clear();
+            foreach (ListViewItem item in this.backupRoot)
+            {
+                this.listView1.Items.Add((ListViewItem)item.Clone());
+            }
+
+            this.listView2.Items.Clear();
+            foreach (ListViewItem item in this.backupSub)
+            {
+                this.listView2.Items.Add((ListViewItem)item.Clone());
+            }
+
+            this.listView3.Items.Clear();
+            foreach (ListViewItem item in this.backupItem)
+            {
+                this.listView3.Items.Add((ListViewItem)item.Clone());
             }
         }
     }

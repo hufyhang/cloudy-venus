@@ -30,13 +30,13 @@
         {
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form1));
-            System.Windows.Forms.ListViewItem listViewItem1 = new System.Windows.Forms.ListViewItem("Cloud Explorer", 8);
-            System.Windows.Forms.ListViewItem listViewItem2 = new System.Windows.Forms.ListViewItem("Web Browser", 2);
-            System.Windows.Forms.ListViewItem listViewItem3 = new System.Windows.Forms.ListViewItem("Picture Viewer", 9);
-            System.Windows.Forms.ListViewItem listViewItem4 = new System.Windows.Forms.ListViewItem("Notepad", 11);
-            System.Windows.Forms.ListViewItem listViewItem5 = new System.Windows.Forms.ListViewItem("Media Player", 12);
-            System.Windows.Forms.ListViewItem listViewItem6 = new System.Windows.Forms.ListViewItem("PDF Reader", 13);
-            System.Windows.Forms.ListViewItem listViewItem7 = new System.Windows.Forms.ListViewItem("Process Pool", 10);
+            System.Windows.Forms.ListViewItem listViewItem8 = new System.Windows.Forms.ListViewItem("Cloud Explorer", 8);
+            System.Windows.Forms.ListViewItem listViewItem9 = new System.Windows.Forms.ListViewItem("Web Browser", 2);
+            System.Windows.Forms.ListViewItem listViewItem10 = new System.Windows.Forms.ListViewItem("Picture Viewer", 9);
+            System.Windows.Forms.ListViewItem listViewItem11 = new System.Windows.Forms.ListViewItem("Notepad", 11);
+            System.Windows.Forms.ListViewItem listViewItem12 = new System.Windows.Forms.ListViewItem("Media Player", 12);
+            System.Windows.Forms.ListViewItem listViewItem13 = new System.Windows.Forms.ListViewItem("PDF Reader", 13);
+            System.Windows.Forms.ListViewItem listViewItem14 = new System.Windows.Forms.ListViewItem("Process Pool", 10);
             this.ApplicationsImg = new System.Windows.Forms.ImageList(this.components);
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tabPage1 = new System.Windows.Forms.TabPage();
@@ -109,7 +109,7 @@
             this.tabControl1.Name = "tabControl1";
             this.tabControl1.Padding = new System.Drawing.Point(0, 0);
             this.tabControl1.SelectedIndex = 0;
-            this.tabControl1.Size = new System.Drawing.Size(1024, 380);
+            this.tabControl1.Size = new System.Drawing.Size(794, 342);
             this.tabControl1.TabIndex = 0;
             // 
             // tabPage1
@@ -125,7 +125,7 @@
             this.tabPage1.Location = new System.Drawing.Point(4, 24);
             this.tabPage1.Name = "tabPage1";
             this.tabPage1.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage1.Size = new System.Drawing.Size(1016, 352);
+            this.tabPage1.Size = new System.Drawing.Size(786, 314);
             this.tabPage1.TabIndex = 0;
             this.tabPage1.Text = "▲";
             // 
@@ -139,7 +139,7 @@
             this.expandablePanel1.ExpandOnTitleClick = true;
             this.expandablePanel1.Location = new System.Drawing.Point(3, 63);
             this.expandablePanel1.Name = "expandablePanel1";
-            this.expandablePanel1.Size = new System.Drawing.Size(255, 26);
+            this.expandablePanel1.Size = new System.Drawing.Size(255, 24);
             this.expandablePanel1.Style.Alignment = System.Drawing.StringAlignment.Center;
             this.expandablePanel1.Style.BackColor1.ColorSchemePart = DevComponents.DotNetBar.eColorSchemePart.PanelBackground;
             this.expandablePanel1.Style.BackColor2.ColorSchemePart = DevComponents.DotNetBar.eColorSchemePart.PanelBackground2;
@@ -182,10 +182,10 @@
             this.buttonX1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.buttonX1.ColorTable = DevComponents.DotNetBar.eButtonColor.OrangeWithBackground;
             this.buttonX1.Font = new System.Drawing.Font("Arial Unicode MS", 10.5F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.buttonX1.Location = new System.Drawing.Point(942, 63);
+            this.buttonX1.Location = new System.Drawing.Point(712, 63);
             this.buttonX1.Name = "buttonX1";
+            this.buttonX1.Shape = new DevComponents.DotNetBar.RoundRectangleShapeDescriptor();
             this.buttonX1.Size = new System.Drawing.Size(71, 23);
-            this.buttonX1.Style = DevComponents.DotNetBar.eDotNetBarStyle.Office2003;
             this.buttonX1.TabIndex = 7;
             this.buttonX1.Text = "Search";
             this.buttonX1.Click += new System.EventHandler(this.buttonX1_Click);
@@ -201,7 +201,7 @@
             this.textBoxX1.Border.Class = "TextBoxBorder";
             this.textBoxX1.Location = new System.Drawing.Point(264, 63);
             this.textBoxX1.Name = "textBoxX1";
-            this.textBoxX1.Size = new System.Drawing.Size(672, 24);
+            this.textBoxX1.Size = new System.Drawing.Size(442, 24);
             this.textBoxX1.TabIndex = 6;
             this.textBoxX1.WatermarkText = "Search on Google...";
             // 
@@ -209,7 +209,7 @@
             // 
             this.pictureBox1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.pictureBox1.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.pictureBox1.Location = new System.Drawing.Point(942, 3);
+            this.pictureBox1.Location = new System.Drawing.Point(712, 3);
             this.pictureBox1.Name = "pictureBox1";
             this.pictureBox1.Size = new System.Drawing.Size(72, 54);
             this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
@@ -226,18 +226,18 @@
             this.listView1.Font = new System.Drawing.Font("Arial Unicode MS", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.listView1.ForeColor = System.Drawing.Color.Navy;
             this.listView1.Items.AddRange(new System.Windows.Forms.ListViewItem[] {
-            listViewItem1,
-            listViewItem2,
-            listViewItem3,
-            listViewItem4,
-            listViewItem5,
-            listViewItem6,
-            listViewItem7});
+            listViewItem8,
+            listViewItem9,
+            listViewItem10,
+            listViewItem11,
+            listViewItem12,
+            listViewItem13,
+            listViewItem14});
             this.listView1.LargeImageList = this.ApplicationsImg;
             this.listView1.Location = new System.Drawing.Point(3, 92);
             this.listView1.MultiSelect = false;
             this.listView1.Name = "listView1";
-            this.listView1.Size = new System.Drawing.Size(1010, 238);
+            this.listView1.Size = new System.Drawing.Size(780, 219);
             this.listView1.TabIndex = 1;
             this.listView1.UseCompatibleStateImageBehavior = false;
             // 
@@ -307,7 +307,7 @@
             this.labelX1.BackColor = System.Drawing.Color.Transparent;
             this.labelX1.Font = new System.Drawing.Font("Arial Unicode MS", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.labelX1.ForeColor = System.Drawing.Color.White;
-            this.labelX1.Location = new System.Drawing.Point(763, 1);
+            this.labelX1.Location = new System.Drawing.Point(533, 1);
             this.labelX1.Name = "labelX1";
             this.labelX1.Size = new System.Drawing.Size(61, 20);
             this.labelX1.TabIndex = 4;
@@ -319,7 +319,7 @@
             this.label2.AutoSize = true;
             this.label2.BackColor = System.Drawing.Color.Transparent;
             this.label2.ForeColor = System.Drawing.Color.White;
-            this.label2.Location = new System.Drawing.Point(398, 1);
+            this.label2.Location = new System.Drawing.Point(283, 1);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(252, 16);
             this.label2.TabIndex = 5;
@@ -367,7 +367,7 @@
             this.label3.AutoSize = true;
             this.label3.BackColor = System.Drawing.Color.Transparent;
             this.label3.ForeColor = System.Drawing.Color.White;
-            this.label3.Location = new System.Drawing.Point(362, 401);
+            this.label3.Location = new System.Drawing.Point(132, 363);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(37, 16);
             this.label3.TabIndex = 13;
@@ -385,7 +385,7 @@
             this.label4.BackColor = System.Drawing.Color.Transparent;
             this.label4.Font = new System.Drawing.Font("Arial Unicode MS", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.label4.ForeColor = System.Drawing.Color.White;
-            this.label4.Location = new System.Drawing.Point(802, 401);
+            this.label4.Location = new System.Drawing.Point(572, 363);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(71, 16);
             this.label4.TabIndex = 10;
@@ -396,10 +396,10 @@
             this.progressBarX1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.progressBarX1.Font = new System.Drawing.Font("Arial Unicode MS", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.progressBarX1.ForeColor = System.Drawing.Color.Black;
-            this.progressBarX1.Location = new System.Drawing.Point(879, 401);
+            this.progressBarX1.Location = new System.Drawing.Point(649, 363);
             this.progressBarX1.Name = "progressBarX1";
             this.progressBarX1.Size = new System.Drawing.Size(141, 16);
-            this.progressBarX1.Style = DevComponents.DotNetBar.eDotNetBarStyle.OfficeXP;
+            this.progressBarX1.Style = DevComponents.DotNetBar.eDotNetBarStyle.VS2005;
             this.progressBarX1.TabIndex = 11;
             this.progressBarX1.Text = "Loading...";
             this.progressBarX1.TextVisible = true;
@@ -415,10 +415,10 @@
             this.progressBarX2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.progressBarX2.Font = new System.Drawing.Font("Arial Unicode MS", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.progressBarX2.ForeColor = System.Drawing.Color.Black;
-            this.progressBarX2.Location = new System.Drawing.Point(405, 401);
+            this.progressBarX2.Location = new System.Drawing.Point(175, 363);
             this.progressBarX2.Name = "progressBarX2";
             this.progressBarX2.Size = new System.Drawing.Size(141, 16);
-            this.progressBarX2.Style = DevComponents.DotNetBar.eDotNetBarStyle.OfficeXP;
+            this.progressBarX2.Style = DevComponents.DotNetBar.eDotNetBarStyle.VS2005;
             this.progressBarX2.TabIndex = 14;
             this.progressBarX2.Text = "Loading...";
             this.progressBarX2.TextVisible = true;
@@ -431,7 +431,7 @@
             this.label5.BackColor = System.Drawing.Color.Transparent;
             this.label5.Font = new System.Drawing.Font("Arial Unicode MS", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.label5.ForeColor = System.Drawing.Color.White;
-            this.label5.Location = new System.Drawing.Point(572, 401);
+            this.label5.Location = new System.Drawing.Point(342, 363);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(59, 16);
             this.label5.TabIndex = 15;
@@ -442,10 +442,10 @@
             this.progressBarX3.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.progressBarX3.Font = new System.Drawing.Font("Arial Unicode MS", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.progressBarX3.ForeColor = System.Drawing.Color.Black;
-            this.progressBarX3.Location = new System.Drawing.Point(637, 401);
+            this.progressBarX3.Location = new System.Drawing.Point(407, 363);
             this.progressBarX3.Name = "progressBarX3";
             this.progressBarX3.Size = new System.Drawing.Size(141, 16);
-            this.progressBarX3.Style = DevComponents.DotNetBar.eDotNetBarStyle.OfficeXP;
+            this.progressBarX3.Style = DevComponents.DotNetBar.eDotNetBarStyle.VS2005;
             this.progressBarX3.TabIndex = 16;
             this.progressBarX3.Text = "Loading...";
             this.progressBarX3.TextVisible = true;
@@ -457,7 +457,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.Black;
             this.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("$this.BackgroundImage")));
-            this.ClientSize = new System.Drawing.Size(1025, 420);
+            this.ClientSize = new System.Drawing.Size(795, 382);
             this.Controls.Add(this.progressBarX3);
             this.Controls.Add(this.label5);
             this.Controls.Add(this.progressBarX2);

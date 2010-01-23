@@ -30,6 +30,9 @@
         {
             this.components = new System.ComponentModel.Container();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.button3 = new System.Windows.Forms.Button();
+            this.textBoxX2 = new DevComponents.DotNetBar.Controls.TextBoxX();
+            this.textBoxX1 = new DevComponents.DotNetBar.Controls.TextBoxX();
             this.splitContainer1 = new System.Windows.Forms.SplitContainer();
             this.splitContainer2 = new System.Windows.Forms.SplitContainer();
             this.listView1 = new System.Windows.Forms.ListView();
@@ -62,7 +65,6 @@
             this.addListIntoNotepadToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.addListIntoPDFReaderToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.openDirectoryWithPictureViewerToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.textBox1 = new System.Windows.Forms.TextBox();
             this.button2 = new System.Windows.Forms.Button();
             this.button1 = new System.Windows.Forms.Button();
             this.button4 = new System.Windows.Forms.Button();
@@ -80,8 +82,10 @@
             // 
             // panel1
             // 
+            this.panel1.Controls.Add(this.button3);
+            this.panel1.Controls.Add(this.textBoxX2);
+            this.panel1.Controls.Add(this.textBoxX1);
             this.panel1.Controls.Add(this.splitContainer1);
-            this.panel1.Controls.Add(this.textBox1);
             this.panel1.Controls.Add(this.button2);
             this.panel1.Controls.Add(this.button1);
             this.panel1.Controls.Add(this.button4);
@@ -89,8 +93,54 @@
             this.panel1.Location = new System.Drawing.Point(0, 0);
             this.panel1.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(788, 327);
+            this.panel1.Size = new System.Drawing.Size(756, 251);
             this.panel1.TabIndex = 0;
+            // 
+            // button3
+            // 
+            this.button3.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.button3.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button3.Font = new System.Drawing.Font("Arial Unicode MS", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.button3.Location = new System.Drawing.Point(721, 5);
+            this.button3.Margin = new System.Windows.Forms.Padding(3, 5, 3, 5);
+            this.button3.Name = "button3";
+            this.button3.Size = new System.Drawing.Size(31, 28);
+            this.button3.TabIndex = 13;
+            this.button3.Text = "-";
+            this.button3.UseVisualStyleBackColor = true;
+            this.button3.Click += new System.EventHandler(this.button3_Click);
+            // 
+            // textBoxX2
+            // 
+            this.textBoxX2.AcceptsReturn = true;
+            this.textBoxX2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            // 
+            // 
+            // 
+            this.textBoxX2.Border.Class = "TextBoxBorder";
+            this.textBoxX2.Font = new System.Drawing.Font("Arial Unicode MS", 10.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.textBoxX2.Location = new System.Drawing.Point(504, 7);
+            this.textBoxX2.Name = "textBoxX2";
+            this.textBoxX2.Size = new System.Drawing.Size(211, 26);
+            this.textBoxX2.TabIndex = 12;
+            this.textBoxX2.WatermarkText = "Sort by...";
+            this.textBoxX2.TextChanged += new System.EventHandler(this.textBoxX2_TextChanged);
+            // 
+            // textBoxX1
+            // 
+            this.textBoxX1.AcceptsReturn = true;
+            this.textBoxX1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left)
+                        | System.Windows.Forms.AnchorStyles.Right)));
+            // 
+            // 
+            // 
+            this.textBoxX1.Border.Class = "TextBoxBorder";
+            this.textBoxX1.Font = new System.Drawing.Font("Arial Unicode MS", 10.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.textBoxX1.Location = new System.Drawing.Point(117, 7);
+            this.textBoxX1.Name = "textBoxX1";
+            this.textBoxX1.Size = new System.Drawing.Size(381, 26);
+            this.textBoxX1.TabIndex = 11;
+            this.textBoxX1.WatermarkText = "Go to visit this address...";
             // 
             // splitContainer1
             // 
@@ -108,8 +158,8 @@
             // splitContainer1.Panel2
             // 
             this.splitContainer1.Panel2.Controls.Add(this.listView3);
-            this.splitContainer1.Size = new System.Drawing.Size(781, 283);
-            this.splitContainer1.SplitterDistance = 390;
+            this.splitContainer1.Size = new System.Drawing.Size(749, 207);
+            this.splitContainer1.SplitterDistance = 374;
             this.splitContainer1.SplitterWidth = 5;
             this.splitContainer1.TabIndex = 10;
             // 
@@ -127,8 +177,8 @@
             // splitContainer2.Panel2
             // 
             this.splitContainer2.Panel2.Controls.Add(this.listView2);
-            this.splitContainer2.Size = new System.Drawing.Size(390, 283);
-            this.splitContainer2.SplitterDistance = 186;
+            this.splitContainer2.Size = new System.Drawing.Size(374, 207);
+            this.splitContainer2.SplitterDistance = 178;
             this.splitContainer2.SplitterWidth = 5;
             this.splitContainer2.TabIndex = 0;
             // 
@@ -144,7 +194,7 @@
             this.listView1.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.listView1.MultiSelect = false;
             this.listView1.Name = "listView1";
-            this.listView1.Size = new System.Drawing.Size(186, 283);
+            this.listView1.Size = new System.Drawing.Size(178, 207);
             this.listView1.TabIndex = 0;
             this.listView1.UseCompatibleStateImageBehavior = false;
             this.listView1.View = System.Windows.Forms.View.Details;
@@ -210,7 +260,7 @@
             this.listView2.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.listView2.MultiSelect = false;
             this.listView2.Name = "listView2";
-            this.listView2.Size = new System.Drawing.Size(199, 283);
+            this.listView2.Size = new System.Drawing.Size(191, 207);
             this.listView2.TabIndex = 1;
             this.listView2.UseCompatibleStateImageBehavior = false;
             this.listView2.View = System.Windows.Forms.View.Details;
@@ -278,7 +328,7 @@
             this.listView3.Location = new System.Drawing.Point(0, 0);
             this.listView3.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.listView3.Name = "listView3";
-            this.listView3.Size = new System.Drawing.Size(386, 283);
+            this.listView3.Size = new System.Drawing.Size(370, 207);
             this.listView3.TabIndex = 1;
             this.listView3.UseCompatibleStateImageBehavior = false;
             this.listView3.View = System.Windows.Forms.View.Details;
@@ -369,17 +419,6 @@
             this.openDirectoryWithPictureViewerToolStripMenuItem.Text = "Open directory with Picture Viewer";
             this.openDirectoryWithPictureViewerToolStripMenuItem.Click += new System.EventHandler(this.openDirectoryWithPictureViewerToolStripMenuItem_Click);
             // 
-            // textBox1
-            // 
-            this.textBox1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left)
-                        | System.Windows.Forms.AnchorStyles.Right)));
-            this.textBox1.Location = new System.Drawing.Point(117, 8);
-            this.textBox1.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(664, 24);
-            this.textBox1.TabIndex = 9;
-            this.textBox1.WordWrap = false;
-            // 
             // button2
             // 
             this.button2.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
@@ -422,13 +461,13 @@
             // CloudyExplorer
             // 
             this.BackColor = System.Drawing.Color.White;
+            this.ClientSize = new System.Drawing.Size(756, 251);
             this.Controls.Add(this.panel1);
             this.Font = new System.Drawing.Font("Arial Unicode MS", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.Size = new System.Drawing.Size(788, 327);
+            this.Name = "CloudyExplorer";
             this.Text = "CloudyExplorer";
             this.panel1.ResumeLayout(false);
-            this.panel1.PerformLayout();
             this.splitContainer1.Panel1.ResumeLayout(false);
             this.splitContainer1.Panel2.ResumeLayout(false);
             this.splitContainer1.ResumeLayout(false);
@@ -446,7 +485,6 @@
 
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.Button button4;
-        private System.Windows.Forms.TextBox textBox1;
         private System.Windows.Forms.Button button2;
         private System.Windows.Forms.Button button1;
         private System.Windows.Forms.SplitContainer splitContainer1;
@@ -481,5 +519,8 @@
         private System.Windows.Forms.ToolStripSeparator toolStripMenuItem5;
         private System.Windows.Forms.ToolStripMenuItem sendToToolStripMenuItem2;
         private System.Windows.Forms.ToolStripSeparator toolStripMenuItem6;
+        private DevComponents.DotNetBar.Controls.TextBoxX textBoxX1;
+        private DevComponents.DotNetBar.Controls.TextBoxX textBoxX2;
+        private System.Windows.Forms.Button button3;
     }
 }

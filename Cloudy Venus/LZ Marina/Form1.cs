@@ -53,6 +53,7 @@ namespace LZ_Marina
             this.DoubleClick += new EventHandler(Form1_DoubleClick);
             this.textBoxX1.KeyDown += new KeyEventHandler(textBoxX1_KeyDown);
             this.expandablePanel1.ExpandedChanged += new DevComponents.DotNetBar.ExpandChangeEventHandler(expandablePanel1_ExpandedChanged);
+            this.listView1.KeyDown += new KeyEventHandler(listView1_KeyDown);
 
             loginUser();
             sysComponents = this.listView1.Items.Count;
@@ -62,6 +63,11 @@ namespace LZ_Marina
             this.performanceCounter3.InstanceName = Application.StartupPath.Substring(0, 2);
 
             new Splash().ShowDialog();
+        }
+
+        public TabControl getTabControl()
+        {
+            return this.tabControl1;
         }
 
         protected void expandablePanel1_ExpandedChanged(object sender, DevComponents.DotNetBar.ExpandedChangeEventArgs e)
@@ -281,6 +287,15 @@ namespace LZ_Marina
         {
             Thread thread = new Thread(activateAppThread);
             thread.Start();
+        }
+
+        protected void listView1_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter)
+            {
+                Thread thread = new Thread(activateAppThread);
+                thread.Start();
+            }
         }
 
         protected void activateAppThread()
