@@ -53,13 +53,25 @@ namespace LZ_Marina
             {
                 ans = "\r\n" + @"System Date & Time: " + DateTime.Now.ToLocalTime().ToString() + "\r\n";
             }
-
+/*
             else if (cmd.ToUpper().Equals("?VERCTRL"))
             {
                 TabControl tab = this.form.getTabControl();
                 tab.TabPages.Add(new VersionControl());
                 tab.SelectedIndex = tab.TabPages.Count - 1;
                 ans = "\r\n" + @"Version Control has been activited." + "\r\n";
+            }
+ */ 
+            else if (cmd.ToUpper().Equals("?LOGOFF"))
+            {
+                Application.Exit();
+                ans = "\r\n" + @"Bye." + "\r\n";
+            }
+
+            else if (cmd.ToUpper().Equals("?REBOOT"))
+            {
+                Application.Restart();
+                ans = "\r\n" + @"Luna is reloading now. Please wait..." + "\r\n";
             }
 
             this.richTextBox1.AppendText(ans);

@@ -64,9 +64,9 @@
       <SpecificVersion>False</SpecificVersion>
       <HintPath>dll\ExtendedWebBrowser.dll</HintPath>
     </Reference>
-    <Reference Include="Microsoft.WindowsAPICodePack, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+    <Reference Include="ICSharpCode.SharpZipLib, Version=0.85.5.452, Culture=neutral, PublicKeyToken=1b03e6acf1164f73, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\..\..\..\..\Program Files\Microsoft Visual Studio 9.0\Plugins\WindowsAPICodePack\Core\bin\Debug\Microsoft.WindowsAPICodePack.dll</HintPath>
+      <HintPath>dll\ICSharpCode.SharpZipLib.dll</HintPath>
     </Reference>
     <Reference Include="PresentationCore, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=x86">
       <RequiredTargetFramework>3.0</RequiredTargetFramework>

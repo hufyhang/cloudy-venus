@@ -112,14 +112,14 @@ namespace LZ_Marina
                 }
                 else
                 {
-                    runItem(this.root + this.sub + this.thd + this.tail + @"\" + this.listView3.SelectedItems[0].SubItems[0].Text);
+                    runItem(this.root + this.sub + this.thd + this.tail + @"\" + this.listView3.SelectedItems[0].SubItems[0].Text, this.tabControl);
                     //System.Diagnostics.Process.Start(this.root + this.sub + this.thd + this.tail + @"\" + this.listView3.SelectedItems[0].SubItems[0].Text);
                 }
                 this.textBoxX1.Text = this.root + this.sub + this.thd + this.tail;
             }
         }
 
-        protected void runItem(String filename)
+        public void runItem(String filename, TabControl tabctrl)
         {
             FileInfo file = new FileInfo(filename);
             ArrayList img = new ArrayList();
@@ -149,15 +149,15 @@ namespace LZ_Marina
 
             if (img.Contains(extension))
             {
-                this.tabControl.Controls.Add(new Picture_Viewer(filename, true));
+                tabctrl.Controls.Add(new Picture_Viewer(filename, true));
             }
             else if (media.Contains(extension))
             {
-                this.tabControl.Controls.Add(new Media_Player(filename));
+                tabctrl.Controls.Add(new Media_Player(filename));
             }
             else if (extension.Equals(@".pdf"))
             {
-                this.tabControl.Controls.Add(new PDFReader(filename));
+                tabctrl.Controls.Add(new PDFReader(filename));
             }
             else if (extension.Equals(@".exe"))
             {
@@ -165,9 +165,9 @@ namespace LZ_Marina
             }
             else
             {
-                this.tabControl.Controls.Add(new Editor(filename, true));
+                tabctrl.Controls.Add(new Editor(filename, true));
             }
-            this.tabControl.SelectedIndex = this.tabControl.TabCount - 1;
+            tabctrl.SelectedIndex = tabctrl.TabCount - 1;
             Application.DoEvents();
         }
 

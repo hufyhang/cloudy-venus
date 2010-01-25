@@ -24,6 +24,12 @@ namespace LZ_Marina
         private String picRoot = "";
         private String textRoot = "";
 
+        private const int INTERNET_CONNECTION_MODEM = 1;
+        private const int INTERNET_CONNECTION_LAN = 2;
+        
+        [DllImport("winInet.dll")]
+        private static extern bool InternetGetConnectedState(ref int dwFlag, int dwReserved);   
+
         [DllImport("kernel32.dll")]
         private static extern int SetProcessWorkingSetSize(IntPtr hProcess, int dwMinimumWorkingSetSize, int dwMaximumWorkingSetSize);
 
@@ -133,6 +139,7 @@ namespace LZ_Marina
             System.Windows.Forms.ListViewItem listViewItem4 = new System.Windows.Forms.ListViewItem("Media Player", 12);
             System.Windows.Forms.ListViewItem listViewItem5 = new System.Windows.Forms.ListViewItem("PDF Reader", 13);
             System.Windows.Forms.ListViewItem listViewItem8 = new System.Windows.Forms.ListViewItem("Process Pool", 10);
+            System.Windows.Forms.ListViewItem listViewItem9 = new System.Windows.Forms.ListViewItem("Version Control", 1);
 
             this.listView1.Items.AddRange(new System.Windows.Forms.ListViewItem[] {
                 listViewItem0,
@@ -143,7 +150,8 @@ namespace LZ_Marina
                 listViewItem7,
                 listViewItem4,
                 listViewItem5,
-                listViewItem8
+                listViewItem8,
+                listViewItem9
                 });
 
             this.sysComponents = this.listView1.Items.Count;
@@ -338,6 +346,10 @@ namespace LZ_Marina
                         this.tabControl1.Controls.Add(new ProcsPool(this.tabControl1));
                         this.tabControl1.SelectedIndex = this.tabControl1.TabPages.Count - 1;
                         break;
+                    case 7:
+                        this.tabControl1.Controls.Add(new VersionControl(this.tabControl1, this));
+                        this.tabControl1.SelectedIndex = this.tabControl1.TabPages.Count - 1;
+                        break;
                     default:
                         String url = "";
                         if (this.listView1.SelectedItems[0].Index >= sysComponents + pluginsNumber)
@@ -408,6 +420,20 @@ namespace LZ_Marina
             value = value.Substring(0, value.IndexOf('.'));
             this.progressBarX1.Value = 100 - int.Parse(value);
             this.progressBarX1.Text = this.progressBarX1.Value.ToString() + @"%";
+
+            System.Int32 dwFlag = new int();
+            if (!InternetGetConnectedState(ref dwFlag, 0))
+            {
+                this.progressBarX4.ColorTable = DevComponents.DotNetBar.eProgressBarItemColor.Error;
+            }
+            else if ((dwFlag & INTERNET_CONNECTION_MODEM) != 0)
+            {
+                this.progressBarX4.ColorTable = DevComponents.DotNetBar.eProgressBarItemColor.Paused;
+            }
+            else if ((dwFlag & INTERNET_CONNECTION_LAN) != 0)
+            {
+                this.progressBarX4.ColorTable = DevComponents.DotNetBar.eProgressBarItemColor.Normal;
+            }
         }
 
         private void clostTabToolStripMenuItem_Click(object sender, EventArgs e)
