@@ -10,6 +10,7 @@ using System.Collections;
 using System.Diagnostics;
 using System.Threading;
 using System.Runtime.InteropServices;
+using System.Media;
 
 namespace LZ_Marina
 {
@@ -17,6 +18,7 @@ namespace LZ_Marina
     {
         private ArrayList userAppUrl = new ArrayList();
         private ArrayList plugins = new ArrayList();
+        private ArrayList localAppUrl = new ArrayList();
         private int sysComponents = 0;
         private int pluginsNumber = 0;
 
@@ -24,8 +26,17 @@ namespace LZ_Marina
         private String picRoot = "";
         private String textRoot = "";
 
-        private const int INTERNET_CONNECTION_MODEM = 1;
-        private const int INTERNET_CONNECTION_LAN = 2;
+        private Boolean alarmClock;
+        private String alarmTime;
+        private SoundPlayer alarm = new SoundPlayer(Application.StartupPath + @"\File System\Media\alarm.wav");
+
+        private ArrayList vitual1 = new ArrayList();
+        private ArrayList vitual2 = new ArrayList();
+
+        private int virtualIndex;
+
+//        private const int INTERNET_CONNECTION_MODEM = 1;
+//        private const int INTERNET_CONNECTION_LAN = 2;
         
         [DllImport("winInet.dll")]
         private static extern bool InternetGetConnectedState(ref int dwFlag, int dwReserved);   
@@ -62,13 +73,42 @@ namespace LZ_Marina
             this.listView1.KeyDown += new KeyEventHandler(listView1_KeyDown);
 
             loginUser();
+            this.virtualIndex = 1;
+            this.button5.Text = "";
+            this.alarmClock = false;
+            this.alarmTime = "";
             sysComponents = this.listView1.Items.Count;
             pluginsInitial();
             userApps();
-
-            this.performanceCounter3.InstanceName = Application.StartupPath.Substring(0, 2);
+            localApps();
 
             new Splash().ShowDialog();
+
+            new SoundPlayer(Application.StartupPath + @"\File System\Media\Startup.wav").Play();
+            this.vitual1.Add(this.tabControl1.TabPages[0]);
+            this.vitual2.Add(this.tabControl1.TabPages[0]);
+        }
+
+        protected void updateVirtual()
+        {
+            switch (this.virtualIndex)
+            {
+                case 1:
+                    this.vitual1.Clear();
+                    for (int index = 0; index != this.tabControl1.TabPages.Count; ++index )
+                    {
+                        this.vitual1.Add(this.tabControl1.TabPages[index]);
+                    }
+                    break;
+
+                case 2:
+                    this.vitual2.Clear();
+                    for (int index = 0; index != this.tabControl1.TabPages.Count; ++index)
+                    {
+                        this.vitual2.Add(this.tabControl1.TabPages[index]);
+                    }
+                    break;
+            }
         }
 
         public TabControl getTabControl()
@@ -97,6 +137,10 @@ namespace LZ_Marina
                 this.tabControl1.TabPages.Add(new AppBrowser(searchURL, this.textBoxX1.Text + @" - Google"));
                 this.tabControl1.SelectedIndex = this.tabControl1.TabPages.Count - 1;
                 e.Handled = true;
+            }
+            else if (e.KeyCode == Keys.Escape)
+            {
+                this.textBoxX1.Text = "";
             }
         }
 
@@ -128,6 +172,7 @@ namespace LZ_Marina
         protected void initialPanel()
         {
             this.userAppUrl = new ArrayList();
+            this.localAppUrl = new ArrayList();
             this.listView1.Items.Clear();
 
             System.Windows.Forms.ListViewItem listViewItem0 = new System.Windows.Forms.ListViewItem("Cloud Explorer", 8);
@@ -158,13 +203,25 @@ namespace LZ_Marina
 
             pluginsInitial();
             userApps();
+            localApps();
         }
 
         protected void tabControl1_SelectedIndexChanged(object sender, EventArgs e)
         {
-            if (this.tabControl1.SelectedIndex == 0)
+            try
             {
-                initialPanel();
+                if (this.tabControl1.SelectedIndex == 0)
+                {
+                    this.label2.Text = @"Cloudy Venus - Luna, Evaluation Copy, 1.0.3";
+                    initialPanel();
+                }
+                else
+                {
+                    this.label2.Text = this.tabControl1.SelectedTab.Text;
+                }
+            }
+            catch (NullReferenceException)
+            {
             }
         }
 
@@ -219,6 +276,34 @@ namespace LZ_Marina
             else
             {
                 StreamWriter writer = new StreamWriter(Application.StartupPath + @"\apps");
+                String userInfo = @"";
+                writer.Write(userInfo);
+                writer.Close();
+            }
+        }
+
+        protected void localApps()
+        {
+            this.localAppUrl.Clear();
+            FileInfo file = new FileInfo(Application.StartupPath + @"\localApps");
+            if (file.Exists)
+            {
+                StreamReader reader = new StreamReader(Application.StartupPath + @"\localApps");
+                String temp = "";
+                while ((temp = reader.ReadLine()) != null)
+                {
+                    if (temp.Length > 0)
+                    {
+                        String[] info = temp.Split('`');
+                        ListViewItem item = new ListViewItem(info[0], 14);
+                        this.localAppUrl.Add(info[1]);
+                        this.listView1.Items.Add(item);
+                    }
+                }
+            }
+            else
+            {
+                StreamWriter writer = new StreamWriter(Application.StartupPath + @"\localApps");
                 String userInfo = @"";
                 writer.Write(userInfo);
                 writer.Close();
@@ -354,14 +439,25 @@ namespace LZ_Marina
                         String url = "";
                         if (this.listView1.SelectedItems[0].Index >= sysComponents + pluginsNumber)
                         {
-                            url = this.userAppUrl[this.listView1.SelectedItems[0].Index - sysComponents - pluginsNumber].ToString();
+                            if (this.listView1.SelectedItems[0].ImageIndex == 5)
+                            {
+                                url = this.userAppUrl[this.listView1.SelectedItems[0].Index - sysComponents - pluginsNumber].ToString();
+                            }
+                            else
+                            {
+                                url = @"<NULL>";
+                                new CloudyExplorer().runItem(this.localAppUrl[this.listView1.SelectedItems[0].Index - sysComponents - pluginsNumber - this.userAppUrl.Count].ToString(), this.tabControl1);
+                            }
                         }
                         else
                         {
                             url = this.plugins[this.listView1.SelectedItems[0].Index - sysComponents].ToString();
                         }
-                        this.tabControl1.Controls.Add(new AppBrowser(url, this.listView1.SelectedItems[0].Text));
-                        this.tabControl1.SelectedIndex = this.tabControl1.TabPages.Count - 1;
+                        if (url != @"<NULL>")
+                        {
+                            this.tabControl1.Controls.Add(new AppBrowser(url, this.listView1.SelectedItems[0].Text));
+                            this.tabControl1.SelectedIndex = this.tabControl1.TabPages.Count - 1;
+                        }
                         break;
                 }
             }
@@ -384,7 +480,7 @@ namespace LZ_Marina
                 {
                     MessageBox.Show("Cannot remove this system component from list.", "System component", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 }
-                else
+                else if (this.listView1.SelectedItems[0].ImageIndex == 5)
                 {
                     if (MessageBox.Show("Are you sure you want to remove this favourite item?", "Remove a favourite item", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
                     {
@@ -403,24 +499,32 @@ namespace LZ_Marina
                         initialPanel();
                     }
                 }
+                else
+                {
+                    if (MessageBox.Show("Are you sure you want to remove this favourite item?", "Remove a favourite item", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
+                    {
+                        int index = this.listView1.SelectedItems[0].Index - sysComponents - pluginsNumber - this.userAppUrl.Count;
+                        String temp = this.listView1.SelectedItems[0].Text + "`" + this.localAppUrl[index].ToString();
+                        StreamReader reader = new StreamReader(Application.StartupPath + @"\localApps");
+                        String former = reader.ReadToEnd();
+                        reader.Close();
+                        former = former.Replace(temp, "");
+                        StreamWriter writer = new StreamWriter(Application.StartupPath + @"\localApps");
+                        writer.Flush();
+                        writer.Write(former);
+                        writer.Close();
+
+                        this.listView1.SelectedItems[0].Remove();
+                        initialPanel();
+                    }
+                }
             }
         }
 
         private void timer1_Tick(object sender, EventArgs e)
         {
             this.labelX1.Text = DateTime.Now.ToString() + @" | " + (SystemInformation.PowerStatus.BatteryLifePercent * 100).ToString() + @"% bettery remaining.";
-
-            this.progressBarX2.Value = (int)(this.performanceCounter1.NextValue());
-            this.progressBarX2.Text = this.progressBarX2.Value.ToString() + @"%";
-
-            this.progressBarX3.Value = (int)(this.performanceCounter2.NextValue());
-            this.progressBarX3.Text = this.progressBarX3.Value.ToString() + @"%";
-
-            String value = this.performanceCounter3.NextValue().ToString();
-            value = value.Substring(0, value.IndexOf('.'));
-            this.progressBarX1.Value = 100 - int.Parse(value);
-            this.progressBarX1.Text = this.progressBarX1.Value.ToString() + @"%";
-
+/*
             System.Int32 dwFlag = new int();
             if (!InternetGetConnectedState(ref dwFlag, 0))
             {
@@ -433,6 +537,25 @@ namespace LZ_Marina
             else if ((dwFlag & INTERNET_CONNECTION_LAN) != 0)
             {
                 this.progressBarX4.ColorTable = DevComponents.DotNetBar.eProgressBarItemColor.Normal;
+            }
+ */ 
+
+            if (this.alarmClock)
+            {
+                if (DateTime.Now.ToLongTimeString() == this.alarmTime)
+                {
+                    this.alarm.Play();
+                    this.alarm.PlayLooping();
+                }
+            }
+
+            if (this.tabControl1.SelectedIndex != 0)
+            {
+                this.label2.Text = this.tabControl1.SelectedTab.Text;
+                if (this.label2.Text == @"")
+                {
+                    this.label2.Text = "> Untitled <";
+                }
             }
         }
 
@@ -470,6 +593,75 @@ namespace LZ_Marina
         private void button2_Click(object sender, EventArgs e)
         {
             this.tabControl1.SelectedIndex = 0;
+        }
+
+        private void button3_Click(object sender, EventArgs e)
+        {
+            if (this.alarmClock)
+            {
+                this.alarm.Stop();
+                this.alarmClock = false;
+                this.labelX1.ForeColor = Color.White;
+            }
+            else
+            {
+                SetAlarm setAlarm = new SetAlarm();
+                if (setAlarm.ShowDialog() == DialogResult.OK)
+                {
+                    this.alarmTime = setAlarm.getTime();
+                    this.alarmClock = true;
+                    this.labelX1.ForeColor = Color.Yellow;
+                }
+                setAlarm.Dispose();
+            }
+        }
+
+        private void button5_Click(object sender, EventArgs e)
+        {
+            this.updateVirtual();
+            this.virtualIndex = 1;
+            this.tabControl1.TabPages.Clear();
+            for (int index = 0; index != this.vitual1.Count; ++index)
+            {
+                this.tabControl1.TabPages.Add((TabPage)(this.vitual1[index]));
+            }
+            this.button4.Text = "2";
+            this.button5.Text = "";
+        }
+
+        private void button4_Click(object sender, EventArgs e)
+        {
+            this.updateVirtual();
+            this.virtualIndex = 2;
+            this.tabControl1.TabPages.Clear();
+            for (int index = 0; index != this.vitual2.Count; ++index )
+            {
+                this.tabControl1.TabPages.Add((TabPage)(this.vitual2[index]));
+            }
+            this.button4.Text = "";
+            this.button5.Text = "1";
+        }
+
+        private void createALocalShortcutToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            this.localShortcut();
+            this.initialPanel();
+        }
+
+        protected void localShortcut()
+        {
+            using (OpenFileDialog open = new OpenFileDialog())
+            {
+                open.Title = @"Shortcut...";
+                if (open.ShowDialog() == DialogResult.OK)
+                {
+                    FileInfo file = new FileInfo(Application.StartupPath + @"\localApps");
+                    StreamWriter writer = file.AppendText();
+                    String info = System.IO.Path.GetFileName(open.FileName) + @"`" + System.IO.Path.GetFullPath(open.FileName) + "\r\n";
+                    writer.Write(info);
+                    writer.Close();
+                }
+            }
         }
     }
 }

@@ -340,7 +340,7 @@ namespace LZ_Marina
         {
             if (e.KeyCode == Keys.Enter && this.textBoxX1.Text.Length != 0)
             {
-                if (!this.textBoxX1.Text[this.textBoxX1.Text.Length - 2].Equals('\\'))
+                if (!this.textBoxX1.Text[this.textBoxX1.Text.Length - 1].Equals('\\'))
                 {
                     this.root = this.textBoxX1.Text + @"\";
                     this.textBoxX1.Text = this.root;
@@ -370,7 +370,7 @@ namespace LZ_Marina
                 folder.Description = @"Please choose the root path.";
                 if (folder.ShowDialog() == DialogResult.OK)
                 {
-                    this.root = folder.SelectedPath + @"\";
+                    this.root = folder.SelectedPath;
                     this.loadRoot();
                 }
             }

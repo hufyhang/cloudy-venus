@@ -316,12 +316,19 @@ namespace LZ_Marina
 
         private void button6_Click(object sender, EventArgs e)
         {
-            if (MessageBox.Show("Are you sure that you want to checkout with this version of your milestones?", "Checkout", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
+            if (this.listView2.SelectedItems.Count != 0)
             {
-                this.clearBuffer(new DirectoryInfo(this.currentTrack));
-                new ICSharpCode.SharpZipLib.Zip.FastZip().ExtractZip(this.currentStorage + @"\" + this.currentSolution + @"_" + this.listView2.SelectedItems[0].SubItems[0].Text + @".zip",
-                                                                                                this.currentTrack, "");
-                MessageBox.Show("Milestone has been checked out.", "Checkout", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                if (MessageBox.Show("Are you sure that you want to checkout with this version of your milestones?", "Checkout", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
+                {
+                    this.clearBuffer(new DirectoryInfo(this.currentTrack));
+                    new ICSharpCode.SharpZipLib.Zip.FastZip().ExtractZip(this.currentStorage + @"\" + this.currentSolution + @"_" + this.listView2.SelectedItems[0].SubItems[0].Text + @".zip",
+                                                                                                    this.currentTrack, "");
+                    MessageBox.Show("Milestone has been checked out.", "Checkout", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                }
+            }
+            else
+            {
+                MessageBox.Show("Please choose a milestone before checking out.", "Checkout", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
         }
 
