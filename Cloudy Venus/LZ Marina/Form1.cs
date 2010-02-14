@@ -34,6 +34,9 @@ namespace LZ_Marina
         private ArrayList vitual2 = new ArrayList();
 
         private int virtualIndex;
+        private int currentIndex1;
+        private int currentIndex2;
+        private Boolean inCloseingTab;
 
 //        private const int INTERNET_CONNECTION_MODEM = 1;
 //        private const int INTERNET_CONNECTION_LAN = 2;
@@ -61,16 +64,11 @@ namespace LZ_Marina
         public Form1()
         {
             InitializeComponent();
+            this.tabControl1.ItemSize = new Size(this.Width * 3 / 4, 20);
+
             screenMode();
 
-            this.listView1.DoubleClick += new EventHandler(listView1_DoubleClick);
-            this.tabControl1.DoubleClick += new EventHandler(tabControl1_DoubleClick);
-            this.tabControl1.KeyDown += new KeyEventHandler(tabControl1_KeyDown);
-            this.tabControl1.SelectedIndexChanged += new EventHandler(tabControl1_SelectedIndexChanged);
-            this.DoubleClick += new EventHandler(Form1_DoubleClick);
-            this.textBoxX1.KeyDown += new KeyEventHandler(textBoxX1_KeyDown);
-            this.expandablePanel1.ExpandedChanged += new DevComponents.DotNetBar.ExpandChangeEventHandler(expandablePanel1_ExpandedChanged);
-            this.listView1.KeyDown += new KeyEventHandler(listView1_KeyDown);
+            this.initialEvents();
 
             loginUser();
             this.virtualIndex = 1;
@@ -87,6 +85,56 @@ namespace LZ_Marina
             new SoundPlayer(Application.StartupPath + @"\File System\Media\Startup.wav").Play();
             this.vitual1.Add(this.tabControl1.TabPages[0]);
             this.vitual2.Add(this.tabControl1.TabPages[0]);
+            this.currentIndex1 = this.currentIndex2 = 0;
+            this.inCloseingTab = false;
+        }
+
+        protected void initialEvents()
+        {
+            this.listView1.DoubleClick += new EventHandler(listView1_DoubleClick);
+            this.tabControl1.DoubleClick += new EventHandler(tabControl1_DoubleClick);
+            this.tabControl1.KeyDown += new KeyEventHandler(tabControl1_KeyDown);
+            this.tabControl1.SelectedIndexChanged += new EventHandler(tabControl1_SelectedIndexChanged);
+            this.DoubleClick += new EventHandler(Form1_DoubleClick);
+            this.textBoxX1.KeyDown += new KeyEventHandler(textBoxX1_KeyDown);
+            this.expandablePanel1.ExpandedChanged += new DevComponents.DotNetBar.ExpandChangeEventHandler(expandablePanel1_ExpandedChanged);
+            this.listView1.KeyDown += new KeyEventHandler(listView1_KeyDown);
+            this.tabControl1.ControlAdded += new ControlEventHandler(dynamicTabSize);
+            this.tabControl1.ControlRemoved += new ControlEventHandler(dynamicTabSize);
+            this.tabControl1.ControlRemoved += new ControlEventHandler(tabControl1_ControlRemoved);
+        }
+
+        protected void tabControl1_ControlRemoved(object sender, ControlEventArgs e)
+        {
+            this.inCloseingTab = true;
+        }
+
+        public void dynamicTabSize()
+        {
+
+            if (this.tabControl1.TabCount == 1)
+            {
+                this.tabControl1.ItemSize = new Size(this.Width / 2, 20);
+            }
+            else
+            {
+                this.tabControl1.ItemSize = new Size((this.Width - 20) / this.tabControl1.TabCount, 20);
+            }
+            /*
+            if (this.tabControl1.TabCount * 260 < this.Width)
+            {
+                this.tabControl1.ItemSize = new Size(260, 20);
+            }
+            else
+            {
+                this.tabControl1.ItemSize = new Size((this.Width - 20) / this.tabControl1.TabCount, 20);
+            }
+             */ 
+        }
+
+        protected void dynamicTabSize(object sender, ControlEventArgs e)
+        {
+            this.dynamicTabSize();
         }
 
         protected void updateVirtual()
@@ -134,7 +182,10 @@ namespace LZ_Marina
                 {
                     searchURL += str + @"+";
                 }
-                this.tabControl1.TabPages.Add(new AppBrowser(searchURL, this.textBoxX1.Text + @" - Google"));
+                Browser browser = new Browser(searchURL, this.tabControl1, this);
+                browser.ImageIndex = 2;
+                this.tabControl1.TabPages.Add(browser);
+                //this.tabControl1.TabPages.Add(new AppBrowser(searchURL, this.textBoxX1.Text + @" - Google"));
                 this.tabControl1.SelectedIndex = this.tabControl1.TabPages.Count - 1;
                 e.Handled = true;
             }
@@ -208,6 +259,49 @@ namespace LZ_Marina
 
         protected void tabControl1_SelectedIndexChanged(object sender, EventArgs e)
         {
+            if (this.inCloseingTab)
+            {
+                switch (this.virtualIndex)
+                {
+                    case 1:
+                        if (this.currentIndex1 >= this.tabControl1.TabCount - 1)
+                        {
+                            this.tabControl1.SelectedIndex = this.tabControl1.TabCount - 1;
+                        }
+                        else
+                        {
+                            this.tabControl1.SelectedIndex = this.currentIndex1;
+                        }
+                        break;
+
+                    case 2:
+                        if (this.currentIndex2 >= this.tabControl1.TabCount - 1)
+                        {
+                            this.tabControl1.SelectedIndex = this.tabControl1.TabCount - 1;
+                        }
+                        else
+                        {
+                            this.tabControl1.SelectedIndex = this.currentIndex2;
+                        }
+                        break;
+                }
+                this.inCloseingTab = false;
+            }
+
+            else if (this.tabControl1.SelectedIndex != 0)
+            {
+                switch (this.virtualIndex)
+                {
+                    case 1:
+                        this.currentIndex1 = this.tabControl1.SelectedIndex;
+                        break;
+
+                    case 2:
+                        this.currentIndex2 = this.tabControl1.SelectedIndex;
+                        break;
+                }
+            }
+
             try
             {
                 if (this.tabControl1.SelectedIndex == 0)
@@ -223,6 +317,8 @@ namespace LZ_Marina
             catch (NullReferenceException)
             {
             }
+
+            this.dynamicTabSize();
         }
 
         protected void pluginsInitial()
@@ -371,7 +467,7 @@ namespace LZ_Marina
             {
                 int index = this.tabControl1.SelectedIndex;
                 this.tabControl1.SelectedTab.Dispose();
-                this.tabControl1.SelectedIndex = index - 1;
+                //this.tabControl1.SelectedIndex = index - 1;
                 GC.Collect();
             }
         }
@@ -389,6 +485,10 @@ namespace LZ_Marina
                 Thread thread = new Thread(activateAppThread);
                 thread.Start();
             }
+            else if(e.KeyCode == Keys.F2)
+            {
+                this.renameItem();
+            }
         }
 
         protected void activateAppThread()
@@ -404,35 +504,51 @@ namespace LZ_Marina
                 switch (this.listView1.SelectedIndices[0])
                 {
                     case 0:
-                        this.tabControl1.Controls.Add(new CloudyExplorer(Application.StartupPath + @"\File System\", this.tabControl1));
+                        CloudyExplorer explorer = new CloudyExplorer(Application.StartupPath + @"\File System\", this.tabControl1, this.imageList1);
+                        explorer.ImageIndex = 1;
+                        this.tabControl1.Controls.Add(explorer);
                         this.tabControl1.SelectedIndex = this.tabControl1.TabPages.Count - 1;
                         break;
                     case 1:
-                        this.tabControl1.Controls.Add(new Browser(this.homePage, this.tabControl1));
+                        Browser browser = new Browser(this.homePage, this.tabControl1, this);
+                        browser.ImageIndex = 2;
+                        this.tabControl1.Controls.Add(browser);
                         this.tabControl1.SelectedIndex = this.tabControl1.TabPages.Count - 1;
                         break;
                     case 2:
-                        this.tabControl1.Controls.Add(new Picture_Viewer(this.picRoot));
+                        Picture_Viewer pic = new Picture_Viewer(this.picRoot);
+                        pic.ImageIndex = 3;
+                        this.tabControl1.Controls.Add(pic);
                         this.tabControl1.SelectedIndex = this.tabControl1.TabPages.Count - 1;
                         break;
                     case 3:
-                        this.tabControl1.Controls.Add(new Editor(this.textRoot));
+                        Editor editor = new Editor(this.textRoot);
+                        editor.ImageIndex = 4;
+                        this.tabControl1.Controls.Add(editor);
                         this.tabControl1.SelectedIndex = this.tabControl1.TabPages.Count - 1;
                         break;
                     case 4:
-                        this.tabControl1.Controls.Add(new Media_Player());
+                        Media_Player media = new Media_Player();
+                        media.ImageIndex = 5;
+                        this.tabControl1.Controls.Add(media);
                         this.tabControl1.SelectedIndex = this.tabControl1.TabPages.Count - 1;
                         break;
                     case 5:
-                        this.tabControl1.Controls.Add(new PDFReader());
+                        PDFReader pdf = new PDFReader();
+                        pdf.ImageIndex = 6;
+                        this.tabControl1.Controls.Add(pdf);
                         this.tabControl1.SelectedIndex = this.tabControl1.TabPages.Count - 1;
                         break;
                     case 6:
-                        this.tabControl1.Controls.Add(new ProcsPool(this.tabControl1));
+                        ProcsPool procs = new ProcsPool(this.tabControl1);
+                        procs.ImageIndex = 7;
+                        this.tabControl1.Controls.Add(procs);
                         this.tabControl1.SelectedIndex = this.tabControl1.TabPages.Count - 1;
                         break;
                     case 7:
-                        this.tabControl1.Controls.Add(new VersionControl(this.tabControl1, this));
+                        VersionControl verctrl = new VersionControl(this.tabControl1, this);
+                        verctrl.ImageIndex = 8;
+                        this.tabControl1.Controls.Add(verctrl);
                         this.tabControl1.SelectedIndex = this.tabControl1.TabPages.Count - 1;
                         break;
                     default:
@@ -446,7 +562,7 @@ namespace LZ_Marina
                             else
                             {
                                 url = @"<NULL>";
-                                new CloudyExplorer().runItem(this.localAppUrl[this.listView1.SelectedItems[0].Index - sysComponents - pluginsNumber - this.userAppUrl.Count].ToString(), this.tabControl1);
+                                new CloudyExplorer(this.imageList1).runItem(this.localAppUrl[this.listView1.SelectedItems[0].Index - sysComponents - pluginsNumber - this.userAppUrl.Count].ToString(), this.tabControl1);
                             }
                         }
                         else
@@ -455,13 +571,20 @@ namespace LZ_Marina
                         }
                         if (url != @"<NULL>")
                         {
-                            this.tabControl1.Controls.Add(new AppBrowser(url, this.listView1.SelectedItems[0].Text));
+                            AppBrowser app = new AppBrowser(url, this.listView1.SelectedItems[0].Text);
+                            app.ImageIndex = 9;
+                            this.tabControl1.Controls.Add(app);
                             this.tabControl1.SelectedIndex = this.tabControl1.TabPages.Count - 1;
                         }
                         break;
                 }
             }
             Application.DoEvents();
+        }
+
+        public ImageList getImageList()
+        {
+            return this.imageList1;
         }
 
         private void activateToolStripMenuItem_Click(object sender, EventArgs e)
@@ -523,7 +646,7 @@ namespace LZ_Marina
 
         private void timer1_Tick(object sender, EventArgs e)
         {
-            this.labelX1.Text = DateTime.Now.ToString() + @" | " + (SystemInformation.PowerStatus.BatteryLifePercent * 100).ToString() + @"% bettery remaining.";
+            this.labelX1.Text = DateTime.Now.ToString() + @" | " + (SystemInformation.PowerStatus.BatteryLifePercent * 100).ToString() + @"% bettery remaining";
 /*
             System.Int32 dwFlag = new int();
             if (!InternetGetConnectedState(ref dwFlag, 0))
@@ -546,15 +669,6 @@ namespace LZ_Marina
                 {
                     this.alarm.Play();
                     this.alarm.PlayLooping();
-                }
-            }
-
-            if (this.tabControl1.SelectedIndex != 0)
-            {
-                this.label2.Text = this.tabControl1.SelectedTab.Text;
-                if (this.label2.Text == @"")
-                {
-                    this.label2.Text = "> Untitled <";
                 }
             }
         }
@@ -586,7 +700,10 @@ namespace LZ_Marina
             {
                 searchURL += str + @"+";
             }
-            this.tabControl1.TabPages.Add(new AppBrowser(searchURL, this.textBoxX1.Text + @" - Google"));
+            Browser browser = new Browser(searchURL, this.tabControl1, this);
+            browser.ImageIndex = 2;
+            this.tabControl1.TabPages.Add(browser);
+            //this.tabControl1.TabPages.Add(new AppBrowser(searchURL, this.textBoxX1.Text + @" - Google"));
             this.tabControl1.SelectedIndex = this.tabControl1.TabPages.Count - 1;
         }
 
@@ -625,6 +742,7 @@ namespace LZ_Marina
             {
                 this.tabControl1.TabPages.Add((TabPage)(this.vitual1[index]));
             }
+            this.dynamicTabSize();
             this.button4.Text = "2";
             this.button5.Text = "";
         }
@@ -638,6 +756,7 @@ namespace LZ_Marina
             {
                 this.tabControl1.TabPages.Add((TabPage)(this.vitual2[index]));
             }
+            this.dynamicTabSize();
             this.button4.Text = "";
             this.button5.Text = "1";
         }
@@ -661,6 +780,71 @@ namespace LZ_Marina
                     writer.Write(info);
                     writer.Close();
                 }
+            }
+        }
+
+        protected void renameItem()
+        {
+            if (this.listView1.SelectedItems.Count != 0)
+            {
+                if (this.listView1.SelectedItems[0].Index < this.sysComponents + this.pluginsNumber)
+                {
+                    MessageBox.Show("Cannot rename a system component.", "Rename...", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                }
+                else
+                {
+                    String name = this.listView1.SelectedItems[0].Text;
+                    String full;
+                    int flag;
+                    if (this.listView1.SelectedItems[0].ImageIndex == 5)
+                    {
+                        flag = 1;
+                        full = this.userAppUrl[this.listView1.SelectedItems[0].Index - this.sysComponents - this.pluginsNumber].ToString();
+                    }
+                    else
+                    {
+                        flag = 2;
+                        full = this.localAppUrl[this.listView1.SelectedItems[0].Index - this.sysComponents - this.pluginsNumber - this.userAppUrl.Count].ToString();
+                    }
+                    if (new Rename(name, full, flag).ShowDialog() == DialogResult.OK)
+                    {
+                        this.initialPanel();
+                    }
+                }
+            }
+        }
+
+        private void renameToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            this.renameItem();
+        }
+
+        private void timer2_Tick(object sender, EventArgs e)
+        {
+            if (this.tabControl1.SelectedIndex != 0)
+            {
+                this.label2.Text = this.tabControl1.SelectedTab.Text;
+                if (this.label2.Text == @"")
+                {
+                    this.label2.Text = "> Untitled <";
+                }
+            }
+
+            foreach (TabPage tab in this.tabControl1.TabPages)
+            {
+                tab.ToolTipText = tab.Text;
+            }
+        }
+
+        private void labelX1_Click(object sender, EventArgs e)
+        {
+            if (this.monthCalendar1.Visible == true)
+            {
+                this.monthCalendar1.Visible = false;
+            }
+            else
+            {
+                this.monthCalendar1.Visible = true;
             }
         }
     }

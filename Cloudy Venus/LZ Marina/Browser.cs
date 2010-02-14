@@ -15,8 +15,10 @@ namespace LZ_Marina
         private ExtendedWebBrowser.ExtendedWebBrowser currentBrowser;
         private TabControl tabControl;
         private String firstUrl = "";
+        private ImageList imageList;
+        private Form1 form1;
 
-        public Browser(TabControl tab)
+        public Browser(TabControl tab, Form1 form1)
         {
             InitializeComponent();
 
@@ -27,9 +29,11 @@ namespace LZ_Marina
             initialEvents();
 
             this.webBrowser1.Navigate(@"http://www.google.com");
+            this.form1 = form1;
+            this.imageList = this.form1.getImageList();
         }
 
-        public Browser(String URL, TabControl tab)
+        public Browser(String URL, TabControl tab, Form1 form1)
         {
             InitializeComponent();
 
@@ -40,6 +44,8 @@ namespace LZ_Marina
             initialEvents();
 
             this.webBrowser1.Navigate(URL);
+            this.form1 = form1;
+            this.imageList = this.form1.getImageList();
             //this.webBrowser1.AllowWebBrowserDrop = true;
         }
 
@@ -54,7 +60,7 @@ namespace LZ_Marina
             this.addressBox.KeyDown += new KeyEventHandler(addressBox_KeyDown);
             this.currentBrowser.Navigating += new WebBrowserNavigatingEventHandler(currentBrowser_Navigating);
             this.currentBrowser.Navigated += new WebBrowserNavigatedEventHandler(currentBrowser_Navigated);
-            this.currentBrowser.DocumentCompleted += new WebBrowserDocumentCompletedEventHandler(currentBrowser_DocumentCompleted);
+//            this.currentBrowser.DocumentCompleted += new WebBrowserDocumentCompletedEventHandler(currentBrowser_DocumentCompleted);
             this.backButton.Click += new EventHandler(backButton_Click);
             this.forwardButton.Click += new EventHandler(forwardButton_Click);
             this.reloadButton.Click += new EventHandler(reloadButton_Click);
@@ -70,7 +76,11 @@ namespace LZ_Marina
             e.Cancel = true;
             try
             {
-                this.tabControl.Controls.Add(new Browser(e.Url, this.tabControl));
+                //this.tabControl.Controls.Add(new Browser(this.currentBrowser.Document.ActiveElement.GetAttribute("href"), this.tabControl));
+                Browser browser = new Browser(e.Url, this.tabControl, this.form1);
+                browser.ImageIndex = 2;
+                this.tabControl.Controls.Add(browser);
+                this.tabControl.SelectedIndex = this.tabControl.TabCount - 1;
                 //this.tabControl.SelectedIndex = this.tabControl.TabCount - 1;
                 //((ExtendedWebBrowser.ExtendedWebBrowser)sender).Navigate(e.Url);
             }
@@ -78,7 +88,7 @@ namespace LZ_Marina
             {
             }
         }
-
+/*
         protected void currentBrowser_DocumentCompleted(object sender, WebBrowserDocumentCompletedEventArgs e)
         {
             foreach (HtmlElement archor in this.currentBrowser.Document.Links)
@@ -92,7 +102,7 @@ namespace LZ_Marina
             }
 
         }
-
+*/
         protected void currentBrowser_Navigated(object sender, WebBrowserNavigatedEventArgs e)
         {
             this.addressBox.Text = this.currentBrowser.Url.ToString();
@@ -100,6 +110,8 @@ namespace LZ_Marina
 //            this.addressBox.Font = new System.Drawing.Font("Arial Unicode MS", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.reloadButton.Text = "R";
             String tabTitle = this.currentBrowser.Document.Title.ToString();
+
+            this.ImageIndex = 2;
             this.Text = tabTitle;
 
             if (this.webBrowser1.CanGoBack)
@@ -119,6 +131,14 @@ namespace LZ_Marina
             {
                 this.forwardButton.Enabled = false;
             }
+/*
+            if (this.Text != @"Loading...")
+            {
+                Size tempSize = this.tabControl.ItemSize;
+                this.tabControl.ItemSize = new Size(0, 0);
+                this.tabControl.ItemSize = tempSize;
+            }
+ */
         }
 
         protected void addressBox_KeyDown(object sender, KeyEventArgs e)
@@ -220,6 +240,11 @@ namespace LZ_Marina
         private void button3_Click(object sender, EventArgs e)
         {
             new fullscreenBrowser(this.webBrowser1).Show();
+        }
+
+        private void button4_Click(object sender, EventArgs e)
+        {
+            new Print(this.webBrowser1).ShowDialog();
         }
 
     }

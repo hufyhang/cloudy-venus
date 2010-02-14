@@ -50,10 +50,11 @@
             this.listViewContext = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.activateToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.removeFromCloudToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripMenuItem1 = new System.Windows.Forms.ToolStripSeparator();
+            this.createALocalShortcutToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.renameToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.label1 = new System.Windows.Forms.Label();
             this.imageList1 = new System.Windows.Forms.ImageList(this.components);
-            this.tabControlContext = new System.Windows.Forms.ContextMenuStrip(this.components);
-            this.clostTabToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.timer1 = new System.Windows.Forms.Timer(this.components);
             this.labelX1 = new DevComponents.DotNetBar.LabelX();
             this.label2 = new System.Windows.Forms.Label();
@@ -63,14 +64,15 @@
             this.panel1 = new System.Windows.Forms.Panel();
             this.button5 = new System.Windows.Forms.Button();
             this.button4 = new System.Windows.Forms.Button();
-            this.toolStripMenuItem1 = new System.Windows.Forms.ToolStripSeparator();
-            this.createALocalShortcutToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolTip1 = new System.Windows.Forms.ToolTip(this.components);
+            this.tabPage3 = new System.Windows.Forms.TabPage();
+            this.timer2 = new System.Windows.Forms.Timer(this.components);
+            this.monthCalendar1 = new System.Windows.Forms.MonthCalendar();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
             this.expandablePanel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.listViewContext.SuspendLayout();
-            this.tabControlContext.SuspendLayout();
             this.panel1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -99,12 +101,14 @@
             this.tabControl1.Controls.Add(this.tabPage1);
             this.tabControl1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tabControl1.ImageList = this.imageList1;
-            this.tabControl1.ItemSize = new System.Drawing.Size(120, 20);
+            this.tabControl1.ItemSize = new System.Drawing.Size(260, 20);
             this.tabControl1.Location = new System.Drawing.Point(0, 0);
             this.tabControl1.Name = "tabControl1";
             this.tabControl1.Padding = new System.Drawing.Point(0, 0);
             this.tabControl1.SelectedIndex = 0;
-            this.tabControl1.Size = new System.Drawing.Size(795, 354);
+            this.tabControl1.ShowToolTips = true;
+            this.tabControl1.Size = new System.Drawing.Size(885, 493);
+            this.tabControl1.SizeMode = System.Windows.Forms.TabSizeMode.Fixed;
             this.tabControl1.TabIndex = 0;
             // 
             // tabPage1
@@ -120,9 +124,8 @@
             this.tabPage1.Location = new System.Drawing.Point(4, 24);
             this.tabPage1.Name = "tabPage1";
             this.tabPage1.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage1.Size = new System.Drawing.Size(787, 326);
+            this.tabPage1.Size = new System.Drawing.Size(877, 465);
             this.tabPage1.TabIndex = 0;
-            this.tabPage1.Text = "▲";
             // 
             // expandablePanel1
             // 
@@ -130,11 +133,11 @@
             this.expandablePanel1.ColorSchemeStyle = DevComponents.DotNetBar.eDotNetBarStyle.OfficeXP;
             this.expandablePanel1.Controls.Add(this.textBoxX2);
             this.expandablePanel1.Expanded = false;
-            this.expandablePanel1.ExpandedBounds = new System.Drawing.Rectangle(3, 63, 255, 305);
+            this.expandablePanel1.ExpandedBounds = new System.Drawing.Rectangle(3, 63, 255, 335);
             this.expandablePanel1.ExpandOnTitleClick = true;
             this.expandablePanel1.Location = new System.Drawing.Point(3, 63);
             this.expandablePanel1.Name = "expandablePanel1";
-            this.expandablePanel1.Size = new System.Drawing.Size(255, 24);
+            this.expandablePanel1.Size = new System.Drawing.Size(255, 26);
             this.expandablePanel1.Style.Alignment = System.Drawing.StringAlignment.Center;
             this.expandablePanel1.Style.BackColor1.ColorSchemePart = DevComponents.DotNetBar.eColorSchemePart.PanelBackground;
             this.expandablePanel1.Style.BackColor2.ColorSchemePart = DevComponents.DotNetBar.eColorSchemePart.PanelBackground2;
@@ -149,7 +152,7 @@
             this.expandablePanel1.TitleStyle.BorderColor.ColorSchemePart = DevComponents.DotNetBar.eColorSchemePart.PanelBorder;
             this.expandablePanel1.TitleStyle.ForeColor.ColorSchemePart = DevComponents.DotNetBar.eColorSchemePart.PanelText;
             this.expandablePanel1.TitleStyle.GradientAngle = 90;
-            this.expandablePanel1.TitleText = "To-Do List";
+            this.expandablePanel1.TitleText = "My Tips";
             // 
             // textBoxX2
             // 
@@ -168,8 +171,8 @@
             this.textBoxX2.Name = "textBoxX2";
             this.textBoxX2.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
             this.textBoxX2.Size = new System.Drawing.Size(255, 0);
-            this.textBoxX2.TabIndex = 1;
-            this.textBoxX2.WatermarkText = "To-Do...";
+            this.textBoxX2.TabIndex = 2;
+            this.textBoxX2.WatermarkText = "Tips...";
             // 
             // buttonX1
             // 
@@ -177,10 +180,11 @@
             this.buttonX1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.buttonX1.ColorTable = DevComponents.DotNetBar.eButtonColor.OrangeWithBackground;
             this.buttonX1.Font = new System.Drawing.Font("Arial Unicode MS", 10.5F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.buttonX1.Location = new System.Drawing.Point(713, 63);
+            this.buttonX1.Location = new System.Drawing.Point(803, 63);
             this.buttonX1.Name = "buttonX1";
             this.buttonX1.Shape = new DevComponents.DotNetBar.RoundRectangleShapeDescriptor();
             this.buttonX1.Size = new System.Drawing.Size(71, 23);
+            this.buttonX1.Style = DevComponents.DotNetBar.eDotNetBarStyle.Office2003;
             this.buttonX1.TabIndex = 7;
             this.buttonX1.Text = "Search";
             this.buttonX1.Click += new System.EventHandler(this.buttonX1_Click);
@@ -194,9 +198,10 @@
             // 
             // 
             this.textBoxX1.Border.Class = "TextBoxBorder";
+            this.textBoxX1.ImeMode = System.Windows.Forms.ImeMode.NoControl;
             this.textBoxX1.Location = new System.Drawing.Point(264, 63);
             this.textBoxX1.Name = "textBoxX1";
-            this.textBoxX1.Size = new System.Drawing.Size(443, 24);
+            this.textBoxX1.Size = new System.Drawing.Size(533, 24);
             this.textBoxX1.TabIndex = 6;
             this.textBoxX1.WatermarkText = "Search on Google...";
             // 
@@ -204,7 +209,7 @@
             // 
             this.pictureBox1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.pictureBox1.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.pictureBox1.Location = new System.Drawing.Point(713, 3);
+            this.pictureBox1.Location = new System.Drawing.Point(803, 3);
             this.pictureBox1.Name = "pictureBox1";
             this.pictureBox1.Size = new System.Drawing.Size(72, 54);
             this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
@@ -233,7 +238,7 @@
             this.listView1.Location = new System.Drawing.Point(3, 92);
             this.listView1.MultiSelect = false;
             this.listView1.Name = "listView1";
-            this.listView1.Size = new System.Drawing.Size(781, 231);
+            this.listView1.Size = new System.Drawing.Size(871, 370);
             this.listView1.TabIndex = 1;
             this.listView1.UseCompatibleStateImageBehavior = false;
             // 
@@ -243,7 +248,8 @@
             this.activateToolStripMenuItem,
             this.removeFromCloudToolStripMenuItem,
             this.toolStripMenuItem1,
-            this.createALocalShortcutToolStripMenuItem});
+            this.createALocalShortcutToolStripMenuItem,
+            this.renameToolStripMenuItem});
             this.listViewContext.Name = "listViewContext";
             this.listViewContext.Size = new System.Drawing.Size(208, 98);
             // 
@@ -258,8 +264,27 @@
             // 
             this.removeFromCloudToolStripMenuItem.Name = "removeFromCloudToolStripMenuItem";
             this.removeFromCloudToolStripMenuItem.Size = new System.Drawing.Size(207, 22);
-            this.removeFromCloudToolStripMenuItem.Text = "Remove from cloud";
+            this.removeFromCloudToolStripMenuItem.Text = "Remove from Luna";
             this.removeFromCloudToolStripMenuItem.Click += new System.EventHandler(this.removeFromCloudToolStripMenuItem_Click);
+            // 
+            // toolStripMenuItem1
+            // 
+            this.toolStripMenuItem1.Name = "toolStripMenuItem1";
+            this.toolStripMenuItem1.Size = new System.Drawing.Size(204, 6);
+            // 
+            // createALocalShortcutToolStripMenuItem
+            // 
+            this.createALocalShortcutToolStripMenuItem.Name = "createALocalShortcutToolStripMenuItem";
+            this.createALocalShortcutToolStripMenuItem.Size = new System.Drawing.Size(207, 22);
+            this.createALocalShortcutToolStripMenuItem.Text = "Create a local shortcut";
+            this.createALocalShortcutToolStripMenuItem.Click += new System.EventHandler(this.createALocalShortcutToolStripMenuItem_Click);
+            // 
+            // renameToolStripMenuItem
+            // 
+            this.renameToolStripMenuItem.Name = "renameToolStripMenuItem";
+            this.renameToolStripMenuItem.Size = new System.Drawing.Size(207, 22);
+            this.renameToolStripMenuItem.Text = "Rename item";
+            this.renameToolStripMenuItem.Click += new System.EventHandler(this.renameToolStripMenuItem_Click);
             // 
             // label1
             // 
@@ -277,20 +302,16 @@
             this.imageList1.ImageStream = ((System.Windows.Forms.ImageListStreamer)(resources.GetObject("imageList1.ImageStream")));
             this.imageList1.TransparentColor = System.Drawing.Color.Transparent;
             this.imageList1.Images.SetKeyName(0, "Home.ico");
-            // 
-            // tabControlContext
-            // 
-            this.tabControlContext.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.clostTabToolStripMenuItem});
-            this.tabControlContext.Name = "tabControlContext";
-            this.tabControlContext.Size = new System.Drawing.Size(132, 26);
-            // 
-            // clostTabToolStripMenuItem
-            // 
-            this.clostTabToolStripMenuItem.Name = "clostTabToolStripMenuItem";
-            this.clostTabToolStripMenuItem.Size = new System.Drawing.Size(131, 22);
-            this.clostTabToolStripMenuItem.Text = "Close tab";
-            this.clostTabToolStripMenuItem.Click += new System.EventHandler(this.clostTabToolStripMenuItem_Click);
+            this.imageList1.Images.SetKeyName(1, "explorer_ico.png");
+            this.imageList1.Images.SetKeyName(2, "browser_ico.png");
+            this.imageList1.Images.SetKeyName(3, "picture_viewer.png");
+            this.imageList1.Images.SetKeyName(4, "editer_ico.png");
+            this.imageList1.Images.SetKeyName(5, "media_player_ico.png");
+            this.imageList1.Images.SetKeyName(6, "pdf_ico.png");
+            this.imageList1.Images.SetKeyName(7, "procPool_ico.png");
+            this.imageList1.Images.SetKeyName(8, "todo_ico.png");
+            this.imageList1.Images.SetKeyName(9, "super-mario-cloud-computing.png");
+            this.imageList1.Images.SetKeyName(10, "cloud app.png");
             // 
             // timer1
             // 
@@ -303,13 +324,15 @@
             this.labelX1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.labelX1.AutoSize = true;
             this.labelX1.BackColor = System.Drawing.Color.Transparent;
+            this.labelX1.Cursor = System.Windows.Forms.Cursors.Hand;
             this.labelX1.Font = new System.Drawing.Font("Arial Unicode MS", 10.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.labelX1.ForeColor = System.Drawing.Color.White;
-            this.labelX1.Location = new System.Drawing.Point(493, 1);
+            this.labelX1.Location = new System.Drawing.Point(577, 1);
             this.labelX1.Name = "labelX1";
             this.labelX1.Size = new System.Drawing.Size(71, 23);
             this.labelX1.TabIndex = 4;
             this.labelX1.Text = "Loading...";
+            this.labelX1.Click += new System.EventHandler(this.labelX1_Click);
             // 
             // label2
             // 
@@ -317,9 +340,9 @@
             this.label2.BackColor = System.Drawing.Color.Transparent;
             this.label2.Font = new System.Drawing.Font("Arial Unicode MS", 10.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.label2.ForeColor = System.Drawing.Color.White;
-            this.label2.Location = new System.Drawing.Point(258, 1);
+            this.label2.Location = new System.Drawing.Point(180, -2);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(304, 23);
+            this.label2.Size = new System.Drawing.Size(539, 23);
             this.label2.TabIndex = 5;
             this.label2.Text = "Cloudy Venus - Luna, Evaluation Copy, 1.0.3";
             this.label2.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -336,6 +359,7 @@
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(31, 22);
             this.button1.TabIndex = 10;
+            this.toolTip1.SetToolTip(this.button1, "More...");
             this.button1.UseVisualStyleBackColor = false;
             this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
@@ -351,6 +375,7 @@
             this.button2.Name = "button2";
             this.button2.Size = new System.Drawing.Size(12, 22);
             this.button2.TabIndex = 11;
+            this.toolTip1.SetToolTip(this.button2, "Back to Home Screen");
             this.button2.UseVisualStyleBackColor = false;
             this.button2.Click += new System.EventHandler(this.button2_Click);
             // 
@@ -363,10 +388,11 @@
             this.button3.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.button3.Font = new System.Drawing.Font("Arial Unicode MS", 7.5F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.button3.ForeColor = System.Drawing.Color.White;
-            this.button3.Location = new System.Drawing.Point(780, 0);
+            this.button3.Location = new System.Drawing.Point(870, 0);
             this.button3.Name = "button3";
             this.button3.Size = new System.Drawing.Size(15, 22);
             this.button3.TabIndex = 18;
+            this.toolTip1.SetToolTip(this.button3, "Alarm Clock");
             this.button3.UseVisualStyleBackColor = false;
             this.button3.Click += new System.EventHandler(this.button3_Click);
             // 
@@ -379,7 +405,7 @@
             this.panel1.Controls.Add(this.tabControl1);
             this.panel1.Location = new System.Drawing.Point(0, 28);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(795, 354);
+            this.panel1.Size = new System.Drawing.Size(885, 493);
             this.panel1.TabIndex = 19;
             // 
             // button5
@@ -395,6 +421,7 @@
             this.button5.Size = new System.Drawing.Size(22, 22);
             this.button5.TabIndex = 21;
             this.button5.Text = "1";
+            this.toolTip1.SetToolTip(this.button5, "Switch to Virtual Screen 1");
             this.button5.UseVisualStyleBackColor = false;
             this.button5.Click += new System.EventHandler(this.button5_Click);
             // 
@@ -411,20 +438,36 @@
             this.button4.Size = new System.Drawing.Size(22, 22);
             this.button4.TabIndex = 22;
             this.button4.Text = "2";
+            this.toolTip1.SetToolTip(this.button4, "Switch to Virtual Screen 2");
             this.button4.UseVisualStyleBackColor = false;
             this.button4.Click += new System.EventHandler(this.button4_Click);
             // 
-            // toolStripMenuItem1
+            // toolTip1
             // 
-            this.toolStripMenuItem1.Name = "toolStripMenuItem1";
-            this.toolStripMenuItem1.Size = new System.Drawing.Size(204, 6);
+            this.toolTip1.IsBalloon = true;
             // 
-            // createALocalShortcutToolStripMenuItem
+            // tabPage3
             // 
-            this.createALocalShortcutToolStripMenuItem.Name = "createALocalShortcutToolStripMenuItem";
-            this.createALocalShortcutToolStripMenuItem.Size = new System.Drawing.Size(207, 22);
-            this.createALocalShortcutToolStripMenuItem.Text = "Create a local shortcut";
-            this.createALocalShortcutToolStripMenuItem.Click += new System.EventHandler(this.createALocalShortcutToolStripMenuItem_Click);
+            this.tabPage3.Location = new System.Drawing.Point(4, 25);
+            this.tabPage3.Name = "tabPage3";
+            this.tabPage3.Padding = new System.Windows.Forms.Padding(3);
+            this.tabPage3.Size = new System.Drawing.Size(192, 71);
+            this.tabPage3.TabIndex = 1;
+            this.tabPage3.Text = "tabPage3";
+            this.tabPage3.UseVisualStyleBackColor = true;
+            // 
+            // timer2
+            // 
+            this.timer2.Enabled = true;
+            this.timer2.Tick += new System.EventHandler(this.timer2_Tick);
+            // 
+            // monthCalendar1
+            // 
+            this.monthCalendar1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.monthCalendar1.Location = new System.Drawing.Point(649, 24);
+            this.monthCalendar1.Name = "monthCalendar1";
+            this.monthCalendar1.TabIndex = 9;
+            this.monthCalendar1.Visible = false;
             // 
             // Form1
             // 
@@ -432,15 +475,16 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.Black;
             this.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("$this.BackgroundImage")));
-            this.ClientSize = new System.Drawing.Size(795, 382);
+            this.ClientSize = new System.Drawing.Size(885, 521);
+            this.Controls.Add(this.monthCalendar1);
             this.Controls.Add(this.button4);
             this.Controls.Add(this.button5);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.button3);
             this.Controls.Add(this.button2);
             this.Controls.Add(this.button1);
-            this.Controls.Add(this.label2);
             this.Controls.Add(this.labelX1);
+            this.Controls.Add(this.label2);
             this.DoubleBuffered = true;
             this.Font = new System.Drawing.Font("Arial Unicode MS", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
@@ -457,7 +501,6 @@
             this.expandablePanel1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.listViewContext.ResumeLayout(false);
-            this.tabControlContext.ResumeLayout(false);
             this.panel1.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -477,8 +520,6 @@
         private System.Windows.Forms.ImageList imageList1;
         private System.Windows.Forms.Timer timer1;
         private System.Windows.Forms.PictureBox pictureBox1;
-        private System.Windows.Forms.ContextMenuStrip tabControlContext;
-        private System.Windows.Forms.ToolStripMenuItem clostTabToolStripMenuItem;
         private DevComponents.DotNetBar.LabelX labelX1;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Button button1;
@@ -486,13 +527,18 @@
         private DevComponents.DotNetBar.Controls.TextBoxX textBoxX1;
         private System.Windows.Forms.Button button2;
         private DevComponents.DotNetBar.ExpandablePanel expandablePanel1;
-        private DevComponents.DotNetBar.Controls.TextBoxX textBoxX2;
         private System.Windows.Forms.Button button3;
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.Button button5;
         private System.Windows.Forms.Button button4;
         private System.Windows.Forms.ToolStripSeparator toolStripMenuItem1;
         private System.Windows.Forms.ToolStripMenuItem createALocalShortcutToolStripMenuItem;
+        private System.Windows.Forms.ToolTip toolTip1;
+        private System.Windows.Forms.ToolStripMenuItem renameToolStripMenuItem;
+        private System.Windows.Forms.TabPage tabPage3;
+        private DevComponents.DotNetBar.Controls.TextBoxX textBoxX2;
+        private System.Windows.Forms.Timer timer2;
+        private System.Windows.Forms.MonthCalendar monthCalendar1;
     }
 }
 

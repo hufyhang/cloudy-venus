@@ -121,7 +121,7 @@
             this.labelX5.Location = new System.Drawing.Point(9, 3);
             this.labelX5.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.labelX5.Name = "labelX5";
-            this.labelX5.Size = new System.Drawing.Size(72, 20);
+            this.labelX5.Size = new System.Drawing.Size(0, 0);
             this.labelX5.TabIndex = 15;
             this.labelX5.Text = "User Name:";
             // 
@@ -170,7 +170,7 @@
             this.labelX4.Location = new System.Drawing.Point(9, 97);
             this.labelX4.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.labelX4.Name = "labelX4";
-            this.labelX4.Size = new System.Drawing.Size(90, 20);
+            this.labelX4.Size = new System.Drawing.Size(0, 0);
             this.labelX4.TabIndex = 11;
             this.labelX4.Text = "Common Files:";
             // 
@@ -195,7 +195,7 @@
             this.labelX3.Location = new System.Drawing.Point(9, 67);
             this.labelX3.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.labelX3.Name = "labelX3";
-            this.labelX3.Size = new System.Drawing.Size(83, 20);
+            this.labelX3.Size = new System.Drawing.Size(0, 0);
             this.labelX3.TabIndex = 9;
             this.labelX3.Text = "Picture folder:";
             // 
@@ -203,6 +203,7 @@
             // 
             this.checkBoxX1.AutoSize = true;
             this.checkBoxX1.BackColor = System.Drawing.Color.Transparent;
+            this.checkBoxX1.Enabled = false;
             this.checkBoxX1.Location = new System.Drawing.Point(9, 123);
             this.checkBoxX1.Name = "checkBoxX1";
             this.checkBoxX1.Size = new System.Drawing.Size(289, 20);
@@ -230,7 +231,7 @@
             this.labelX2.Location = new System.Drawing.Point(9, 37);
             this.labelX2.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.labelX2.Name = "labelX2";
-            this.labelX2.Size = new System.Drawing.Size(75, 20);
+            this.labelX2.Size = new System.Drawing.Size(0, 0);
             this.labelX2.TabIndex = 6;
             this.labelX2.Text = "Home Page:";
             // 
@@ -264,11 +265,10 @@
             // UserScreen
             // 
             this.BackColor = System.Drawing.Color.White;
-            this.ClientSize = new System.Drawing.Size(563, 313);
             this.Controls.Add(this.groupPanel1);
             this.Font = new System.Drawing.Font("Arial Unicode MS", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.Name = "UserScreen";
+            this.Size = new System.Drawing.Size(563, 313);
             this.Text = "UserScreen";
             this.groupPanel1.ResumeLayout(false);
             this.groupPanel1.PerformLayout();

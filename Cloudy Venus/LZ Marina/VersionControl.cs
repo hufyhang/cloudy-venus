@@ -257,7 +257,7 @@ namespace LZ_Marina
                 }
                 else
                 {
-                    new CloudyExplorer().runItem(this.currentBuffer + @"\" + this.listView3.SelectedItems[0].SubItems[0].Text, this.form1.getTabControl());
+                    new CloudyExplorer(this.form1.getImageList()).runItem(this.currentBuffer + @"\" + this.listView3.SelectedItems[0].SubItems[0].Text, this.form1.getTabControl());
                 }
             }
         }

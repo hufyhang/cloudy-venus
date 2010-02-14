@@ -277,7 +277,7 @@ namespace LZ_Marina
             }
         }
 
-        private void button6_Click(object sender, EventArgs e)
+        protected void export()
         {
             if (this.listView1.SelectedItems.Count > 0)
             {
@@ -288,7 +288,7 @@ namespace LZ_Marina
                     {
                         String to = folder.SelectedPath + @"\" + this.listView1.SelectedItems[0].SubItems[0].Text;
                         FileInfo file = new FileInfo(to);
-                        FileInfo target = new FileInfo(this.path); //+ @"\" + this.listView1.SelectedItems[0].SubItems[0].Text);
+                        FileInfo target = new FileInfo(this.path + this.listView1.SelectedItems[0].SubItems[0].Text);
                         if (file.Exists)
                         {
                             if (MessageBox.Show("Are you sure you want to overwrite " + this.listView1.SelectedItems[0].SubItems[0].Text + @"?",
@@ -309,6 +309,11 @@ namespace LZ_Marina
             {
                 MessageBox.Show("Please choose an existing item before exporting.", "Unknown item selection...", MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
+        }
+
+        private void button6_Click(object sender, EventArgs e)
+        {
+            this.export();
         }
 
         private void button7_Click(object sender, EventArgs e)

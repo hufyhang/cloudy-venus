@@ -27,19 +27,23 @@ namespace LZ_Marina
         private String tail = "";
         private String tempSub = "";
 
-        public CloudyExplorer()
+        private ImageList imageList;
+
+        public CloudyExplorer(ImageList imageList)
         {
             InitializeComponent();
             initialEvents();
+            this.imageList = imageList;
         }
 
-        public CloudyExplorer(String root, TabControl tabControl)
+        public CloudyExplorer(String root, TabControl tabControl, ImageList imageList)
         {
             this.backupRoot = new ListView.ListViewItemCollection(this.sortRootList);
             this.backupSub = new ListView.ListViewItemCollection(this.sortSubList);
             this.backupItem = new ListView.ListViewItemCollection(this.sortItemList);
             this.root = root;
             this.tabControl = tabControl;
+            this.imageList = imageList;
             InitializeComponent();
             initialEvents();
             loadRoot();
@@ -121,54 +125,68 @@ namespace LZ_Marina
 
         public void runItem(String filename, TabControl tabctrl)
         {
-            FileInfo file = new FileInfo(filename);
-            ArrayList img = new ArrayList();
-            img.Add(@".jpg");
-            img.Add(@".png");
-            img.Add(@".bmp");
-            img.Add(@".gif");
-            img.Add(@".ico");
-            img.Add(@".tif");
+            try
+            {
+                FileInfo file = new FileInfo(filename);
+                ArrayList img = new ArrayList();
+                img.Add(@".jpg");
+                img.Add(@".png");
+                img.Add(@".bmp");
+                img.Add(@".gif");
+                img.Add(@".ico");
+                img.Add(@".tif");
 
-            ArrayList media = new ArrayList();
-            media.Add(@".wma");
-            media.Add(@".wmv");
-            media.Add(@".wav");
-            media.Add(@".rm");
-            media.Add(@".rmvb");
-            media.Add(@".avi");
-            media.Add(@".wmv");
-            media.Add(@".mp3");
-            media.Add(@".3gp");
-            media.Add(@".mpeg");
-            media.Add(@".mpg");
-            media.Add(@".mov");
-            media.Add(@".flv");
+                ArrayList media = new ArrayList();
+                media.Add(@".wma");
+                media.Add(@".wmv");
+                media.Add(@".wav");
+                media.Add(@".rm");
+                media.Add(@".rmvb");
+                media.Add(@".avi");
+                media.Add(@".wmv");
+                media.Add(@".mp3");
+                media.Add(@".3gp");
+                media.Add(@".mpeg");
+                media.Add(@".mpg");
+                media.Add(@".mov");
+                media.Add(@".flv");
 
-            String extension = file.Extension.ToLower();
+                String extension = file.Extension.ToLower();
 
-            if (img.Contains(extension))
-            {
-                tabctrl.Controls.Add(new Picture_Viewer(filename, true));
+                if (img.Contains(extension))
+                {
+                    Picture_Viewer pic = new Picture_Viewer(filename, true);
+                    pic.ImageIndex = 3;
+                    tabctrl.Controls.Add(pic);
+                }
+                else if (media.Contains(extension))
+                {
+                    Media_Player mediaPlayer = new Media_Player(filename);
+                    mediaPlayer.ImageIndex = 5;
+                    tabctrl.Controls.Add(mediaPlayer);
+                }
+                else if (extension.Equals(@".pdf"))
+                {
+                    PDFReader pdf = new PDFReader(filename);
+                    pdf.ImageIndex = 6;
+                    tabctrl.Controls.Add(pdf);
+                }
+                else if (extension.Equals(@".exe"))
+                {
+                    System.Diagnostics.Process.Start(filename);
+                }
+                else
+                {
+                    Editor editor = new Editor(filename, true);
+                    editor.ImageIndex = 4;
+                    tabctrl.Controls.Add(editor);
+                }
+                tabctrl.SelectedIndex = tabctrl.TabCount - 1;
+                Application.DoEvents();
             }
-            else if (media.Contains(extension))
+            catch (Exception)
             {
-                tabctrl.Controls.Add(new Media_Player(filename));
             }
-            else if (extension.Equals(@".pdf"))
-            {
-                tabctrl.Controls.Add(new PDFReader(filename));
-            }
-            else if (extension.Equals(@".exe"))
-            {
-                System.Diagnostics.Process.Start(filename);
-            }
-            else
-            {
-                tabctrl.Controls.Add(new Editor(filename, true));
-            }
-            tabctrl.SelectedIndex = tabctrl.TabCount - 1;
-            Application.DoEvents();
         }
 
         protected void listView2_SelectedIndexChanged(object sender, EventArgs e)
@@ -370,7 +388,7 @@ namespace LZ_Marina
                 folder.Description = @"Please choose the root path.";
                 if (folder.ShowDialog() == DialogResult.OK)
                 {
-                    this.root = folder.SelectedPath;
+                    this.root = folder.SelectedPath + @"\";
                     this.loadRoot();
                 }
             }
@@ -398,7 +416,9 @@ namespace LZ_Marina
         {
             if (this.listView1.SelectedItems.Count > 0)
             {
-                this.tabControl.Controls.Add(new Editor(this.root + @"\" + this.listView1.SelectedItems[0].SubItems[0].Text));
+                Editor edit = new Editor(this.root + @"\" + this.listView1.SelectedItems[0].SubItems[0].Text);
+                edit.ImageIndex = 4;
+                this.tabControl.Controls.Add(edit);
                 this.tabControl.SelectedIndex = this.tabControl.TabCount - 1;
             }
         }
@@ -407,7 +427,9 @@ namespace LZ_Marina
         {
             if (this.listView1.SelectedItems.Count > 0)
             {
-                this.tabControl.Controls.Add(new PDFReader(this.root + @"\" + this.listView1.SelectedItems[0].SubItems[0].Text, true));
+                PDFReader pdfReader = new PDFReader(this.root + @"\" + this.listView1.SelectedItems[0].SubItems[0].Text, true);
+                pdfReader.ImageIndex = 6;
+                this.tabControl.Controls.Add(pdfReader);
                 this.tabControl.SelectedIndex = this.tabControl.TabCount - 1;
             }
         }
@@ -416,7 +438,9 @@ namespace LZ_Marina
         {
             if (this.listView2.SelectedItems.Count > 0)
             {
-                this.tabControl.Controls.Add(new Editor(this.root + this.sub + this.thd));
+                Editor edit = new Editor(this.root + this.sub + this.thd);
+                edit.ImageIndex = 4;
+                this.tabControl.Controls.Add(edit);
                 this.tabControl.SelectedIndex = this.tabControl.TabCount - 1;
             }
         }
@@ -425,7 +449,9 @@ namespace LZ_Marina
         {
             if (this.listView2.SelectedItems.Count > 0)
             {
-                this.tabControl.Controls.Add(new PDFReader(this.root + this.sub + this.thd, true));
+                PDFReader pdfReader = new PDFReader(this.root + this.sub + this.thd, true);
+                pdfReader.ImageIndex = 6;
+                this.tabControl.Controls.Add(pdfReader);
                 this.tabControl.SelectedIndex = this.tabControl.TabCount - 1;
             }
         }
@@ -436,7 +462,9 @@ namespace LZ_Marina
             {
                 if (this.listView3.SelectedItems[0].SubItems[1].Text.Equals(@"<DIR>"))
                 {
-                    this.tabControl.Controls.Add(new Editor(this.root + this.sub + this.thd + this.tail + @"\" + this.listView3.SelectedItems[0].SubItems[0].Text));
+                    Editor edit = new Editor(this.root + this.sub + this.thd + this.tail + @"\" + this.listView3.SelectedItems[0].SubItems[0].Text);
+                    edit.ImageIndex = 4;
+                    this.tabControl.Controls.Add(edit);
                     this.tabControl.SelectedIndex = this.tabControl.TabCount - 1;
                 }
             }
@@ -448,7 +476,9 @@ namespace LZ_Marina
             {
                 if (this.listView3.SelectedItems[0].SubItems[1].Text.Equals(@"<DIR>"))
                 {
-                    this.tabControl.Controls.Add(new PDFReader(this.root + this.sub + this.thd + this.tail + @"\" + this.listView3.SelectedItems[0].SubItems[0].Text, true));
+                    PDFReader pdfReader = new PDFReader(this.root + this.sub + this.thd + this.tail + @"\" + this.listView3.SelectedItems[0].SubItems[0].Text, true);
+                    pdfReader.ImageIndex = 6;
+                    this.tabControl.Controls.Add(pdfReader);
                     this.tabControl.SelectedIndex = this.tabControl.TabCount - 1;
                 }
             }
@@ -458,7 +488,9 @@ namespace LZ_Marina
         {
             if (this.listView1.SelectedItems.Count > 0)
             {
-                this.tabControl.Controls.Add(new Picture_Viewer(this.root + @"\" + this.listView1.SelectedItems[0].SubItems[0].Text));
+                Picture_Viewer pic = new Picture_Viewer(this.root + @"\" + this.listView1.SelectedItems[0].SubItems[0].Text);
+                pic.ImageIndex = 3;
+                this.tabControl.Controls.Add(pic);
                 this.tabControl.SelectedIndex = this.tabControl.TabCount - 1;
             }
         }
@@ -467,7 +499,9 @@ namespace LZ_Marina
         {
             if (this.listView2.SelectedItems.Count > 0)
             {
-                this.tabControl.Controls.Add(new Picture_Viewer(this.root + this.sub + this.thd));
+                Picture_Viewer pic = new Picture_Viewer(this.root + this.sub + this.thd);
+                pic.ImageIndex = 3;
+                this.tabControl.Controls.Add(pic);
                 this.tabControl.SelectedIndex = this.tabControl.TabCount - 1;
             }
         }
@@ -478,7 +512,9 @@ namespace LZ_Marina
             {
                 if (this.listView3.SelectedItems[0].SubItems[1].Text.Equals(@"<DIR>"))
                 {
-                    this.tabControl.Controls.Add(new Picture_Viewer(this.root + this.sub + this.thd + this.tail + @"\" + this.listView3.SelectedItems[0].SubItems[0].Text));
+                    Picture_Viewer pic = new Picture_Viewer(this.root + this.sub + this.thd + this.tail + @"\" + this.listView3.SelectedItems[0].SubItems[0].Text);
+                    pic.ImageIndex = 3;
+                    this.tabControl.Controls.Add(pic);
                     this.tabControl.SelectedIndex = this.tabControl.TabCount - 1;
                 }
             }

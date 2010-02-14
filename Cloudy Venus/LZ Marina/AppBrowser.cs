@@ -103,5 +103,10 @@ namespace LZ_Marina
             //MessageBox.Show(this.webBrowser1.Url.AbsoluteUri);
             new fullscreenBrowser(this.webBrowser1).Show();
         }
+
+        private void button5_Click(object sender, EventArgs e)
+        {
+            new Print(this.webBrowser1).ShowDialog();
+        }
     }
 }
