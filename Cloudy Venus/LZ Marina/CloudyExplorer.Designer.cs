@@ -29,10 +29,8 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(CloudyExplorer));
             this.panel1 = new System.Windows.Forms.Panel();
-            this.button3 = new System.Windows.Forms.Button();
-            this.textBoxX2 = new DevComponents.DotNetBar.Controls.TextBoxX();
-            this.textBoxX1 = new DevComponents.DotNetBar.Controls.TextBoxX();
             this.splitContainer1 = new System.Windows.Forms.SplitContainer();
             this.splitContainer2 = new System.Windows.Forms.SplitContainer();
             this.listView1 = new System.Windows.Forms.ListView();
@@ -65,9 +63,13 @@
             this.addListIntoNotepadToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.addListIntoPDFReaderToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.openDirectoryWithPictureViewerToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.button2 = new System.Windows.Forms.Button();
-            this.button1 = new System.Windows.Forms.Button();
-            this.button4 = new System.Windows.Forms.Button();
+            this.panel2 = new System.Windows.Forms.Panel();
+            this.button3 = new DevComponents.DotNetBar.ButtonX();
+            this.textBoxX1 = new DevComponents.DotNetBar.Controls.TextBoxX();
+            this.textBoxX2 = new DevComponents.DotNetBar.Controls.TextBoxX();
+            this.button4 = new DevComponents.DotNetBar.ButtonX();
+            this.button1 = new DevComponents.DotNetBar.ButtonX();
+            this.button2 = new DevComponents.DotNetBar.ButtonX();
             this.panel1.SuspendLayout();
             this.splitContainer1.Panel1.SuspendLayout();
             this.splitContainer1.Panel2.SuspendLayout();
@@ -78,71 +80,19 @@
             this.contextMenuStrip3.SuspendLayout();
             this.contextMenuStrip2.SuspendLayout();
             this.contextMenuStrip1.SuspendLayout();
+            this.panel2.SuspendLayout();
             this.SuspendLayout();
             // 
             // panel1
             // 
-            this.panel1.Controls.Add(this.button3);
-            this.panel1.Controls.Add(this.textBoxX2);
-            this.panel1.Controls.Add(this.textBoxX1);
             this.panel1.Controls.Add(this.splitContainer1);
-            this.panel1.Controls.Add(this.button2);
-            this.panel1.Controls.Add(this.button1);
-            this.panel1.Controls.Add(this.button4);
+            this.panel1.Controls.Add(this.panel2);
             this.panel1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel1.Location = new System.Drawing.Point(0, 0);
             this.panel1.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(756, 251);
+            this.panel1.Size = new System.Drawing.Size(771, 318);
             this.panel1.TabIndex = 0;
-            // 
-            // button3
-            // 
-            this.button3.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.button3.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button3.Font = new System.Drawing.Font("Arial Unicode MS", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.button3.Location = new System.Drawing.Point(721, 5);
-            this.button3.Margin = new System.Windows.Forms.Padding(3, 5, 3, 5);
-            this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(31, 28);
-            this.button3.TabIndex = 13;
-            this.button3.Text = "-";
-            this.button3.UseVisualStyleBackColor = true;
-            this.button3.Click += new System.EventHandler(this.button3_Click);
-            // 
-            // textBoxX2
-            // 
-            this.textBoxX2.AcceptsReturn = true;
-            this.textBoxX2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            // 
-            // 
-            // 
-            this.textBoxX2.Border.Class = "TextBoxBorder";
-            this.textBoxX2.Font = new System.Drawing.Font("Arial Unicode MS", 10.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.textBoxX2.ImeMode = System.Windows.Forms.ImeMode.Off;
-            this.textBoxX2.Location = new System.Drawing.Point(504, 7);
-            this.textBoxX2.Name = "textBoxX2";
-            this.textBoxX2.Size = new System.Drawing.Size(211, 26);
-            this.textBoxX2.TabIndex = 12;
-            this.textBoxX2.WatermarkText = "Sort by...";
-            this.textBoxX2.TextChanged += new System.EventHandler(this.textBoxX2_TextChanged);
-            // 
-            // textBoxX1
-            // 
-            this.textBoxX1.AcceptsReturn = true;
-            this.textBoxX1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left)
-                        | System.Windows.Forms.AnchorStyles.Right)));
-            // 
-            // 
-            // 
-            this.textBoxX1.Border.Class = "TextBoxBorder";
-            this.textBoxX1.Font = new System.Drawing.Font("Arial Unicode MS", 10.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.textBoxX1.ImeMode = System.Windows.Forms.ImeMode.Off;
-            this.textBoxX1.Location = new System.Drawing.Point(117, 7);
-            this.textBoxX1.Name = "textBoxX1";
-            this.textBoxX1.Size = new System.Drawing.Size(381, 26);
-            this.textBoxX1.TabIndex = 11;
-            this.textBoxX1.WatermarkText = "Go to visit this address...";
             // 
             // splitContainer1
             // 
@@ -160,8 +110,8 @@
             // splitContainer1.Panel2
             // 
             this.splitContainer1.Panel2.Controls.Add(this.listView3);
-            this.splitContainer1.Size = new System.Drawing.Size(749, 207);
-            this.splitContainer1.SplitterDistance = 374;
+            this.splitContainer1.Size = new System.Drawing.Size(764, 274);
+            this.splitContainer1.SplitterDistance = 381;
             this.splitContainer1.SplitterWidth = 5;
             this.splitContainer1.TabIndex = 10;
             // 
@@ -179,8 +129,8 @@
             // splitContainer2.Panel2
             // 
             this.splitContainer2.Panel2.Controls.Add(this.listView2);
-            this.splitContainer2.Size = new System.Drawing.Size(374, 207);
-            this.splitContainer2.SplitterDistance = 178;
+            this.splitContainer2.Size = new System.Drawing.Size(381, 274);
+            this.splitContainer2.SplitterDistance = 181;
             this.splitContainer2.SplitterWidth = 5;
             this.splitContainer2.TabIndex = 0;
             // 
@@ -196,7 +146,7 @@
             this.listView1.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.listView1.MultiSelect = false;
             this.listView1.Name = "listView1";
-            this.listView1.Size = new System.Drawing.Size(178, 207);
+            this.listView1.Size = new System.Drawing.Size(181, 274);
             this.listView1.TabIndex = 0;
             this.listView1.UseCompatibleStateImageBehavior = false;
             this.listView1.View = System.Windows.Forms.View.Details;
@@ -262,7 +212,7 @@
             this.listView2.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.listView2.MultiSelect = false;
             this.listView2.Name = "listView2";
-            this.listView2.Size = new System.Drawing.Size(191, 207);
+            this.listView2.Size = new System.Drawing.Size(195, 274);
             this.listView2.TabIndex = 1;
             this.listView2.UseCompatibleStateImageBehavior = false;
             this.listView2.View = System.Windows.Forms.View.Details;
@@ -330,7 +280,7 @@
             this.listView3.Location = new System.Drawing.Point(0, 0);
             this.listView3.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.listView3.Name = "listView3";
-            this.listView3.Size = new System.Drawing.Size(370, 207);
+            this.listView3.Size = new System.Drawing.Size(378, 274);
             this.listView3.TabIndex = 1;
             this.listView3.UseCompatibleStateImageBehavior = false;
             this.listView3.View = System.Windows.Forms.View.Details;
@@ -421,49 +371,120 @@
             this.openDirectoryWithPictureViewerToolStripMenuItem.Text = "Open directory with Picture Viewer";
             this.openDirectoryWithPictureViewerToolStripMenuItem.Click += new System.EventHandler(this.openDirectoryWithPictureViewerToolStripMenuItem_Click);
             // 
-            // button2
+            // panel2
             // 
-            this.button2.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button2.Font = new System.Drawing.Font("Arial Unicode MS", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.button2.Location = new System.Drawing.Point(80, 5);
-            this.button2.Margin = new System.Windows.Forms.Padding(3, 5, 3, 5);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(31, 28);
-            this.button2.TabIndex = 8;
-            this.button2.Text = "▲";
-            this.button2.UseVisualStyleBackColor = true;
-            this.button2.Click += new System.EventHandler(this.button2_Click);
+            this.panel2.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("panel2.BackgroundImage")));
+            this.panel2.Controls.Add(this.button3);
+            this.panel2.Controls.Add(this.textBoxX1);
+            this.panel2.Controls.Add(this.textBoxX2);
+            this.panel2.Controls.Add(this.button4);
+            this.panel2.Controls.Add(this.button1);
+            this.panel2.Controls.Add(this.button2);
+            this.panel2.Dock = System.Windows.Forms.DockStyle.Top;
+            this.panel2.Location = new System.Drawing.Point(0, 0);
+            this.panel2.Name = "panel2";
+            this.panel2.Size = new System.Drawing.Size(771, 41);
+            this.panel2.TabIndex = 14;
             // 
-            // button1
+            // button3
             // 
-            this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button1.Font = new System.Drawing.Font("Arial Unicode MS", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.button1.Location = new System.Drawing.Point(42, 5);
-            this.button1.Margin = new System.Windows.Forms.Padding(3, 5, 3, 5);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(31, 28);
-            this.button1.TabIndex = 7;
-            this.button1.Text = "■";
-            this.button1.UseVisualStyleBackColor = true;
-            this.button1.Click += new System.EventHandler(this.button1_Click);
+            this.button3.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton;
+            this.button3.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.button3.BackColor = System.Drawing.Color.Transparent;
+            this.button3.ColorTable = DevComponents.DotNetBar.eButtonColor.Orange;
+            this.button3.Font = new System.Drawing.Font("Arial Unicode MS", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.button3.Location = new System.Drawing.Point(737, 5);
+            this.button3.Margin = new System.Windows.Forms.Padding(3, 5, 3, 5);
+            this.button3.Name = "button3";
+            this.button3.Shape = new DevComponents.DotNetBar.RoundRectangleShapeDescriptor(2);
+            this.button3.Size = new System.Drawing.Size(31, 28);
+            this.button3.TabIndex = 13;
+            this.button3.Text = "-";
+            this.button3.Click += new System.EventHandler(this.button3_Click);
+            // 
+            // textBoxX1
+            // 
+            this.textBoxX1.AcceptsReturn = true;
+            this.textBoxX1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left)
+                        | System.Windows.Forms.AnchorStyles.Right)));
+            // 
+            // 
+            // 
+            this.textBoxX1.Border.Class = "TextBoxBorder";
+            this.textBoxX1.Font = new System.Drawing.Font("Arial Unicode MS", 10.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.textBoxX1.ImeMode = System.Windows.Forms.ImeMode.Off;
+            this.textBoxX1.Location = new System.Drawing.Point(118, 7);
+            this.textBoxX1.Name = "textBoxX1";
+            this.textBoxX1.Size = new System.Drawing.Size(396, 26);
+            this.textBoxX1.TabIndex = 11;
+            this.textBoxX1.WatermarkText = "Go to visit this address...";
+            // 
+            // textBoxX2
+            // 
+            this.textBoxX2.AcceptsReturn = true;
+            this.textBoxX2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            // 
+            // 
+            // 
+            this.textBoxX2.Border.Class = "TextBoxBorder";
+            this.textBoxX2.Font = new System.Drawing.Font("Arial Unicode MS", 10.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.textBoxX2.ImeMode = System.Windows.Forms.ImeMode.Off;
+            this.textBoxX2.Location = new System.Drawing.Point(520, 7);
+            this.textBoxX2.Name = "textBoxX2";
+            this.textBoxX2.Size = new System.Drawing.Size(211, 26);
+            this.textBoxX2.TabIndex = 12;
+            this.textBoxX2.WatermarkText = "Sort by...";
+            this.textBoxX2.TextChanged += new System.EventHandler(this.textBoxX2_TextChanged);
             // 
             // button4
             // 
-            this.button4.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button4.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton;
+            this.button4.BackColor = System.Drawing.Color.Transparent;
+            this.button4.ColorTable = DevComponents.DotNetBar.eButtonColor.Orange;
             this.button4.Font = new System.Drawing.Font("Arial Unicode MS", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.button4.Location = new System.Drawing.Point(3, 5);
+            this.button4.Location = new System.Drawing.Point(4, 5);
             this.button4.Margin = new System.Windows.Forms.Padding(3, 5, 3, 5);
             this.button4.Name = "button4";
+            this.button4.Shape = new DevComponents.DotNetBar.RoundRectangleShapeDescriptor(2);
             this.button4.Size = new System.Drawing.Size(31, 28);
             this.button4.TabIndex = 6;
             this.button4.Text = "X";
-            this.button4.UseVisualStyleBackColor = true;
             this.button4.Click += new System.EventHandler(this.button4_Click);
+            // 
+            // button1
+            // 
+            this.button1.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton;
+            this.button1.BackColor = System.Drawing.Color.Transparent;
+            this.button1.ColorTable = DevComponents.DotNetBar.eButtonColor.Orange;
+            this.button1.Font = new System.Drawing.Font("Arial Unicode MS", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.button1.Location = new System.Drawing.Point(43, 5);
+            this.button1.Margin = new System.Windows.Forms.Padding(3, 5, 3, 5);
+            this.button1.Name = "button1";
+            this.button1.Shape = new DevComponents.DotNetBar.RoundRectangleShapeDescriptor(2);
+            this.button1.Size = new System.Drawing.Size(31, 28);
+            this.button1.TabIndex = 7;
+            this.button1.Text = "■";
+            this.button1.Click += new System.EventHandler(this.button1_Click);
+            // 
+            // button2
+            // 
+            this.button2.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton;
+            this.button2.BackColor = System.Drawing.Color.Transparent;
+            this.button2.ColorTable = DevComponents.DotNetBar.eButtonColor.Orange;
+            this.button2.Font = new System.Drawing.Font("Arial Unicode MS", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.button2.Location = new System.Drawing.Point(81, 5);
+            this.button2.Margin = new System.Windows.Forms.Padding(3, 5, 3, 5);
+            this.button2.Name = "button2";
+            this.button2.Shape = new DevComponents.DotNetBar.RoundRectangleShapeDescriptor(2);
+            this.button2.Size = new System.Drawing.Size(31, 28);
+            this.button2.TabIndex = 8;
+            this.button2.Text = "▲";
+            this.button2.Click += new System.EventHandler(this.button2_Click);
             // 
             // CloudyExplorer
             // 
-            this.BackColor = System.Drawing.Color.White;
-            this.ClientSize = new System.Drawing.Size(756, 251);
+            this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(232)))), ((int)(((byte)(240)))), ((int)(((byte)(251)))));
+            this.ClientSize = new System.Drawing.Size(771, 318);
             this.Controls.Add(this.panel1);
             this.Font = new System.Drawing.Font("Arial Unicode MS", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
@@ -479,6 +500,7 @@
             this.contextMenuStrip3.ResumeLayout(false);
             this.contextMenuStrip2.ResumeLayout(false);
             this.contextMenuStrip1.ResumeLayout(false);
+            this.panel2.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -486,9 +508,10 @@
         #endregion
 
         private System.Windows.Forms.Panel panel1;
-        private System.Windows.Forms.Button button4;
-        private System.Windows.Forms.Button button2;
-        private System.Windows.Forms.Button button1;
+        private DevComponents.DotNetBar.ButtonX button4;
+        private DevComponents.DotNetBar.ButtonX button2;
+        private DevComponents.DotNetBar.ButtonX button1;
+        private DevComponents.DotNetBar.ButtonX button3;
         private System.Windows.Forms.SplitContainer splitContainer1;
         private System.Windows.Forms.SplitContainer splitContainer2;
         private System.Windows.Forms.ListView listView1;
@@ -523,6 +546,6 @@
         private System.Windows.Forms.ToolStripSeparator toolStripMenuItem6;
         private DevComponents.DotNetBar.Controls.TextBoxX textBoxX1;
         private DevComponents.DotNetBar.Controls.TextBoxX textBoxX2;
-        private System.Windows.Forms.Button button3;
+        private System.Windows.Forms.Panel panel2;
     }
 }

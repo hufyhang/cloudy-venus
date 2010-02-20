@@ -58,7 +58,16 @@ namespace LZ_Marina
             {
                 this.tabList.Add(page);
                 String url = "[Offline App]";
-                ListViewItem tabItem = new ListViewItem(page.Text);
+                ListViewItem tabItem;
+                if (page.Text == @"" && page.ImageIndex == 0)
+                {
+                    continue;
+                    //tabItem = new ListViewItem(@"Luna Home Screen");
+                }
+                else
+                {
+                    tabItem = new ListViewItem(page.Text);
+                }
                 try
                 {
                     foreach (Control ctrl in page.Controls)

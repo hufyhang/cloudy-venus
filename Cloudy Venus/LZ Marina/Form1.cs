@@ -64,6 +64,8 @@ namespace LZ_Marina
         public Form1()
         {
             InitializeComponent();
+            Control.CheckForIllegalCrossThreadCalls = false;
+
             this.tabControl1.ItemSize = new Size(this.Width * 3 / 4, 20);
 
             screenMode();
@@ -87,6 +89,8 @@ namespace LZ_Marina
             this.vitual2.Add(this.tabControl1.TabPages[0]);
             this.currentIndex1 = this.currentIndex2 = 0;
             this.inCloseingTab = false;
+
+            this.updateTodoInfo();
         }
 
         protected void initialEvents()
@@ -107,6 +111,14 @@ namespace LZ_Marina
         protected void tabControl1_ControlRemoved(object sender, ControlEventArgs e)
         {
             this.inCloseingTab = true;
+        }
+
+        protected void updateTodoInfo()
+        {
+            String temp = this.textBoxX2.Text.ToUpper();
+            temp = temp.Replace(@"[TODO]", @"◎");
+            String[] str = temp.Split('◎');
+            this.expandablePanel1.TitleText = @"My Tips + " + (str.Length - 1).ToString() + @" TODOs";
         }
 
         public void dynamicTabSize()
@@ -170,6 +182,8 @@ namespace LZ_Marina
             writer.Flush();
             writer.Write(this.textBoxX2.Text);
             writer.Close();
+
+            this.updateTodoInfo();
         }
 
         protected void textBoxX1_KeyDown(object sender, KeyEventArgs e)
@@ -226,26 +240,24 @@ namespace LZ_Marina
             this.localAppUrl = new ArrayList();
             this.listView1.Items.Clear();
 
-            System.Windows.Forms.ListViewItem listViewItem0 = new System.Windows.Forms.ListViewItem("Cloud Explorer", 8);
-            System.Windows.Forms.ListViewItem listViewItem1 = new System.Windows.Forms.ListViewItem("Web Browser", 2);
-//            System.Windows.Forms.ListViewItem listViewItem2 = new System.Windows.Forms.ListViewItem("2Dooo Special", 1);
-//            System.Windows.Forms.ListViewItem listViewItem3 = new System.Windows.Forms.ListViewItem("Hotmail", 0);
-            System.Windows.Forms.ListViewItem listViewItem6 = new System.Windows.Forms.ListViewItem("Picture Viewer", 9);
-            System.Windows.Forms.ListViewItem listViewItem7 = new System.Windows.Forms.ListViewItem("Notepad", 11);
-            System.Windows.Forms.ListViewItem listViewItem4 = new System.Windows.Forms.ListViewItem("Media Player", 12);
-            System.Windows.Forms.ListViewItem listViewItem5 = new System.Windows.Forms.ListViewItem("PDF Reader", 13);
-            System.Windows.Forms.ListViewItem listViewItem8 = new System.Windows.Forms.ListViewItem("Process Pool", 10);
-            System.Windows.Forms.ListViewItem listViewItem9 = new System.Windows.Forms.ListViewItem("Version Control", 1);
+            System.Windows.Forms.ListViewItem listViewItem1 = new System.Windows.Forms.ListViewItem("Cloud Explorer", 8);
+            System.Windows.Forms.ListViewItem listViewItem2 = new System.Windows.Forms.ListViewItem("Web Browser", 2);
+            System.Windows.Forms.ListViewItem listViewItem3 = new System.Windows.Forms.ListViewItem("Picture Viewer", 9);
+            System.Windows.Forms.ListViewItem listViewItem4 = new System.Windows.Forms.ListViewItem("Notepad", 11);
+            System.Windows.Forms.ListViewItem listViewItem5 = new System.Windows.Forms.ListViewItem("Media Player", 12);
+            System.Windows.Forms.ListViewItem listViewItem6 = new System.Windows.Forms.ListViewItem("PDF Reader", 13);
+            System.Windows.Forms.ListViewItem listViewItem7 = new System.Windows.Forms.ListViewItem("Process Pool", 10);
+            System.Windows.Forms.ListViewItem listViewItem8 = new System.Windows.Forms.ListViewItem("Version Control", 1);
+            System.Windows.Forms.ListViewItem listViewItem9 = new System.Windows.Forms.ListViewItem("Console Apps", 7);
 
             this.listView1.Items.AddRange(new System.Windows.Forms.ListViewItem[] {
-                listViewItem0,
                 listViewItem1,
-//                listViewItem2,
-//                listViewItem3,
-                listViewItem6,
-                listViewItem7,
+                listViewItem2,
+                listViewItem3,
                 listViewItem4,
                 listViewItem5,
+                listViewItem6,
+                listViewItem7,
                 listViewItem8,
                 listViewItem9
                 });
@@ -474,8 +486,12 @@ namespace LZ_Marina
 
         protected void listView1_DoubleClick(object sender, EventArgs e)
         {
-            Thread thread = new Thread(activateAppThread);
-            thread.Start();
+            if (this.listView1.SelectedItems.Count != 0)
+            {
+                Thread thread = new Thread(activateAppThread);
+                thread.Start();
+                //new delegateActivateApp(this.activateApp).BeginInvoke(null, null);
+            }
         }
 
         protected void listView1_KeyDown(object sender, KeyEventArgs e)
@@ -497,88 +513,94 @@ namespace LZ_Marina
             this.BeginInvoke(mi);
         }
 
+        protected delegate void delegateActivateApp();
+
         protected void activateApp()
         {
-            if (this.listView1.SelectedItems.Count != 0)
+            switch (this.listView1.SelectedIndices[0])
             {
-                switch (this.listView1.SelectedIndices[0])
-                {
-                    case 0:
-                        CloudyExplorer explorer = new CloudyExplorer(Application.StartupPath + @"\File System\", this.tabControl1, this.imageList1);
-                        explorer.ImageIndex = 1;
-                        this.tabControl1.Controls.Add(explorer);
-                        this.tabControl1.SelectedIndex = this.tabControl1.TabPages.Count - 1;
-                        break;
-                    case 1:
-                        Browser browser = new Browser(this.homePage, this.tabControl1, this);
-                        browser.ImageIndex = 2;
-                        this.tabControl1.Controls.Add(browser);
-                        this.tabControl1.SelectedIndex = this.tabControl1.TabPages.Count - 1;
-                        break;
-                    case 2:
-                        Picture_Viewer pic = new Picture_Viewer(this.picRoot);
-                        pic.ImageIndex = 3;
-                        this.tabControl1.Controls.Add(pic);
-                        this.tabControl1.SelectedIndex = this.tabControl1.TabPages.Count - 1;
-                        break;
-                    case 3:
-                        Editor editor = new Editor(this.textRoot);
-                        editor.ImageIndex = 4;
-                        this.tabControl1.Controls.Add(editor);
-                        this.tabControl1.SelectedIndex = this.tabControl1.TabPages.Count - 1;
-                        break;
-                    case 4:
-                        Media_Player media = new Media_Player();
-                        media.ImageIndex = 5;
-                        this.tabControl1.Controls.Add(media);
-                        this.tabControl1.SelectedIndex = this.tabControl1.TabPages.Count - 1;
-                        break;
-                    case 5:
-                        PDFReader pdf = new PDFReader();
-                        pdf.ImageIndex = 6;
-                        this.tabControl1.Controls.Add(pdf);
-                        this.tabControl1.SelectedIndex = this.tabControl1.TabPages.Count - 1;
-                        break;
-                    case 6:
-                        ProcsPool procs = new ProcsPool(this.tabControl1);
-                        procs.ImageIndex = 7;
-                        this.tabControl1.Controls.Add(procs);
-                        this.tabControl1.SelectedIndex = this.tabControl1.TabPages.Count - 1;
-                        break;
-                    case 7:
-                        VersionControl verctrl = new VersionControl(this.tabControl1, this);
-                        verctrl.ImageIndex = 8;
-                        this.tabControl1.Controls.Add(verctrl);
-                        this.tabControl1.SelectedIndex = this.tabControl1.TabPages.Count - 1;
-                        break;
-                    default:
-                        String url = "";
-                        if (this.listView1.SelectedItems[0].Index >= sysComponents + pluginsNumber)
+                case 0:
+                    CloudyExplorer explorer = new CloudyExplorer(Application.StartupPath + @"\File System\", this.tabControl1, this.imageList1);
+                    explorer.ImageIndex = 1;
+                    this.tabControl1.Controls.Add(explorer);
+                    this.tabControl1.SelectedIndex = this.tabControl1.TabPages.Count - 1;
+                    break;
+                case 1:
+                    Browser browser = new Browser(this.homePage, this.tabControl1, this);
+                    browser.ImageIndex = 2;
+                    this.tabControl1.Controls.Add(browser);
+                    this.tabControl1.SelectedIndex = this.tabControl1.TabPages.Count - 1;
+                    break;
+                case 2:
+                    Picture_Viewer pic = new Picture_Viewer(this.picRoot);
+                    pic.ImageIndex = 3;
+                    this.tabControl1.Controls.Add(pic);
+                    this.tabControl1.SelectedIndex = this.tabControl1.TabPages.Count - 1;
+                    break;
+                case 3:
+                    Editor editor = new Editor(this.textRoot);
+                    editor.ImageIndex = 4;
+                    this.tabControl1.Controls.Add(editor);
+                    this.tabControl1.SelectedIndex = this.tabControl1.TabPages.Count - 1;
+                    break;
+                case 4:
+                    Media_Player media = new Media_Player();
+                    media.ImageIndex = 5;
+                    this.tabControl1.Controls.Add(media);
+                    this.tabControl1.SelectedIndex = this.tabControl1.TabPages.Count - 1;
+                    break;
+                case 5:
+                    PDFReader pdf = new PDFReader();
+                    pdf.ImageIndex = 6;
+                    this.tabControl1.Controls.Add(pdf);
+                    this.tabControl1.SelectedIndex = this.tabControl1.TabPages.Count - 1;
+                    break;
+                case 6:
+                    ProcsPool procs = new ProcsPool(this.tabControl1);
+                    procs.ImageIndex = 7;
+                    this.tabControl1.Controls.Add(procs);
+                    this.tabControl1.SelectedIndex = this.tabControl1.TabPages.Count - 1;
+                    break;
+                case 7:
+                    VersionControl verctrl = new VersionControl(this.tabControl1, this);
+                    verctrl.ImageIndex = 8;
+                    this.tabControl1.Controls.Add(verctrl);
+                    this.tabControl1.SelectedIndex = this.tabControl1.TabPages.Count - 1;
+                    break;
+                case 8:
+                    ConsoleApps consoleApps = new ConsoleApps();
+                    consoleApps.ImageIndex = 11;
+                    this.tabControl1.Controls.Add(consoleApps);
+                    this.tabControl1.SelectedIndex = this.tabControl1.TabPages.Count - 1;
+                    break;
+                default:
+                    String url = "";
+                    if (this.listView1.SelectedItems[0].Index >= sysComponents + pluginsNumber)
+                    {
+                        if (this.listView1.SelectedItems[0].ImageIndex == 5)
                         {
-                            if (this.listView1.SelectedItems[0].ImageIndex == 5)
-                            {
-                                url = this.userAppUrl[this.listView1.SelectedItems[0].Index - sysComponents - pluginsNumber].ToString();
-                            }
-                            else
-                            {
-                                url = @"<NULL>";
-                                new CloudyExplorer(this.imageList1).runItem(this.localAppUrl[this.listView1.SelectedItems[0].Index - sysComponents - pluginsNumber - this.userAppUrl.Count].ToString(), this.tabControl1);
-                            }
+                            url = this.userAppUrl[this.listView1.SelectedItems[0].Index - sysComponents - pluginsNumber].ToString();
                         }
                         else
                         {
-                            url = this.plugins[this.listView1.SelectedItems[0].Index - sysComponents].ToString();
+                            url = @"<NULL>";
+                            new CloudyExplorer(this.imageList1).runItem(this.localAppUrl[this.listView1.SelectedItems[0].Index - sysComponents - pluginsNumber - this.userAppUrl.Count].ToString(), this.tabControl1);
                         }
-                        if (url != @"<NULL>")
-                        {
-                            AppBrowser app = new AppBrowser(url, this.listView1.SelectedItems[0].Text);
-                            app.ImageIndex = 9;
-                            this.tabControl1.Controls.Add(app);
-                            this.tabControl1.SelectedIndex = this.tabControl1.TabPages.Count - 1;
-                        }
-                        break;
-                }
+                    }
+                    else
+                    {
+                        url = this.plugins[this.listView1.SelectedItems[0].Index - sysComponents].ToString();
+                    }
+                    if (url != @"<NULL>")
+                    {
+                        AppBrowser app = new AppBrowser(url, this.listView1.SelectedItems[0].Text);
+                        app.ImageIndex = 9;
+                        this.tabControl1.Controls.Add(app);
+                        this.tabControl1.SelectedIndex = this.tabControl1.TabPages.Count - 1;
+                    }
+                    break;
             }
+
             Application.DoEvents();
         }
 
@@ -646,7 +668,7 @@ namespace LZ_Marina
 
         private void timer1_Tick(object sender, EventArgs e)
         {
-            this.labelX1.Text = DateTime.Now.ToString() + @" | " + (SystemInformation.PowerStatus.BatteryLifePercent * 100).ToString() + @"% bettery remaining";
+            this.label3.Text = DateTime.Now.ToString() + @" | " + (SystemInformation.PowerStatus.BatteryLifePercent * 100).ToString() + @"% bettery remaining";
 /*
             System.Int32 dwFlag = new int();
             if (!InternetGetConnectedState(ref dwFlag, 0))
@@ -718,7 +740,7 @@ namespace LZ_Marina
             {
                 this.alarm.Stop();
                 this.alarmClock = false;
-                this.labelX1.ForeColor = Color.White;
+                this.label3.ForeColor = Color.White;
             }
             else
             {
@@ -727,7 +749,7 @@ namespace LZ_Marina
                 {
                     this.alarmTime = setAlarm.getTime();
                     this.alarmClock = true;
-                    this.labelX1.ForeColor = Color.Yellow;
+                    this.label3.ForeColor = Color.Yellow;
                 }
                 setAlarm.Dispose();
             }
@@ -836,7 +858,7 @@ namespace LZ_Marina
             }
         }
 
-        private void labelX1_Click(object sender, EventArgs e)
+        private void label3_Click(object sender, EventArgs e)
         {
             if (this.monthCalendar1.Visible == true)
             {

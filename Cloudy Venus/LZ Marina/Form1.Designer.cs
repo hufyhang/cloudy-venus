@@ -30,14 +30,15 @@
         {
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form1));
-            System.Windows.Forms.ListViewItem listViewItem1 = new System.Windows.Forms.ListViewItem("Cloud Explorer", 8);
-            System.Windows.Forms.ListViewItem listViewItem2 = new System.Windows.Forms.ListViewItem("Web Browser", 2);
-            System.Windows.Forms.ListViewItem listViewItem3 = new System.Windows.Forms.ListViewItem("Picture Viewer", 9);
-            System.Windows.Forms.ListViewItem listViewItem4 = new System.Windows.Forms.ListViewItem("Notepad", 11);
-            System.Windows.Forms.ListViewItem listViewItem5 = new System.Windows.Forms.ListViewItem("Media Player", 12);
-            System.Windows.Forms.ListViewItem listViewItem6 = new System.Windows.Forms.ListViewItem("PDF Reader", 13);
-            System.Windows.Forms.ListViewItem listViewItem7 = new System.Windows.Forms.ListViewItem("Process Pool", 10);
-            System.Windows.Forms.ListViewItem listViewItem8 = new System.Windows.Forms.ListViewItem("Version Control", 1);
+            System.Windows.Forms.ListViewItem listViewItem10 = new System.Windows.Forms.ListViewItem("Cloud Explorer", 8);
+            System.Windows.Forms.ListViewItem listViewItem11 = new System.Windows.Forms.ListViewItem("Web Browser", 2);
+            System.Windows.Forms.ListViewItem listViewItem12 = new System.Windows.Forms.ListViewItem("Picture Viewer", 9);
+            System.Windows.Forms.ListViewItem listViewItem13 = new System.Windows.Forms.ListViewItem("Notepad", 11);
+            System.Windows.Forms.ListViewItem listViewItem14 = new System.Windows.Forms.ListViewItem("Media Player", 12);
+            System.Windows.Forms.ListViewItem listViewItem15 = new System.Windows.Forms.ListViewItem("PDF Reader", 13);
+            System.Windows.Forms.ListViewItem listViewItem16 = new System.Windows.Forms.ListViewItem("Process Pool", 10);
+            System.Windows.Forms.ListViewItem listViewItem17 = new System.Windows.Forms.ListViewItem("Version Control", 1);
+            System.Windows.Forms.ListViewItem listViewItem18 = new System.Windows.Forms.ListViewItem("Console Apps", 7);
             this.ApplicationsImg = new System.Windows.Forms.ImageList(this.components);
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tabPage1 = new System.Windows.Forms.TabPage();
@@ -56,7 +57,7 @@
             this.label1 = new System.Windows.Forms.Label();
             this.imageList1 = new System.Windows.Forms.ImageList(this.components);
             this.timer1 = new System.Windows.Forms.Timer(this.components);
-            this.labelX1 = new DevComponents.DotNetBar.LabelX();
+            this.label3 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.button1 = new System.Windows.Forms.Button();
             this.button2 = new System.Windows.Forms.Button();
@@ -226,14 +227,15 @@
             this.listView1.Font = new System.Drawing.Font("Arial Unicode MS", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.listView1.ForeColor = System.Drawing.Color.Navy;
             this.listView1.Items.AddRange(new System.Windows.Forms.ListViewItem[] {
-            listViewItem1,
-            listViewItem2,
-            listViewItem3,
-            listViewItem4,
-            listViewItem5,
-            listViewItem6,
-            listViewItem7,
-            listViewItem8});
+            listViewItem10,
+            listViewItem11,
+            listViewItem12,
+            listViewItem13,
+            listViewItem14,
+            listViewItem15,
+            listViewItem16,
+            listViewItem17,
+            listViewItem18});
             this.listView1.LargeImageList = this.ApplicationsImg;
             this.listView1.Location = new System.Drawing.Point(3, 92);
             this.listView1.MultiSelect = false;
@@ -251,38 +253,38 @@
             this.createALocalShortcutToolStripMenuItem,
             this.renameToolStripMenuItem});
             this.listViewContext.Name = "listViewContext";
-            this.listViewContext.Size = new System.Drawing.Size(208, 98);
+            this.listViewContext.Size = new System.Drawing.Size(193, 98);
             // 
             // activateToolStripMenuItem
             // 
             this.activateToolStripMenuItem.Name = "activateToolStripMenuItem";
-            this.activateToolStripMenuItem.Size = new System.Drawing.Size(207, 22);
+            this.activateToolStripMenuItem.Size = new System.Drawing.Size(192, 22);
             this.activateToolStripMenuItem.Text = "Activate";
             this.activateToolStripMenuItem.Click += new System.EventHandler(this.activateToolStripMenuItem_Click);
             // 
             // removeFromCloudToolStripMenuItem
             // 
             this.removeFromCloudToolStripMenuItem.Name = "removeFromCloudToolStripMenuItem";
-            this.removeFromCloudToolStripMenuItem.Size = new System.Drawing.Size(207, 22);
+            this.removeFromCloudToolStripMenuItem.Size = new System.Drawing.Size(192, 22);
             this.removeFromCloudToolStripMenuItem.Text = "Remove from Luna";
             this.removeFromCloudToolStripMenuItem.Click += new System.EventHandler(this.removeFromCloudToolStripMenuItem_Click);
             // 
             // toolStripMenuItem1
             // 
             this.toolStripMenuItem1.Name = "toolStripMenuItem1";
-            this.toolStripMenuItem1.Size = new System.Drawing.Size(204, 6);
+            this.toolStripMenuItem1.Size = new System.Drawing.Size(189, 6);
             // 
             // createALocalShortcutToolStripMenuItem
             // 
             this.createALocalShortcutToolStripMenuItem.Name = "createALocalShortcutToolStripMenuItem";
-            this.createALocalShortcutToolStripMenuItem.Size = new System.Drawing.Size(207, 22);
+            this.createALocalShortcutToolStripMenuItem.Size = new System.Drawing.Size(192, 22);
             this.createALocalShortcutToolStripMenuItem.Text = "Create a local shortcut";
             this.createALocalShortcutToolStripMenuItem.Click += new System.EventHandler(this.createALocalShortcutToolStripMenuItem_Click);
             // 
             // renameToolStripMenuItem
             // 
             this.renameToolStripMenuItem.Name = "renameToolStripMenuItem";
-            this.renameToolStripMenuItem.Size = new System.Drawing.Size(207, 22);
+            this.renameToolStripMenuItem.Size = new System.Drawing.Size(192, 22);
             this.renameToolStripMenuItem.Text = "Rename item";
             this.renameToolStripMenuItem.Click += new System.EventHandler(this.renameToolStripMenuItem_Click);
             // 
@@ -312,6 +314,7 @@
             this.imageList1.Images.SetKeyName(8, "todo_ico.png");
             this.imageList1.Images.SetKeyName(9, "super-mario-cloud-computing.png");
             this.imageList1.Images.SetKeyName(10, "cloud app.png");
+            this.imageList1.Images.SetKeyName(11, "plug_ico.png");
             // 
             // timer1
             // 
@@ -319,20 +322,20 @@
             this.timer1.Interval = 1000;
             this.timer1.Tick += new System.EventHandler(this.timer1_Tick);
             // 
-            // labelX1
+            // label3
             // 
-            this.labelX1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.labelX1.AutoSize = true;
-            this.labelX1.BackColor = System.Drawing.Color.Transparent;
-            this.labelX1.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.labelX1.Font = new System.Drawing.Font("Arial Unicode MS", 10.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.labelX1.ForeColor = System.Drawing.Color.White;
-            this.labelX1.Location = new System.Drawing.Point(577, 1);
-            this.labelX1.Name = "labelX1";
-            this.labelX1.Size = new System.Drawing.Size(71, 23);
-            this.labelX1.TabIndex = 4;
-            this.labelX1.Text = "Loading...";
-            this.labelX1.Click += new System.EventHandler(this.labelX1_Click);
+            this.label3.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.label3.BackColor = System.Drawing.Color.Transparent;
+            this.label3.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.label3.Font = new System.Drawing.Font("Arial Unicode MS", 10.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.label3.ForeColor = System.Drawing.Color.White;
+            this.label3.Location = new System.Drawing.Point(119, 0);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(750, 19);
+            this.label3.TabIndex = 4;
+            this.label3.Text = "0000/00/00 00:00:00 AM | 100% Battery Remaining";
+            this.label3.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.label3.Click += new System.EventHandler(this.label3_Click);
             // 
             // label2
             // 
@@ -359,7 +362,7 @@
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(31, 22);
             this.button1.TabIndex = 10;
-            this.toolTip1.SetToolTip(this.button1, "More...");
+            this.toolTip1.SetToolTip(this.button1, "Even More...");
             this.button1.UseVisualStyleBackColor = false;
             this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
@@ -483,8 +486,8 @@
             this.Controls.Add(this.button3);
             this.Controls.Add(this.button2);
             this.Controls.Add(this.button1);
-            this.Controls.Add(this.labelX1);
             this.Controls.Add(this.label2);
+            this.Controls.Add(this.label3);
             this.DoubleBuffered = true;
             this.Font = new System.Drawing.Font("Arial Unicode MS", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
@@ -503,7 +506,6 @@
             this.listViewContext.ResumeLayout(false);
             this.panel1.ResumeLayout(false);
             this.ResumeLayout(false);
-            this.PerformLayout();
 
         }
 
@@ -520,7 +522,7 @@
         private System.Windows.Forms.ImageList imageList1;
         private System.Windows.Forms.Timer timer1;
         private System.Windows.Forms.PictureBox pictureBox1;
-        private DevComponents.DotNetBar.LabelX labelX1;
+        private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Button button1;
         private DevComponents.DotNetBar.ButtonX buttonX1;

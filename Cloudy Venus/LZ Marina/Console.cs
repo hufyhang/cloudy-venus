@@ -53,6 +53,11 @@ namespace LZ_Marina
             {
                 ans = "\r\n" + @"System Date & Time: " + DateTime.Now.ToLocalTime().ToString() + "\r\n";
             }
+
+            else if (cmd.ToUpper().Equals("?WEBKIT"))
+            {
+                new WebkitBrowser().Show();
+            }
 /*
             else if (cmd.ToUpper().Equals("?VERCTRL"))
             {

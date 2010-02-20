@@ -127,7 +127,7 @@ namespace LZ_Marina
             this.Text = "Notepad";
             this.listView1.Items.Clear();
             this.storage.Clear();
-            this.textBoxX1.Text = this.richTextBox1.Text = "";
+//            this.textBoxX1.Text = this.richTextBox1.Text = "";
 
             DirectoryInfo dir = new DirectoryInfo(path);
             foreach (FileInfo file in dir.GetFiles())
@@ -176,7 +176,7 @@ namespace LZ_Marina
                         String title = this.textBoxX1.Text;
                         String content = this.richTextBox1.Text;
                         FileInfo file = new FileInfo(this.path + this.textBoxX1.Text);
-                        StreamWriter writer = new StreamWriter(this.path + this.textBoxX1.Text);
+                        StreamWriter writer = new StreamWriter(this.path + this.textBoxX1.Text, false, System.Text.Encoding.Default);
                         writer.Write(this.richTextBox1.Text);
                         writer.Close();
                         this.loadFiles();
@@ -185,6 +185,7 @@ namespace LZ_Marina
                     }
                 }
                 loadFiles();
+
             }
             else
             {
@@ -204,7 +205,7 @@ namespace LZ_Marina
                 this.richTextBox1.Text = this.textBoxX1.Text = "";
                 FileInfo file = (FileInfo)this.storage[this.listView1.SelectedItems[0].Index];
                 this.textBoxX1.Text = file.Name;
-                StreamReader reader = new StreamReader(file.FullName, System.Text.Encoding.UTF8);
+                StreamReader reader = new StreamReader(file.FullName, System.Text.Encoding.Default);
                 this.richTextBox1.Text = reader.ReadToEnd();
                 reader.Close();
                 this.Text = this.textBoxX1.Text;
@@ -320,6 +321,5 @@ namespace LZ_Marina
         {
             this.textBoxX2.Text = "";
         }
-
     }
 }

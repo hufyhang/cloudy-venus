@@ -234,11 +234,16 @@ namespace LZ_Marina
 
         protected void extractZip(int version)
         {
-            String path = Application.StartupPath + @"\File System\Version Control\Buffer";
-            DirectoryInfo buffer = new DirectoryInfo(path);
-            this.clearBuffer(buffer);
-
-            new ICSharpCode.SharpZipLib.Zip.FastZip().ExtractZip(this.currentStorage + @"\" + this.currentSolution + @"_" + version + @".zip", path, "");
+                String path = Application.StartupPath + @"\File System\Version Control\Buffer";
+                DirectoryInfo buffer = new DirectoryInfo(path);
+                this.clearBuffer(buffer);
+                try
+                {
+                    new ICSharpCode.SharpZipLib.Zip.FastZip().ExtractZip(this.currentStorage + @"\" + this.currentSolution + @"_" + version + @".zip", path, "");
+                }
+                catch (PathTooLongException)
+                {
+                }
         }
 
         protected void listView3_DoubleClick(object sender, EventArgs e)

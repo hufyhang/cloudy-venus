@@ -122,9 +122,9 @@
             this.label1.ForeColor = System.Drawing.Color.White;
             this.label1.Location = new System.Drawing.Point(12, 9);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(78, 26);
+            this.label1.Size = new System.Drawing.Size(129, 26);
             this.label1.TabIndex = 6;
-            this.label1.Text = "More...";
+            this.label1.Text = "Even More...";
             // 
             // ShutDown
             // 
