@@ -6,6 +6,7 @@ using System.Drawing;
 using System.Text;
 using System.Windows.Forms;
 using System.IO;
+using System.Threading;
 
 namespace LZ_Marina
 {
@@ -98,6 +99,8 @@ namespace LZ_Marina
             }
         }
 
+        protected delegate void delegateNewSolution();
+
         protected void newSolution()
         {
             if (this.textBoxX1.Text.Length == 0 || this.textBoxX2.Text.Length == 0 || this.textBoxX3.Text.Length == 0)
@@ -122,6 +125,10 @@ namespace LZ_Marina
                 info = DateTime.Now.ToLocalTime().ToString() + @"`Solution created.|";
                 writer.Write(info);
                 writer.Close();
+
+                this.initialSolutions();
+                this.textBoxX1.Text = this.textBoxX2.Text = this.textBoxX3.Text = "";
+                MessageBox.Show("Process finished.", "Process finished...", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
         }
 
@@ -129,9 +136,7 @@ namespace LZ_Marina
         {
             if (MessageBox.Show("This process may take several minutes.\r\nPess OK to start.", "Commit...", MessageBoxButtons.OKCancel, MessageBoxIcon.Information) == DialogResult.OK)
             {
-                this.newSolution();
-                this.initialSolutions();
-                this.textBoxX1.Text = this.textBoxX2.Text = this.textBoxX3.Text = "";
+                new delegateNewSolution(this.newSolution).BeginInvoke(null, null);
             }
         }
 
@@ -253,12 +258,14 @@ namespace LZ_Marina
                 if (this.listView3.SelectedItems[0].SubItems[0].Text.Equals(@".."))
                 {
                     this.currentBuffer = this.currentBuffer.Substring(0, this.currentBuffer.LastIndexOf('\\'));
-                    this.previewBuffer(this.currentBuffer);
+                    new delegatePreviewBuffer(this.previewBuffer).BeginInvoke(this.currentBuffer, null, null);
+                    //this.previewBuffer(this.currentBuffer);
                 }
                 else if (this.listView3.SelectedItems[0].SubItems[1].Text.Equals(@"<DIR>"))
                 {
                     this.currentBuffer += @"\" + this.listView3.SelectedItems[0].SubItems[0].Text;
-                    this.previewBuffer(this.currentBuffer);
+                    new delegatePreviewBuffer(this.previewBuffer).BeginInvoke(this.currentBuffer, null, null);
+                    //this.previewBuffer(this.currentBuffer);
                 }
                 else
                 {
@@ -266,6 +273,8 @@ namespace LZ_Marina
                 }
             }
         }
+
+        protected delegate void delegatePreviewBuffer(String path);
 
         protected void previewBuffer(String path)
         {
@@ -299,23 +308,32 @@ namespace LZ_Marina
         {
             if (this.listView2.SelectedItems.Count != 0)
             {
-                this.previewBuffer(Application.StartupPath + @"\File System\Version Control\Buffer");
+                new delegatePreviewBuffer(this.previewBuffer).BeginInvoke(Application.StartupPath + @"\File System\Version Control\Buffer", null, null);
+                //this.previewBuffer(Application.StartupPath + @"\File System\Version Control\Buffer");
                 this.textBoxX4.Text = this.listView2.SelectedItems[0].SubItems[2].Text;
             }
+        }
+
+        protected delegate void delegateStartBackup();
+
+        protected void startBackupThread()
+        {
+            String info = DateTime.Now.ToLocalTime().ToString() + @"`" + this.textBoxX5.Text + @"|";
+            StreamWriter writer = new FileInfo(this.currentStorage + @"\VERCTRL.LUNA").AppendText();
+            writer.Write(info);
+            writer.Close();
+            new ICSharpCode.SharpZipLib.Zip.FastZip().CreateZip(this.currentStorage + @"\" + this.currentSolution + @"_" + (this.currentVersion - 1).ToString() + @".zip",
+                                                                                           this.currentTrack, true, "");
+            this.textBoxX5.Text = "";
+            this.loadList();
+            MessageBox.Show("Process finished.", "Process finished...", MessageBoxButtons.OK, MessageBoxIcon.Information);
         }
 
         private void button7_Click(object sender, EventArgs e)
         {
             if (MessageBox.Show("This process may take several minutes.\r\nPess OK to start.", "Commit...", MessageBoxButtons.OKCancel, MessageBoxIcon.Information) == DialogResult.OK)
             {
-                String info = DateTime.Now.ToLocalTime().ToString() + @"`" + this.textBoxX5.Text + @"|";
-                StreamWriter writer = new FileInfo(this.currentStorage + @"\VERCTRL.LUNA").AppendText();
-                writer.Write(info);
-                writer.Close();
-                new ICSharpCode.SharpZipLib.Zip.FastZip().CreateZip(this.currentStorage + @"\" + this.currentSolution + @"_" + (this.currentVersion - 1).ToString() + @".zip",
-                                                                                               this.currentTrack, true, "");
-                this.textBoxX5.Text = "";
-                this.loadList();
+                new delegateStartBackup(this.startBackupThread).BeginInvoke(null, null);
             }
         }
 

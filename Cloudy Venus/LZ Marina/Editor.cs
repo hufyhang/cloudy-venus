@@ -161,7 +161,7 @@ namespace LZ_Marina
                     String title = this.textBoxX1.Text;
                     String content = this.richTextBox1.Text;
                     FileInfo file = new FileInfo(this.path + this.textBoxX1.Text);
-                    StreamWriter writer = new StreamWriter(this.path + this.textBoxX1.Text);
+                    StreamWriter writer = new StreamWriter(this.path + this.textBoxX1.Text, false, System.Text.Encoding.Default);
                     writer.Write(this.richTextBox1.Text);
                     writer.Close();
                     this.loadFiles();

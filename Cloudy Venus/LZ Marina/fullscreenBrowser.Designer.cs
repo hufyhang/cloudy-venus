@@ -43,9 +43,9 @@
                         | System.Windows.Forms.AnchorStyles.Left)
                         | System.Windows.Forms.AnchorStyles.Right)));
             this.webBrowser1.Location = new System.Drawing.Point(0, 0);
-            this.webBrowser1.MinimumSize = new System.Drawing.Size(20, 20);
+            this.webBrowser1.MinimumSize = new System.Drawing.Size(20, 22);
             this.webBrowser1.Name = "webBrowser1";
-            this.webBrowser1.Size = new System.Drawing.Size(564, 356);
+            this.webBrowser1.Size = new System.Drawing.Size(564, 386);
             this.webBrowser1.TabIndex = 0;
             // 
             // button1
@@ -56,10 +56,10 @@
             this.button1.ColorTable = DevComponents.DotNetBar.eButtonColor.Orange;
             this.button1.Font = new System.Drawing.Font("Arial Unicode MS", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.button1.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.button1.Location = new System.Drawing.Point(4, 6);
+            this.button1.Location = new System.Drawing.Point(4, 9);
             this.button1.Name = "button1";
             this.button1.Shape = new DevComponents.DotNetBar.RoundRectangleShapeDescriptor(2);
-            this.button1.Size = new System.Drawing.Size(22, 20);
+            this.button1.Size = new System.Drawing.Size(22, 22);
             this.button1.TabIndex = 3;
             this.button1.Text = "X";
             this.button1.Click += new System.EventHandler(this.button1_Click);
@@ -72,7 +72,7 @@
             this.labelX1.Cursor = System.Windows.Forms.Cursors.Hand;
             this.labelX1.Font = new System.Drawing.Font("Arial Unicode MS", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.labelX1.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.labelX1.Location = new System.Drawing.Point(32, 4);
+            this.labelX1.Location = new System.Drawing.Point(31, 8);
             this.labelX1.Name = "labelX1";
             this.labelX1.Size = new System.Drawing.Size(68, 22);
             this.labelX1.TabIndex = 7;
@@ -89,10 +89,10 @@
             this.progressBarX1.BackgroundStyle.TextColor = System.Drawing.Color.White;
             this.progressBarX1.Cursor = System.Windows.Forms.Cursors.Hand;
             this.progressBarX1.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.progressBarX1.Location = new System.Drawing.Point(478, 6);
+            this.progressBarX1.Location = new System.Drawing.Point(478, 7);
             this.progressBarX1.Name = "progressBarX1";
             this.progressBarX1.ProgressType = DevComponents.DotNetBar.eProgressItemType.Marquee;
-            this.progressBarX1.Size = new System.Drawing.Size(82, 20);
+            this.progressBarX1.Size = new System.Drawing.Size(82, 22);
             this.progressBarX1.TabIndex = 8;
             this.progressBarX1.Text = "Loading...";
             this.progressBarX1.TextVisible = true;
@@ -106,17 +106,17 @@
             this.panel1.Controls.Add(this.labelX1);
             this.panel1.Controls.Add(this.button1);
             this.panel1.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.panel1.Location = new System.Drawing.Point(0, 354);
+            this.panel1.Location = new System.Drawing.Point(0, 383);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(564, 31);
+            this.panel1.Size = new System.Drawing.Size(564, 34);
             this.panel1.TabIndex = 9;
             // 
             // fullscreenBrowser
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
-            this.ClientSize = new System.Drawing.Size(564, 385);
+            this.ClientSize = new System.Drawing.Size(564, 417);
             this.Controls.Add(this.webBrowser1);
             this.Controls.Add(this.panel1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;

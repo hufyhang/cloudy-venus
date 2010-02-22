@@ -146,6 +146,9 @@ namespace LZ_Marina
             
             if (e.KeyCode == Keys.Enter)
             {
+                e.Handled = true;
+                e.SuppressKeyPress = true;
+
                 this.addressBox.Text.Remove(this.addressBox.Text.Length - 1);
                 if (this.firstUrl.Equals(""))
                 {
@@ -156,6 +159,9 @@ namespace LZ_Marina
 
             if (e.Control && e.KeyCode == Keys.Enter)
             {
+                e.Handled = true;
+                e.SuppressKeyPress = true;
+
                 this.addressBox.Text.Remove(this.addressBox.Text.Length - 1);
                 String url = @"http://" + this.addressBox.Text + @".com";
                 this.currentBrowser.Navigate(url);
@@ -164,6 +170,8 @@ namespace LZ_Marina
             if (e.Control && e.KeyCode == Keys.A)
             {
                 e.Handled = true;
+                e.SuppressKeyPress = true;
+
                 this.addressBox.SelectAll();
             }
 

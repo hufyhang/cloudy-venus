@@ -57,7 +57,7 @@ namespace LZ_Marina
             this.Text = @"Console Apps Platform";
             this.listView1.DoubleClick += new EventHandler(listView1_DoubleClick);
             this.textBoxX2.TextChanged += new EventHandler(textBoxX2_TextChanged);
-            this.richTextBox1.KeyDown += new KeyEventHandler(richTextBox1_KeyDown);
+//            this.richTextBox1.KeyDown += new KeyEventHandler(richTextBox1_KeyDown);
         }
 
         protected void loadApps(Boolean flag)
@@ -134,12 +134,15 @@ namespace LZ_Marina
             return ans;
         }
 
-        protected String executeApp(String app)
+        protected delegate void delegateExecuteApp(String app, String arg);
+
+        protected void executeApp(String app, String arg)
         {
             this.consoleProcess.Start();
-            this.consoleProcess.StandardInput.WriteLine("\"" + this.defaultAppsPath + app + "\"");
+            this.consoleProcess.StandardInput.WriteLine("\"" + this.defaultAppsPath + app + "\" " + arg);
             this.consoleProcess.StandardInput.WriteLine(@"exit");
             String ans = this.consoleProcess.StandardOutput.ReadToEnd();
+            ans += "\r\n" + this.consoleProcess.StandardError.ReadToEnd();
             this.consoleProcess.WaitForExit();
             this.consoleProcess.Close();
 
@@ -153,10 +156,10 @@ namespace LZ_Marina
             ans = ans.Replace(statement, "");
             ans = ans.Replace(tail, "");
 
-            /*Use to remove the 5(five) "newline"/"return" at the beginning of answer string after formatting. */
+            //Use to remove the 5(five) "newline"/"return" at the beginning of answer string after formatting.
             ans = ans.Substring(4);
 
-            return ans;
+            this.richTextBox1.Text = ans;
         }
 
         protected void listView1_DoubleClick(object sender, EventArgs e)
@@ -165,7 +168,14 @@ namespace LZ_Marina
             {
                 String app = this.listView1.SelectedItems[0].SubItems[0].Text;
                 this.Text = app + @" - Console Apps Platform";
-                this.richTextBox1.Text = this.executeApp(app);
+                if (this.textBoxX1.Text.Length != 0)
+                {
+                    new delegateExecuteApp(this.executeApp).BeginInvoke(app, " \"" + this.textBoxX1.Text + "\"", null, null);
+                }
+                else
+                {
+                    new delegateExecuteApp(this.executeApp).BeginInvoke(app, "", null, null);
+                }
             }
         }
 
@@ -193,9 +203,9 @@ namespace LZ_Marina
 
         private void richTextBox1_KeyDown(object sender, KeyEventArgs e)
         {
-            if (e.KeyCode == Keys.Enter && this.richTextBox1.Text.Contains('?'))
+            if (e.KeyCode == Keys.Enter && this.richTextBox1.Text.Contains('!'))
             {
-                String cmd = this.richTextBox1.Text.Substring(this.richTextBox1.Text.LastIndexOf("?"));
+                String cmd = this.richTextBox1.Text.Substring(this.richTextBox1.Text.LastIndexOf("!"));
                 cmd = cmd.Remove(0, 1);
                 this.richTextBox1.Text = this.executeCommand(cmd);
             }

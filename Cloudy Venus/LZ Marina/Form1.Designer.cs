@@ -30,15 +30,14 @@
         {
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form1));
-            System.Windows.Forms.ListViewItem listViewItem10 = new System.Windows.Forms.ListViewItem("Cloud Explorer", 8);
-            System.Windows.Forms.ListViewItem listViewItem11 = new System.Windows.Forms.ListViewItem("Web Browser", 2);
-            System.Windows.Forms.ListViewItem listViewItem12 = new System.Windows.Forms.ListViewItem("Picture Viewer", 9);
-            System.Windows.Forms.ListViewItem listViewItem13 = new System.Windows.Forms.ListViewItem("Notepad", 11);
-            System.Windows.Forms.ListViewItem listViewItem14 = new System.Windows.Forms.ListViewItem("Media Player", 12);
-            System.Windows.Forms.ListViewItem listViewItem15 = new System.Windows.Forms.ListViewItem("PDF Reader", 13);
-            System.Windows.Forms.ListViewItem listViewItem16 = new System.Windows.Forms.ListViewItem("Process Pool", 10);
-            System.Windows.Forms.ListViewItem listViewItem17 = new System.Windows.Forms.ListViewItem("Version Control", 1);
-            System.Windows.Forms.ListViewItem listViewItem18 = new System.Windows.Forms.ListViewItem("Console Apps", 7);
+            System.Windows.Forms.ListViewItem listViewItem9 = new System.Windows.Forms.ListViewItem("Cloud Explorer", 8);
+            System.Windows.Forms.ListViewItem listViewItem10 = new System.Windows.Forms.ListViewItem("Web Browser", 2);
+            System.Windows.Forms.ListViewItem listViewItem11 = new System.Windows.Forms.ListViewItem("Picture Viewer", 9);
+            System.Windows.Forms.ListViewItem listViewItem12 = new System.Windows.Forms.ListViewItem("Notepad", 11);
+            System.Windows.Forms.ListViewItem listViewItem13 = new System.Windows.Forms.ListViewItem("Media Player", 12);
+            System.Windows.Forms.ListViewItem listViewItem14 = new System.Windows.Forms.ListViewItem("PDF Reader", 13);
+            System.Windows.Forms.ListViewItem listViewItem15 = new System.Windows.Forms.ListViewItem("Console Apps", 10);
+            System.Windows.Forms.ListViewItem listViewItem16 = new System.Windows.Forms.ListViewItem("Version Control", 1);
             this.ApplicationsImg = new System.Windows.Forms.ImageList(this.components);
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tabPage1 = new System.Windows.Forms.TabPage();
@@ -66,9 +65,11 @@
             this.button5 = new System.Windows.Forms.Button();
             this.button4 = new System.Windows.Forms.Button();
             this.toolTip1 = new System.Windows.Forms.ToolTip(this.components);
+            this.button6 = new System.Windows.Forms.Button();
             this.tabPage3 = new System.Windows.Forms.TabPage();
             this.timer2 = new System.Windows.Forms.Timer(this.components);
             this.monthCalendar1 = new System.Windows.Forms.MonthCalendar();
+            this.label4 = new System.Windows.Forms.Label();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
             this.expandablePanel1.SuspendLayout();
@@ -115,6 +116,7 @@
             // tabPage1
             // 
             this.tabPage1.BackColor = System.Drawing.Color.White;
+            this.tabPage1.Controls.Add(this.label4);
             this.tabPage1.Controls.Add(this.expandablePanel1);
             this.tabPage1.Controls.Add(this.buttonX1);
             this.tabPage1.Controls.Add(this.textBoxX1);
@@ -227,15 +229,14 @@
             this.listView1.Font = new System.Drawing.Font("Arial Unicode MS", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.listView1.ForeColor = System.Drawing.Color.Navy;
             this.listView1.Items.AddRange(new System.Windows.Forms.ListViewItem[] {
+            listViewItem9,
             listViewItem10,
             listViewItem11,
             listViewItem12,
             listViewItem13,
             listViewItem14,
             listViewItem15,
-            listViewItem16,
-            listViewItem17,
-            listViewItem18});
+            listViewItem16});
             this.listView1.LargeImageList = this.ApplicationsImg;
             this.listView1.Location = new System.Drawing.Point(3, 92);
             this.listView1.MultiSelect = false;
@@ -449,6 +450,24 @@
             // 
             this.toolTip1.IsBalloon = true;
             // 
+            // button6
+            // 
+            this.button6.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.button6.BackColor = System.Drawing.Color.Transparent;
+            this.button6.FlatAppearance.MouseDownBackColor = System.Drawing.Color.DarkBlue;
+            this.button6.FlatAppearance.MouseOverBackColor = System.Drawing.Color.MidnightBlue;
+            this.button6.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button6.Font = new System.Drawing.Font("Arial Unicode MS", 6F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.button6.ForeColor = System.Drawing.Color.White;
+            this.button6.Location = new System.Drawing.Point(870, 28);
+            this.button6.Name = "button6";
+            this.button6.Size = new System.Drawing.Size(15, 22);
+            this.button6.TabIndex = 23;
+            this.button6.Text = "+";
+            this.toolTip1.SetToolTip(this.button6, "Need a new task?");
+            this.button6.UseVisualStyleBackColor = false;
+            this.button6.Click += new System.EventHandler(this.button6_Click);
+            // 
             // tabPage3
             // 
             this.tabPage3.Location = new System.Drawing.Point(4, 25);
@@ -472,6 +491,17 @@
             this.monthCalendar1.TabIndex = 9;
             this.monthCalendar1.Visible = false;
             // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Font = new System.Drawing.Font("Arial Unicode MS", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.label4.ForeColor = System.Drawing.Color.Red;
+            this.label4.Location = new System.Drawing.Point(204, 14);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(195, 28);
+            this.label4.TabIndex = 9;
+            this.label4.Text = "My applications...";
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 16F);
@@ -479,6 +509,7 @@
             this.BackColor = System.Drawing.Color.Black;
             this.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("$this.BackgroundImage")));
             this.ClientSize = new System.Drawing.Size(885, 521);
+            this.Controls.Add(this.button6);
             this.Controls.Add(this.monthCalendar1);
             this.Controls.Add(this.button4);
             this.Controls.Add(this.button5);
@@ -541,6 +572,8 @@
         private DevComponents.DotNetBar.Controls.TextBoxX textBoxX2;
         private System.Windows.Forms.Timer timer2;
         private System.Windows.Forms.MonthCalendar monthCalendar1;
+        private System.Windows.Forms.Button button6;
+        private System.Windows.Forms.Label label4;
     }
 }
 

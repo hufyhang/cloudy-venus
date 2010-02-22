@@ -358,6 +358,9 @@ namespace LZ_Marina
         {
             if (e.KeyCode == Keys.Enter && this.textBoxX1.Text.Length != 0)
             {
+                e.Handled = true;
+                e.SuppressKeyPress = true;
+
                 if (!this.textBoxX1.Text[this.textBoxX1.Text.Length - 1].Equals('\\'))
                 {
                     this.root = this.textBoxX1.Text + @"\";
@@ -520,14 +523,67 @@ namespace LZ_Marina
             }
         }
 
+        protected delegate void delegateSendTo(String destination);
+
+        protected void sendTo(String destination)
+        {
+            String[] file = new String[this.listView3.SelectedItems.Count];
+
+            foreach (ListViewItem item in this.listView3.SelectedItems)
+            {
+                if (!item.SubItems[1].Text.Equals(@"<DIR>") && !item.SubItems[1].Text.Equals(@"<ROOT>"))
+                {
+                    String filename = item.SubItems[0].Text;
+                    FileInfo info = new FileInfo(destination + @"\" + filename);
+                    if (info.Exists)
+                    {
+                        if (MessageBox.Show(filename + " is existing in the destination already.\r\nAre you sure you want to overwrite it now?", "File exists...", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
+                        {
+                            info.Delete();
+                            new FileInfo(this.root + this.sub + this.thd + this.tail + @"\" + filename).CopyTo(destination + @"\" + filename);
+                        }
+                    }
+                    else
+                    {
+                        new FileInfo(this.root + this.sub + this.thd + this.tail + @"\" + filename).CopyTo(destination + @"\" + filename);
+                    }
+                }
+
+                else if (item.SubItems[1].Text.Equals(@"<DIR>"))
+                {
+                    try
+                    {
+                        String dirName = item.SubItems[0].Text;
+                        DirectoryInfo dir = new DirectoryInfo(destination + @"\" + dirName);
+                        if (dir.Exists)
+                        {
+                            if (MessageBox.Show(dirName + " is existing in the destination already.\r\nAre you sure you want to overwrite it now?", "Directory exists...", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
+                            {
+                                dir.Delete(true);
+                            }
+                        }
+                        new DirectoryInfo(destination + @"\" + dirName).Create();
+                        this.sendDir(this.root + this.sub + this.thd + this.tail + dirName, destination + @"\" + dirName);
+                    }
+                    catch (IOException exp)
+                    {
+                        MessageBox.Show(exp.ToString(), "Unknown Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    }
+                }
+
+            }
+            MessageBox.Show("Process finished.", "Process finished...", MessageBoxButtons.OK, MessageBoxIcon.Information);
+        }
+
         private void sendToToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            String destination = "";
             using (FolderBrowserDialog folder = new FolderBrowserDialog())
             {
                 folder.Description = @"Please choose a destination.";
                 if (folder.ShowDialog() == DialogResult.OK)
                 {
+                    new delegateSendTo(this.sendTo).BeginInvoke(folder.SelectedPath, null, null);
+/*
                     destination = folder.SelectedPath;
 
                     String[] file = new String[this.listView3.SelectedItems.Count];
@@ -552,7 +608,7 @@ namespace LZ_Marina
                             }
                         }
 
-                        else if(item.SubItems[1].Text.Equals(@"<DIR>"))
+                        else if (item.SubItems[1].Text.Equals(@"<DIR>"))
                         {
                             try
                             {
@@ -575,6 +631,8 @@ namespace LZ_Marina
                         }
 
                     }
+                    MessageBox.Show("Process finished.", "Process finished...", MessageBoxButtons.OK, MessageBoxIcon.Information);
+ */ 
                 }
             }
         }
@@ -595,37 +653,43 @@ namespace LZ_Marina
             }
         }
 
+        protected delegate void delegateSendTo1(String destination);
+
+        protected void sendTo1(String destination)
+        {
+            try
+            {
+                String dirName = this.listView2.SelectedItems[0].SubItems[0].Text;
+                DirectoryInfo dir = new DirectoryInfo(destination + @"\" + dirName);
+                if (dir.Exists)
+                {
+                    if (MessageBox.Show(dirName + " is existing in the destination already.\r\nAre you sure you want to overwrite it now?", "Directory exists...", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
+                    {
+                        dir.Delete(true);
+                    }
+                }
+                new DirectoryInfo(destination + @"\" + dirName).Create();
+                //                            this.sendDir(this.root + this.sub + this.thd + this.listView2.SelectedItems[0].SubItems[0].Text, destination + dirName);
+                this.sendDir(this.root + this.sub + this.thd, destination + @"\" + dirName);
+                MessageBox.Show("Process finished.", "Process finished...", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
+            catch (IOException exp)
+            {
+                MessageBox.Show(exp.ToString(), "Unknown Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
         private void sendToToolStripMenuItem1_Click(object sender, EventArgs e)
         {
             if (this.listView2.SelectedItems.Count > 0)
             {
-                try
+                using (FolderBrowserDialog folder = new FolderBrowserDialog())
                 {
-                    String destination = "";
-                    using (FolderBrowserDialog folder = new FolderBrowserDialog())
+                    folder.Description = @"Please choose a destination.";
+                    if (folder.ShowDialog() == DialogResult.OK)
                     {
-                        folder.Description = @"Please choose a destination.";
-                        if (folder.ShowDialog() == DialogResult.OK)
-                        {
-                            destination = folder.SelectedPath;
-                            String dirName = this.listView2.SelectedItems[0].SubItems[0].Text;
-                            DirectoryInfo dir = new DirectoryInfo(destination + @"\" + dirName);
-                            if (dir.Exists)
-                            {
-                                if (MessageBox.Show(dirName + " is existing in the destination already.\r\nAre you sure you want to overwrite it now?", "Directory exists...", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
-                                {
-                                    dir.Delete(true);
-                                }
-                            }
-                            new DirectoryInfo(destination + @"\" + dirName).Create();
-//                            this.sendDir(this.root + this.sub + this.thd + this.listView2.SelectedItems[0].SubItems[0].Text, destination + dirName);
-                            this.sendDir(this.root + this.sub + this.thd, destination + @"\" + dirName);
-                        }
+                        new delegateSendTo1(this.sendTo1).BeginInvoke(folder.SelectedPath, null, null);
                     }
-                }
-                catch (IOException exp)
-                {
-                    MessageBox.Show(exp.ToString(), "Unknown Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
             }
         }
@@ -645,41 +709,47 @@ namespace LZ_Marina
             }
         }
 
+        protected delegate void delegateSendTo2(String destination);
+
+        protected void sendTo2(String destination)
+        {
+            try
+            {
+                String dirName = this.listView1.SelectedItems[0].SubItems[0].Text;
+                DirectoryInfo dir = new DirectoryInfo(destination + dirName);
+                if (dir.Exists)
+                {
+                    if (MessageBox.Show(dirName + " is existing in the destination already.\r\nAre you sure you want to overwrite it now?", "Directory exists...", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
+                    {
+                        dir.Delete(true);
+                    }
+                }
+
+                new DirectoryInfo(destination + @"\" + dirName).Create();
+                this.sendDir(this.root + this.listView1.SelectedItems[0].SubItems[0].Text, destination + @"\" + dirName);
+
+                MessageBox.Show("Process finished.", "Process finished...", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
+
+            catch (IOException exp)
+            {
+                MessageBox.Show(exp.ToString(), "Unknown Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+
+        }
+
         private void sendToToolStripMenuItem2_Click(object sender, EventArgs e)
         {
             if (this.listView1.SelectedItems.Count > 0)
             {
-                try
+                using (FolderBrowserDialog folder = new FolderBrowserDialog())
                 {
-                    String destination = "";
-                    using (FolderBrowserDialog folder = new FolderBrowserDialog())
+                    folder.Description = @"Please choose a destination.";
+                    if (folder.ShowDialog() == DialogResult.OK)
                     {
-                        folder.Description = @"Please choose a destination.";
-                        if (folder.ShowDialog() == DialogResult.OK)
-                        {
-                            destination = folder.SelectedPath;
-
-                            String dirName = this.listView1.SelectedItems[0].SubItems[0].Text;
-                            DirectoryInfo dir = new DirectoryInfo(destination + dirName);
-                            if (dir.Exists)
-                            {
-                                if (MessageBox.Show(dirName + " is existing in the destination already.\r\nAre you sure you want to overwrite it now?", "Directory exists...", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
-                                {
-                                    dir.Delete(true);
-                                }
-                            }
-                            
-                            new DirectoryInfo(destination + @"\" + dirName).Create();
-                            this.sendDir(this.root + this.listView1.SelectedItems[0].SubItems[0].Text, destination + @"\" + dirName);
-                        }
+                        new delegateSendTo2(this.sendTo2).BeginInvoke(folder.SelectedPath, null, null);
                     }
                 }
-
-                catch (IOException exp)
-                {
-                    MessageBox.Show(exp.ToString(), "Unknown Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                }
-
             }
         }
 

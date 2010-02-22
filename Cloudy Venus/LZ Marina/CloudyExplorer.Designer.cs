@@ -165,38 +165,38 @@
             this.toolStripMenuItem4,
             this.openDirectoryWithPictureViewerToolStripMenuItem2});
             this.contextMenuStrip3.Name = "contextMenuStrip2";
-            this.contextMenuStrip3.Size = new System.Drawing.Size(278, 98);
+            this.contextMenuStrip3.Size = new System.Drawing.Size(258, 98);
             // 
             // sendToToolStripMenuItem2
             // 
             this.sendToToolStripMenuItem2.Name = "sendToToolStripMenuItem2";
-            this.sendToToolStripMenuItem2.Size = new System.Drawing.Size(277, 22);
+            this.sendToToolStripMenuItem2.Size = new System.Drawing.Size(257, 22);
             this.sendToToolStripMenuItem2.Text = "Send to...";
             this.sendToToolStripMenuItem2.Click += new System.EventHandler(this.sendToToolStripMenuItem2_Click);
             // 
             // toolStripMenuItem6
             // 
             this.toolStripMenuItem6.Name = "toolStripMenuItem6";
-            this.toolStripMenuItem6.Size = new System.Drawing.Size(274, 6);
+            this.toolStripMenuItem6.Size = new System.Drawing.Size(254, 6);
             // 
             // toolStripMenuItem2
             // 
             this.toolStripMenuItem2.Name = "toolStripMenuItem2";
-            this.toolStripMenuItem2.Size = new System.Drawing.Size(277, 22);
+            this.toolStripMenuItem2.Size = new System.Drawing.Size(257, 22);
             this.toolStripMenuItem2.Text = "Open directory with Notepad";
             this.toolStripMenuItem2.Click += new System.EventHandler(this.toolStripMenuItem2_Click);
             // 
             // toolStripMenuItem4
             // 
             this.toolStripMenuItem4.Name = "toolStripMenuItem4";
-            this.toolStripMenuItem4.Size = new System.Drawing.Size(277, 22);
+            this.toolStripMenuItem4.Size = new System.Drawing.Size(257, 22);
             this.toolStripMenuItem4.Text = "Open directory with PDF Reader";
             this.toolStripMenuItem4.Click += new System.EventHandler(this.toolStripMenuItem4_Click);
             // 
             // openDirectoryWithPictureViewerToolStripMenuItem2
             // 
             this.openDirectoryWithPictureViewerToolStripMenuItem2.Name = "openDirectoryWithPictureViewerToolStripMenuItem2";
-            this.openDirectoryWithPictureViewerToolStripMenuItem2.Size = new System.Drawing.Size(277, 22);
+            this.openDirectoryWithPictureViewerToolStripMenuItem2.Size = new System.Drawing.Size(257, 22);
             this.openDirectoryWithPictureViewerToolStripMenuItem2.Text = "Open directory with Picture Viewer";
             this.openDirectoryWithPictureViewerToolStripMenuItem2.Click += new System.EventHandler(this.openDirectoryWithPictureViewerToolStripMenuItem2_Click);
             // 
@@ -231,38 +231,38 @@
             this.addListIntoPDFReaderToolStripMenuItem1,
             this.openDirectoryWithPictureViewerToolStripMenuItem1});
             this.contextMenuStrip2.Name = "contextMenuStrip2";
-            this.contextMenuStrip2.Size = new System.Drawing.Size(278, 98);
+            this.contextMenuStrip2.Size = new System.Drawing.Size(258, 98);
             // 
             // sendToToolStripMenuItem1
             // 
             this.sendToToolStripMenuItem1.Name = "sendToToolStripMenuItem1";
-            this.sendToToolStripMenuItem1.Size = new System.Drawing.Size(277, 22);
+            this.sendToToolStripMenuItem1.Size = new System.Drawing.Size(257, 22);
             this.sendToToolStripMenuItem1.Text = "Send to...";
             this.sendToToolStripMenuItem1.Click += new System.EventHandler(this.sendToToolStripMenuItem1_Click);
             // 
             // toolStripMenuItem5
             // 
             this.toolStripMenuItem5.Name = "toolStripMenuItem5";
-            this.toolStripMenuItem5.Size = new System.Drawing.Size(274, 6);
+            this.toolStripMenuItem5.Size = new System.Drawing.Size(254, 6);
             // 
             // addListIntoNotepadToolStripMenuItem1
             // 
             this.addListIntoNotepadToolStripMenuItem1.Name = "addListIntoNotepadToolStripMenuItem1";
-            this.addListIntoNotepadToolStripMenuItem1.Size = new System.Drawing.Size(277, 22);
+            this.addListIntoNotepadToolStripMenuItem1.Size = new System.Drawing.Size(257, 22);
             this.addListIntoNotepadToolStripMenuItem1.Text = "Open directory with Notepad";
             this.addListIntoNotepadToolStripMenuItem1.Click += new System.EventHandler(this.addListIntoNotepadToolStripMenuItem1_Click);
             // 
             // addListIntoPDFReaderToolStripMenuItem1
             // 
             this.addListIntoPDFReaderToolStripMenuItem1.Name = "addListIntoPDFReaderToolStripMenuItem1";
-            this.addListIntoPDFReaderToolStripMenuItem1.Size = new System.Drawing.Size(277, 22);
+            this.addListIntoPDFReaderToolStripMenuItem1.Size = new System.Drawing.Size(257, 22);
             this.addListIntoPDFReaderToolStripMenuItem1.Text = "Open directory with Reader";
             this.addListIntoPDFReaderToolStripMenuItem1.Click += new System.EventHandler(this.addListIntoPDFReaderToolStripMenuItem1_Click);
             // 
             // openDirectoryWithPictureViewerToolStripMenuItem1
             // 
             this.openDirectoryWithPictureViewerToolStripMenuItem1.Name = "openDirectoryWithPictureViewerToolStripMenuItem1";
-            this.openDirectoryWithPictureViewerToolStripMenuItem1.Size = new System.Drawing.Size(277, 22);
+            this.openDirectoryWithPictureViewerToolStripMenuItem1.Size = new System.Drawing.Size(257, 22);
             this.openDirectoryWithPictureViewerToolStripMenuItem1.Text = "Open directory with Picture Viewer";
             this.openDirectoryWithPictureViewerToolStripMenuItem1.Click += new System.EventHandler(this.openDirectoryWithPictureViewerToolStripMenuItem1_Click);
             // 
@@ -317,57 +317,57 @@
             this.addListIntoPDFReaderToolStripMenuItem,
             this.openDirectoryWithPictureViewerToolStripMenuItem});
             this.contextMenuStrip1.Name = "contextMenuStrip1";
-            this.contextMenuStrip1.Size = new System.Drawing.Size(278, 148);
+            this.contextMenuStrip1.Size = new System.Drawing.Size(258, 148);
             // 
             // runWithDefaultApplicationToolStripMenuItem
             // 
             this.runWithDefaultApplicationToolStripMenuItem.Name = "runWithDefaultApplicationToolStripMenuItem";
-            this.runWithDefaultApplicationToolStripMenuItem.Size = new System.Drawing.Size(277, 22);
+            this.runWithDefaultApplicationToolStripMenuItem.Size = new System.Drawing.Size(257, 22);
             this.runWithDefaultApplicationToolStripMenuItem.Text = "Run as default";
             this.runWithDefaultApplicationToolStripMenuItem.Click += new System.EventHandler(this.runWithDefaultApplicationToolStripMenuItem_Click);
             // 
             // toolStripMenuItem1
             // 
             this.toolStripMenuItem1.Name = "toolStripMenuItem1";
-            this.toolStripMenuItem1.Size = new System.Drawing.Size(274, 6);
+            this.toolStripMenuItem1.Size = new System.Drawing.Size(254, 6);
             // 
             // sendToToolStripMenuItem
             // 
             this.sendToToolStripMenuItem.Name = "sendToToolStripMenuItem";
-            this.sendToToolStripMenuItem.Size = new System.Drawing.Size(277, 22);
+            this.sendToToolStripMenuItem.Size = new System.Drawing.Size(257, 22);
             this.sendToToolStripMenuItem.Text = "Send to...";
             this.sendToToolStripMenuItem.Click += new System.EventHandler(this.sendToToolStripMenuItem_Click);
             // 
             // removeToolStripMenuItem
             // 
             this.removeToolStripMenuItem.Name = "removeToolStripMenuItem";
-            this.removeToolStripMenuItem.Size = new System.Drawing.Size(277, 22);
+            this.removeToolStripMenuItem.Size = new System.Drawing.Size(257, 22);
             this.removeToolStripMenuItem.Text = "Remove";
             this.removeToolStripMenuItem.Click += new System.EventHandler(this.removeToolStripMenuItem_Click);
             // 
             // toolStripMenuItem3
             // 
             this.toolStripMenuItem3.Name = "toolStripMenuItem3";
-            this.toolStripMenuItem3.Size = new System.Drawing.Size(274, 6);
+            this.toolStripMenuItem3.Size = new System.Drawing.Size(254, 6);
             // 
             // addListIntoNotepadToolStripMenuItem
             // 
             this.addListIntoNotepadToolStripMenuItem.Name = "addListIntoNotepadToolStripMenuItem";
-            this.addListIntoNotepadToolStripMenuItem.Size = new System.Drawing.Size(277, 22);
+            this.addListIntoNotepadToolStripMenuItem.Size = new System.Drawing.Size(257, 22);
             this.addListIntoNotepadToolStripMenuItem.Text = "Open directory with Notepad";
             this.addListIntoNotepadToolStripMenuItem.Click += new System.EventHandler(this.addListIntoNotepadToolStripMenuItem_Click);
             // 
             // addListIntoPDFReaderToolStripMenuItem
             // 
             this.addListIntoPDFReaderToolStripMenuItem.Name = "addListIntoPDFReaderToolStripMenuItem";
-            this.addListIntoPDFReaderToolStripMenuItem.Size = new System.Drawing.Size(277, 22);
+            this.addListIntoPDFReaderToolStripMenuItem.Size = new System.Drawing.Size(257, 22);
             this.addListIntoPDFReaderToolStripMenuItem.Text = "Open directory with PDF Reader";
             this.addListIntoPDFReaderToolStripMenuItem.Click += new System.EventHandler(this.addListIntoPDFReaderToolStripMenuItem_Click);
             // 
             // openDirectoryWithPictureViewerToolStripMenuItem
             // 
             this.openDirectoryWithPictureViewerToolStripMenuItem.Name = "openDirectoryWithPictureViewerToolStripMenuItem";
-            this.openDirectoryWithPictureViewerToolStripMenuItem.Size = new System.Drawing.Size(277, 22);
+            this.openDirectoryWithPictureViewerToolStripMenuItem.Size = new System.Drawing.Size(257, 22);
             this.openDirectoryWithPictureViewerToolStripMenuItem.Text = "Open directory with Picture Viewer";
             this.openDirectoryWithPictureViewerToolStripMenuItem.Click += new System.EventHandler(this.openDirectoryWithPictureViewerToolStripMenuItem_Click);
             // 
@@ -433,7 +433,7 @@
             this.textBoxX2.Name = "textBoxX2";
             this.textBoxX2.Size = new System.Drawing.Size(211, 26);
             this.textBoxX2.TabIndex = 12;
-            this.textBoxX2.WatermarkText = "Sort by...";
+            this.textBoxX2.WatermarkText = "Search for...";
             this.textBoxX2.TextChanged += new System.EventHandler(this.textBoxX2_TextChanged);
             // 
             // button4
@@ -484,11 +484,10 @@
             // CloudyExplorer
             // 
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(232)))), ((int)(((byte)(240)))), ((int)(((byte)(251)))));
-            this.ClientSize = new System.Drawing.Size(771, 318);
             this.Controls.Add(this.panel1);
             this.Font = new System.Drawing.Font("Arial Unicode MS", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.Name = "CloudyExplorer";
+            this.Size = new System.Drawing.Size(771, 318);
             this.Text = "CloudyExplorer";
             this.panel1.ResumeLayout(false);
             this.splitContainer1.Panel1.ResumeLayout(false);
