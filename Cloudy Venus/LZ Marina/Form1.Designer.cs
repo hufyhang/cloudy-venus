@@ -30,30 +30,21 @@
         {
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form1));
-            System.Windows.Forms.ListViewItem listViewItem9 = new System.Windows.Forms.ListViewItem("Cloud Explorer", 8);
-            System.Windows.Forms.ListViewItem listViewItem10 = new System.Windows.Forms.ListViewItem("Web Browser", 2);
-            System.Windows.Forms.ListViewItem listViewItem11 = new System.Windows.Forms.ListViewItem("Picture Viewer", 9);
-            System.Windows.Forms.ListViewItem listViewItem12 = new System.Windows.Forms.ListViewItem("Notepad", 11);
-            System.Windows.Forms.ListViewItem listViewItem13 = new System.Windows.Forms.ListViewItem("Media Player", 12);
-            System.Windows.Forms.ListViewItem listViewItem14 = new System.Windows.Forms.ListViewItem("PDF Reader", 13);
-            System.Windows.Forms.ListViewItem listViewItem15 = new System.Windows.Forms.ListViewItem("Console Apps", 10);
-            System.Windows.Forms.ListViewItem listViewItem16 = new System.Windows.Forms.ListViewItem("Version Control", 1);
+            System.Windows.Forms.ListViewItem listViewItem1 = new System.Windows.Forms.ListViewItem("Cloud Explorer", 8);
+            System.Windows.Forms.ListViewItem listViewItem2 = new System.Windows.Forms.ListViewItem("Web Browser", 2);
+            System.Windows.Forms.ListViewItem listViewItem3 = new System.Windows.Forms.ListViewItem("Picture Viewer", 9);
+            System.Windows.Forms.ListViewItem listViewItem4 = new System.Windows.Forms.ListViewItem("Notepad", 11);
+            System.Windows.Forms.ListViewItem listViewItem5 = new System.Windows.Forms.ListViewItem("Media Player", 12);
+            System.Windows.Forms.ListViewItem listViewItem6 = new System.Windows.Forms.ListViewItem("PDF Reader", 13);
+            System.Windows.Forms.ListViewItem listViewItem7 = new System.Windows.Forms.ListViewItem("Console Apps", 10);
+            System.Windows.Forms.ListViewItem listViewItem8 = new System.Windows.Forms.ListViewItem("Version Control", 1);
             this.ApplicationsImg = new System.Windows.Forms.ImageList(this.components);
-            this.tabControl1 = new System.Windows.Forms.TabControl();
-            this.tabPage1 = new System.Windows.Forms.TabPage();
-            this.expandablePanel1 = new DevComponents.DotNetBar.ExpandablePanel();
-            this.textBoxX2 = new DevComponents.DotNetBar.Controls.TextBoxX();
-            this.buttonX1 = new DevComponents.DotNetBar.ButtonX();
-            this.textBoxX1 = new DevComponents.DotNetBar.Controls.TextBoxX();
-            this.pictureBox1 = new System.Windows.Forms.PictureBox();
-            this.listView1 = new System.Windows.Forms.ListView();
             this.listViewContext = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.activateToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.removeFromCloudToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripMenuItem1 = new System.Windows.Forms.ToolStripSeparator();
             this.createALocalShortcutToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.renameToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.label1 = new System.Windows.Forms.Label();
             this.imageList1 = new System.Windows.Forms.ImageList(this.components);
             this.timer1 = new System.Windows.Forms.Timer(this.components);
             this.label3 = new System.Windows.Forms.Label();
@@ -62,20 +53,30 @@
             this.button2 = new System.Windows.Forms.Button();
             this.button3 = new System.Windows.Forms.Button();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.tabControl1 = new System.Windows.Forms.TabControl();
+            this.tabPage1 = new System.Windows.Forms.TabPage();
+            this.label4 = new System.Windows.Forms.Label();
+            this.expandablePanel1 = new DevComponents.DotNetBar.ExpandablePanel();
+            this.textBoxX2 = new DevComponents.DotNetBar.Controls.TextBoxX();
+            this.buttonX1 = new DevComponents.DotNetBar.ButtonX();
+            this.textBoxX1 = new DevComponents.DotNetBar.Controls.TextBoxX();
+            this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            this.listView1 = new System.Windows.Forms.ListView();
+            this.label1 = new System.Windows.Forms.Label();
             this.button5 = new System.Windows.Forms.Button();
             this.button4 = new System.Windows.Forms.Button();
             this.toolTip1 = new System.Windows.Forms.ToolTip(this.components);
             this.button6 = new System.Windows.Forms.Button();
+            this.button7 = new System.Windows.Forms.Button();
             this.tabPage3 = new System.Windows.Forms.TabPage();
             this.timer2 = new System.Windows.Forms.Timer(this.components);
             this.monthCalendar1 = new System.Windows.Forms.MonthCalendar();
-            this.label4 = new System.Windows.Forms.Label();
+            this.listViewContext.SuspendLayout();
+            this.panel1.SuspendLayout();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
             this.expandablePanel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
-            this.listViewContext.SuspendLayout();
-            this.panel1.SuspendLayout();
             this.SuspendLayout();
             // 
             // ApplicationsImg
@@ -98,6 +99,163 @@
             this.ApplicationsImg.Images.SetKeyName(13, "pdf_ico.png");
             this.ApplicationsImg.Images.SetKeyName(14, "cloud app.png");
             // 
+            // listViewContext
+            // 
+            this.listViewContext.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.activateToolStripMenuItem,
+            this.removeFromCloudToolStripMenuItem,
+            this.toolStripMenuItem1,
+            this.createALocalShortcutToolStripMenuItem,
+            this.renameToolStripMenuItem});
+            this.listViewContext.Name = "listViewContext";
+            this.listViewContext.Size = new System.Drawing.Size(193, 98);
+            // 
+            // activateToolStripMenuItem
+            // 
+            this.activateToolStripMenuItem.Name = "activateToolStripMenuItem";
+            this.activateToolStripMenuItem.Size = new System.Drawing.Size(192, 22);
+            this.activateToolStripMenuItem.Text = "Activate";
+            this.activateToolStripMenuItem.Click += new System.EventHandler(this.activateToolStripMenuItem_Click);
+            // 
+            // removeFromCloudToolStripMenuItem
+            // 
+            this.removeFromCloudToolStripMenuItem.Name = "removeFromCloudToolStripMenuItem";
+            this.removeFromCloudToolStripMenuItem.Size = new System.Drawing.Size(192, 22);
+            this.removeFromCloudToolStripMenuItem.Text = "Remove from Luna";
+            this.removeFromCloudToolStripMenuItem.Click += new System.EventHandler(this.removeFromCloudToolStripMenuItem_Click);
+            // 
+            // toolStripMenuItem1
+            // 
+            this.toolStripMenuItem1.Name = "toolStripMenuItem1";
+            this.toolStripMenuItem1.Size = new System.Drawing.Size(189, 6);
+            // 
+            // createALocalShortcutToolStripMenuItem
+            // 
+            this.createALocalShortcutToolStripMenuItem.Name = "createALocalShortcutToolStripMenuItem";
+            this.createALocalShortcutToolStripMenuItem.Size = new System.Drawing.Size(192, 22);
+            this.createALocalShortcutToolStripMenuItem.Text = "Create a local shortcut";
+            this.createALocalShortcutToolStripMenuItem.Click += new System.EventHandler(this.createALocalShortcutToolStripMenuItem_Click);
+            // 
+            // renameToolStripMenuItem
+            // 
+            this.renameToolStripMenuItem.Name = "renameToolStripMenuItem";
+            this.renameToolStripMenuItem.Size = new System.Drawing.Size(192, 22);
+            this.renameToolStripMenuItem.Text = "Rename item";
+            this.renameToolStripMenuItem.Click += new System.EventHandler(this.renameToolStripMenuItem_Click);
+            // 
+            // imageList1
+            // 
+            this.imageList1.ImageStream = ((System.Windows.Forms.ImageListStreamer)(resources.GetObject("imageList1.ImageStream")));
+            this.imageList1.TransparentColor = System.Drawing.Color.Transparent;
+            this.imageList1.Images.SetKeyName(0, "Home.ico");
+            this.imageList1.Images.SetKeyName(1, "explorer_ico.png");
+            this.imageList1.Images.SetKeyName(2, "browser_ico.png");
+            this.imageList1.Images.SetKeyName(3, "picture_viewer.png");
+            this.imageList1.Images.SetKeyName(4, "editer_ico.png");
+            this.imageList1.Images.SetKeyName(5, "media_player_ico.png");
+            this.imageList1.Images.SetKeyName(6, "pdf_ico.png");
+            this.imageList1.Images.SetKeyName(7, "procPool_ico.png");
+            this.imageList1.Images.SetKeyName(8, "todo_ico.png");
+            this.imageList1.Images.SetKeyName(9, "super-mario-cloud-computing.png");
+            this.imageList1.Images.SetKeyName(10, "cloud app.png");
+            this.imageList1.Images.SetKeyName(11, "plug_ico.png");
+            this.imageList1.Images.SetKeyName(12, "cloud.jpg");
+            // 
+            // timer1
+            // 
+            this.timer1.Enabled = true;
+            this.timer1.Interval = 1000;
+            this.timer1.Tick += new System.EventHandler(this.timer1_Tick);
+            // 
+            // label3
+            // 
+            this.label3.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.label3.BackColor = System.Drawing.Color.Transparent;
+            this.label3.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.label3.Font = new System.Drawing.Font("Arial Unicode MS", 10.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.label3.ForeColor = System.Drawing.Color.White;
+            this.label3.Location = new System.Drawing.Point(119, 0);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(750, 19);
+            this.label3.TabIndex = 4;
+            this.label3.Text = "0000/00/00 00:00:00 AM | 100% Battery Remaining";
+            this.label3.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.label3.Click += new System.EventHandler(this.label3_Click);
+            // 
+            // label2
+            // 
+            this.label2.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            this.label2.BackColor = System.Drawing.Color.Transparent;
+            this.label2.Font = new System.Drawing.Font("Arial Unicode MS", 10.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.label2.ForeColor = System.Drawing.Color.White;
+            this.label2.Location = new System.Drawing.Point(180, -2);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(539, 23);
+            this.label2.TabIndex = 5;
+            this.label2.Text = "Cloudy Venus - Luna, Evaluation Copy, 1.0.3";
+            this.label2.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // button1
+            // 
+            this.button1.BackColor = System.Drawing.Color.Transparent;
+            this.button1.FlatAppearance.MouseDownBackColor = System.Drawing.Color.DarkBlue;
+            this.button1.FlatAppearance.MouseOverBackColor = System.Drawing.Color.MidnightBlue;
+            this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button1.Font = new System.Drawing.Font("Arial Unicode MS", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.button1.ForeColor = System.Drawing.Color.White;
+            this.button1.Location = new System.Drawing.Point(0, 0);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(31, 22);
+            this.button1.TabIndex = 10;
+            this.toolTip1.SetToolTip(this.button1, "Even More...");
+            this.button1.UseVisualStyleBackColor = false;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
+            // 
+            // button2
+            // 
+            this.button2.BackColor = System.Drawing.Color.Transparent;
+            this.button2.FlatAppearance.MouseDownBackColor = System.Drawing.Color.DarkBlue;
+            this.button2.FlatAppearance.MouseOverBackColor = System.Drawing.Color.MidnightBlue;
+            this.button2.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button2.Font = new System.Drawing.Font("Arial Unicode MS", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.button2.ForeColor = System.Drawing.Color.White;
+            this.button2.Location = new System.Drawing.Point(37, 0);
+            this.button2.Name = "button2";
+            this.button2.Size = new System.Drawing.Size(12, 22);
+            this.button2.TabIndex = 11;
+            this.toolTip1.SetToolTip(this.button2, "Back to Home Screen");
+            this.button2.UseVisualStyleBackColor = false;
+            this.button2.Click += new System.EventHandler(this.button2_Click);
+            // 
+            // button3
+            // 
+            this.button3.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.button3.BackColor = System.Drawing.Color.Transparent;
+            this.button3.FlatAppearance.MouseDownBackColor = System.Drawing.Color.DarkBlue;
+            this.button3.FlatAppearance.MouseOverBackColor = System.Drawing.Color.MidnightBlue;
+            this.button3.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button3.Font = new System.Drawing.Font("Arial Unicode MS", 7.5F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.button3.ForeColor = System.Drawing.Color.White;
+            this.button3.Location = new System.Drawing.Point(870, 0);
+            this.button3.Name = "button3";
+            this.button3.Size = new System.Drawing.Size(15, 22);
+            this.button3.TabIndex = 18;
+            this.toolTip1.SetToolTip(this.button3, "Alarm Clock");
+            this.button3.UseVisualStyleBackColor = false;
+            this.button3.Click += new System.EventHandler(this.button3_Click);
+            // 
+            // panel1
+            // 
+            this.panel1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
+                        | System.Windows.Forms.AnchorStyles.Left)
+                        | System.Windows.Forms.AnchorStyles.Right)));
+            this.panel1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(87)))), ((int)(((byte)(159)))));
+            this.panel1.Controls.Add(this.tabControl1);
+            this.panel1.Location = new System.Drawing.Point(0, 28);
+            this.panel1.Name = "panel1";
+            this.panel1.Size = new System.Drawing.Size(885, 493);
+            this.panel1.TabIndex = 19;
+            // 
             // tabControl1
             // 
             this.tabControl1.Controls.Add(this.tabPage1);
@@ -111,7 +269,7 @@
             this.tabControl1.ShowToolTips = true;
             this.tabControl1.Size = new System.Drawing.Size(885, 493);
             this.tabControl1.SizeMode = System.Windows.Forms.TabSizeMode.Fixed;
-            this.tabControl1.TabIndex = 0;
+            this.tabControl1.TabIndex = 2;
             // 
             // tabPage1
             // 
@@ -129,6 +287,17 @@
             this.tabPage1.Padding = new System.Windows.Forms.Padding(3);
             this.tabPage1.Size = new System.Drawing.Size(877, 465);
             this.tabPage1.TabIndex = 0;
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Font = new System.Drawing.Font("Arial Unicode MS", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.label4.ForeColor = System.Drawing.Color.Red;
+            this.label4.Location = new System.Drawing.Point(204, 14);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(195, 28);
+            this.label4.TabIndex = 9;
+            this.label4.Text = "My applications...";
             // 
             // expandablePanel1
             // 
@@ -229,14 +398,14 @@
             this.listView1.Font = new System.Drawing.Font("Arial Unicode MS", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.listView1.ForeColor = System.Drawing.Color.Navy;
             this.listView1.Items.AddRange(new System.Windows.Forms.ListViewItem[] {
-            listViewItem9,
-            listViewItem10,
-            listViewItem11,
-            listViewItem12,
-            listViewItem13,
-            listViewItem14,
-            listViewItem15,
-            listViewItem16});
+            listViewItem1,
+            listViewItem2,
+            listViewItem3,
+            listViewItem4,
+            listViewItem5,
+            listViewItem6,
+            listViewItem7,
+            listViewItem8});
             this.listView1.LargeImageList = this.ApplicationsImg;
             this.listView1.Location = new System.Drawing.Point(3, 92);
             this.listView1.MultiSelect = false;
@@ -244,50 +413,6 @@
             this.listView1.Size = new System.Drawing.Size(871, 370);
             this.listView1.TabIndex = 1;
             this.listView1.UseCompatibleStateImageBehavior = false;
-            // 
-            // listViewContext
-            // 
-            this.listViewContext.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.activateToolStripMenuItem,
-            this.removeFromCloudToolStripMenuItem,
-            this.toolStripMenuItem1,
-            this.createALocalShortcutToolStripMenuItem,
-            this.renameToolStripMenuItem});
-            this.listViewContext.Name = "listViewContext";
-            this.listViewContext.Size = new System.Drawing.Size(193, 98);
-            // 
-            // activateToolStripMenuItem
-            // 
-            this.activateToolStripMenuItem.Name = "activateToolStripMenuItem";
-            this.activateToolStripMenuItem.Size = new System.Drawing.Size(192, 22);
-            this.activateToolStripMenuItem.Text = "Activate";
-            this.activateToolStripMenuItem.Click += new System.EventHandler(this.activateToolStripMenuItem_Click);
-            // 
-            // removeFromCloudToolStripMenuItem
-            // 
-            this.removeFromCloudToolStripMenuItem.Name = "removeFromCloudToolStripMenuItem";
-            this.removeFromCloudToolStripMenuItem.Size = new System.Drawing.Size(192, 22);
-            this.removeFromCloudToolStripMenuItem.Text = "Remove from Luna";
-            this.removeFromCloudToolStripMenuItem.Click += new System.EventHandler(this.removeFromCloudToolStripMenuItem_Click);
-            // 
-            // toolStripMenuItem1
-            // 
-            this.toolStripMenuItem1.Name = "toolStripMenuItem1";
-            this.toolStripMenuItem1.Size = new System.Drawing.Size(189, 6);
-            // 
-            // createALocalShortcutToolStripMenuItem
-            // 
-            this.createALocalShortcutToolStripMenuItem.Name = "createALocalShortcutToolStripMenuItem";
-            this.createALocalShortcutToolStripMenuItem.Size = new System.Drawing.Size(192, 22);
-            this.createALocalShortcutToolStripMenuItem.Text = "Create a local shortcut";
-            this.createALocalShortcutToolStripMenuItem.Click += new System.EventHandler(this.createALocalShortcutToolStripMenuItem_Click);
-            // 
-            // renameToolStripMenuItem
-            // 
-            this.renameToolStripMenuItem.Name = "renameToolStripMenuItem";
-            this.renameToolStripMenuItem.Size = new System.Drawing.Size(192, 22);
-            this.renameToolStripMenuItem.Text = "Rename item";
-            this.renameToolStripMenuItem.Click += new System.EventHandler(this.renameToolStripMenuItem_Click);
             // 
             // label1
             // 
@@ -299,118 +424,6 @@
             this.label1.Size = new System.Drawing.Size(195, 28);
             this.label1.TabIndex = 0;
             this.label1.Text = "My applications...";
-            // 
-            // imageList1
-            // 
-            this.imageList1.ImageStream = ((System.Windows.Forms.ImageListStreamer)(resources.GetObject("imageList1.ImageStream")));
-            this.imageList1.TransparentColor = System.Drawing.Color.Transparent;
-            this.imageList1.Images.SetKeyName(0, "Home.ico");
-            this.imageList1.Images.SetKeyName(1, "explorer_ico.png");
-            this.imageList1.Images.SetKeyName(2, "browser_ico.png");
-            this.imageList1.Images.SetKeyName(3, "picture_viewer.png");
-            this.imageList1.Images.SetKeyName(4, "editer_ico.png");
-            this.imageList1.Images.SetKeyName(5, "media_player_ico.png");
-            this.imageList1.Images.SetKeyName(6, "pdf_ico.png");
-            this.imageList1.Images.SetKeyName(7, "procPool_ico.png");
-            this.imageList1.Images.SetKeyName(8, "todo_ico.png");
-            this.imageList1.Images.SetKeyName(9, "super-mario-cloud-computing.png");
-            this.imageList1.Images.SetKeyName(10, "cloud app.png");
-            this.imageList1.Images.SetKeyName(11, "plug_ico.png");
-            // 
-            // timer1
-            // 
-            this.timer1.Enabled = true;
-            this.timer1.Interval = 1000;
-            this.timer1.Tick += new System.EventHandler(this.timer1_Tick);
-            // 
-            // label3
-            // 
-            this.label3.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.label3.BackColor = System.Drawing.Color.Transparent;
-            this.label3.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.label3.Font = new System.Drawing.Font("Arial Unicode MS", 10.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.label3.ForeColor = System.Drawing.Color.White;
-            this.label3.Location = new System.Drawing.Point(119, 0);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(750, 19);
-            this.label3.TabIndex = 4;
-            this.label3.Text = "0000/00/00 00:00:00 AM | 100% Battery Remaining";
-            this.label3.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.label3.Click += new System.EventHandler(this.label3_Click);
-            // 
-            // label2
-            // 
-            this.label2.Anchor = System.Windows.Forms.AnchorStyles.Top;
-            this.label2.BackColor = System.Drawing.Color.Transparent;
-            this.label2.Font = new System.Drawing.Font("Arial Unicode MS", 10.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.label2.ForeColor = System.Drawing.Color.White;
-            this.label2.Location = new System.Drawing.Point(180, -2);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(539, 23);
-            this.label2.TabIndex = 5;
-            this.label2.Text = "Cloudy Venus - Luna, Evaluation Copy, 1.0.3";
-            this.label2.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
-            // button1
-            // 
-            this.button1.BackColor = System.Drawing.Color.Transparent;
-            this.button1.FlatAppearance.MouseDownBackColor = System.Drawing.Color.DarkBlue;
-            this.button1.FlatAppearance.MouseOverBackColor = System.Drawing.Color.MidnightBlue;
-            this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button1.Font = new System.Drawing.Font("Arial Unicode MS", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.button1.ForeColor = System.Drawing.Color.White;
-            this.button1.Location = new System.Drawing.Point(0, 0);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(31, 22);
-            this.button1.TabIndex = 10;
-            this.toolTip1.SetToolTip(this.button1, "Even More...");
-            this.button1.UseVisualStyleBackColor = false;
-            this.button1.Click += new System.EventHandler(this.button1_Click);
-            // 
-            // button2
-            // 
-            this.button2.BackColor = System.Drawing.Color.Transparent;
-            this.button2.FlatAppearance.MouseDownBackColor = System.Drawing.Color.DarkBlue;
-            this.button2.FlatAppearance.MouseOverBackColor = System.Drawing.Color.MidnightBlue;
-            this.button2.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button2.Font = new System.Drawing.Font("Arial Unicode MS", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.button2.ForeColor = System.Drawing.Color.White;
-            this.button2.Location = new System.Drawing.Point(37, 0);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(12, 22);
-            this.button2.TabIndex = 11;
-            this.toolTip1.SetToolTip(this.button2, "Back to Home Screen");
-            this.button2.UseVisualStyleBackColor = false;
-            this.button2.Click += new System.EventHandler(this.button2_Click);
-            // 
-            // button3
-            // 
-            this.button3.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.button3.BackColor = System.Drawing.Color.Transparent;
-            this.button3.FlatAppearance.MouseDownBackColor = System.Drawing.Color.DarkBlue;
-            this.button3.FlatAppearance.MouseOverBackColor = System.Drawing.Color.MidnightBlue;
-            this.button3.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button3.Font = new System.Drawing.Font("Arial Unicode MS", 7.5F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.button3.ForeColor = System.Drawing.Color.White;
-            this.button3.Location = new System.Drawing.Point(870, 0);
-            this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(15, 22);
-            this.button3.TabIndex = 18;
-            this.toolTip1.SetToolTip(this.button3, "Alarm Clock");
-            this.button3.UseVisualStyleBackColor = false;
-            this.button3.Click += new System.EventHandler(this.button3_Click);
-            // 
-            // panel1
-            // 
-            this.panel1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
-                        | System.Windows.Forms.AnchorStyles.Left)
-                        | System.Windows.Forms.AnchorStyles.Right)));
-            this.panel1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(87)))), ((int)(((byte)(159)))));
-            this.panel1.Controls.Add(this.tabControl1);
-            this.panel1.Location = new System.Drawing.Point(0, 28);
-            this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(885, 493);
-            this.panel1.TabIndex = 19;
             // 
             // button5
             // 
@@ -468,6 +481,23 @@
             this.button6.UseVisualStyleBackColor = false;
             this.button6.Click += new System.EventHandler(this.button6_Click);
             // 
+            // button7
+            // 
+            this.button7.BackColor = System.Drawing.Color.Transparent;
+            this.button7.FlatAppearance.MouseDownBackColor = System.Drawing.Color.DarkBlue;
+            this.button7.FlatAppearance.MouseOverBackColor = System.Drawing.Color.MidnightBlue;
+            this.button7.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button7.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F);
+            this.button7.ForeColor = System.Drawing.Color.White;
+            this.button7.Location = new System.Drawing.Point(119, 0);
+            this.button7.Name = "button7";
+            this.button7.Size = new System.Drawing.Size(55, 22);
+            this.button7.TabIndex = 24;
+            this.button7.Text = "MSG";
+            this.toolTip1.SetToolTip(this.button7, "LAN Messenger");
+            this.button7.UseVisualStyleBackColor = false;
+            this.button7.Click += new System.EventHandler(this.button7_Click);
+            // 
             // tabPage3
             // 
             this.tabPage3.Location = new System.Drawing.Point(4, 25);
@@ -491,17 +521,6 @@
             this.monthCalendar1.TabIndex = 9;
             this.monthCalendar1.Visible = false;
             // 
-            // label4
-            // 
-            this.label4.AutoSize = true;
-            this.label4.Font = new System.Drawing.Font("Arial Unicode MS", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.label4.ForeColor = System.Drawing.Color.Red;
-            this.label4.Location = new System.Drawing.Point(204, 14);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(195, 28);
-            this.label4.TabIndex = 9;
-            this.label4.Text = "My applications...";
-            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 16F);
@@ -509,6 +528,7 @@
             this.BackColor = System.Drawing.Color.Black;
             this.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("$this.BackgroundImage")));
             this.ClientSize = new System.Drawing.Size(885, 521);
+            this.Controls.Add(this.button7);
             this.Controls.Add(this.button6);
             this.Controls.Add(this.monthCalendar1);
             this.Controls.Add(this.button4);
@@ -529,13 +549,13 @@
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Cloudy Venus";
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
+            this.listViewContext.ResumeLayout(false);
+            this.panel1.ResumeLayout(false);
             this.tabControl1.ResumeLayout(false);
             this.tabPage1.ResumeLayout(false);
             this.tabPage1.PerformLayout();
             this.expandablePanel1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
-            this.listViewContext.ResumeLayout(false);
-            this.panel1.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -543,23 +563,15 @@
         #endregion
 
         private System.Windows.Forms.ImageList ApplicationsImg;
-        private System.Windows.Forms.TabControl tabControl1;
-        private System.Windows.Forms.TabPage tabPage1;
-        private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.ListView listView1;
         private System.Windows.Forms.ContextMenuStrip listViewContext;
         private System.Windows.Forms.ToolStripMenuItem activateToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem removeFromCloudToolStripMenuItem;
         private System.Windows.Forms.ImageList imageList1;
         private System.Windows.Forms.Timer timer1;
-        private System.Windows.Forms.PictureBox pictureBox1;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Button button1;
-        private DevComponents.DotNetBar.ButtonX buttonX1;
-        private DevComponents.DotNetBar.Controls.TextBoxX textBoxX1;
         private System.Windows.Forms.Button button2;
-        private DevComponents.DotNetBar.ExpandablePanel expandablePanel1;
         private System.Windows.Forms.Button button3;
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.Button button5;
@@ -569,11 +581,20 @@
         private System.Windows.Forms.ToolTip toolTip1;
         private System.Windows.Forms.ToolStripMenuItem renameToolStripMenuItem;
         private System.Windows.Forms.TabPage tabPage3;
-        private DevComponents.DotNetBar.Controls.TextBoxX textBoxX2;
         private System.Windows.Forms.Timer timer2;
         private System.Windows.Forms.MonthCalendar monthCalendar1;
         private System.Windows.Forms.Button button6;
+        private System.Windows.Forms.TabControl tabControl1;
+        private System.Windows.Forms.TabPage tabPage1;
         private System.Windows.Forms.Label label4;
+        private DevComponents.DotNetBar.ExpandablePanel expandablePanel1;
+        private DevComponents.DotNetBar.Controls.TextBoxX textBoxX2;
+        private DevComponents.DotNetBar.ButtonX buttonX1;
+        private DevComponents.DotNetBar.Controls.TextBoxX textBoxX1;
+        private System.Windows.Forms.PictureBox pictureBox1;
+        private System.Windows.Forms.ListView listView1;
+        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Button button7;
     }
 }
 

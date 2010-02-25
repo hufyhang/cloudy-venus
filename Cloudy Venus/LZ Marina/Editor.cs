@@ -156,14 +156,16 @@ namespace LZ_Marina
         {
             if (this.textBoxX1.Text.Length != 0)
             {
+                this.richTextBox1.Text = this.richTextBox1.Text.Replace("\n", "\r\n");
                 if (!new FileInfo(this.path + this.textBoxX1.Text).Exists)
                 {
                     String title = this.textBoxX1.Text;
                     String content = this.richTextBox1.Text;
                     FileInfo file = new FileInfo(this.path + this.textBoxX1.Text);
-                    StreamWriter writer = new StreamWriter(this.path + this.textBoxX1.Text, false, System.Text.Encoding.Default);
-                    writer.Write(this.richTextBox1.Text);
-                    writer.Close();
+//                    StreamWriter writer = new StreamWriter(this.path + this.textBoxX1.Text, false, System.Text.Encoding.Default);
+                    this.richTextBox1.SaveFile(this.path + this.textBoxX1.Text, RichTextBoxStreamType.PlainText);
+//                    writer.Write(this.richTextBox1.Text);
+//                    writer.Close();
                     this.loadFiles();
                     this.Text = this.textBoxX1.Text = title;
                     this.richTextBox1.Text = content;
@@ -176,9 +178,10 @@ namespace LZ_Marina
                         String title = this.textBoxX1.Text;
                         String content = this.richTextBox1.Text;
                         FileInfo file = new FileInfo(this.path + this.textBoxX1.Text);
-                        StreamWriter writer = new StreamWriter(this.path + this.textBoxX1.Text, false, System.Text.Encoding.Default);
-                        writer.Write(this.richTextBox1.Text);
-                        writer.Close();
+//                        StreamWriter writer = new StreamWriter(this.path + this.textBoxX1.Text, false, System.Text.Encoding.Default);
+                        this.richTextBox1.SaveFile(this.path + this.textBoxX1.Text, RichTextBoxStreamType.PlainText);
+//                        writer.Write(this.richTextBox1.Text);
+//                        writer.Close();
                         this.loadFiles();
                         this.Text = this.textBoxX1.Text = title;
                         this.richTextBox1.Text = content;

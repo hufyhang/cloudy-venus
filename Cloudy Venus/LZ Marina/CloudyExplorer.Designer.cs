@@ -70,6 +70,8 @@
             this.button4 = new DevComponents.DotNetBar.ButtonX();
             this.button1 = new DevComponents.DotNetBar.ButtonX();
             this.button2 = new DevComponents.DotNetBar.ButtonX();
+            this.toolStripMenuItem7 = new System.Windows.Forms.ToolStripSeparator();
+            this.propertiesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.panel1.SuspendLayout();
             this.splitContainer1.Panel1.SuspendLayout();
             this.splitContainer1.Panel2.SuspendLayout();
@@ -91,7 +93,7 @@
             this.panel1.Location = new System.Drawing.Point(0, 0);
             this.panel1.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(771, 318);
+            this.panel1.Size = new System.Drawing.Size(755, 280);
             this.panel1.TabIndex = 0;
             // 
             // splitContainer1
@@ -110,8 +112,8 @@
             // splitContainer1.Panel2
             // 
             this.splitContainer1.Panel2.Controls.Add(this.listView3);
-            this.splitContainer1.Size = new System.Drawing.Size(764, 274);
-            this.splitContainer1.SplitterDistance = 381;
+            this.splitContainer1.Size = new System.Drawing.Size(748, 236);
+            this.splitContainer1.SplitterDistance = 373;
             this.splitContainer1.SplitterWidth = 5;
             this.splitContainer1.TabIndex = 10;
             // 
@@ -129,8 +131,8 @@
             // splitContainer2.Panel2
             // 
             this.splitContainer2.Panel2.Controls.Add(this.listView2);
-            this.splitContainer2.Size = new System.Drawing.Size(381, 274);
-            this.splitContainer2.SplitterDistance = 181;
+            this.splitContainer2.Size = new System.Drawing.Size(373, 236);
+            this.splitContainer2.SplitterDistance = 177;
             this.splitContainer2.SplitterWidth = 5;
             this.splitContainer2.TabIndex = 0;
             // 
@@ -146,7 +148,7 @@
             this.listView1.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.listView1.MultiSelect = false;
             this.listView1.Name = "listView1";
-            this.listView1.Size = new System.Drawing.Size(181, 274);
+            this.listView1.Size = new System.Drawing.Size(177, 236);
             this.listView1.TabIndex = 0;
             this.listView1.UseCompatibleStateImageBehavior = false;
             this.listView1.View = System.Windows.Forms.View.Details;
@@ -212,7 +214,7 @@
             this.listView2.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.listView2.MultiSelect = false;
             this.listView2.Name = "listView2";
-            this.listView2.Size = new System.Drawing.Size(195, 274);
+            this.listView2.Size = new System.Drawing.Size(191, 236);
             this.listView2.TabIndex = 1;
             this.listView2.UseCompatibleStateImageBehavior = false;
             this.listView2.View = System.Windows.Forms.View.Details;
@@ -280,7 +282,7 @@
             this.listView3.Location = new System.Drawing.Point(0, 0);
             this.listView3.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.listView3.Name = "listView3";
-            this.listView3.Size = new System.Drawing.Size(378, 274);
+            this.listView3.Size = new System.Drawing.Size(370, 236);
             this.listView3.TabIndex = 1;
             this.listView3.UseCompatibleStateImageBehavior = false;
             this.listView3.View = System.Windows.Forms.View.Details;
@@ -315,9 +317,11 @@
             this.toolStripMenuItem3,
             this.addListIntoNotepadToolStripMenuItem,
             this.addListIntoPDFReaderToolStripMenuItem,
-            this.openDirectoryWithPictureViewerToolStripMenuItem});
+            this.openDirectoryWithPictureViewerToolStripMenuItem,
+            this.toolStripMenuItem7,
+            this.propertiesToolStripMenuItem});
             this.contextMenuStrip1.Name = "contextMenuStrip1";
-            this.contextMenuStrip1.Size = new System.Drawing.Size(258, 148);
+            this.contextMenuStrip1.Size = new System.Drawing.Size(258, 198);
             // 
             // runWithDefaultApplicationToolStripMenuItem
             // 
@@ -383,7 +387,7 @@
             this.panel2.Dock = System.Windows.Forms.DockStyle.Top;
             this.panel2.Location = new System.Drawing.Point(0, 0);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(771, 41);
+            this.panel2.Size = new System.Drawing.Size(755, 41);
             this.panel2.TabIndex = 14;
             // 
             // button3
@@ -393,7 +397,7 @@
             this.button3.BackColor = System.Drawing.Color.Transparent;
             this.button3.ColorTable = DevComponents.DotNetBar.eButtonColor.Orange;
             this.button3.Font = new System.Drawing.Font("Arial Unicode MS", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.button3.Location = new System.Drawing.Point(737, 5);
+            this.button3.Location = new System.Drawing.Point(721, 5);
             this.button3.Margin = new System.Windows.Forms.Padding(3, 5, 3, 5);
             this.button3.Name = "button3";
             this.button3.Shape = new DevComponents.DotNetBar.RoundRectangleShapeDescriptor(2);
@@ -415,7 +419,7 @@
             this.textBoxX1.ImeMode = System.Windows.Forms.ImeMode.Off;
             this.textBoxX1.Location = new System.Drawing.Point(118, 7);
             this.textBoxX1.Name = "textBoxX1";
-            this.textBoxX1.Size = new System.Drawing.Size(396, 26);
+            this.textBoxX1.Size = new System.Drawing.Size(380, 26);
             this.textBoxX1.TabIndex = 11;
             this.textBoxX1.WatermarkText = "Go to visit this address...";
             // 
@@ -429,7 +433,7 @@
             this.textBoxX2.Border.Class = "TextBoxBorder";
             this.textBoxX2.Font = new System.Drawing.Font("Arial Unicode MS", 10.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.textBoxX2.ImeMode = System.Windows.Forms.ImeMode.Off;
-            this.textBoxX2.Location = new System.Drawing.Point(520, 7);
+            this.textBoxX2.Location = new System.Drawing.Point(504, 7);
             this.textBoxX2.Name = "textBoxX2";
             this.textBoxX2.Size = new System.Drawing.Size(211, 26);
             this.textBoxX2.TabIndex = 12;
@@ -481,13 +485,26 @@
             this.button2.Text = "▲";
             this.button2.Click += new System.EventHandler(this.button2_Click);
             // 
+            // toolStripMenuItem7
+            // 
+            this.toolStripMenuItem7.Name = "toolStripMenuItem7";
+            this.toolStripMenuItem7.Size = new System.Drawing.Size(254, 6);
+            // 
+            // propertiesToolStripMenuItem
+            // 
+            this.propertiesToolStripMenuItem.Name = "propertiesToolStripMenuItem";
+            this.propertiesToolStripMenuItem.Size = new System.Drawing.Size(257, 22);
+            this.propertiesToolStripMenuItem.Text = "Properties";
+            this.propertiesToolStripMenuItem.Click += new System.EventHandler(this.propertiesToolStripMenuItem_Click);
+            // 
             // CloudyExplorer
             // 
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(232)))), ((int)(((byte)(240)))), ((int)(((byte)(251)))));
+            this.ClientSize = new System.Drawing.Size(755, 280);
             this.Controls.Add(this.panel1);
             this.Font = new System.Drawing.Font("Arial Unicode MS", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.Size = new System.Drawing.Size(771, 318);
+            this.Name = "CloudyExplorer";
             this.Text = "CloudyExplorer";
             this.panel1.ResumeLayout(false);
             this.splitContainer1.Panel1.ResumeLayout(false);
@@ -546,5 +563,7 @@
         private DevComponents.DotNetBar.Controls.TextBoxX textBoxX1;
         private DevComponents.DotNetBar.Controls.TextBoxX textBoxX2;
         private System.Windows.Forms.Panel panel2;
+        private System.Windows.Forms.ToolStripSeparator toolStripMenuItem7;
+        private System.Windows.Forms.ToolStripMenuItem propertiesToolStripMenuItem;
     }
 }

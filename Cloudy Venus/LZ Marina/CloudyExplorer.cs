@@ -7,6 +7,7 @@ using System.Text;
 using System.Windows.Forms;
 using System.IO;
 using System.Collections;
+using System.Runtime.InteropServices;
 
 namespace LZ_Marina
 {
@@ -57,6 +58,31 @@ namespace LZ_Marina
             this.listView2.SelectedIndexChanged += new EventHandler(listView2_SelectedIndexChanged);
             this.listView3.DoubleClick += new EventHandler(listView3_DoubleClick);
         }
+
+        public struct ShellExecuteInfo
+        {
+            public int cbSize;
+            public uint fMask;
+            public IntPtr hwnd;
+            public string lpVerb;
+            public string lpFile;
+            public string lpParameters;
+            public string lpDirectory;
+            public int nShow;
+            public int hInstApp;
+            public int lpIDList;
+            public string lpClass;
+            public int hkeyClass;
+            public uint dwHotKey;
+            public int hIcon;
+            public int hProcess;
+        }
+
+        public const int SW_SHOW = 5;
+        public const uint SEE_MASK_INVOKEIDLIST = 12;
+
+        [DllImport("shell32.dll")]
+        public static extern bool ShellExecuteEx(ref ShellExecuteInfo lpExecInfo);
 
         protected void listView3_DoubleClick(object sender, EventArgs e)
         {
@@ -826,6 +852,25 @@ namespace LZ_Marina
             foreach (ListViewItem item in this.backupItem)
             {
                 this.listView3.Items.Add((ListViewItem)item.Clone());
+            }
+        }
+
+        private void propertiesToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            if (this.listView3.SelectedItems.Count > 0)
+            {
+                if (!this.listView3.SelectedItems[0].SubItems[0].Text.Equals(@"<ROOT>"))
+                {
+                    ShellExecuteInfo vShellExecuteInfo = new ShellExecuteInfo();
+
+                    vShellExecuteInfo.cbSize = Marshal.SizeOf(vShellExecuteInfo);
+                    vShellExecuteInfo.lpVerb = "properties";
+                    vShellExecuteInfo.lpFile = this.root + this.sub + this.thd + this.tail + @"\" + this.listView3.SelectedItems[0].SubItems[0].Text;
+                    vShellExecuteInfo.nShow = SW_SHOW;
+                    vShellExecuteInfo.fMask = SEE_MASK_INVOKEIDLIST;
+                    ShellExecuteEx(ref vShellExecuteInfo);
+//                  System.Diagnostics.Process.Start(this.root + this.sub + this.thd + this.tail + @"\" + this.listView3.SelectedItems[0].SubItems[0].Text);
+                }
             }
         }
     }

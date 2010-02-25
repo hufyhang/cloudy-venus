@@ -11,6 +11,10 @@ using System.Diagnostics;
 using System.Threading;
 using System.Runtime.InteropServices;
 using System.Media;
+using System.Net;
+using System.Reflection;
+using System.Web;
+using System.Net.Sockets;
 
 namespace LZ_Marina
 {
@@ -22,6 +26,7 @@ namespace LZ_Marina
         private int sysComponents = 0;
         private int pluginsNumber = 0;
 
+        private String username = "";
         private String homePage = "";
         private String picRoot = "";
         private String textRoot = "";
@@ -37,6 +42,8 @@ namespace LZ_Marina
         private int currentIndex1;
         private int currentIndex2;
         private Boolean inCloseingTab;
+
+        private LanChat lanChat;
 
 //        private const int INTERNET_CONNECTION_MODEM = 1;
 //        private const int INTERNET_CONNECTION_LAN = 2;
@@ -78,11 +85,13 @@ namespace LZ_Marina
             this.initialEvents();
 
             loginUser();
+
             this.virtualIndex = 1;
             this.button5.Text = "";
             this.alarmClock = false;
             this.alarmTime = "";
             sysComponents = this.listView1.Items.Count;
+            
             pluginsInitial();
             userApps();
             localApps();
@@ -97,6 +106,8 @@ namespace LZ_Marina
 
             this.label4.Location = new Point(this.label1.Location.X + this.label1.Size.Width + 5, this.label4.Location.Y);
             //this.label4.Location.X = this.label1.Location.X + 10;
+
+            this.lanChat = new LanChat(this.username);
 
             this.updateTodoInfo();
         }
@@ -447,7 +458,8 @@ namespace LZ_Marina
             if (file.Exists)
             {
                 StreamReader reader = new StreamReader(Application.StartupPath + @"\user");
-                this.label1.Text = @"Welcome, " + reader.ReadLine() + @"!";
+                this.username = reader.ReadLine();
+                this.label1.Text = @"Welcome, " + this.username + @"!";
                 this.homePage = reader.ReadLine();
                 this.pictureBox1.Image = new Bitmap(reader.ReadLine());
                 fullscreen = reader.ReadLine();
@@ -499,10 +511,17 @@ namespace LZ_Marina
         {
             if (this.tabControl1.SelectedIndex != 0)
             {
+                if(this.tabControl1.SelectedTab.ImageIndex == 12)
+                {
+                    this.tabControl1.SelectedTab.Hide();
+                }
+                else
+                {
                 int index = this.tabControl1.SelectedIndex;
                 this.tabControl1.SelectedTab.Dispose();
                 //this.tabControl1.SelectedIndex = index - 1;
                 GC.Collect();
+                }
             }
         }
 
@@ -917,6 +936,11 @@ namespace LZ_Marina
             //new Thread(this.activateNewBrowser).Start();
 
             new QuickNewTask(this, this.tabControl1, this.listView1, this.ApplicationsImg).ShowDialog();
+        }
+
+        private void button7_Click(object sender, EventArgs e)
+        {
+            this.lanChat.Show();
         }
     }
 }
