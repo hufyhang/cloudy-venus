@@ -107,7 +107,7 @@ namespace LZ_Marina
                             this.tail = this.tail.Substring(1);
                         }
                     }
-                    
+
                     if (this.tail.Length != 0)
                     {
                         String tempTail = @"\";
@@ -230,7 +230,7 @@ namespace LZ_Marina
                     this.thd = "";
                     this.loadSub(this.root + this.sub);
                 }
-                this.tail =  "";
+                this.tail = "";
                 this.textBoxX1.Text = this.root + this.sub + this.thd;
             }
         }
@@ -609,56 +609,56 @@ namespace LZ_Marina
                 if (folder.ShowDialog() == DialogResult.OK)
                 {
                     new delegateSendTo(this.sendTo).BeginInvoke(folder.SelectedPath, null, null);
-/*
-                    destination = folder.SelectedPath;
+                    /*
+                                        destination = folder.SelectedPath;
 
-                    String[] file = new String[this.listView3.SelectedItems.Count];
+                                        String[] file = new String[this.listView3.SelectedItems.Count];
 
-                    foreach (ListViewItem item in this.listView3.SelectedItems)
-                    {
-                        if (!item.SubItems[1].Text.Equals(@"<DIR>") && !item.SubItems[1].Text.Equals(@"<ROOT>"))
-                        {
-                            String filename = item.SubItems[0].Text;
-                            FileInfo info = new FileInfo(destination + @"\" + filename);
-                            if (info.Exists)
-                            {
-                                if (MessageBox.Show(filename + " is existing in the destination already.\r\nAre you sure you want to overwrite it now?", "File exists...", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
-                                {
-                                    info.Delete();
-                                    new FileInfo(this.root + this.sub + this.thd + this.tail + @"\" + filename).CopyTo(destination + @"\" + filename);
-                                }
-                            }
-                            else
-                            {
-                                new FileInfo(this.root + this.sub + this.thd + this.tail + @"\" + filename).CopyTo(destination + @"\" + filename);
-                            }
-                        }
+                                        foreach (ListViewItem item in this.listView3.SelectedItems)
+                                        {
+                                            if (!item.SubItems[1].Text.Equals(@"<DIR>") && !item.SubItems[1].Text.Equals(@"<ROOT>"))
+                                            {
+                                                String filename = item.SubItems[0].Text;
+                                                FileInfo info = new FileInfo(destination + @"\" + filename);
+                                                if (info.Exists)
+                                                {
+                                                    if (MessageBox.Show(filename + " is existing in the destination already.\r\nAre you sure you want to overwrite it now?", "File exists...", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
+                                                    {
+                                                        info.Delete();
+                                                        new FileInfo(this.root + this.sub + this.thd + this.tail + @"\" + filename).CopyTo(destination + @"\" + filename);
+                                                    }
+                                                }
+                                                else
+                                                {
+                                                    new FileInfo(this.root + this.sub + this.thd + this.tail + @"\" + filename).CopyTo(destination + @"\" + filename);
+                                                }
+                                            }
 
-                        else if (item.SubItems[1].Text.Equals(@"<DIR>"))
-                        {
-                            try
-                            {
-                                String dirName = item.SubItems[0].Text;
-                                DirectoryInfo dir = new DirectoryInfo(destination + @"\" + dirName);
-                                if (dir.Exists)
-                                {
-                                    if (MessageBox.Show(dirName + " is existing in the destination already.\r\nAre you sure you want to overwrite it now?", "Directory exists...", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
-                                    {
-                                        dir.Delete(true);
-                                    }
-                                }
-                                new DirectoryInfo(destination + @"\" + dirName).Create();
-                                this.sendDir(this.root + this.sub + this.thd + this.tail + dirName, destination + @"\" + dirName);
-                            }
-                            catch (IOException exp)
-                            {
-                                MessageBox.Show(exp.ToString(), "Unknown Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                            }
-                        }
+                                            else if (item.SubItems[1].Text.Equals(@"<DIR>"))
+                                            {
+                                                try
+                                                {
+                                                    String dirName = item.SubItems[0].Text;
+                                                    DirectoryInfo dir = new DirectoryInfo(destination + @"\" + dirName);
+                                                    if (dir.Exists)
+                                                    {
+                                                        if (MessageBox.Show(dirName + " is existing in the destination already.\r\nAre you sure you want to overwrite it now?", "Directory exists...", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
+                                                        {
+                                                            dir.Delete(true);
+                                                        }
+                                                    }
+                                                    new DirectoryInfo(destination + @"\" + dirName).Create();
+                                                    this.sendDir(this.root + this.sub + this.thd + this.tail + dirName, destination + @"\" + dirName);
+                                                }
+                                                catch (IOException exp)
+                                                {
+                                                    MessageBox.Show(exp.ToString(), "Unknown Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                                                }
+                                            }
 
-                    }
-                    MessageBox.Show("Process finished.", "Process finished...", MessageBoxButtons.OK, MessageBoxIcon.Information);
- */ 
+                                        }
+                                        MessageBox.Show("Process finished.", "Process finished...", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                     */
                 }
             }
         }
@@ -869,7 +869,45 @@ namespace LZ_Marina
                     vShellExecuteInfo.nShow = SW_SHOW;
                     vShellExecuteInfo.fMask = SEE_MASK_INVOKEIDLIST;
                     ShellExecuteEx(ref vShellExecuteInfo);
-//                  System.Diagnostics.Process.Start(this.root + this.sub + this.thd + this.tail + @"\" + this.listView3.SelectedItems[0].SubItems[0].Text);
+                    //                  System.Diagnostics.Process.Start(this.root + this.sub + this.thd + this.tail + @"\" + this.listView3.SelectedItems[0].SubItems[0].Text);
+                }
+            }
+        }
+
+        private void propertiesToolStripMenuItem1_Click(object sender, EventArgs e)
+        {
+            if (this.listView2.SelectedItems.Count > 0)
+            {
+                if (!this.listView2.SelectedItems[0].SubItems[0].Text.Equals(@"<ROOT>"))
+                {
+                    ShellExecuteInfo vShellExecuteInfo = new ShellExecuteInfo();
+
+                    vShellExecuteInfo.cbSize = Marshal.SizeOf(vShellExecuteInfo);
+                    vShellExecuteInfo.lpVerb = "properties";
+                    vShellExecuteInfo.lpFile = this.root + this.sub + @"\" + this.listView2.SelectedItems[0].SubItems[0].Text;
+                    vShellExecuteInfo.nShow = SW_SHOW;
+                    vShellExecuteInfo.fMask = SEE_MASK_INVOKEIDLIST;
+                    ShellExecuteEx(ref vShellExecuteInfo);
+                    //                  System.Diagnostics.Process.Start(this.root + this.sub + this.thd + this.tail + @"\" + this.listView3.SelectedItems[0].SubItems[0].Text);
+                }
+            }
+        }
+
+        private void propertiesToolStripMenuItem2_Click(object sender, EventArgs e)
+        {
+            if (this.listView1.SelectedItems.Count > 0)
+            {
+                if (!this.listView1.SelectedItems[0].SubItems[0].Text.Equals(@"<ROOT>"))
+                {
+                    ShellExecuteInfo vShellExecuteInfo = new ShellExecuteInfo();
+
+                    vShellExecuteInfo.cbSize = Marshal.SizeOf(vShellExecuteInfo);
+                    vShellExecuteInfo.lpVerb = "properties";
+                    vShellExecuteInfo.lpFile = this.root + this.listView1.SelectedItems[0].SubItems[0].Text;
+                    vShellExecuteInfo.nShow = SW_SHOW;
+                    vShellExecuteInfo.fMask = SEE_MASK_INVOKEIDLIST;
+                    ShellExecuteEx(ref vShellExecuteInfo);
+                    //                  System.Diagnostics.Process.Start(this.root + this.sub + this.thd + this.tail + @"\" + this.listView3.SelectedItems[0].SubItems[0].Text);
                 }
             }
         }
