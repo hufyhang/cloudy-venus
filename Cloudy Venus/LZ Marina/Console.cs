@@ -58,15 +58,15 @@ namespace LZ_Marina
             {
                 new WebkitBrowser().Show();
             }
-/*
-            else if (cmd.ToUpper().Equals("?VERCTRL"))
+
+            else if (cmd.ToUpper().Equals("?LOCALSEARCH"))
             {
                 TabControl tab = this.form.getTabControl();
-                tab.TabPages.Add(new VersionControl());
+                tab.TabPages.Add(new Search_Local(this.form));
                 tab.SelectedIndex = tab.TabPages.Count - 1;
-                ans = "\r\n" + @"Version Control has been activited." + "\r\n";
+                ans = "\r\n" + @"Local Search has been activited." + "\r\n";
             }
- */ 
+  
             else if (cmd.ToUpper().Equals("?LOGOFF"))
             {
                 Application.Exit();

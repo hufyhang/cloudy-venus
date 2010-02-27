@@ -257,6 +257,10 @@
       <DependentUpon>Rename.cs</DependentUpon>
       <SubType>Designer</SubType>
     </EmbeddedResource>
+    <EmbeddedResource Include="Search_Local.resx">
+      <DependentUpon>Search_Local.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
     <EmbeddedResource Include="SetAlarm.resx">
       <DependentUpon>SetAlarm.cs</DependentUpon>
       <SubType>Designer</SubType>
@@ -310,6 +314,12 @@
     </Compile>
     <Compile Include="Rename.Designer.cs">
       <DependentUpon>Rename.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Search_Local.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Search_Local.Designer.cs">
+      <DependentUpon>Search_Local.cs</DependentUpon>
     </Compile>
     <Compile Include="SetAlarm.cs">
       <SubType>Form</SubType>

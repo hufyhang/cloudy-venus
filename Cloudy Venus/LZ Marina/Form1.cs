@@ -283,6 +283,7 @@ namespace LZ_Marina
             System.Windows.Forms.ListViewItem listViewItem6 = new System.Windows.Forms.ListViewItem("PDF Reader", 13);
             System.Windows.Forms.ListViewItem listViewItem7 = new System.Windows.Forms.ListViewItem("Console Apps", 10);
             System.Windows.Forms.ListViewItem listViewItem8 = new System.Windows.Forms.ListViewItem("Version Control", 1);
+            System.Windows.Forms.ListViewItem listViewItem9 = new System.Windows.Forms.ListViewItem("Local Search", 3);
 
             this.listView1.Items.AddRange(new System.Windows.Forms.ListViewItem[] {
                 listViewItem1,
@@ -292,7 +293,8 @@ namespace LZ_Marina
                 listViewItem5,
                 listViewItem6,
                 listViewItem7,
-                listViewItem8
+                listViewItem8,
+                listViewItem9
                 });
 
             this.sysComponents = this.listView1.Items.Count;
@@ -602,6 +604,12 @@ namespace LZ_Marina
                     VersionControl verctrl = new VersionControl(tabControl, this);
                     verctrl.ImageIndex = 8;
                     tabControl.Controls.Add(verctrl);
+                    tabControl.SelectedIndex = tabControl.TabPages.Count - 1;
+                    break;
+                case 8:
+                    Search_Local localSearch = new Search_Local(this);
+                    localSearch.ImageIndex = 13;
+                    tabControl.Controls.Add(localSearch);
                     tabControl.SelectedIndex = tabControl.TabPages.Count - 1;
                     break;
                 default:

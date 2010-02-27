@@ -89,7 +89,10 @@ namespace LZ_Marina
             {
                 e.Handled = true;
                 e.SuppressKeyPress = true;
-                new delegateSender(this.Sender).BeginInvoke(this.ipAddress, this.textBoxX1.Text, null, null);
+                if (this.textBoxX1.Text.Length != 0)
+                {
+                    new delegateSender(this.Sender).BeginInvoke(this.ipAddress, this.textBoxX1.Text, null, null);
+                }
             }
         }
 
@@ -224,7 +227,10 @@ namespace LZ_Marina
 
         private void buttonX1_Click(object sender, EventArgs e)
         {
-            new delegateSender(this.Sender).BeginInvoke(this.ipAddress, this.textBoxX1.Text, null, null);
+            if (this.textBoxX1.Text.Length != 0)
+            {
+                new delegateSender(this.Sender).BeginInvoke(this.ipAddress, this.textBoxX1.Text, null, null);
+            }
         }
 
         private void buttonX2_Click(object sender, EventArgs e)
