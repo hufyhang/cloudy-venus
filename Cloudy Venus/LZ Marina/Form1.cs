@@ -34,6 +34,7 @@ namespace LZ_Marina
         private Boolean alarmClock;
         private String alarmTime;
         private SoundPlayer alarm = new SoundPlayer(Application.StartupPath + @"\File System\Media\alarm.wav");
+        private String searchToolbar;
 
         private ArrayList vitual1 = new ArrayList();
         private ArrayList vitual2 = new ArrayList();
@@ -90,6 +91,7 @@ namespace LZ_Marina
             this.button5.Text = "";
             this.alarmClock = false;
             this.alarmTime = "";
+            this.searchToolbar = "";
             sysComponents = this.listView1.Items.Count;
             
             pluginsInitial();
@@ -577,7 +579,7 @@ namespace LZ_Marina
                     tabControl.SelectedIndex = tabControl.TabPages.Count - 1;
                     break;
                 case 3:
-                    Editor editor = new Editor(this.textRoot);
+                    Editor editor = new Editor(this.textRoot, false);
                     editor.ImageIndex = 4;
                     tabControl.Controls.Add(editor);
                     tabControl.SelectedIndex = tabControl.TabPages.Count - 1;
@@ -632,7 +634,7 @@ namespace LZ_Marina
                     }
                     if (url != @"<NULL>")
                     {
-                        AppBrowser app = new AppBrowser(url, listView.SelectedItems[0].Text);
+                        AppBrowser app = new AppBrowser(url, listView.SelectedItems[0].Text, this.tabControl1, this);
                         app.ImageIndex = 9;
                         tabControl.Controls.Add(app);
                         tabControl.SelectedIndex = tabControl.TabPages.Count - 1;
@@ -915,6 +917,7 @@ namespace LZ_Marina
 
         private void label3_Click(object sender, EventArgs e)
         {
+/*
             if (this.monthCalendar1.Visible == true)
             {
                 this.monthCalendar1.Visible = false;
@@ -923,6 +926,7 @@ namespace LZ_Marina
             {
                 this.monthCalendar1.Visible = true;
             }
+ */ 
         }
 
         protected void newWebBrowser()
@@ -949,6 +953,11 @@ namespace LZ_Marina
         private void button7_Click(object sender, EventArgs e)
         {
             this.lanChat.Show();
+        }
+
+        private void comboBoxEx1_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
         }
     }
 }

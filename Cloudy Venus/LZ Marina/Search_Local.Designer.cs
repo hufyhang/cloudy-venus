@@ -31,6 +31,7 @@
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Search_Local));
             this.panel1 = new System.Windows.Forms.Panel();
+            this.checkBoxX1 = new DevComponents.DotNetBar.Controls.CheckBoxX();
             this.buttonX3 = new DevComponents.DotNetBar.ButtonX();
             this.textBoxX3 = new DevComponents.DotNetBar.Controls.TextBoxX();
             this.buttonX2 = new DevComponents.DotNetBar.ButtonX();
@@ -47,7 +48,6 @@
             this.runAsDefaultToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.statusStrip1 = new System.Windows.Forms.StatusStrip();
             this.toolStripStatusLabel1 = new System.Windows.Forms.ToolStripStatusLabel();
-            this.checkBoxX1 = new DevComponents.DotNetBar.Controls.CheckBoxX();
             this.panel1.SuspendLayout();
             this.contextMenuStrip1.SuspendLayout();
             this.statusStrip1.SuspendLayout();
@@ -68,6 +68,19 @@
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(843, 39);
             this.panel1.TabIndex = 0;
+            // 
+            // checkBoxX1
+            // 
+            this.checkBoxX1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.checkBoxX1.BackColor = System.Drawing.Color.Transparent;
+            this.checkBoxX1.Checked = true;
+            this.checkBoxX1.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.checkBoxX1.CheckValue = "Y";
+            this.checkBoxX1.Location = new System.Drawing.Point(692, 9);
+            this.checkBoxX1.Name = "checkBoxX1";
+            this.checkBoxX1.Size = new System.Drawing.Size(79, 23);
+            this.checkBoxX1.TabIndex = 6;
+            this.checkBoxX1.Text = "Sub-path";
             // 
             // buttonX3
             // 
@@ -172,10 +185,10 @@
             this.listView1.FullRowSelect = true;
             this.listView1.GridLines = true;
             this.listView1.HeaderStyle = System.Windows.Forms.ColumnHeaderStyle.Nonclickable;
-            this.listView1.Location = new System.Drawing.Point(0, 37);
+            this.listView1.Location = new System.Drawing.Point(0, 38);
             this.listView1.MultiSelect = false;
             this.listView1.Name = "listView1";
-            this.listView1.Size = new System.Drawing.Size(859, 442);
+            this.listView1.Size = new System.Drawing.Size(843, 403);
             this.listView1.TabIndex = 4;
             this.listView1.UseCompatibleStateImageBehavior = false;
             this.listView1.View = System.Windows.Forms.View.Details;
@@ -235,19 +248,6 @@
             this.toolStripStatusLabel1.Name = "toolStripStatusLabel1";
             this.toolStripStatusLabel1.Size = new System.Drawing.Size(39, 17);
             this.toolStripStatusLabel1.Text = "Ready";
-            // 
-            // checkBoxX1
-            // 
-            this.checkBoxX1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.checkBoxX1.BackColor = System.Drawing.Color.Transparent;
-            this.checkBoxX1.Checked = true;
-            this.checkBoxX1.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.checkBoxX1.CheckValue = "Y";
-            this.checkBoxX1.Location = new System.Drawing.Point(692, 9);
-            this.checkBoxX1.Name = "checkBoxX1";
-            this.checkBoxX1.Size = new System.Drawing.Size(79, 23);
-            this.checkBoxX1.TabIndex = 6;
-            this.checkBoxX1.Text = "Sub-path";
             // 
             // Search_Local
             // 

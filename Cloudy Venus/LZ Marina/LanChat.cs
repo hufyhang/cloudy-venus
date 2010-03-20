@@ -24,6 +24,7 @@ namespace LZ_Marina
         private TcpListener tcpl;
         private ArrayList ipList;
         private String ipAddress;
+        private String network;
 
         [DllImport("User32.DLL")]
         public static extern int SendMessage(IntPtr hWnd, uint Msg, int wParam, int lParam);
@@ -41,6 +42,7 @@ namespace LZ_Marina
             InitializeComponent();
             Control.CheckForIllegalCrossThreadCalls = false;
             this.initialEvents();
+            this.getNetwork();
 
             this.ipList = new ArrayList();
             this.username = username;
@@ -59,6 +61,13 @@ namespace LZ_Marina
             this.textBoxX1.KeyDown += new KeyEventHandler(textBoxX1_KeyDown);
             this.MouseDown += new MouseEventHandler(LanChat_MouseDown);
             this.listView1.SelectedIndexChanged += new EventHandler(listView1_SelectedIndexChanged);
+        }
+
+        protected void getNetwork()
+        {
+            StreamReader reader = new StreamReader(Application.StartupPath + @"\File System\Configs\Network");
+            this.network = reader.ReadLine();
+            reader.Close();
         }
 
         private void listView1_SelectedIndexChanged(object sender, EventArgs e)
@@ -169,7 +178,7 @@ namespace LZ_Marina
         protected void broadcast()
         {
             UdpClient udpClient = new UdpClient();
-            IPEndPoint ep = new IPEndPoint(IPAddress.Parse("192.168.109.255"), 1012);
+            IPEndPoint ep = new IPEndPoint(IPAddress.Parse(this.network), 1012);
 
             string computerInfo = ":USER" + ":" + this.username + ":" + Dns.Resolve(Dns.GetHostName()).AddressList[0];
 

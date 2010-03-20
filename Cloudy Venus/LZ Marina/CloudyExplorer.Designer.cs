@@ -41,6 +41,8 @@
             this.toolStripMenuItem2 = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripMenuItem4 = new System.Windows.Forms.ToolStripMenuItem();
             this.openDirectoryWithPictureViewerToolStripMenuItem2 = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripMenuItem9 = new System.Windows.Forms.ToolStripSeparator();
+            this.propertiesToolStripMenuItem2 = new System.Windows.Forms.ToolStripMenuItem();
             this.listView2 = new System.Windows.Forms.ListView();
             this.columnHeader2 = new System.Windows.Forms.ColumnHeader();
             this.contextMenuStrip2 = new System.Windows.Forms.ContextMenuStrip(this.components);
@@ -49,6 +51,8 @@
             this.addListIntoNotepadToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.addListIntoPDFReaderToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.openDirectoryWithPictureViewerToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripMenuItem8 = new System.Windows.Forms.ToolStripSeparator();
+            this.propertiesToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.listView3 = new System.Windows.Forms.ListView();
             this.columnHeader3 = new System.Windows.Forms.ColumnHeader();
             this.columnHeader4 = new System.Windows.Forms.ColumnHeader();
@@ -72,10 +76,6 @@
             this.button4 = new DevComponents.DotNetBar.ButtonX();
             this.button1 = new DevComponents.DotNetBar.ButtonX();
             this.button2 = new DevComponents.DotNetBar.ButtonX();
-            this.toolStripMenuItem8 = new System.Windows.Forms.ToolStripSeparator();
-            this.propertiesToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
-            this.toolStripMenuItem9 = new System.Windows.Forms.ToolStripSeparator();
-            this.propertiesToolStripMenuItem2 = new System.Windows.Forms.ToolStripMenuItem();
             this.panel1.SuspendLayout();
             this.splitContainer1.Panel1.SuspendLayout();
             this.splitContainer1.Panel2.SuspendLayout();
@@ -173,7 +173,7 @@
             this.toolStripMenuItem9,
             this.propertiesToolStripMenuItem2});
             this.contextMenuStrip3.Name = "contextMenuStrip2";
-            this.contextMenuStrip3.Size = new System.Drawing.Size(258, 148);
+            this.contextMenuStrip3.Size = new System.Drawing.Size(258, 126);
             // 
             // sendToToolStripMenuItem2
             // 
@@ -207,6 +207,18 @@
             this.openDirectoryWithPictureViewerToolStripMenuItem2.Size = new System.Drawing.Size(257, 22);
             this.openDirectoryWithPictureViewerToolStripMenuItem2.Text = "Open directory with Picture Viewer";
             this.openDirectoryWithPictureViewerToolStripMenuItem2.Click += new System.EventHandler(this.openDirectoryWithPictureViewerToolStripMenuItem2_Click);
+            // 
+            // toolStripMenuItem9
+            // 
+            this.toolStripMenuItem9.Name = "toolStripMenuItem9";
+            this.toolStripMenuItem9.Size = new System.Drawing.Size(254, 6);
+            // 
+            // propertiesToolStripMenuItem2
+            // 
+            this.propertiesToolStripMenuItem2.Name = "propertiesToolStripMenuItem2";
+            this.propertiesToolStripMenuItem2.Size = new System.Drawing.Size(257, 22);
+            this.propertiesToolStripMenuItem2.Text = "Properties";
+            this.propertiesToolStripMenuItem2.Click += new System.EventHandler(this.propertiesToolStripMenuItem2_Click);
             // 
             // listView2
             // 
@@ -275,6 +287,18 @@
             this.openDirectoryWithPictureViewerToolStripMenuItem1.Size = new System.Drawing.Size(257, 22);
             this.openDirectoryWithPictureViewerToolStripMenuItem1.Text = "Open directory with Picture Viewer";
             this.openDirectoryWithPictureViewerToolStripMenuItem1.Click += new System.EventHandler(this.openDirectoryWithPictureViewerToolStripMenuItem1_Click);
+            // 
+            // toolStripMenuItem8
+            // 
+            this.toolStripMenuItem8.Name = "toolStripMenuItem8";
+            this.toolStripMenuItem8.Size = new System.Drawing.Size(254, 6);
+            // 
+            // propertiesToolStripMenuItem1
+            // 
+            this.propertiesToolStripMenuItem1.Name = "propertiesToolStripMenuItem1";
+            this.propertiesToolStripMenuItem1.Size = new System.Drawing.Size(257, 22);
+            this.propertiesToolStripMenuItem1.Text = "Properties";
+            this.propertiesToolStripMenuItem1.Click += new System.EventHandler(this.propertiesToolStripMenuItem1_Click);
             // 
             // listView3
             // 
@@ -505,38 +529,13 @@
             this.button2.Text = "▲";
             this.button2.Click += new System.EventHandler(this.button2_Click);
             // 
-            // toolStripMenuItem8
-            // 
-            this.toolStripMenuItem8.Name = "toolStripMenuItem8";
-            this.toolStripMenuItem8.Size = new System.Drawing.Size(254, 6);
-            // 
-            // propertiesToolStripMenuItem1
-            // 
-            this.propertiesToolStripMenuItem1.Name = "propertiesToolStripMenuItem1";
-            this.propertiesToolStripMenuItem1.Size = new System.Drawing.Size(257, 22);
-            this.propertiesToolStripMenuItem1.Text = "Properties";
-            this.propertiesToolStripMenuItem1.Click += new System.EventHandler(this.propertiesToolStripMenuItem1_Click);
-            // 
-            // toolStripMenuItem9
-            // 
-            this.toolStripMenuItem9.Name = "toolStripMenuItem9";
-            this.toolStripMenuItem9.Size = new System.Drawing.Size(254, 6);
-            // 
-            // propertiesToolStripMenuItem2
-            // 
-            this.propertiesToolStripMenuItem2.Name = "propertiesToolStripMenuItem2";
-            this.propertiesToolStripMenuItem2.Size = new System.Drawing.Size(257, 22);
-            this.propertiesToolStripMenuItem2.Text = "Properties";
-            this.propertiesToolStripMenuItem2.Click += new System.EventHandler(this.propertiesToolStripMenuItem2_Click);
-            // 
             // CloudyExplorer
             // 
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(232)))), ((int)(((byte)(240)))), ((int)(((byte)(251)))));
-            this.ClientSize = new System.Drawing.Size(755, 280);
             this.Controls.Add(this.panel1);
             this.Font = new System.Drawing.Font("Arial Unicode MS", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.Name = "CloudyExplorer";
+            this.Size = new System.Drawing.Size(755, 280);
             this.Text = "CloudyExplorer";
             this.panel1.ResumeLayout(false);
             this.splitContainer1.Panel1.ResumeLayout(false);

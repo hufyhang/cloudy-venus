@@ -16,6 +16,9 @@ namespace LZ_Marina
         private String directory;
         private Form1 form;
 
+        private delegateBeginToSearch begin;
+        private IAsyncResult result = null;
+
         public Search_Local(Form1 form)
         {
             InitializeComponent();
@@ -52,7 +55,8 @@ namespace LZ_Marina
             {
                 e.Handled = true;
                 e.SuppressKeyPress = true;
-                new delegateBeginToSearch(this.BeginToSearch).BeginInvoke(null, null);
+                this.begin = new delegateBeginToSearch(this.BeginToSearch);
+                this.begin.BeginInvoke(null, null);
             }
         }
 
@@ -98,17 +102,24 @@ namespace LZ_Marina
         protected delegate void delegateBeginToSearch();
         protected void BeginToSearch()
         {
-            if (this.textBoxX1.Text.Length == 0 || this.textBoxX2.Text.Length == 0)
+            if (this.textBoxX2.Text.Length == 0)
             {
                 MessageBox.Show("Please identify information before searching.", "Unknow Information", MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
             else
             {
+/*
+                if (this.buttonX2.Text == @"Search")
+                {
+                    this.buttonX2.Text = @"Stop";
+                }
+ */ 
                 this.listView1.Items.Clear();
                 this.target = this.textBoxX1.Text;
                 this.directory = this.textBoxX2.Text;
                 this.Text = this.target + @" - Local Search";
                 this.doSearch(this.directory);
+                this.buttonX2.Text = @"Search";
             }
         }
 
@@ -165,7 +176,8 @@ namespace LZ_Marina
 
         private void buttonX2_Click(object sender, EventArgs e)
         {
-            new delegateBeginToSearch(this.BeginToSearch).BeginInvoke(null, null);
+            this.begin = new delegateBeginToSearch(this.BeginToSearch);
+            this.result = this.begin.BeginInvoke(null, null);
         }
 
         private void runAsDefaultToolStripMenuItem_Click(object sender, EventArgs e)

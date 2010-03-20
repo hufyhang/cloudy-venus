@@ -105,6 +105,7 @@
             // 
             // 
             this.textBoxX2.Border.Class = "TextBoxBorder";
+            this.textBoxX2.Font = new System.Drawing.Font("Arial Unicode MS", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.textBoxX2.Location = new System.Drawing.Point(3, 3);
             this.textBoxX2.Name = "textBoxX2";
             this.textBoxX2.Size = new System.Drawing.Size(154, 24);
@@ -216,9 +217,9 @@
             this.checkBox1.AutoSize = true;
             this.checkBox1.Checked = true;
             this.checkBox1.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.checkBox1.Location = new System.Drawing.Point(376, 4);
+            this.checkBox1.Location = new System.Drawing.Point(377, 4);
             this.checkBox1.Name = "checkBox1";
-            this.checkBox1.Size = new System.Drawing.Size(88, 20);
+            this.checkBox1.Size = new System.Drawing.Size(87, 19);
             this.checkBox1.TabIndex = 7;
             this.checkBox1.Text = "Word Wrap";
             this.checkBox1.UseVisualStyleBackColor = true;
@@ -296,6 +297,7 @@
             // 
             // 
             this.textBoxX1.Border.Class = "TextBoxBorder";
+            this.textBoxX1.Font = new System.Drawing.Font("Arial Unicode MS", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.textBoxX1.ImeMode = System.Windows.Forms.ImeMode.Off;
             this.textBoxX1.Location = new System.Drawing.Point(132, 3);
             this.textBoxX1.Name = "textBoxX1";
@@ -320,7 +322,7 @@
             // 
             this.BackColor = System.Drawing.Color.White;
             this.Controls.Add(this.splitContainer1);
-            this.Font = new System.Drawing.Font("Arial Unicode MS", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.Size = new System.Drawing.Size(664, 345);
             this.Text = "Editor";

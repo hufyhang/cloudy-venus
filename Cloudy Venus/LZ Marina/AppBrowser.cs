@@ -11,17 +11,23 @@ namespace LZ_Marina
     public partial class AppBrowser : TabPage
     {
         private String URL = "";
+        private Form1 form;
+        private ImageList imageList;
+        private TabControl tabControl;
 
         public AppBrowser()
         {
             InitializeComponent();
         }
 
-        public AppBrowser(String URL, String title)
+        public AppBrowser(String URL, String title, TabControl tabControl, Form1 form)
         {
             InitializeComponent();
             this.URL = URL;
             this.labelX1.Text = title;
+            this.tabControl = tabControl;
+            this.form = form;
+            this.imageList = form.getImageList();
             //this.webBrowser1.NewWindow += new CancelEventHandler(webBrowser1_NewWindow);
             this.webBrowser1.BeforeNewWindow += new EventHandler<ExtendedWebBrowser.WebBrowserExtendedNavigatingEventArgs>(webBrowser1_BeforeNewWindow);
             this.webBrowser1.Navigated += new WebBrowserNavigatedEventHandler(webBrowser1_Navigated);
@@ -65,8 +71,13 @@ namespace LZ_Marina
             e.Cancel = true;
             try
             {
-                String url = this.webBrowser1.Document.ActiveElement.GetAttribute("href");
-                ((ExtendedWebBrowser.ExtendedWebBrowser)sender).Navigate(e.Url);
+                Browser browser = new Browser(e.Url, this.tabControl, this.form);
+                browser.ImageIndex = 2;
+                this.tabControl.Controls.Add(browser);
+                this.tabControl.SelectedIndex = this.tabControl.TabCount - 1;
+
+//                String url = this.webBrowser1.Document.ActiveElement.GetAttribute("href");
+//                ((ExtendedWebBrowser.ExtendedWebBrowser)sender).Navigate(e.Url);
             }
             catch
             {

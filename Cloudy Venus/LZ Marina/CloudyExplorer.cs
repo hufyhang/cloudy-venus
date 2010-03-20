@@ -445,7 +445,7 @@ namespace LZ_Marina
         {
             if (this.listView1.SelectedItems.Count > 0)
             {
-                Editor edit = new Editor(this.root + @"\" + this.listView1.SelectedItems[0].SubItems[0].Text);
+                Editor edit = new Editor(this.root + @"\" + this.listView1.SelectedItems[0].SubItems[0].Text, false);
                 edit.ImageIndex = 4;
                 this.tabControl.Controls.Add(edit);
                 this.tabControl.SelectedIndex = this.tabControl.TabCount - 1;
@@ -467,7 +467,7 @@ namespace LZ_Marina
         {
             if (this.listView2.SelectedItems.Count > 0)
             {
-                Editor edit = new Editor(this.root + this.sub + this.thd);
+                Editor edit = new Editor(this.root + this.sub + this.thd, false);
                 edit.ImageIndex = 4;
                 this.tabControl.Controls.Add(edit);
                 this.tabControl.SelectedIndex = this.tabControl.TabCount - 1;
@@ -491,7 +491,7 @@ namespace LZ_Marina
             {
                 if (this.listView3.SelectedItems[0].SubItems[1].Text.Equals(@"<DIR>"))
                 {
-                    Editor edit = new Editor(this.root + this.sub + this.thd + this.tail + @"\" + this.listView3.SelectedItems[0].SubItems[0].Text);
+                    Editor edit = new Editor(this.root + this.sub + this.thd + this.tail + @"\" + this.listView3.SelectedItems[0].SubItems[0].Text, false);
                     edit.ImageIndex = 4;
                     this.tabControl.Controls.Add(edit);
                     this.tabControl.SelectedIndex = this.tabControl.TabCount - 1;

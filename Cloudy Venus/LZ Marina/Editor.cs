@@ -15,6 +15,7 @@ namespace LZ_Marina
         private String path = "";
         private ArrayList storage = new ArrayList();
         private Boolean wordWrap = true;
+        private Boolean singleFile;
 
         private ListView searchListView = new ListView();
         private ListView.ListViewItemCollection searchList;
@@ -27,7 +28,7 @@ namespace LZ_Marina
             loadFiles();
         }
 
-        public Editor(String path)
+        public Editor(String path, Boolean SingleFileFlag)
         {
             InitializeComponent();
 
@@ -40,23 +41,15 @@ namespace LZ_Marina
 
             this.Text = "Notepad";
             this.path = path;
-            loadFiles();
-        }
-
-        public Editor(String path, Boolean flag)
-        {
-            InitializeComponent();
-
-            this.richTextBox1.KeyDown += new KeyEventHandler(richTextBox1_KeyDown);
-            this.textBoxX1.KeyDown += new KeyEventHandler(richTextBox1_KeyDown);
-            this.listView1.SelectedIndexChanged += new EventHandler(listView1_SelectedIndexChanged);
-            this.textBoxX2.TextChanged += new EventHandler(textBoxX2_TextChanged);
-
-            searchList = new ListView.ListViewItemCollection(this.searchListView);
-
-            this.Text = "Notepad";
-            this.path = path;
-            loadFile();
+            this.singleFile = SingleFileFlag;
+            if (this.singleFile)
+            {
+                loadFile();
+            }
+            else
+            {
+                loadFiles();
+            }
         }
 
         protected void textBoxX2_TextChanged(object sender, EventArgs e)
@@ -64,13 +57,16 @@ namespace LZ_Marina
             //this.listView1.Items.Clear();
             try
             {
-                if (this.textBoxX2.Text.Length != 0)
+                if (!this.singleFile)
                 {
-                    loadFiles(true);
-                }
-                else
-                {
-                    loadFiles();
+                    if (this.textBoxX2.Text.Length != 0)
+                    {
+                        loadFiles(true);
+                    }
+                    else
+                    {
+                        loadFiles();
+                    }
                 }
             }
             catch (Exception)
@@ -99,6 +95,7 @@ namespace LZ_Marina
             this.listView1.Items.Add(item);
             this.storage.Add(file);
             this.listView1.Items[0].Selected = true;
+            this.textBoxX1.Text = file.Name;
         }
 
         protected void loadFiles(Boolean flag)
@@ -156,39 +153,67 @@ namespace LZ_Marina
         {
             if (this.textBoxX1.Text.Length != 0)
             {
-                this.richTextBox1.Text = this.richTextBox1.Text.Replace("\n", "\r\n");
-                if (!new FileInfo(this.path + this.textBoxX1.Text).Exists)
+                if (this.singleFile)
                 {
-                    String title = this.textBoxX1.Text;
-                    String content = this.richTextBox1.Text;
-                    FileInfo file = new FileInfo(this.path + this.textBoxX1.Text);
-//                    StreamWriter writer = new StreamWriter(this.path + this.textBoxX1.Text, false, System.Text.Encoding.Default);
-                    this.richTextBox1.SaveFile(this.path + this.textBoxX1.Text, RichTextBoxStreamType.PlainText);
-//                    writer.Write(this.richTextBox1.Text);
-//                    writer.Close();
-                    this.loadFiles();
-                    this.Text = this.textBoxX1.Text = title;
-                    this.richTextBox1.Text = content;
+                    this.richTextBox1.Text = this.richTextBox1.Text.Replace("\n", "\r\n");
+                    if (!new FileInfo(this.path).Exists)
+                    {
+                        String title = this.textBoxX1.Text;
+                        String content = this.richTextBox1.Text;
+                        FileInfo file = new FileInfo(this.path);
+                        this.richTextBox1.SaveFile(this.path, RichTextBoxStreamType.PlainText);
+                        this.Text = this.textBoxX1.Text = title;
+                        this.richTextBox1.Text = content;
+                    }
+                    else
+                    {
+                        if (MessageBox.Show(this.textBoxX1.Text + " exists already.\r\nAre you sure you want to overwrite it?",
+                            "Item exists...", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
+                        {
+                            String title = this.textBoxX1.Text;
+                            String content = this.richTextBox1.Text;
+                            FileInfo file = new FileInfo(this.path);
+                            this.richTextBox1.SaveFile(this.path, RichTextBoxStreamType.PlainText);
+                            this.Text = this.textBoxX1.Text = title;
+                            this.richTextBox1.Text = content;
+                        }
+                    }
                 }
                 else
                 {
-                    if (MessageBox.Show(this.textBoxX1.Text + " exists already.\r\nAre you sure you want to overwrite it?",
-                        "Item exists...", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
+                    this.richTextBox1.Text = this.richTextBox1.Text.Replace("\n", "\r\n");
+                    if (!new FileInfo(this.path + this.textBoxX1.Text).Exists)
                     {
                         String title = this.textBoxX1.Text;
                         String content = this.richTextBox1.Text;
                         FileInfo file = new FileInfo(this.path + this.textBoxX1.Text);
-//                        StreamWriter writer = new StreamWriter(this.path + this.textBoxX1.Text, false, System.Text.Encoding.Default);
+                        //                    StreamWriter writer = new StreamWriter(this.path + this.textBoxX1.Text, false, System.Text.Encoding.Default);
                         this.richTextBox1.SaveFile(this.path + this.textBoxX1.Text, RichTextBoxStreamType.PlainText);
-//                        writer.Write(this.richTextBox1.Text);
-//                        writer.Close();
+                        //                    writer.Write(this.richTextBox1.Text);
+                        //                    writer.Close();
                         this.loadFiles();
                         this.Text = this.textBoxX1.Text = title;
                         this.richTextBox1.Text = content;
                     }
+                    else
+                    {
+                        if (MessageBox.Show(this.textBoxX1.Text + " exists already.\r\nAre you sure you want to overwrite it?",
+                            "Item exists...", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
+                        {
+                            String title = this.textBoxX1.Text;
+                            String content = this.richTextBox1.Text;
+                            FileInfo file = new FileInfo(this.path + this.textBoxX1.Text);
+                            //                        StreamWriter writer = new StreamWriter(this.path + this.textBoxX1.Text, false, System.Text.Encoding.Default);
+                            this.richTextBox1.SaveFile(this.path + this.textBoxX1.Text, RichTextBoxStreamType.PlainText);
+                            //                        writer.Write(this.richTextBox1.Text);
+                            //                        writer.Close();
+                            this.loadFiles();
+                            this.Text = this.textBoxX1.Text = title;
+                            this.richTextBox1.Text = content;
+                        }
+                    }
+                    loadFiles();
                 }
-                loadFiles();
-
             }
             else
             {
@@ -203,29 +228,52 @@ namespace LZ_Marina
 
         private void listView1_SelectedIndexChanged(object sender, EventArgs e)
         {
-            if (this.listView1.SelectedItems.Count > 0)
+            if (this.listView1.SelectedItems.Count != 0)
             {
-                this.richTextBox1.Text = this.textBoxX1.Text = "";
-                FileInfo file = (FileInfo)this.storage[this.listView1.SelectedItems[0].Index];
-                this.textBoxX1.Text = file.Name;
-                StreamReader reader = new StreamReader(file.FullName, System.Text.Encoding.Default);
-                this.richTextBox1.Text = reader.ReadToEnd();
-                reader.Close();
-                this.Text = this.textBoxX1.Text;
+                if (this.singleFile)
+                {
+                    StreamReader reader = new StreamReader(this.path, System.Text.Encoding.Default);
+                    this.richTextBox1.Text = reader.ReadToEnd();
+                    reader.Close();
+                }
+                else
+                {
+                    this.richTextBox1.Text = this.textBoxX1.Text = "";
+                    FileInfo file = (FileInfo)this.storage[this.listView1.SelectedItems[0].Index];
+                    this.textBoxX1.Text = file.Name;
+                    StreamReader reader = new StreamReader(file.FullName, System.Text.Encoding.Default);
+                    this.richTextBox1.Text = reader.ReadToEnd();
+                    reader.Close();
+                    this.Text = this.textBoxX1.Text;
+                }
             }
         }
 
         private void button3_Click(object sender, EventArgs e)
         {
-            if (this.listView1.SelectedItems.Count > 0)
+            if (this.listView1.SelectedItems.Count != 0)
             {
-                FileInfo file = (FileInfo)this.storage[this.listView1.SelectedItems[0].Index];
-                if (MessageBox.Show("Are you sure you want to remove " + file.Name + "?", "Remove item...",
-                    MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
+                if (this.singleFile)
                 {
-                    this.richTextBox1.Text = this.textBoxX1.Text = "";
-                    file.Delete();
-                    this.loadFiles();
+                    FileInfo file = new FileInfo(this.path);
+                    if (MessageBox.Show("Are you sure you want to remove " + this.textBoxX1.Text + "?", "Remove item...",
+                        MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
+                    {
+                        this.richTextBox1.Text = this.textBoxX1.Text = "";
+                        file.Delete();
+                        this.listView1.Items.Clear();
+                    }
+                }
+                else
+                {
+                    FileInfo file = (FileInfo)this.storage[this.listView1.SelectedItems[0].Index];
+                    if (MessageBox.Show("Are you sure you want to remove " + file.Name + "?", "Remove item...",
+                        MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
+                    {
+                        this.richTextBox1.Text = this.textBoxX1.Text = "";
+                        file.Delete();
+                        this.loadFiles();
+                    }
                 }
             }
             else
@@ -283,28 +331,51 @@ namespace LZ_Marina
 
         protected void export()
         {
-            if (this.listView1.SelectedItems.Count > 0)
+            if (this.listView1.SelectedItems.Count != 0)
             {
                 using (FolderBrowserDialog folder = new FolderBrowserDialog())
                 {
                     folder.Description = "Please choose a destination for " + this.listView1.SelectedItems[0].SubItems[0].Text;
                     if (folder.ShowDialog() == DialogResult.OK)
                     {
-                        String to = folder.SelectedPath + @"\" + this.listView1.SelectedItems[0].SubItems[0].Text;
-                        FileInfo file = new FileInfo(to);
-                        FileInfo target = new FileInfo(this.path + this.listView1.SelectedItems[0].SubItems[0].Text);
-                        if (file.Exists)
+                        if (this.singleFile)
                         {
-                            if (MessageBox.Show("Are you sure you want to overwrite " + this.listView1.SelectedItems[0].SubItems[0].Text + @"?",
-                                "Item existing...", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
+                            FileInfo info = new FileInfo(this.path);
+                            String to = folder.SelectedPath + @"\" + info.Name;
+                            FileInfo file = new FileInfo(to);
+                            FileInfo target = new FileInfo(this.path);
+                            if (file.Exists)
                             {
-                                file.Delete();
+                                if (MessageBox.Show("Are you sure you want to overwrite " + info.Name + @"?",
+                                    "Item existing...", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
+                                {
+                                    file.Delete();
+                                    target.CopyTo(file.FullName);
+                                }
+                            }
+                            else
+                            {
                                 target.CopyTo(file.FullName);
                             }
                         }
                         else
                         {
-                            target.CopyTo(file.FullName);
+                            String to = folder.SelectedPath + @"\" + this.listView1.SelectedItems[0].SubItems[0].Text;
+                            FileInfo file = new FileInfo(to);
+                            FileInfo target = new FileInfo(this.path + this.listView1.SelectedItems[0].SubItems[0].Text);
+                            if (file.Exists)
+                            {
+                                if (MessageBox.Show("Are you sure you want to overwrite " + this.listView1.SelectedItems[0].SubItems[0].Text + @"?",
+                                    "Item existing...", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
+                                {
+                                    file.Delete();
+                                    target.CopyTo(file.FullName);
+                                }
+                            }
+                            else
+                            {
+                                target.CopyTo(file.FullName);
+                            }
                         }
                     }
                 }
