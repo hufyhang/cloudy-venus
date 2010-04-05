@@ -38,13 +38,15 @@ namespace LZ_Marina
 
         private ArrayList vitual1 = new ArrayList();
         private ArrayList vitual2 = new ArrayList();
+        private int vitualIndex1 = 0;
+        private int vitualIndex2 = 0;
 
         private int virtualIndex;
         private int currentIndex1;
         private int currentIndex2;
         private Boolean inCloseingTab;
 
-        private LanChat lanChat;
+//        private LanChat lanChat;
 
 //        private const int INTERNET_CONNECTION_MODEM = 1;
 //        private const int INTERNET_CONNECTION_LAN = 2;
@@ -109,7 +111,7 @@ namespace LZ_Marina
             this.label4.Location = new Point(this.label1.Location.X + this.label1.Size.Width + 5, this.label4.Location.Y);
             //this.label4.Location.X = this.label1.Location.X + 10;
 
-            this.lanChat = new LanChat(this.username);
+//            this.lanChat = new LanChat(this.username);
 
             this.updateTodoInfo();
         }
@@ -128,6 +130,23 @@ namespace LZ_Marina
             this.tabControl1.ControlAdded += new ControlEventHandler(dynamicTabSize);
             this.tabControl1.ControlRemoved += new ControlEventHandler(dynamicTabSize);
             this.tabControl1.ControlRemoved += new ControlEventHandler(tabControl1_ControlRemoved);
+//            this.killExplorer();
+        }
+
+        protected void killExplorer()
+        {
+            foreach (Process proc in Process.GetProcesses())
+            {
+                if (proc.ProcessName.ToString().ToUpper() == @"EXPLORER")
+                {
+                    proc.Kill();
+                }
+            }
+        }
+
+        public void restartExplorer()
+        {
+            Process.Start(@"EXPLORER.EXE");
         }
 
         protected void tabControl1_ControlRemoved(object sender, ControlEventArgs e)
@@ -193,6 +212,7 @@ namespace LZ_Marina
                     {
                         this.vitual1.Add(this.tabControl1.TabPages[index]);
                     }
+                    this.vitualIndex1 = this.tabControl1.SelectedIndex;
                     break;
 
                 case 2:
@@ -201,6 +221,7 @@ namespace LZ_Marina
                     {
                         this.vitual2.Add(this.tabControl1.TabPages[index]);
                     }
+                    this.vitualIndex2 = this.tabControl1.SelectedIndex;
                     break;
             }
         }
@@ -824,6 +845,7 @@ namespace LZ_Marina
             this.dynamicTabSize();
             this.button4.Text = "2";
             this.button5.Text = "";
+            this.tabControl1.SelectedIndex = this.vitualIndex1;
         }
 
         private void button4_Click(object sender, EventArgs e)
@@ -838,6 +860,7 @@ namespace LZ_Marina
             this.dynamicTabSize();
             this.button4.Text = "";
             this.button5.Text = "1";
+            this.tabControl1.SelectedIndex = this.vitualIndex2;
         }
 
         private void createALocalShortcutToolStripMenuItem_Click(object sender, EventArgs e)
@@ -952,7 +975,7 @@ namespace LZ_Marina
 
         private void button7_Click(object sender, EventArgs e)
         {
-            this.lanChat.Show();
+//            this.lanChat.Show();
         }
 
         private void comboBoxEx1_SelectedIndexChanged(object sender, EventArgs e)

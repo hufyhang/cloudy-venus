@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
-using System.Linq;
+//using System.Linq;
 using System.Text;
 using System.Windows.Forms;
 using System.Threading;
@@ -203,7 +203,7 @@ namespace LZ_Marina
 
         private void richTextBox1_KeyDown(object sender, KeyEventArgs e)
         {
-            if (e.KeyCode == Keys.Enter && this.richTextBox1.Text.Contains('!'))
+            if (e.KeyCode == Keys.Enter && this.richTextBox1.Text.Contains("!"))
             {
                 String cmd = this.richTextBox1.Text.Substring(this.richTextBox1.Text.LastIndexOf("!"));
                 cmd = cmd.Remove(0, 1);

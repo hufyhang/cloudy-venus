@@ -455,6 +455,8 @@
             this.textBoxX1.AcceptsReturn = true;
             this.textBoxX1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left)
                         | System.Windows.Forms.AnchorStyles.Right)));
+            this.textBoxX1.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.SuggestAppend;
+            this.textBoxX1.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.FileSystem;
             // 
             // 
             // 

@@ -174,6 +174,8 @@
             this.addressBox.AcceptsReturn = true;
             this.addressBox.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left)
                         | System.Windows.Forms.AnchorStyles.Right)));
+            this.addressBox.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.SuggestAppend;
+            this.addressBox.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.HistoryList;
             // 
             // 
             // 

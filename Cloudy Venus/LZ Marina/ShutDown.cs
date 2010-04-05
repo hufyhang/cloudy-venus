@@ -66,7 +66,8 @@ namespace LZ_Marina
         private void button1_Click(object sender, EventArgs e)
         {
             if (MessageBox.Show("Are you sure you want to log off from Cloudy Venus?", "Log off...", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
-            {                
+            {
+//                this.form.restartExplorer();
                 Application.Exit();
             }
         }
