@@ -1,0 +1,2 @@
+Cloudy Venus is an open source project, which is developed in C-Sharp language by HANG  Feifei.
+Cloudy Venus is designed for Microsoft Windows Vista and MS Windows 7, however, it may works on other Windows OS with unknown problems or bugs.
